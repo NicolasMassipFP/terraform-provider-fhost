@@ -135,15 +135,6 @@ func createTLSConfig(trustedCert string, insecure *bool) (*tls.Config, error) {
 	return tlsConfig, nil
 }
 
-// SMCResource interface defines the methods that SMC resources must implement
-type SMCResource interface {
-	GetName() string
-	SetETag(string)
-	SetHref(string)
-	GetETag() string
-	GetHref() string
-}
-
 // SearchResponse represents the response structure for search operations
 type SearchResponse struct {
 	Result []SearchResult `json:"result"`
@@ -169,6 +160,7 @@ type GenericCRUDConfig struct {
 }
 
 // CreateResource creates a new resource in the SMC system using generic CRUD operations
+// todo pass directly json string payload instead of interface{}
 func CreateResource(config *GenericCRUDConfig, resource interface{}) (*ResponseData, error) {
 	reqBody, err := json.Marshal(resource)
 	if err != nil {
@@ -181,6 +173,35 @@ func CreateResource(config *GenericCRUDConfig, resource interface{}) (*ResponseD
 	resp, err := DoRequest(Options{
 		Method:  "POST",
 		URL:     createURL,
+		Headers: headers,
+		Body:    reqBody,
+		Timeout: 30 * time.Second,
+		Auth:    config.Auth,
+	})
+	if err != nil {
+		return nil, fmt.Errorf("create request failed: %w", err)
+	}
+
+	if resp.StatusCode != http.StatusCreated && resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("create %s failed with status %d: %s", config.ResourceType, resp.StatusCode, string(resp.Body))
+	}
+
+	return resp, nil
+}
+
+// CreateSubResource creates a new resource in the SMC system using generic CRUD operations
+// todo pass directly json string payload instead of interface{}
+func CreateSubResource(config *GenericCRUDConfig, resource interface{}, url string) (*ResponseData, error) {
+	reqBody, err := json.Marshal(resource)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal resource: %w", err)
+	}
+
+	headers := config.GetJSONHeaders()
+
+	resp, err := DoRequest(Options{
+		Method:  "POST",
+		URL:     url,
 		Headers: headers,
 		Body:    reqBody,
 		Timeout: 30 * time.Second,
@@ -363,7 +384,7 @@ func DeleteResourceByHref(config *GenericCRUDConfig, href, etag string) error {
 // SearchElements performs a search and returns all matching elements without fetching their details
 func SearchElements(config *GenericCRUDConfig, namePattern string) ([]SearchResult, error) {
 	encodedName := url.QueryEscape(namePattern)
-	searchURL := fmt.Sprintf("%s/%s/elements/%s?filter=%s", config.BaseURL, config.APIVersion, config.ResourceType, encodedName)
+	searchURL := fmt.Sprintf("%s/%s/elements/%s?filter=%s&exact_match=true", config.BaseURL, config.APIVersion, config.ResourceType, encodedName)
 	headers := config.GetJSONHeaders()
 
 	searchResp, err := DoRequest(Options{

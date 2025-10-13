@@ -35,6 +35,7 @@ type ElementDataSourceModel struct {
 	Name     types.String   `tfsdk:"name"`
 	Elements []ElementModel `tfsdk:"elements"`
 	ID       types.String   `tfsdk:"id"`
+	Href     types.String   `tfsdk:"href"`
 }
 
 // ElementModel describes an individual element in the search results
@@ -46,7 +47,7 @@ type ElementModel struct {
 
 // Metadata returns the data source type name.
 func (d *ElementDataSource) Metadata(_ context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_element"
+	resp.TypeName = req.ProviderTypeName + "_href"
 }
 
 // Schema defines the schema for the Element data source.
@@ -65,6 +66,10 @@ func (d *ElementDataSource) Schema(_ context.Context, _ datasource.SchemaRequest
 			},
 			"id": schema.StringAttribute{
 				MarkdownDescription: "Data source identifier.",
+				Computed:            true,
+			},
+			"href": schema.StringAttribute{
+				MarkdownDescription: "returns the href of the first available element",
 				Computed:            true,
 			},
 			"elements": schema.ListNestedAttribute{
@@ -156,6 +161,12 @@ func (d *ElementDataSource) Read(ctx context.Context, req datasource.ReadRequest
 	}
 
 	data.Elements = elementModels
+	if len(elementModels) > 0 {
+		data.Href = elementModels[0].Href
+	} else {
+		resp.Diagnostics.AddError("No Elements Found",
+			fmt.Sprintf("No elements found matching type '%s' and name pattern '%s'.", data.Type.ValueString(), data.Name.ValueString()))
+	}
 	// todo id not consistent with create operation. Should provide a function to generate ids
 	data.ID = types.StringValue(fmt.Sprintf("%s-%s", data.Type.ValueString(), data.Name.ValueString()))
 

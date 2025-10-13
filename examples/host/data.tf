@@ -7,13 +7,13 @@
 #     name = "ALL-PIM-ROUTERS"
 # }
 
-data "smc_element" "host_routers" {
+data "smc_href" "host_routers" {
     name = "*Router*"
     type = "host"
 }
 
 output "host_routers_len" {
-  value = length(data.smc_element.host_routers)
+  value = length(data.smc_href.host_routers)
 }
 # output "all_router_pims_len" {
 #   value = length(data.smc_host.all_router_pims)
