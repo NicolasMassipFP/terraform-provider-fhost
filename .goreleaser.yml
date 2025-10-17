@@ -45,6 +45,11 @@ signs:
       # if you are using this in a GitHub action or some other automated pipeline, you
       # need to pass the batch flag to indicate its not interactive.
       - "--batch"
+      - "--yes"
+      - "--pinentry-mode"
+      - "loopback"
+      - "--passphrase"
+      - "${GPG_PASSPHRASE}" # set this environment variable for your passphrase
       - "--local-user"
       - "{{ .Env.GPG_FINGERPRINT }}" # set this environment variable for your signing key
       - "--output"
@@ -56,6 +61,6 @@ release:
     - glob: 'terraform-registry-manifest.json'
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
   # If you want to manually examine the release before its live, uncomment this line:
-  # draft: true
+  draft: true
 changelog:
   disable: true

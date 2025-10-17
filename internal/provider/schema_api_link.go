@@ -30,21 +30,20 @@ var _ = listplanmodifier.UseStateForUnknown()
 
 func GetApiLinkSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
     return map[string]schema.Attribute {
-		
        "href": schema.StringAttribute {
         Computed: true,
-             PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-           Description: "The link URL.",
+        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+       Description: "The link URL.",
         },
        "rel": schema.StringAttribute {
         Computed: true,
-             PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-           Description: "The link/verb.",
+        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+       Description: "The link/verb.",
         },
        "type": schema.StringAttribute {
         Computed: true,
-             PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-           Description: "The impacted type of this link.",
+        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+       Description: "The impacted type of this link.",
         },
 
     }

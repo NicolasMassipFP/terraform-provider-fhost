@@ -137,6 +137,7 @@ func (r *HostResource) Create(ctx context.Context, req resource.CreateRequest, r
 
 	tflog.Info(ctx, fmt.Sprintf("Creating host: %s", string(apiData)))
 
+	// False
 	// Create the resource using generic CRUD
 	createResp, err := request.CreateResource(r.config, resourceData)
 	if err != nil {
@@ -158,7 +159,7 @@ func (r *HostResource) Create(ctx context.Context, req resource.CreateRequest, r
 		return
 	}
 
-    tflog.Debug(ctx, fmt.Sprintf("Reading Host after create: +%v", readResp.Body))
+    tflog.Debug(ctx, fmt.Sprintf("Reading Host after create: +%v", string(readResp.Body[:])))
 
 	// Unmarshal the response into our model
 	if err := apijson.UnmarshalRoot(readResp.Body, &createdData); err != nil {
@@ -183,8 +184,34 @@ func (r *HostResource) Read(ctx context.Context, req resource.ReadRequest, resp 
 
 }
 
+
+
+
+func (m *HostResourceModel) GetSelfHref(ctx context.Context) (string, error) {
+    if m.Link.IsNullOrUnknown() {
+        return "", fmt.Errorf("link attribute is null or unknown")
+    }
+
+    links, diags := m.Link.AsStructSliceT(ctx)
+    if diags.HasError() {
+        return "", fmt.Errorf("failed to convert links to struct slice: %v", diags)
+    }
+
+    for _, link := range links {
+        if !link.Rel.IsNull() && link.Rel.ValueString() == "self" {
+            if !link.Href.IsNull() {
+                return link.Href.ValueString(), nil
+            }
+        }
+    }
+
+    return "", fmt.Errorf("self link not found")
+}
+
+
 // Delete removes the Host resource from Terraform state and deletes it from the API.
-func (r *HostResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+func (r *HostResource) Delete(
+	ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	if r.client == nil {
 		resp.Diagnostics.AddError(
 			"Unconfigured SMC Client",
@@ -201,34 +228,25 @@ func (r *HostResource) Delete(ctx context.Context, req resource.DeleteRequest, r
 		return
 	}
 
-	// Extract resource name for deletion
-	var resourceName string
-	
-	if !data.Name.IsNull() {
-		resourceName = data.Name.ValueString()
-	}
-
-	if resourceName == "" {
-		resp.Diagnostics.AddError(
-			"Missing Resource Name",
-			"No resource name found to delete host",
-		)
-		return
-	}
-
-	tflog.Info(ctx, fmt.Sprintf("Deleting host '%s'", resourceName))
-
-	// Delete the resource using generic CRUD
-	err := request.DeleteResource(r.config, resourceName)
+	href, err := data.GetSelfHref(ctx)
 	if err != nil {
 		resp.Diagnostics.AddError(
-			"Error deleting host",
-			fmt.Sprintf("Could not delete host '%s': %s", resourceName, err.Error()),
+			"Error retrieving resource href",
+			fmt.Sprintf("Could not retrieve href for host: %s", err.Error()),
 		)
 		return
 	}
 
-	tflog.Debug(ctx, fmt.Sprintf("Deleted host '%s' successfully", resourceName))
+	readResp, err := request.ReadResourceByHref(r.config, href)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error reading host before deletion",
+			fmt.Sprintf("Could not read host: %s", err.Error()),
+		)
+		return
+	}
+	request.DeleteResourceByHref(r.config, href, (*readResp).ETag)
+	tflog.Debug(ctx, fmt.Sprintf("Deleted host '%s' successfully", href))
 }
 
 // Update modifies the Host resource and updates the Terraform state on success.

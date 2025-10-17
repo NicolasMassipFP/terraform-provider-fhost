@@ -1,9 +1,13 @@
 REPO_DIR=$(shell git rev-parse --show-toplevel)
 PLUGIN_DIR=$(REPO_DIR)/plugins
 
-init:
+init-dev:
 	-@rm -rf .terraform*
 	terraform init -plugin-dir $(PLUGIN_DIR)
+
+init:
+	-@rm -rf .terraform*
+	terraform init
 
 plan:
 	terraform plan

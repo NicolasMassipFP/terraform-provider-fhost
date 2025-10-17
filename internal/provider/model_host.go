@@ -18,7 +18,6 @@ var _ = types.String{}
 
 type HostResourceModel struct {
 	ID                    types.String `tfsdk:"id"`
-    
     Address types.String `tfsdk:"address" json:"address,optional,omitempty"`
         AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty"`
         Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty"`
@@ -26,7 +25,7 @@ type HostResourceModel struct {
         Ipv6Address types.String `tfsdk:"ipv6_address" json:"ipv6_address,optional,omitempty"`
         Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty"`
         Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty"`
-        LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty"`
+        LocationRef types.String `tfsdk:"location_ref" json:"location,optional,omitempty"`
         Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty"`
         Name types.String `tfsdk:"name" json:"name,optional,omitempty"`
         ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty"`
@@ -34,7 +33,7 @@ type HostResourceModel struct {
         System types.Bool `tfsdk:"system" json:"system,optional,omitempty"`
         SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty"`
         ThirdPartyMonitoring customfield.NestedObject[ThirdPartyMonitoringResourceModel] `tfsdk:"third_party_monitoring" json:"third_party_monitoring,optional,omitempty"`
-        ToolsProfileRef types.String `tfsdk:"tools_profile_ref" json:"tools_profile_ref,optional,omitempty"`
+        ToolsProfileRef types.String `tfsdk:"tools_profile_ref" json:"tools_profile,optional,omitempty"`
         Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty"`
         
 }

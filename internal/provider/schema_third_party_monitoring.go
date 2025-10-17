@@ -30,34 +30,33 @@ var _ = listplanmodifier.UseStateForUnknown()
 
 func GetThirdPartyMonitoringSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
     return map[string]schema.Attribute {
-		
        "encoding": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "The character encoding used for log reception, which determines how text is interpreted.",
+       Optional: true, // todo optional parameters
+       Description: "The character encoding used for log reception, which determines how text is interpreted.",
         },
        "logging_profile_ref": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.",
+       Optional: true, // todo optional parameters
+       Description: "This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.",
         },
        "monitoring_log_server_ref": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.",
+       Optional: true, // todo optional parameters
+       Description: "This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.",
         },
        "netflow": schema.BoolAttribute {
-             Optional: true, // todo optional parameters
-             Description: "Indicates whether NetFlow data reception is enabled for this device.",
-          },
+         Optional: true, // todo optional parameters
+         Description: "Indicates whether NetFlow data reception is enabled for this device.",
+       },
        "probing_profile_ref": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "This represents a Probing Profile used in Third Party Monitoring. It contains settings that define how a Log Server monitors third-party components.",
+       Optional: true, // todo optional parameters
+       Description: "This represents a Probing Profile used in Third Party Monitoring. It contains settings that define how a Log Server monitors third-party components.",
         },
        "snmp_trap": schema.BoolAttribute {
-             Optional: true, // todo optional parameters
-             Description: "Indicates whether SNMP trap reception is enabled for this device.",
-          },
+         Optional: true, // todo optional parameters
+         Description: "Indicates whether SNMP trap reception is enabled for this device.",
+       },
        "time_zone": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "The time zone ID for log reception, which determines the time zone used for timestamps in logs.",
+       Optional: true, // todo optional parameters
+       Description: "The time zone ID for log reception, which determines the time zone used for timestamps in logs.",
         },
 
     }

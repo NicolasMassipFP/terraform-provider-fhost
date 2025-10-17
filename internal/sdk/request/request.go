@@ -12,10 +12,14 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/sdk/auth"
 )
+
+// requestMutex prevents concurrent HTTP requests
+var requestMutex sync.Mutex
 
 // Options defines options for the generic request
 type Options struct {
@@ -40,6 +44,10 @@ type ResponseData struct {
 
 // DoRequest performs a generic HTTP request and returns ResponseData and error
 func DoRequest(opts Options) (*ResponseData, error) {
+	// Lock to prevent concurrent requests
+	requestMutex.Lock()
+	defer requestMutex.Unlock()
+
 	ctx := opts.Context
 	if ctx == nil {
 		ctx = context.Background()

@@ -13,8 +13,9 @@ help:
 	@echo "  make build              - Same as 'all'"
 	@echo "  make release            - Prepare the provider release (build + goreleaser)"
 	@echo "  make go-build           - Build the Go binary"
-	@echo "  make go-release         - Build multi-platform binaries with goreleaser"
-	@echo "  make go-release-snapshot- Build snapshot without publishing"
+	@echo "  make go-release         - Build multi-platform binaries with goreleaser (no dirty edit allowed, tag must be set on HEAD)"
+	@echo "  make go-release-snapshot- Build snapshot without publishing (no validation, dirty edit allowed, tag must be set on HEAD)"
+	@echo "  make docs               - Generate provider documentation"
 	@echo "  make clean              - Clean all build artifacts"
 	@echo "  make help               - Show this help message"
 
@@ -30,6 +31,15 @@ go-build:
 	mkdir $(PLUGIN_DIR) 2>/dev/null; true
 	$(RUN) go build  -o $(PLUGIN_DIR)/terraform-provider-fhost .
 	# $(RUN) go build  -o $(PLUGIN_DIR)/terraform-provider-fhost ./...
+
+.PHONY: docs
+docs:
+	mkdir docs 2>/dev/null; true
+	@echo "Generating provider documentation..."
+	@scripts/run_go go mod download github.com/hashicorp/terraform-plugin-docs
+	@scripts/run_go go mod tidy
+	@scripts/run_go go get github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
+	@scripts/run_go go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name smc
 
 .PHONY: go-release-snapshot
 go-release-snapshot: docker-build

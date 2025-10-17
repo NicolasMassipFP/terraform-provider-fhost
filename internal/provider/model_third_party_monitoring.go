@@ -18,10 +18,10 @@ var _ = types.String{}
 
 type ThirdPartyMonitoringResourceModel struct {
     Encoding types.String `tfsdk:"encoding" json:"encoding,optional,omitempty"`
-        LoggingProfileRef types.String `tfsdk:"logging_profile_ref" json:"logging_profile_ref,optional,omitempty"`
-        MonitoringLogServerRef types.String `tfsdk:"monitoring_log_server_ref" json:"monitoring_log_server_ref,optional,omitempty"`
+        LoggingProfileRef types.String `tfsdk:"logging_profile_ref" json:"logging_profile,optional,omitempty"`
+        MonitoringLogServerRef types.String `tfsdk:"monitoring_log_server_ref" json:"log_server,optional,omitempty"`
         Netflow types.Bool `tfsdk:"netflow" json:"netflow,optional,omitempty"`
-        ProbingProfileRef types.String `tfsdk:"probing_profile_ref" json:"probing_profile_ref,optional,omitempty"`
+        ProbingProfileRef types.String `tfsdk:"probing_profile_ref" json:"probing_profile,optional,omitempty"`
         SnmpTrap types.Bool `tfsdk:"snmp_trap" json:"snmp_trap,optional,omitempty"`
         TimeZone types.String `tfsdk:"time_zone" json:"time_zone,optional,omitempty"`
         
