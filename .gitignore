@@ -34,3 +34,7 @@ terraform.*
 
 # goland-lint cache
 .cache
+
+# project specific
+plugins/
+dist/
