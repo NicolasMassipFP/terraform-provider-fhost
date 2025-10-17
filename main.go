@@ -1,4 +1,4 @@
-// Package main is the entry point for the SMC Terraform provider.
+// Package main implements the Terraform provider for SMC (Security Management Center).
 package main
 
 import (

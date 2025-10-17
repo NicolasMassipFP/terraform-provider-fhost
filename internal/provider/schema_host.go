@@ -31,82 +31,79 @@ var _ = listplanmodifier.UseStateForUnknown()
 func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
     return map[string]schema.Attribute {
         "id": schema.StringAttribute{
-                Computed:            true,
-                Description: "tf identifier",
-                PlanModifiers: []planmodifier.String{
-                    stringplanmodifier.UseStateForUnknown(),
-             },
+			Computed:            true,
+            Description: "this attribute is the identifier of terraform resource",
+            PlanModifiers: []planmodifier.String{ stringplanmodifier.UseStateForUnknown(), },
         },
-		
        "address": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "The primary IPv4 address of the device, which is used for network communication.",
+       Optional: true, // todo optional parameters
+       Description: "The primary IPv4 address of the device, which is used for network communication.",
         },
        "admin_domain": schema.StringAttribute {
         Computed: true,
-             PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-           Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
+        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+       Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
         },
        "comment": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "An optional comment for the element. This field is not required.",
+       Optional: true, // todo optional parameters
+       Description: "An optional comment for the element. This field is not required.",
         },
        "etag": schema.StringAttribute {
         Computed: true,
-             PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
-           Description: "The ETag of the element, used for versioning. This field is not required.",
+        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
+       Description: "The ETag of the element, used for versioning. This field is not required.",
         },
        "ipv6_address": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "The primary IPv6 address of the device, which is used for network communication.",
+       Optional: true, // todo optional parameters
+       Description: "The primary IPv6 address of the device, which is used for network communication.",
         },
        "key": schema.Int64Attribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
-             Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-          },
+          PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
+         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+       },
        "link": schema.ListNestedAttribute {
           Computed: true,
-             Description: "The API's links of the element, providing additional actions or resources.",
-                 PlanModifiers: []planmodifier.List{listplanmodifier.UseStateForUnknown()},
-              CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-              NestedObject: schema.NestedAttributeObject{
-  				Attributes: GetApiLinkSchemaAttributes(ctx),
-              }, 
+         Description: "The API's links of the element, providing additional actions or resources.",
+         PlanModifiers: []planmodifier.List{listplanmodifier.UseStateForUnknown()},
+         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
+         NestedObject: schema.NestedAttributeObject{
+         Attributes: GetApiLinkSchemaAttributes(ctx),
+              },
            },
        "location_ref": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
+       Optional: true, // todo optional parameters
+       Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
         },
        "locked": schema.BoolAttribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
-             Description: "Indicates if the element is locked. This field is not required.",
-          },
+          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
+         Description: "Indicates if the element is locked. This field is not required.",
+       },
        "name": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "Name of the object.",
+       Optional: true, // todo optional parameters
+       Description: "Name of the object.",
         },
        "read_only": schema.BoolAttribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
-             Description: "Indicates if the element is read-only. This field is not required.",
-          },
+          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
+         Description: "Indicates if the element is read-only. This field is not required.",
+       },
        "secondary": schema.ListAttribute {
-             Optional: true, // todo optional parameters
-             Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
-              ElementType: types.StringType,
-           },
+         Optional: true, // todo optional parameters
+         Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
+         ElementType: types.StringType,
+       },
        "system": schema.BoolAttribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
-             Description: "Indicates if the element is a System element. This field is not required.",
-          },
+          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
+         Description: "Indicates if the element is a System element. This field is not required.",
+       },
        "system_key": schema.Int64Attribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
-             Description: "The system key of the System element. This field is not required.",
-          },
+          PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
+         Description: "The system key of the System element. This field is not required.",
+       },
        "third_party_monitoring": schema.SingleNestedAttribute {
         Description: "This represents the monitoring settings for third-party devices, including SNMP traps, NetFlow, syslog, and status monitoring.",
         Optional:    true, // todo optional parameters
@@ -114,14 +111,14 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
         Attributes: GetThirdPartyMonitoringSchemaAttributes(ctx),
     },
        "tools_profile_ref": schema.StringAttribute {
-           Optional: true, // todo optional parameters
-           Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
+       Optional: true, // todo optional parameters
+       Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
         },
        "trashed": schema.BoolAttribute {
           Computed: true,
-               PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
-             Description: "Indicates if the element is trashed. This field is not required.",
-          },
+          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
+         Description: "Indicates if the element is trashed. This field is not required.",
+       },
 
     }
 }

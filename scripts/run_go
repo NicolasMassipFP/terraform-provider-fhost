@@ -9,6 +9,7 @@ IMAGE=go-docker
 mkdir -p .cache .cache/go-build .cache/gomod .cache/gopath .cache/uv
 
 # Run the provided command inside the container, preserving user rights and using writable caches
+# GPG_FINGERPRINT GPG_PASSPHRASE GITHUB_TOKEN are needed only for goreleaser ( release process )
 CMD=("$@")
 docker run --rm -u $(id -u):$(id -g) \
     -v "$(pwd)":/app -w /app \
@@ -17,12 +18,14 @@ docker run --rm -u $(id -u):$(id -g) \
     -v "$(pwd)/.cache/gomod":/app/.cache/gomod \
     -v "$(pwd)/.cache/gopath":/app/.cache/gopath \
     -v "$(pwd)/.cache/uv":/app/.cache/uv \
+    -v "${HOME}/.gnupg":/home/forcepoint/.gnupg \
     -e GOLANGCI_LINT_CACHE=/app/.cache \
     -e GOCACHE=/app/.cache/go-build \
     -e GOMODCACHE=/app/.cache/gomod \
     -e GOPATH=/app/.cache/gopath \
     -e UV_CACHE_DIR=/app/.cache/uv \
     -e GPG_FINGERPRINT="${GPG_FINGERPRINT:-}" \
+    -e GPG_PASSPHRASE="${GPG_PASSPHRASE:-}" \
     -e GITHUB_TOKEN="${GITHUB_TOKEN:-}" \
     $IMAGE "${CMD[@]}"
 

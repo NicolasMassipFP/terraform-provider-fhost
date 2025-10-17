@@ -10,6 +10,17 @@ RUN go install github.com/goreleaser/goreleaser@latest
 RUN go install -v golang.org/x/tools/cmd/godoc@latest
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
+# Create forcepoint user with home directory -- for signature purposes, it need a clean user setup with a used id allows to do the signature
+RUN useradd -m -s /bin/bash forcepoint
+RUN usermod -aG sudo forcepoint
+
+# gpg for goreleaser need a valid home directory
+RUN chown -R forcepoint:forcepoint /home/forcepoint
+ENV HOME /home/forcepoint
+
+# Switch to forcepoint user
+USER forcepoint
+
 WORKDIR /app
 
 # Entrypoint for interactive use
