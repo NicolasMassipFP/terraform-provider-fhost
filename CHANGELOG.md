@@ -1,6 +1,6 @@
 ## 0.1.0
 
-next version ( not backward compatible with 0.0 )
+next version ( not backward compatible with 0.0.x )
 
 ## 0.0.2
 
