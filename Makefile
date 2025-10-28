@@ -36,10 +36,7 @@ go-build:
 docs:
 	mkdir docs 2>/dev/null; true
 	@echo "Generating provider documentation..."
-	@scripts/run_go go mod download github.com/hashicorp/terraform-plugin-docs
-	@scripts/run_go go mod tidy
-	@scripts/run_go go get github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
-	@scripts/run_go go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-name smc
+	$(RUN) go run -C tools github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-dir .. -provider-name smc
 
 .PHONY: go-release-snapshot
 go-release-snapshot: docker-build
