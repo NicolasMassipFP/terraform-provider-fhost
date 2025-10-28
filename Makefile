@@ -1,5 +1,5 @@
 PROVIDER_NAME=terraform-provider-fhost
-PROVIDER_VERSION=0.1.0
+PROVIDER_VERSION=0.0.3
 PLUGIN_DIR=plugins/registry.terraform.io/training-sop-fsmc/fhost/${PROVIDER_VERSION}/linux_amd64
 RUN=./scripts/run_go
 
