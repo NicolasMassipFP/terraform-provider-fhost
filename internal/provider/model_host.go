@@ -5,92 +5,46 @@ package provider
 
 import (
     "github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-	"github.com/hashicorp/terraform-plugin-log/tflog"
-    "context"
+    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
+    "fmt"
+	"context"
+
 )
 
 // to avoid import errors if unused
 var _ = customfield.NewNestedObjectType[struct{}](nil)
 var _ = types.String{}
+var _ = fmt.Sprintf
+var _ = context.Background()
 
 
 
 type HostResourceModel struct {
+	
 	ID                    types.String `tfsdk:"id"`
-    Address types.String `tfsdk:"address" json:"address,optional,omitempty"`
-        AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty"`
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty"`
-        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty"`
-        Ipv6Address types.String `tfsdk:"ipv6_address" json:"ipv6_address,optional,omitempty"`
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty"`
-        LocationRef types.String `tfsdk:"location_ref" json:"location,optional,omitempty"`
-        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty"`
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty"`
-        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty"`
-        Secondary *[]types.String `tfsdk:"secondary" json:"secondary,optional,omitempty"`
-        System types.Bool `tfsdk:"system" json:"system,optional,omitempty"`
-        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty"`
-        ThirdPartyMonitoring customfield.NestedObject[ThirdPartyMonitoringResourceModel] `tfsdk:"third_party_monitoring" json:"third_party_monitoring,optional,omitempty"`
-        ToolsProfileRef types.String `tfsdk:"tools_profile_ref" json:"tools_profile,optional,omitempty"`
-        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty"`
+    Address types.String `tfsdk:"address" json:"address,optional,omitempty" `
+        AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
+        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
+        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
+        Ipv6Address types.String `tfsdk:"ipv6_address" json:"ipv6_address,optional,omitempty" `
+        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
+        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
+        LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
+        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
+        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
+        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
+        Secondary *[]types.String `tfsdk:"secondary" json:"secondary,optional,omitempty" `
+        System types.Bool `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
+        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
+        ThirdPartyMonitoring *ThirdPartyMonitoringResourceModel `tfsdk:"third_party_monitoring" json:"third_party_monitoring,optional,omitempty" `
+        ToolsProfileRef types.String `tfsdk:"tools_profile_ref" json:"tools_profile_ref,optional,omitempty" `
+        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
         
 }
-
-
-func CopyReadOnlyHost(ctx context.Context, from *HostResourceModel, to *HostResourceModel) {
-    // copy readOnly (aka computed) simple fields
-    tflog.Debug(ctx, "CopyReadOnlyHost")
-    to.AdminDomain = from.AdminDomain
-    to.Etag = from.Etag
-    to.Key = from.Key
-    to.Link = from.Link
-    to.Locked = from.Locked
-    to.ReadOnly = from.ReadOnly
-    to.System = from.System
-    to.SystemKey = from.SystemKey
-    to.Trashed = from.Trashed
-
-    // copy readOnly (aka computed) nested objects
-    CopyNestedReadOnlyThirdPartyMonitoring(ctx, &from.ThirdPartyMonitoring, &to.ThirdPartyMonitoring)
-
-    // copy readOnly (aka computed) nested list of objects
+func (r *HostResourceModel) GetSliceIds(ctx context.Context) []string {
+	if r.Name.IsNull() || r.Name.IsUnknown() {
+		return nil
+	}
+	return []string{r.Name.ValueString()}
 }
-
-func CopyNestedReadOnlyListHost(
-    ctx context.Context,
-    from_nst *customfield.NestedObjectList[HostResourceModel],
-    to_nst *customfield.NestedObjectList[HostResourceModel]) {
-    from, _ := from_nst.AsStructSliceT(ctx)
-    to, _ := to_nst.AsStructSliceT(ctx)
-    if from == nil && to == nil {
-        return
-    }
-    if len(from) == 0 {
-        return
-    }
-    if len(from) != len(to) {
-        tflog.Warn(ctx, "Skipping readOnly copy for 'Host': length mismatch")
-        return
-    }
-    for i := range from {
-        CopyReadOnlyHost(ctx, &from[i], &to[i])
-    }
-    *to_nst, _ = customfield.NewObjectList[HostResourceModel](ctx, to)
-}
-
-func CopyNestedReadOnlyHost(ctx context.Context, from_nst *customfield.NestedObject[HostResourceModel], to_nst *customfield.NestedObject[HostResourceModel]) {
-    if from_nst == nil || from_nst.IsNull() || to_nst == nil || to_nst.IsNull() {
-        return
-    }
-    from, diag := from_nst.Value(ctx)
-    to, diag := to_nst.Value(ctx)
-    // todo proper error handling
-    if diag.HasError() {
-        return
-    }
-    CopyReadOnlyHost(ctx, from, to)
-    *to_nst = customfield.NewObjectMust[HostResourceModel](ctx, to)
-}
-    

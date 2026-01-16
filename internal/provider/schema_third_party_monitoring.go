@@ -9,10 +9,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
@@ -24,7 +26,10 @@ var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
 var _ = int64planmodifier.UseStateForUnknown()
+var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
+var _ = listdefault.StaticValue
+
 
 
 
@@ -58,6 +63,12 @@ func GetThirdPartyMonitoringSchemaAttributes(ctx context.Context) map[string]sch
        Optional: true, // todo optional parameters
        Description: "The time zone ID for log reception, which determines the time zone used for timestamps in logs.",
         },
+
+    }
+}
+func GetThirdPartyMonitoringSchemaBlocks(ctx context.Context) map[string]schema.Block {
+
+    return map[string]schema.Block{
 
     }
 }

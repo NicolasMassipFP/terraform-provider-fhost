@@ -9,10 +9,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
@@ -24,7 +26,10 @@ var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
 var _ = int64planmodifier.UseStateForUnknown()
+var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
+var _ = listdefault.StaticValue
+
 
 
 
@@ -32,19 +37,22 @@ func GetApiLinkSchemaAttributes(ctx context.Context) map[string]schema.Attribute
     return map[string]schema.Attribute {
        "href": schema.StringAttribute {
         Computed: true,
-        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
        Description: "The link URL.",
         },
        "rel": schema.StringAttribute {
         Computed: true,
-        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
        Description: "The link/verb.",
         },
        "type": schema.StringAttribute {
         Computed: true,
-        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
        Description: "The impacted type of this link.",
         },
+
+    }
+}
+func GetApiLinkSchemaBlocks(ctx context.Context) map[string]schema.Block {
+
+    return map[string]schema.Block{
 
     }
 }

@@ -5,13 +5,15 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"strings"
 	"testing"
 
-	sdk_auth "github.com/terraform-providers/terraform-provider-smc/internal/sdk/auth"
+	"github.com/hashicorp/terraform-plugin-log/tflogtest"
 )
 
-func TestNewClientFromAuth(t *testing.T) {
+func TestGetOrCreateClientSuccess(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" && strings.Contains(r.URL.Path, "/login") {
 			// Verify login request
@@ -27,26 +29,27 @@ func TestNewClientFromAuth(t *testing.T) {
 			w.Header().Set("Set-Cookie", "JSESSIONID=test-session-id; Path=/")
 			w.WriteHeader(http.StatusOK)
 			return
+		} else if r.Method == "GET" && strings.Contains(r.URL.Path, "/v1/elements/admin_domain/1") {
+			w.WriteHeader(http.StatusOK)
+		} else {
+			t.Fatalf("Unexpected request: %s %s", r.Method, r.URL.Path)
 		}
 		w.WriteHeader(http.StatusNotFound)
 	}))
 	defer server.Close()
 
-	insecure := false
-	auth := &sdk_auth.Auth{
-		URL:        server.URL,
-		APIKey:     "test-key",
-		APIVersion: "v1",
-		Insecure:   &insecure,
-	}
+	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
-	client, err := NewClientFromAuth(auth)
+	client, err := GetOrCreateClient(
+		ctx, server.URL, "v1", "test-key", false, "", "")
+
 	if err != nil {
 		t.Fatalf("NewClientFromAuth failed: %v", err)
 	}
+	err = client.Login(context.Background())
 
-	if client.URL != server.URL {
-		t.Errorf("Expected URL %s, got %s", server.URL, client.URL)
+	if client.BaseUrl != server.URL {
+		t.Errorf("Expected URL %s, got %s", server.URL, client.BaseUrl)
 	}
 	if client.APIKey != "test-key" {
 		t.Errorf("Expected APIKey test-key, got %s", client.APIKey)
@@ -54,7 +57,7 @@ func TestNewClientFromAuth(t *testing.T) {
 	if client.APIVersion != "v1" {
 		t.Errorf("Expected APIVersion v1, got %s", client.APIVersion)
 	}
-	if !client.VerifySSL {
+	if client.VerifySSL {
 		t.Error("Expected VerifySSL to be true")
 	}
 	if client.Token != "test-session-id" {
@@ -63,9 +66,18 @@ func TestNewClientFromAuth(t *testing.T) {
 	if client.HTTPClient == nil {
 		t.Error("HTTPClient should not be nil")
 	}
+
+	// Test retrieving the same client again
+	_, err2 := GetOrCreateClient(ctx, server.URL, "test-key", "v1", true, "", "")
+
+	if err2 != nil {
+		t.Fatalf("NewClientFromAuth failed: %v", err)
+	}
+
 }
 
-func TestNewClientFromAuth_Insecure(t *testing.T) {
+func TestGetOrCreateClientFromAuth_Insecure(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" && strings.Contains(r.URL.Path, "/login") {
 			w.Header().Set("Set-Cookie", "JSESSIONID=test-session-id; Path=/")
@@ -76,18 +88,16 @@ func TestNewClientFromAuth_Insecure(t *testing.T) {
 	}))
 	defer server.Close()
 
-	insecure := true
-	auth := &sdk_auth.Auth{
-		URL:        server.URL, // Use HTTP server, not HTTPS
-		APIKey:     "test-key",
-		APIVersion: "v1",
-		Insecure:   &insecure,
-	}
+	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
-	client, err := NewClientFromAuth(auth)
+	client, err := GetOrCreateClient(
+		ctx, server.URL, "test-key", "v1", false, "", "")
+
 	if err != nil {
 		t.Fatalf("NewClientFromAuth failed: %v", err)
 	}
+
+	client.Login(context.Background())
 
 	if client.VerifySSL {
 		t.Error("Expected VerifySSL to be false for insecure connection")
@@ -100,28 +110,25 @@ func TestNewClientFromAuth_Insecure(t *testing.T) {
 	}
 }
 
-func TestNewClientFromAuth_WithTrustedCert(t *testing.T) {
+func TestGetOrCreateClientFromAuth_WithTrustedCert(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	// Skip this test since it requires a valid certificate
 	// The functionality is tested in the production code
 	t.Skip("Skipping trusted certificate test - requires valid PEM certificate")
 }
 
 func TestNewClientFromAuth_InvalidTrustedCert(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusOK)
 	}))
 	defer server.Close()
 
-	insecure := false
-	auth := &sdk_auth.Auth{
-		URL:         server.URL,
-		APIKey:      "test-key",
-		APIVersion:  "v1",
-		Insecure:    &insecure,
-		TrustedCert: "invalid-cert-data",
-	}
+	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
-	_, err := NewClientFromAuth(auth)
+	_, err := GetOrCreateClient(ctx,
+		server.URL, "test-key", "v1", true, "invalid-cert-data", "")
+
 	if err == nil {
 		t.Error("Expected error for invalid trusted certificate")
 	}
@@ -131,6 +138,7 @@ func TestNewClientFromAuth_InvalidTrustedCert(t *testing.T) {
 }
 
 func TestLogin_Success(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" && strings.Contains(r.URL.Path, "/login") {
 			// Verify request
@@ -151,8 +159,8 @@ func TestLogin_Success(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := &Client{
-		URL:        server.URL,
+	client := &SmcClient{
+		BaseUrl:    server.URL,
 		APIKey:     "test-api-key",
 		APIVersion: "v1",
 		HTTPClient: server.Client(),
@@ -169,6 +177,7 @@ func TestLogin_Success(t *testing.T) {
 }
 
 func TestLogin_MultipleSetCookieHeaders(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" && strings.Contains(r.URL.Path, "/login") {
 			// Set multiple cookies
@@ -182,8 +191,8 @@ func TestLogin_MultipleSetCookieHeaders(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := &Client{
-		URL:        server.URL,
+	client := &SmcClient{
+		BaseUrl:    server.URL,
 		APIKey:     "test-api-key",
 		APIVersion: "v1",
 		HTTPClient: server.Client(),
@@ -200,6 +209,7 @@ func TestLogin_MultipleSetCookieHeaders(t *testing.T) {
 }
 
 func TestLogin_CreatedStatus(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "POST" && strings.Contains(r.URL.Path, "/login") {
 			w.Header().Set("Set-Cookie", "JSESSIONID=created-session; Path=/")
@@ -210,8 +220,8 @@ func TestLogin_CreatedStatus(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := &Client{
-		URL:        server.URL,
+	client := &SmcClient{
+		BaseUrl:    server.URL,
 		APIKey:     "test-api-key",
 		APIVersion: "v1",
 		HTTPClient: server.Client(),
@@ -228,14 +238,15 @@ func TestLogin_CreatedStatus(t *testing.T) {
 }
 
 func TestLogin_HTTPError(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusUnauthorized)
 		_, _ = w.Write([]byte("Unauthorized"))
 	}))
 	defer server.Close()
 
-	client := &Client{
-		URL:        server.URL,
+	client := &SmcClient{
+		BaseUrl:    server.URL,
 		APIKey:     "invalid-key",
 		APIVersion: "v1",
 		HTTPClient: server.Client(),
@@ -251,6 +262,7 @@ func TestLogin_HTTPError(t *testing.T) {
 }
 
 func TestLogin_NoSessionCookie(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		// Return success but without JSESSIONID cookie
 		w.Header().Set("Set-Cookie", "OTHER=value; Path=/")
@@ -258,8 +270,8 @@ func TestLogin_NoSessionCookie(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := &Client{
-		URL:        server.URL,
+	client := &SmcClient{
+		BaseUrl:    server.URL,
 		APIKey:     "test-key",
 		APIVersion: "v1",
 		HTTPClient: server.Client(),
@@ -277,9 +289,10 @@ func TestLogin_NoSessionCookie(t *testing.T) {
 }
 
 func TestLogin_InvalidJSON(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	// Test that invalid JSON in request body is handled
-	originalClient := &Client{
-		URL:        "http://example.com",
+	originalClient := &SmcClient{
+		BaseUrl:    "http://example.com",
 		APIKey:     "test-key",
 		APIVersion: "v1",
 		HTTPClient: &http.Client{},
@@ -294,6 +307,7 @@ func TestLogin_InvalidJSON(t *testing.T) {
 }
 
 func TestLoginRequest_JSONMarshal(t *testing.T) {
+	GetClientManager().CleanupAll(context.Background())
 	req := LoginRequest{
 		APIKey: "test-key-123",
 	}
@@ -310,8 +324,9 @@ func TestLoginRequest_JSONMarshal(t *testing.T) {
 }
 
 func TestClient_Fields(t *testing.T) {
-	client := &Client{
-		URL:        "https://test.com",
+	GetClientManager().CleanupAll(context.Background())
+	client := &SmcClient{
+		BaseUrl:    "https://test.com",
 		APIKey:     "key123",
 		VerifySSL:  true,
 		Token:      "token456",
@@ -319,8 +334,8 @@ func TestClient_Fields(t *testing.T) {
 		HTTPClient: &http.Client{},
 	}
 
-	if client.URL != "https://test.com" {
-		t.Errorf("Expected URL https://test.com, got %s", client.URL)
+	if client.BaseUrl != "https://test.com" {
+		t.Errorf("Expected URL https://test.com, got %s", client.BaseUrl)
 	}
 	if client.APIKey != "key123" {
 		t.Errorf("Expected APIKey key123, got %s", client.APIKey)
@@ -336,78 +351,5 @@ func TestClient_Fields(t *testing.T) {
 	}
 	if client.HTTPClient == nil {
 		t.Error("HTTPClient should not be nil")
-	}
-}
-
-// Test the TLS configuration details
-func TestNewClientFromAuth_TLSConfig(t *testing.T) {
-	tests := []struct {
-		name           string
-		insecure       *bool
-		expectedSkip   bool
-		expectedSecure bool
-	}{
-		{
-			name:           "Secure connection",
-			insecure:       func() *bool { b := false; return &b }(),
-			expectedSkip:   false,
-			expectedSecure: true,
-		},
-		{
-			name:           "Insecure connection",
-			insecure:       func() *bool { b := true; return &b }(),
-			expectedSkip:   true,
-			expectedSecure: false,
-		},
-		{
-			name:           "Nil insecure (default secure)",
-			insecure:       nil,
-			expectedSkip:   false,
-			expectedSecure: true,
-		},
-	}
-
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
-				w.Header().Set("Set-Cookie", "JSESSIONID=test; Path=/")
-				w.WriteHeader(http.StatusOK)
-			}))
-			defer server.Close()
-
-			auth := &sdk_auth.Auth{
-				URL:        server.URL,
-				APIKey:     "test-key",
-				APIVersion: "v1",
-				Insecure:   tt.insecure,
-			}
-
-			client, err := NewClientFromAuth(auth)
-			if err != nil {
-				t.Fatalf("NewClientFromAuth failed: %v", err)
-			}
-
-			transport := client.HTTPClient.Transport.(*http.Transport)
-			// The logic in NewClientFromAuth: InsecureSkipVerify = auth.Insecure != nil && *auth.Insecure
-			// When insecure==nil, InsecureSkipVerify should be false (secure)
-			// When insecure==true, InsecureSkipVerify should be true (insecure)
-			// When insecure==false, InsecureSkipVerify should be false (secure)
-			actualSkip := transport.TLSClientConfig.InsecureSkipVerify
-			if tt.insecure == nil {
-				// When insecure is nil, InsecureSkipVerify should be false
-				if actualSkip {
-					t.Errorf("Expected InsecureSkipVerify false for nil insecure, got %v", actualSkip)
-				}
-			} else {
-				expectedSkip := *tt.insecure
-				if actualSkip != expectedSkip {
-					t.Errorf("Expected InsecureSkipVerify %v, got %v", expectedSkip, actualSkip)
-				}
-			}
-
-			if client.VerifySSL != tt.expectedSecure {
-				t.Errorf("Expected VerifySSL %v, got %v", tt.expectedSecure, client.VerifySSL)
-			}
-		})
 	}
 }

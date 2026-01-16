@@ -19,27 +19,28 @@ This represents a Host, which is a Network Element that represents any single de
 
 - `address` (String) The primary IPv4 address of the device, which is used for network communication.
 - `comment` (String) An optional comment for the element. This field is not required.
+- `id` (String) this attribute is the identifier of terraform resource
 - `ipv6_address` (String) The primary IPv6 address of the device, which is used for network communication.
 - `location_ref` (String) This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.
 - `name` (String) Name of the object.
 - `secondary` (List of String) A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).
-- `third_party_monitoring` (Attributes) This represents the monitoring settings for third-party devices, including SNMP traps, NetFlow, syslog, and status monitoring. (see [below for nested schema](#nestedatt--third_party_monitoring))
+- `third_party_monitoring` (Block, Optional) This represents the monitoring settings for third-party devices, including SNMP traps, NetFlow, syslog, and status monitoring. (see [below for nested schema](#nestedblock--third_party_monitoring))
 - `tools_profile_ref` (String) This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.
 
 ### Read-Only
 
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
-- `id` (String) this attribute is the identifier of terraform resource
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
 - `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
+- `lk` (Map of String)
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
 - `system_key` (Number) The system key of the System element. This field is not required.
 - `trashed` (Boolean) Indicates if the element is trashed. This field is not required.
 
-<a id="nestedatt--third_party_monitoring"></a>
+<a id="nestedblock--third_party_monitoring"></a>
 ### Nested Schema for `third_party_monitoring`
 
 Optional:

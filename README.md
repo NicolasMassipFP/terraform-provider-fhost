@@ -1,10 +1,14 @@
-# FHOST Terraform Provider
+# SMC Terraform Provider
 
 - Website: https://www.terraform.io
 - [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
 - Mailing list: [Google Groups](http://groups.google.com/group/terraform-tool)
 
 <img src="https://www.datocms-assets.com/2885/1629941242-logo-terraform-main.svg" width="600px">
+
+## Which provider version to use ?
+
+Provider is not available currently for version prior to 7.3.
 
 ## Requirements
 
@@ -20,10 +24,13 @@
 
 ## Using the Provider
 
-Don't. Unless you know why this provider has been published...
-TODO: update this message :-)
+Internal version for testing purpose only.
 
 ## Developing the Provider
 
-Don't. Unless you know why this provider has been published...
-TODO: update this message :-)
+This provider is managed by Forcepoint R&D internally. The public repositoryis updated by Forcepoint when releasing new SMC Version or on provider update.
+
+You can still compile locally the provider using ``make build`` command.
+The compilation rely on docker container that will be retrieved and generate locally.
+
+For your information, the provider implementation is generated from the Open API specification of SMC API.
