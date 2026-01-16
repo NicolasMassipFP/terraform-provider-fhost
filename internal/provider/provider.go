@@ -5,21 +5,20 @@ package provider
 
 import (
 	"context"
+	"fmt"
 
-	"github.com/hashicorp/terraform-plugin-framework/ephemeral"
+	"github.com/hashicorp/terraform-plugin-framework/action"
 	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-
-	"github.com/terraform-providers/terraform-provider-smc/internal/sdk/auth"
 	"github.com/terraform-providers/terraform-provider-smc/internal/smc"
 )
 
 // Ensure SmcProvider satisfies various provider interfaces.
 var _ provider.Provider = &SmcProvider{}
 var _ provider.ProviderWithFunctions = &SmcProvider{}
-var _ provider.ProviderWithEphemeralResources = &SmcProvider{}
+var _ provider.ProviderWithActions = &SmcProvider{}
 
 // SmcProvider defines the provider implementation.
 type SmcProvider struct {
@@ -37,6 +36,7 @@ type SmcProviderModel struct {
 	VerifySSL   types.Bool   `tfsdk:"verify_ssl"`
 	APIVersion  types.String `tfsdk:"api_version"`
 	TrustedCert types.String `tfsdk:"trusted_cert"`
+	Domain      types.String `tfsdk:"domain"`
 }
 
 // Metadata returns the provider type name and version.
@@ -70,6 +70,10 @@ func (p *SmcProvider) Schema(_ context.Context, _ provider.SchemaRequest, resp *
 				MarkdownDescription: "PEM-encoded certificate content to trust for HTTPS connections.",
 				Optional:            true,
 			},
+			"domain": schema.StringAttribute{
+				MarkdownDescription: "The SMC domain to use for operations",
+				Optional:            true,
+			},
 		},
 	}
 }
@@ -84,47 +88,75 @@ func (p *SmcProvider) Configure(ctx context.Context, req provider.ConfigureReque
 		return
 	}
 
-	// Create auth configuration
-	authConfig := &auth.Auth{
-		URL:        data.URL.ValueString(),
-		APIKey:     data.APIKey.ValueString(),
-		APIVersion: data.APIVersion.ValueString(),
+	url := data.URL.ValueString()
+	apikey := data.APIKey.ValueString()
+	apiVersion := data.APIVersion.ValueString()
+	verifySSL := true
+	trustedCert := ""
+	domain := ""
+
+	if !data.Domain.IsNull() {
+		domain = data.Domain.ValueString()
 	}
 
 	if !data.VerifySSL.IsNull() {
-		insecure := !data.VerifySSL.ValueBool()
-		authConfig.Insecure = &insecure
+		verifySSL = data.VerifySSL.ValueBool()
 	}
 
 	if !data.TrustedCert.IsNull() {
-		authConfig.TrustedCert = data.TrustedCert.ValueString()
+		trustedCert = data.TrustedCert.ValueString()
 	}
 
-	// Create SMC client
-	client, err := smc.NewClientFromAuth(authConfig)
+	// todo use explicit ValidateConfig function (see
+	// ProviderWithValidateConfig)
+	isHttps, err := smc.ValidateBaseUrl(url)
 	if err != nil {
 		resp.Diagnostics.AddError(
-			"Unable to Create SMC API Client",
-			"An unexpected error occurred when creating the SMC API client. "+
-				"If the error is not clear, please contact the provider developers.\n\n"+
-				"SMC Client Error: "+err.Error(),
+			"Invalid URL",
+			fmt.Sprintf("The provided URL '%s' is not valid. Reason: %s",
+				url, err.Error()),
 		)
 		return
 	}
 
-	// Make the client available to resources and data sources
+	if isHttps && verifySSL && trustedCert == "" {
+		resp.Diagnostics.AddError(
+			"Invalid SSL Configuration",
+			"SSL verification is enabled but no trusted certificate is provided.",
+		)
+		return
+	}
+
+	// Create an SMC client
+	client, err := smc.GetOrCreateClient(
+		ctx, url, apiVersion, apikey, verifySSL, trustedCert, domain)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error while creating SMC client",
+			err.Error(),
+		)
+		return
+	}
+
+	client.BeforeRequestHooks = append(
+		client.BeforeRequestHooks, smc.OpenVpnForEdit)
+
+	// Make the client available to resources, data sources and actions
 	resp.DataSourceData = client
 	resp.ResourceData = client
-}
-
-// EphemeralResources defines the ephemeral resources implemented by the provider.
-func (p *SmcProvider) EphemeralResources(_ context.Context) []func() ephemeral.EphemeralResource {
-	return []func() ephemeral.EphemeralResource{}
+	resp.ActionData = client
 }
 
 // Functions defines the functions implemented by the provider.
 func (p *SmcProvider) Functions(_ context.Context) []func() function.Function {
 	return []func() function.Function{}
+}
+
+func (p *SmcProvider) Actions(_ context.Context) []func() action.Action {
+	return []func() action.Action{
+		NewInitialContactAction,
+		NewSmcGenericAction,
+	}
 }
 
 // New returns a provider.Provider.

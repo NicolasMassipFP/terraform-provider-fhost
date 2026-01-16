@@ -9,10 +9,12 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
@@ -24,16 +26,20 @@ var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
 var _ = int64planmodifier.UseStateForUnknown()
+var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
+var _ = listdefault.StaticValue
+
 
 
 
 func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
     return map[string]schema.Attribute {
         "id": schema.StringAttribute{
-			Computed:            true,
-            Description: "this attribute is the identifier of terraform resource",
-            PlanModifiers: []planmodifier.String{ stringplanmodifier.UseStateForUnknown(), },
+        Optional:            true,
+        Computed:            true,
+        Description: "this attribute is the identifier of terraform resource",
+        
         },
        "address": schema.StringAttribute {
        Optional: true, // todo optional parameters
@@ -41,7 +47,6 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
         },
        "admin_domain": schema.StringAttribute {
         Computed: true,
-        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
        Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
         },
        "comment": schema.StringAttribute {
@@ -50,7 +55,6 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
         },
        "etag": schema.StringAttribute {
         Computed: true,
-        PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
        Description: "The ETag of the element, used for versioning. This field is not required.",
         },
        "ipv6_address": schema.StringAttribute {
@@ -59,25 +63,29 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
         },
        "key": schema.Int64Attribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
          Description: "The unique identifier for the element. This field is required for updates but not for creation.",
        },
        "link": schema.ListNestedAttribute {
           Computed: true,
          Description: "The API's links of the element, providing additional actions or resources.",
-         PlanModifiers: []planmodifier.List{listplanmodifier.UseStateForUnknown()},
          CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
          NestedObject: schema.NestedAttributeObject{
          Attributes: GetApiLinkSchemaAttributes(ctx),
-              },
-           },
+          },
+         },
+       "lk": schema.MapAttribute {
+          Computed: true,
+         Description: "",
+  	ElementType: types.StringType,
+      CustomType:  customfield.NewMapType[types.String](ctx),
+
+       },
        "location_ref": schema.StringAttribute {
        Optional: true, // todo optional parameters
        Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
         },
        "locked": schema.BoolAttribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
          Description: "Indicates if the element is locked. This field is not required.",
        },
        "name": schema.StringAttribute {
@@ -86,7 +94,6 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
         },
        "read_only": schema.BoolAttribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
          Description: "Indicates if the element is read-only. This field is not required.",
        },
        "secondary": schema.ListAttribute {
@@ -96,29 +103,30 @@ func GetHostSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
        },
        "system": schema.BoolAttribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
          Description: "Indicates if the element is a System element. This field is not required.",
        },
        "system_key": schema.Int64Attribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
          Description: "The system key of the System element. This field is not required.",
        },
-       "third_party_monitoring": schema.SingleNestedAttribute {
-        Description: "This represents the monitoring settings for third-party devices, including SNMP traps, NetFlow, syslog, and status monitoring.",
-        Optional:    true, // todo optional parameters
-        CustomType:  customfield.NewNestedObjectType[ThirdPartyMonitoringResourceModel](ctx),
-        Attributes: GetThirdPartyMonitoringSchemaAttributes(ctx),
-    },
        "tools_profile_ref": schema.StringAttribute {
        Optional: true, // todo optional parameters
        Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
         },
        "trashed": schema.BoolAttribute {
           Computed: true,
-          PlanModifiers: []planmodifier.Bool{boolplanmodifier.UseStateForUnknown()},
          Description: "Indicates if the element is trashed. This field is not required.",
        },
+
+    }
+}
+func GetHostSchemaBlocks(ctx context.Context) map[string]schema.Block {
+
+    return map[string]schema.Block{
+       "third_party_monitoring": schema.SingleNestedBlock{
+        Description: "This represents the monitoring settings for third-party devices, including SNMP traps, NetFlow, syslog, and status monitoring.",
+        CustomType:  customfield.NewNestedObjectType[ThirdPartyMonitoringResourceModel](ctx),
+        Attributes: GetThirdPartyMonitoringSchemaAttributes(ctx),Blocks: GetThirdPartyMonitoringSchemaBlocks(ctx),},
 
     }
 }
