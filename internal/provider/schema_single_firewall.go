@@ -40,7 +40,7 @@ func GetSingleFirewallSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "this attribute is the identifier of terraform resource",
 		}, "active_server_certificate_probing": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Flag for enabling/disabling TLS probe connections.",
+			Description: "XXXXXXXXXXXXXXXXXX",
 		},
 		"active_wait_time": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
