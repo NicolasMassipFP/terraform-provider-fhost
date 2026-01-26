@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Ospfv2KeyChainResource{}
 var _ resource.ResourceWithImportState = &Ospfv2KeyChainResource{}
 var _ context.Context = context.Background()
 
-
 // Ospfv2KeyChainResource defines the resource implementation.
 type Ospfv2KeyChainResource struct {
-    ResourceBase[Ospfv2KeyChainResourceModel]
+	ResourceBase[Ospfv2KeyChainResourceModel]
 }
-
 
 // Schema defines the schema for the Ospfv2KeyChain resource.
 func (r *Ospfv2KeyChainResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the OSPFv2 Key Chain element used as Message Digest authentication method for OSPFv2 Interface Settings for Dynamic Routing Firewall functionality.",
-      Attributes: GetOspfv2KeyChainSchemaAttributes(ctx),
-      Blocks: GetOspfv2KeyChainSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the OSPFv2 Key Chain element used as Message Digest authentication method for OSPFv2 Interface Settings for Dynamic Routing Firewall functionality.",
+		Attributes:  GetOspfv2KeyChainSchemaAttributes(ctx),
+		Blocks:      GetOspfv2KeyChainSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Ospfv2KeyChainResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewOspfv2KeyChainResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Ospfv2KeyChain resource")
 	r := &Ospfv2KeyChainResource{
-        ResourceBase: ResourceBase[Ospfv2KeyChainResourceModel]{
-             resourceType: "ospfv2_key_chain",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Ospfv2KeyChainResourceModel]{
+			resourceType:  "ospfv2_key_chain",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

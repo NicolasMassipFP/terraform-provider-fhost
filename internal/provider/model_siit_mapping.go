@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SiitMappingResourceModel struct {
-	
-    Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Rank types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-        SiitEamMappingIpv4Network types.String `tfsdk:"siit_eam_mapping_ipv4_network" json:"siit_eam_mapping_ipv4_network,optional,omitempty" `
-        SiitEamMappingIpv6Prefix types.String `tfsdk:"siit_eam_mapping_ipv6_prefix" json:"siit_eam_mapping_ipv6_prefix,optional,omitempty" `
-        
+	Comment                   types.String  `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Rank                      types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
+	SiitEamMappingIpv4Network types.String  `tfsdk:"siit_eam_mapping_ipv4_network" json:"siit_eam_mapping_ipv4_network,optional,omitempty" `
+	SiitEamMappingIpv6Prefix  types.String  `tfsdk:"siit_eam_mapping_ipv6_prefix" json:"siit_eam_mapping_ipv6_prefix,optional,omitempty" `
 }

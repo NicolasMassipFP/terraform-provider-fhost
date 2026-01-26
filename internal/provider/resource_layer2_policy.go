@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Layer2PolicyResource{}
 var _ resource.ResourceWithImportState = &Layer2PolicyResource{}
 var _ context.Context = context.Background()
 
-
 // Layer2PolicyResource defines the resource implementation.
 type Layer2PolicyResource struct {
-    ResourceBase[Layer2PolicyResourceModel]
+	ResourceBase[Layer2PolicyResourceModel]
 }
-
 
 // Schema defines the schema for the Layer2Policy resource.
 func (r *Layer2PolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Layer 2 Policy, which is used to define the action and inspection rules for Layer 2 Engines.",
-      Attributes: GetLayer2PolicySchemaAttributes(ctx),
-      Blocks: GetLayer2PolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Layer 2 Policy, which is used to define the action and inspection rules for Layer 2 Engines.",
+		Attributes:  GetLayer2PolicySchemaAttributes(ctx),
+		Blocks:      GetLayer2PolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Layer2PolicyResource) Schema(ctx context.Context, _ resource.SchemaRequ
 func NewLayer2PolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Layer2Policy resource")
 	r := &Layer2PolicyResource{
-        ResourceBase: ResourceBase[Layer2PolicyResourceModel]{
-             resourceType: "layer2_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Layer2PolicyResourceModel]{
+			resourceType:  "layer2_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

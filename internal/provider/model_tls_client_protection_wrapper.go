@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type TlsClientProtectionWrapperResourceModel struct {
-	
-    CaForSigningRef types.String `tfsdk:"ca_for_signing_ref" json:"ca_for_signing_ref,optional,omitempty" `
-        ProxyUsage types.String `tfsdk:"proxy_usage" json:"proxy_usage,optional,omitempty" `
-        TlsTrustedCaRef *[]types.String `tfsdk:"tls_trusted_ca_ref" json:"tls_trusted_ca_ref,optional,omitempty" `
-        TlsTrustedCaTagRef *[]types.String `tfsdk:"tls_trusted_ca_tag_ref" json:"tls_trusted_ca_tag_ref,optional,omitempty" `
-        
+	CaForSigningRef    types.String    `tfsdk:"ca_for_signing_ref" json:"ca_for_signing_ref,optional,omitempty" `
+	ProxyUsage         types.String    `tfsdk:"proxy_usage" json:"proxy_usage,optional,omitempty" `
+	TlsTrustedCaRef    *[]types.String `tfsdk:"tls_trusted_ca_ref" json:"tls_trusted_ca_ref,optional,omitempty" `
+	TlsTrustedCaTagRef *[]types.String `tfsdk:"tls_trusted_ca_tag_ref" json:"tls_trusted_ca_tag_ref,optional,omitempty" `
 }

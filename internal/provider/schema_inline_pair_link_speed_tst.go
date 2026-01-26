@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,80 +30,89 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetInlinePairLinkSpeedTestSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "alert_notification": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether an alert notification is sent if the test fails.",
-       },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "offline_state": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the test is executed when the engine is offline or not.",
-       },
-       "online_state": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the test is executed when the engine is online or not.",
-       },
-       "snmp_notification": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether an SNMP notification is sent if the test fails.",
-       },
-       "standby_state": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the test is executed when the engine is in standby state or not.",
-       },
-       "test_action": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The action to be taken if the test fails. Options include 'none', 'offline', 'forceoffline', and 'forcespeed'.",
-        },
-       "test_active": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the test is active or not.",
-       },
-       "test_interval": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The interval in seconds at which the test is executed. Note! Running a test too frequently can increase overhead.",
-       },
-       "test_timeout": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The timeout in milliseconds for the inline pair link speed test.",
-       },
+	attrs := map[string]schema.Attribute{"alert_notification": schema.BoolAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "Indicates whether an alert notification is sent if the test fails.",
+	},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"offline_state": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the test is executed when the engine is offline or not.",
+		},
+		"online_state": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the test is executed when the engine is online or not.",
+		},
+		"snmp_notification": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether an SNMP notification is sent if the test fails.",
+		},
+		"standby_state": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the test is executed when the engine is in standby state or not.",
+		},
+		"test_action": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The action to be taken if the test fails. Options include 'none', 'offline', 'forceoffline', and 'forcespeed'.",
+		},
+		"test_active": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the test is active or not.",
+		},
+		"test_interval": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The interval in seconds at which the test is executed. Note! Running a test too frequently can increase overhead.",
+		},
+		"test_timeout": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The timeout in milliseconds for the inline pair link speed test.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getInlinePairLinkSpeedTestSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetInlinePairLinkSpeedTestSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getInlinePairLinkSpeedTestSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getInlinePairLinkSpeedTestSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SingleContactAddressElementResourceModel struct {
-	
-    Address types.String `tfsdk:"address" json:"address,optional,omitempty" `
-        Dynamic types.Bool `tfsdk:"dynamic" json:"dynamic,optional,omitempty" `
-        LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
-        
+	Address     types.String `tfsdk:"address" json:"address,optional,omitempty" `
+	Dynamic     types.Bool   `tfsdk:"dynamic" json:"dynamic,optional,omitempty" `
+	LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
 }
+
 func (r *SingleContactAddressElementResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Address.IsNull() || r.Address.IsUnknown() {
 		return nil

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type LinkUsageEntryResourceModel struct {
-	
-    LinkType types.String `tfsdk:"link_type" json:"link_type,optional,omitempty" `
-        LinkUsagePreference *[]LinkUsagePreferenceResourceModel `tfsdk:"link_usage_preference" json:"link_usage_preference,optional,omitempty" `
-        
+	LinkType            types.String                        `tfsdk:"link_type" json:"link_type,optional,omitempty" `
+	LinkUsagePreference *[]LinkUsagePreferenceResourceModel `tfsdk:"link_usage_preference" json:"link_usage_preference,optional,omitempty" `
 }

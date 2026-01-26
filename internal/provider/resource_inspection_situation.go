@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &InspectionSituationResource{}
 var _ resource.ResourceWithImportState = &InspectionSituationResource{}
 var _ context.Context = context.Background()
 
-
 // InspectionSituationResource defines the resource implementation.
 type InspectionSituationResource struct {
-    ResourceBase[InspectionSituationResourceModel]
+	ResourceBase[InspectionSituationResourceModel]
 }
-
 
 // Schema defines the schema for the InspectionSituation resource.
 func (r *InspectionSituationResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Inspection Situation, which is used to identify and describe detected events in the traffic or in the operation of the system.",
-      Attributes: GetInspectionSituationSchemaAttributes(ctx),
-      Blocks: GetInspectionSituationSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Inspection Situation, which is used to identify and describe detected events in the traffic or in the operation of the system.",
+		Attributes:  GetInspectionSituationSchemaAttributes(ctx),
+		Blocks:      GetInspectionSituationSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *InspectionSituationResource) Schema(ctx context.Context, _ resource.Sch
 func NewInspectionSituationResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing InspectionSituation resource")
 	r := &InspectionSituationResource{
-        ResourceBase: ResourceBase[InspectionSituationResourceModel]{
-             resourceType: "inspection_situation",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[InspectionSituationResourceModel]{
+			resourceType:  "inspection_situation",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

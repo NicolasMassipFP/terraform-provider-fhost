@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,28 +16,25 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SituationParameterResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-    Bounds types.String `tfsdk:"bounds" json:"bounds,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        ConnInfoType types.String `tfsdk:"conn_info_type" json:"conn_info_type,optional,omitempty" `
-        DefaultValue types.String `tfsdk:"default_value" json:"default_value,optional,omitempty" `
-        DisplayName types.String `tfsdk:"display_name" json:"display_name,optional,omitempty" `
-        Enumeration types.String `tfsdk:"enumeration" json:"enumeration,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        MaxVersion types.String `tfsdk:"max_version" json:"max_version,optional,omitempty" `
-        MinVersion types.String `tfsdk:"min_version" json:"min_version,optional,omitempty" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        Optional types.Bool `tfsdk:"optional" json:"optional,optional,omitempty" `
-        Order types.Int64 `tfsdk:"order" json:"order,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        
+	ID           types.String                                       `tfsdk:"id"`
+	Bounds       types.String                                       `tfsdk:"bounds" json:"bounds,optional,omitempty" `
+	Comment      types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	ConnInfoType types.String                                       `tfsdk:"conn_info_type" json:"conn_info_type,optional,omitempty" `
+	DefaultValue types.String                                       `tfsdk:"default_value" json:"default_value,optional,omitempty" `
+	DisplayName  types.String                                       `tfsdk:"display_name" json:"display_name,optional,omitempty" `
+	Enumeration  types.String                                       `tfsdk:"enumeration" json:"enumeration,optional,omitempty" `
+	Key          types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link         customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk           customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	MaxVersion   types.String                                       `tfsdk:"max_version" json:"max_version,optional,omitempty" `
+	MinVersion   types.String                                       `tfsdk:"min_version" json:"min_version,optional,omitempty" `
+	Name         types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	Optional     types.Bool                                         `tfsdk:"optional" json:"optional,optional,omitempty" `
+	Order        types.Int64                                        `tfsdk:"order" json:"order,optional,omitempty" `
+	Type         types.String                                       `tfsdk:"type" json:"type,optional,omitempty" `
 }
+
 func (r *SituationParameterResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

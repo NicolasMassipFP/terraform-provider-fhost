@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,35 +30,53 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetTlsClientProtectionWrapperSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "ca_for_signing_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a Signing Certificate Authority, which is used to manage signing certificate authorities in the system.",
-        },
-       "proxy_usage": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The purpose of the proxy usage, such as 'tls_inspection' or 'opcua_inspection'. This field indicates the intended use of the proxy in TLS Client protection settings.",
-        },
-       "tls_trusted_ca_ref": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the TLS trusted CA.",
-         ElementType: types.StringType,
-       },
-       "tls_trusted_ca_tag_ref": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the trusted CA tag.",
-         ElementType: types.StringType,
-       },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"ca_for_signing_ref": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "This represents a Signing Certificate Authority, which is used to manage signing certificate authorities in the system.",
+	},
+		"proxy_usage": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The purpose of the proxy usage, such as 'tls_inspection' or 'opcua_inspection'. This field indicates the intended use of the proxy in TLS Client protection settings.",
+		},
+		"tls_trusted_ca_ref": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the TLS trusted CA.",
+			ElementType: types.StringType,
+		},
+		"tls_trusted_ca_tag_ref": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the trusted CA tag.",
+			ElementType: types.StringType,
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getTlsClientProtectionWrapperSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetTlsClientProtectionWrapperSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getTlsClientProtectionWrapperSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getTlsClientProtectionWrapperSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SingleContactAddressResource{}
 var _ resource.ResourceWithImportState = &SingleContactAddressResource{}
 var _ context.Context = context.Background()
 
-
 // SingleContactAddressResource defines the resource implementation.
 type SingleContactAddressResource struct {
-    ResourceBase[SingleContactAddressResourceModel]
+	ResourceBase[SingleContactAddressResourceModel]
 }
-
 
 // Schema defines the schema for the SingleContactAddress resource.
 func (r *SingleContactAddressResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a List of single contact address elements, which can be either dynamic or static IP addresses.",
-      Attributes: GetSingleContactAddressSchemaAttributes(ctx),
-      Blocks: GetSingleContactAddressSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a List of single contact address elements, which can be either dynamic or static IP addresses.",
+		Attributes:  GetSingleContactAddressSchemaAttributes(ctx),
+		Blocks:      GetSingleContactAddressSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SingleContactAddressResource) Schema(ctx context.Context, _ resource.Sc
 func NewSingleContactAddressResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SingleContactAddress resource")
 	r := &SingleContactAddressResource{
-        ResourceBase: ResourceBase[SingleContactAddressResourceModel]{
-             resourceType: "contact_address",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SingleContactAddressResourceModel]{
+			resourceType:  "contact_address",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

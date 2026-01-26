@@ -20,6 +20,8 @@ var _ provider.Provider = &SmcProvider{}
 var _ provider.ProviderWithFunctions = &SmcProvider{}
 var _ provider.ProviderWithActions = &SmcProvider{}
 
+const PROVIDER_NAME = "smc"
+
 // SmcProvider defines the provider implementation.
 type SmcProvider struct {
 	// version is set to the provider version on release, "dev" when the
@@ -41,7 +43,7 @@ type SmcProviderModel struct {
 
 // Metadata returns the provider type name and version.
 func (p *SmcProvider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "smc"
+	resp.TypeName = PROVIDER_NAME
 	resp.Version = p.version
 }
 

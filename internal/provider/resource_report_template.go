@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ReportTemplateResource{}
 var _ resource.ResourceWithImportState = &ReportTemplateResource{}
 var _ context.Context = context.Background()
 
-
 // ReportTemplateResource defines the resource implementation.
 type ReportTemplateResource struct {
-    ResourceBase[ReportTemplateResourceModel]
+	ResourceBase[ReportTemplateResourceModel]
 }
-
 
 // Schema defines the schema for the ReportTemplate resource.
 func (r *ReportTemplateResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Report Template, which defines the structure and content of reports generated within the system. It is used to create and manage templates for report generation.",
-      Attributes: GetReportTemplateSchemaAttributes(ctx),
-      Blocks: GetReportTemplateSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Report Template, which defines the structure and content of reports generated within the system. It is used to create and manage templates for report generation.",
+		Attributes:  GetReportTemplateSchemaAttributes(ctx),
+		Blocks:      GetReportTemplateSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ReportTemplateResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewReportTemplateResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ReportTemplate resource")
 	r := &ReportTemplateResource{
-        ResourceBase: ResourceBase[ReportTemplateResourceModel]{
-             resourceType: "report_template",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ReportTemplateResourceModel]{
+			resourceType:  "report_template",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

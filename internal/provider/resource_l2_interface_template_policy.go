@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &L2InterfaceTemplatePolicyResource{}
 var _ resource.ResourceWithImportState = &L2InterfaceTemplatePolicyResource{}
 var _ context.Context = context.Background()
 
-
 // L2InterfaceTemplatePolicyResource defines the resource implementation.
 type L2InterfaceTemplatePolicyResource struct {
-    ResourceBase[L2InterfaceTemplatePolicyResourceModel]
+	ResourceBase[L2InterfaceTemplatePolicyResourceModel]
 }
-
 
 // Schema defines the schema for the L2InterfaceTemplatePolicy resource.
 func (r *L2InterfaceTemplatePolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Layer 2 Interface Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.",
-      Attributes: GetL2InterfaceTemplatePolicySchemaAttributes(ctx),
-      Blocks: GetL2InterfaceTemplatePolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Layer 2 Interface Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.",
+		Attributes:  GetL2InterfaceTemplatePolicySchemaAttributes(ctx),
+		Blocks:      GetL2InterfaceTemplatePolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *L2InterfaceTemplatePolicyResource) Schema(ctx context.Context, _ resour
 func NewL2InterfaceTemplatePolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing L2InterfaceTemplatePolicy resource")
 	r := &L2InterfaceTemplatePolicyResource{
-        ResourceBase: ResourceBase[L2InterfaceTemplatePolicyResourceModel]{
-             resourceType: "l2_interface_template_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[L2InterfaceTemplatePolicyResourceModel]{
+			resourceType:  "l2_interface_template_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

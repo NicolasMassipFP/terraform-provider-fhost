@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DynamicRoutingSettingsResourceModel struct {
-	
-    AntispoofingNeRef *[]types.String `tfsdk:"antispoofing_ne_ref" json:"antispoofing_ne_ref,optional,omitempty" `
-        Bgp *BgpSettingsResourceModel `tfsdk:"bgp" json:"bgp,optional,omitempty" `
-        Ospfv2 *Ospfv2SettingsResourceModel `tfsdk:"ospfv2" json:"ospfv2,optional,omitempty" `
-        PathCount types.Int64 `tfsdk:"path_count" json:"path_count,optional,omitempty" `
-        
+	AntispoofingNeRef *[]types.String              `tfsdk:"antispoofing_ne_ref" json:"antispoofing_ne_ref,optional,omitempty" `
+	Bgp               *BgpSettingsResourceModel    `tfsdk:"bgp" json:"bgp,optional,omitempty" `
+	Ospfv2            *Ospfv2SettingsResourceModel `tfsdk:"ospfv2" json:"ospfv2,optional,omitempty" `
+	PathCount         types.Int64                  `tfsdk:"path_count" json:"path_count,optional,omitempty" `
 }

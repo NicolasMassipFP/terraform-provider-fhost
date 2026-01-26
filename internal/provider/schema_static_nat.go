@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,29 +30,52 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetStaticNatSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "automatic_proxy": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether Automatic Proxy ARP is enabled. This allows the engine to answer address queries regarding the translated address(es).",
-       },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"automatic_proxy": schema.BoolAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "Indicates whether Automatic Proxy ARP is enabled. This allows the engine to answer address queries regarding the translated address(es).",
+	},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getStaticNatSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetStaticNatSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getStaticNatSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "original_value": schema.SingleNestedBlock{
-        Description: "This represents the Firewall NAT Translation value, which includes the translated IP address or network, the translated element, and the port range for source IP address translation.",
-        CustomType:  customfield.NewNestedObjectType[TranslationValueResourceModel](ctx),
-        Attributes: GetTranslationValueSchemaAttributes(ctx),Blocks: GetTranslationValueSchemaBlocks(ctx),},
-       "translated_value": schema.SingleNestedBlock{
-        Description: "This represents the Firewall NAT Translation value, which includes the translated IP address or network, the translated element, and the port range for source IP address translation.",
-        CustomType:  customfield.NewNestedObjectType[TranslationValueResourceModel](ctx),
-        Attributes: GetTranslationValueSchemaAttributes(ctx),Blocks: GetTranslationValueSchemaBlocks(ctx),},
-
-    }
+func getStaticNatSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"original_value": schema.SingleNestedBlock{
+			Description: "This represents the Firewall NAT Translation value, which includes the translated IP address or network, the translated element, and the port range for source IP address translation.",
+			CustomType:  customfield.NewNestedObjectType[TranslationValueResourceModel](ctx),
+			Attributes:  GetTranslationValueSchemaAttributes(ctx),
+			Blocks:      GetTranslationValueSchemaBlocks(ctx),
+		},
+		"translated_value": schema.SingleNestedBlock{
+			Description: "This represents the Firewall NAT Translation value, which includes the translated IP address or network, the translated element, and the port range for source IP address translation.",
+			CustomType:  customfield.NewNestedObjectType[TranslationValueResourceModel](ctx),
+			Attributes:  GetTranslationValueSchemaAttributes(ctx),
+			Blocks:      GetTranslationValueSchemaBlocks(ctx),
+		},
+	}
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type BgpBmpEntryResourceModel struct {
-	
-    BmpAddress types.String `tfsdk:"bmp_address" json:"bmp_address,optional,omitempty" `
-        BmpConnectThroughMaster types.Bool `tfsdk:"bmp_connect_through_master" json:"bmp_connect_through_master,optional,omitempty" `
-        BmpPort types.Int64 `tfsdk:"bmp_port" json:"bmp_port,optional,omitempty" `
-        Subnet types.String `tfsdk:"subnet" json:"subnet,optional,omitempty" `
-        
+	BmpAddress              types.String `tfsdk:"bmp_address" json:"bmp_address,optional,omitempty" `
+	BmpConnectThroughMaster types.Bool   `tfsdk:"bmp_connect_through_master" json:"bmp_connect_through_master,optional,omitempty" `
+	BmpPort                 types.Int64  `tfsdk:"bmp_port" json:"bmp_port,optional,omitempty" `
+	Subnet                  types.String `tfsdk:"subnet" json:"subnet,optional,omitempty" `
 }

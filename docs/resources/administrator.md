@@ -41,8 +41,7 @@ This represents an administrator user. It contains the user's credentials, authe
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `is_user_locked` (Boolean) Indicates whether the administrator user is locked. A locked user cannot log in until it is unlocked by an administrator.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -73,14 +72,3 @@ Optional:
 - `granted_domain_ref` (String) This is the base class for all storable elements.
 - `granted_elements` (List of String) URI of the granted element.
 - `role_ref` (String) This represents an Administration Role. Roles are administrative privileges that allow you to limit rights of administrators.
-
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

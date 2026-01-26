@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &UserIdServiceResource{}
 var _ resource.ResourceWithImportState = &UserIdServiceResource{}
 var _ context.Context = context.Background()
 
-
 // UserIdServiceResource defines the resource implementation.
 type UserIdServiceResource struct {
-    ResourceBase[UserIdServiceResourceModel]
+	ResourceBase[UserIdServiceResourceModel]
 }
-
 
 // Schema defines the schema for the UserIdService resource.
 func (r *UserIdServiceResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a User ID Service element, which is used to manage user identification services. It includes attributes for port, IP addresses, monitored user domains, cache expiration, connect timeout, TLS profile, and TLS identity.",
-      Attributes: GetUserIdServiceSchemaAttributes(ctx),
-      Blocks: GetUserIdServiceSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a User ID Service element, which is used to manage user identification services. It includes attributes for port, IP addresses, monitored user domains, cache expiration, connect timeout, TLS profile, and TLS identity.",
+		Attributes:  GetUserIdServiceSchemaAttributes(ctx),
+		Blocks:      GetUserIdServiceSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *UserIdServiceResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewUserIdServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing UserIdService resource")
 	r := &UserIdServiceResource{
-        ResourceBase: ResourceBase[UserIdServiceResourceModel]{
-             resourceType: "user_id_service",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[UserIdServiceResourceModel]{
+			resourceType:  "user_id_service",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

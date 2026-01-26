@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type QosClassWithRoleResourceModel struct {
-	
-    NetlinkRole types.String `tfsdk:"netlink_role" json:"netlink_role,optional,omitempty" `
-        QosClassRef types.String `tfsdk:"qos_class_ref" json:"qos_class_ref,optional,omitempty" `
-        
+	NetlinkRole types.String `tfsdk:"netlink_role" json:"netlink_role,optional,omitempty" `
+	QosClassRef types.String `tfsdk:"qos_class_ref" json:"qos_class_ref,optional,omitempty" `
 }

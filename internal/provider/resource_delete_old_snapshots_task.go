@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &DeleteOldSnapshotsTaskResource{}
 var _ resource.ResourceWithImportState = &DeleteOldSnapshotsTaskResource{}
 var _ context.Context = context.Background()
 
-
 // DeleteOldSnapshotsTaskResource defines the resource implementation.
 type DeleteOldSnapshotsTaskResource struct {
-    ResourceBase[DeleteOldSnapshotsTaskResourceModel]
+	ResourceBase[DeleteOldSnapshotsTaskResourceModel]
 }
-
 
 // Schema defines the schema for the DeleteOldSnapshotsTask resource.
 func (r *DeleteOldSnapshotsTaskResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Delete Old Snapshots Task, which is used to clean up old snapshots in the system. It is a type of system task that can be scheduled and executed to ensure that old snapshots are removed properly.",
-      Attributes: GetDeleteOldSnapshotsTaskSchemaAttributes(ctx),
-      Blocks: GetDeleteOldSnapshotsTaskSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Delete Old Snapshots Task, which is used to clean up old snapshots in the system. It is a type of system task that can be scheduled and executed to ensure that old snapshots are removed properly.",
+		Attributes:  GetDeleteOldSnapshotsTaskSchemaAttributes(ctx),
+		Blocks:      GetDeleteOldSnapshotsTaskSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *DeleteOldSnapshotsTaskResource) Schema(ctx context.Context, _ resource.
 func NewDeleteOldSnapshotsTaskResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing DeleteOldSnapshotsTask resource")
 	r := &DeleteOldSnapshotsTaskResource{
-        ResourceBase: ResourceBase[DeleteOldSnapshotsTaskResourceModel]{
-             resourceType: "delete_old_snapshots_task",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[DeleteOldSnapshotsTaskResourceModel]{
+			resourceType:  "delete_old_snapshots_task",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

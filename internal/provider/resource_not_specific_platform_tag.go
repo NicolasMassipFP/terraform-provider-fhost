@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &NotSpecificPlatformTagResource{}
 var _ resource.ResourceWithImportState = &NotSpecificPlatformTagResource{}
 var _ context.Context = context.Background()
 
-
 // NotSpecificPlatformTagResource defines the resource implementation.
 type NotSpecificPlatformTagResource struct {
-    ResourceBase[NotSpecificPlatformTagResourceModel]
+	ResourceBase[NotSpecificPlatformTagResourceModel]
 }
-
 
 // Schema defines the schema for the NotSpecificPlatformTag resource.
 func (r *NotSpecificPlatformTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Not Specific Platform Tag, which is used to categorize elements that are not specific to any platform. It is a type of tag that can be applied to various elements in the system to indicate their non-specific platform classification.",
-      Attributes: GetNotSpecificPlatformTagSchemaAttributes(ctx),
-      Blocks: GetNotSpecificPlatformTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Not Specific Platform Tag, which is used to categorize elements that are not specific to any platform. It is a type of tag that can be applied to various elements in the system to indicate their non-specific platform classification.",
+		Attributes:  GetNotSpecificPlatformTagSchemaAttributes(ctx),
+		Blocks:      GetNotSpecificPlatformTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *NotSpecificPlatformTagResource) Schema(ctx context.Context, _ resource.
 func NewNotSpecificPlatformTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing NotSpecificPlatformTag resource")
 	r := &NotSpecificPlatformTagResource{
-        ResourceBase: ResourceBase[NotSpecificPlatformTagResourceModel]{
-             resourceType: "os_not_specific_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[NotSpecificPlatformTagResourceModel]{
+			resourceType:  "os_not_specific_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

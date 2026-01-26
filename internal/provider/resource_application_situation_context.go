@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ApplicationSituationContextResource{}
 var _ resource.ResourceWithImportState = &ApplicationSituationContextResource{}
 var _ context.Context = context.Background()
 
-
 // ApplicationSituationContextResource defines the resource implementation.
 type ApplicationSituationContextResource struct {
-    ResourceBase[ApplicationSituationContextResourceModel]
+	ResourceBase[ApplicationSituationContextResourceModel]
 }
-
 
 // Schema defines the schema for the ApplicationSituationContext resource.
 func (r *ApplicationSituationContextResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Application Situation context. It can contain other groups or individual situation contexts.",
-      Attributes: GetApplicationSituationContextSchemaAttributes(ctx),
-      Blocks: GetApplicationSituationContextSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Application Situation context. It can contain other groups or individual situation contexts.",
+		Attributes:  GetApplicationSituationContextSchemaAttributes(ctx),
+		Blocks:      GetApplicationSituationContextSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ApplicationSituationContextResource) Schema(ctx context.Context, _ reso
 func NewApplicationSituationContextResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ApplicationSituationContext resource")
 	r := &ApplicationSituationContextResource{
-        ResourceBase: ResourceBase[ApplicationSituationContextResourceModel]{
-             resourceType: "application_situation_context",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ApplicationSituationContextResourceModel]{
+			resourceType:  "application_situation_context",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

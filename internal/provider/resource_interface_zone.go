@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &InterfaceZoneResource{}
 var _ resource.ResourceWithImportState = &InterfaceZoneResource{}
 var _ context.Context = context.Background()
 
-
 // InterfaceZoneResource defines the resource implementation.
 type InterfaceZoneResource struct {
-    ResourceBase[InterfaceZoneResourceModel]
+	ResourceBase[InterfaceZoneResourceModel]
 }
-
 
 // Schema defines the schema for the InterfaceZone resource.
 func (r *InterfaceZoneResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
-      Attributes: GetInterfaceZoneSchemaAttributes(ctx),
-      Blocks: GetInterfaceZoneSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
+		Attributes:  GetInterfaceZoneSchemaAttributes(ctx),
+		Blocks:      GetInterfaceZoneSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *InterfaceZoneResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewInterfaceZoneResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing InterfaceZone resource")
 	r := &InterfaceZoneResource{
-        ResourceBase: ResourceBase[InterfaceZoneResourceModel]{
-             resourceType: "interface_zone",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[InterfaceZoneResourceModel]{
+			resourceType:  "interface_zone",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

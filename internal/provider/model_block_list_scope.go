@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type BlockListScopeResourceModel struct {
-	
-    BlockTraffic types.Bool `tfsdk:"block_traffic" json:"block_traffic,optional,omitempty" `
-        DropConnection types.Bool `tfsdk:"drop_connection" json:"drop_connection,optional,omitempty" `
-        Duration types.Int64 `tfsdk:"duration" json:"duration,optional,omitempty" `
-        EndPoint1 *BlockListEndPointResourceModel `tfsdk:"end_point1" json:"end_point1,optional,omitempty" `
-        EndPoint2 *BlockListEndPointResourceModel `tfsdk:"end_point2" json:"end_point2,optional,omitempty" `
-        IncludeObserver types.Bool `tfsdk:"include_observer" json:"include_observer,optional,omitempty" `
-        ServiceIpRef types.String `tfsdk:"service_ip_ref" json:"service_ip_ref,optional,omitempty" `
-        
+	BlockTraffic    types.Bool                      `tfsdk:"block_traffic" json:"block_traffic,optional,omitempty" `
+	DropConnection  types.Bool                      `tfsdk:"drop_connection" json:"drop_connection,optional,omitempty" `
+	Duration        types.Int64                     `tfsdk:"duration" json:"duration,optional,omitempty" `
+	EndPoint1       *BlockListEndPointResourceModel `tfsdk:"end_point1" json:"end_point1,optional,omitempty" `
+	EndPoint2       *BlockListEndPointResourceModel `tfsdk:"end_point2" json:"end_point2,optional,omitempty" `
+	IncludeObserver types.Bool                      `tfsdk:"include_observer" json:"include_observer,optional,omitempty" `
+	ServiceIpRef    types.String                    `tfsdk:"service_ip_ref" json:"service_ip_ref,optional,omitempty" `
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &RouteMapPolicyResource{}
 var _ resource.ResourceWithImportState = &RouteMapPolicyResource{}
 var _ context.Context = context.Background()
 
-
 // RouteMapPolicyResource defines the resource implementation.
 type RouteMapPolicyResource struct {
-    ResourceBase[RouteMapPolicyResourceModel]
+	ResourceBase[RouteMapPolicyResourceModel]
 }
-
 
 // Schema defines the schema for the RouteMapPolicy resource.
 func (r *RouteMapPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.",
-      Attributes: GetRouteMapPolicySchemaAttributes(ctx),
-      Blocks: GetRouteMapPolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.",
+		Attributes:  GetRouteMapPolicySchemaAttributes(ctx),
+		Blocks:      GetRouteMapPolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *RouteMapPolicyResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewRouteMapPolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing RouteMapPolicy resource")
 	r := &RouteMapPolicyResource{
-        ResourceBase: ResourceBase[RouteMapPolicyResourceModel]{
-             resourceType: "route_map",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[RouteMapPolicyResourceModel]{
+			resourceType:  "route_map",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

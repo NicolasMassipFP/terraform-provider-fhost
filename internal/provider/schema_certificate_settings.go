@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,37 +30,55 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetCertificateSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "certificate_type": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The type of certificate to be used.",
-        },
-       "check_revocation": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether to check the revocation status of the certificate.",
-       },
-       "ignore_revocation_on_failure": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether to ignore revocation checks when an error occurs.",
-       },
-       "subject_alt_name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The subject alternative name (SAN) for the certificate, typically a DNS name.",
-        },
-       "subject_name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The distinguished name (DN) for the certificate.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"certificate_type": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The type of certificate to be used.",
+	},
+		"check_revocation": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether to check the revocation status of the certificate.",
+		},
+		"ignore_revocation_on_failure": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether to ignore revocation checks when an error occurs.",
+		},
+		"subject_alt_name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The subject alternative name (SAN) for the certificate, typically a DNS name.",
+		},
+		"subject_name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The distinguished name (DN) for the certificate.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getCertificateSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetCertificateSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getCertificateSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getCertificateSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &HostResource{}
 var _ resource.ResourceWithImportState = &HostResource{}
 var _ context.Context = context.Background()
 
-
 // HostResource defines the resource implementation.
 type HostResource struct {
-    ResourceBase[HostResourceModel]
+	ResourceBase[HostResourceModel]
 }
-
 
 // Schema defines the schema for the Host resource.
 func (r *HostResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Host, which is a Network Element that represents any single device that has an IP address. Any device connected to a TCP/IP network, including the Internet, with one or more IP addresses. Hosts are distinguishable from gateways or routers, in that they do not forward, or route, packets to other networks.",
-      Attributes: GetHostSchemaAttributes(ctx),
-      Blocks: GetHostSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Host, which is a Network Element that represents any single device that has an IP address. Any device connected to a TCP/IP network, including the Internet, with one or more IP addresses. Hosts are distinguishable from gateways or routers, in that they do not forward, or route, packets to other networks.",
+		Attributes:  GetHostSchemaAttributes(ctx),
+		Blocks:      GetHostSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *HostResource) Schema(ctx context.Context, _ resource.SchemaRequest, res
 func NewHostResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Host resource")
 	r := &HostResource{
-        ResourceBase: ResourceBase[HostResourceModel]{
-             resourceType: "host",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[HostResourceModel]{
+			resourceType:  "host",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

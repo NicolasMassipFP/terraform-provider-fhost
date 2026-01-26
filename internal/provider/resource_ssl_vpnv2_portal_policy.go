@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SslVpnv2PortalPolicyResource{}
 var _ resource.ResourceWithImportState = &SslVpnv2PortalPolicyResource{}
 var _ context.Context = context.Background()
 
-
 // SslVpnv2PortalPolicyResource defines the resource implementation.
 type SslVpnv2PortalPolicyResource struct {
-    ResourceBase[SslVpnv2PortalPolicyResourceModel]
+	ResourceBase[SslVpnv2PortalPolicyResourceModel]
 }
-
 
 // Schema defines the schema for the SslVpnv2PortalPolicy resource.
 func (r *SslVpnv2PortalPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Application Access Portal Policy, which is used to define portal access rules for the connections. It includes properties such as portal rules and access control.",
-      Attributes: GetSslVpnv2PortalPolicySchemaAttributes(ctx),
-      Blocks: GetSslVpnv2PortalPolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Application Access Portal Policy, which is used to define portal access rules for the connections. It includes properties such as portal rules and access control.",
+		Attributes:  GetSslVpnv2PortalPolicySchemaAttributes(ctx),
+		Blocks:      GetSslVpnv2PortalPolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SslVpnv2PortalPolicyResource) Schema(ctx context.Context, _ resource.Sc
 func NewSslVpnv2PortalPolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SslVpnv2PortalPolicy resource")
 	r := &SslVpnv2PortalPolicyResource{
-        ResourceBase: ResourceBase[SslVpnv2PortalPolicyResourceModel]{
-             resourceType: "ssl_vpn_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SslVpnv2PortalPolicyResourceModel]{
+			resourceType:  "ssl_vpn_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

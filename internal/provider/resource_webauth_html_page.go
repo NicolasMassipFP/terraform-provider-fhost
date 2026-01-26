@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &WebauthHtmlPageResource{}
 var _ resource.ResourceWithImportState = &WebauthHtmlPageResource{}
 var _ context.Context = context.Background()
 
-
 // WebauthHtmlPageResource defines the resource implementation.
 type WebauthHtmlPageResource struct {
-    ResourceBase[WebauthHtmlPageResourceModel]
+	ResourceBase[WebauthHtmlPageResourceModel]
 }
-
 
 // Schema defines the schema for the WebauthHtmlPage resource.
 func (r *WebauthHtmlPageResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Web Authentication HTML Page, which is used for browser-based user authentication. It contains the HTML content that is displayed to users when they are not authorized.",
-      Attributes: GetWebauthHtmlPageSchemaAttributes(ctx),
-      Blocks: GetWebauthHtmlPageSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Web Authentication HTML Page, which is used for browser-based user authentication. It contains the HTML content that is displayed to users when they are not authorized.",
+		Attributes:  GetWebauthHtmlPageSchemaAttributes(ctx),
+		Blocks:      GetWebauthHtmlPageSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *WebauthHtmlPageResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewWebauthHtmlPageResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing WebauthHtmlPage resource")
 	r := &WebauthHtmlPageResource{
-        ResourceBase: ResourceBase[WebauthHtmlPageResourceModel]{
-             resourceType: "web_authentication_page",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[WebauthHtmlPageResourceModel]{
+			resourceType:  "web_authentication_page",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

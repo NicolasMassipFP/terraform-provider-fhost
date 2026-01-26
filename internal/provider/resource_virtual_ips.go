@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &VirtualIpsResource{}
 var _ resource.ResourceWithImportState = &VirtualIpsResource{}
 var _ context.Context = context.Background()
 
-
 // VirtualIpsResource defines the resource implementation.
 type VirtualIpsResource struct {
-    ResourceBase[VirtualIpsResourceModel]
+	ResourceBase[VirtualIpsResourceModel]
 }
-
 
 // Schema defines the schema for the VirtualIps resource.
 func (r *VirtualIpsResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Virtual IPS, which is a logically-separate IPS engine that runs as a virtual IPS instance on a Master NGFW Engine. It includes attributes for DNS elements, log buffer size, and various protection modes.",
-      Attributes: GetVirtualIpsSchemaAttributes(ctx),
-      Blocks: GetVirtualIpsSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Virtual IPS, which is a logically-separate IPS engine that runs as a virtual IPS instance on a Master NGFW Engine. It includes attributes for DNS elements, log buffer size, and various protection modes.",
+		Attributes:  GetVirtualIpsSchemaAttributes(ctx),
+		Blocks:      GetVirtualIpsSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *VirtualIpsResource) Schema(ctx context.Context, _ resource.SchemaReques
 func NewVirtualIpsResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing VirtualIps resource")
 	r := &VirtualIpsResource{
-        ResourceBase: ResourceBase[VirtualIpsResourceModel]{
-             resourceType: "virtual_ips",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[VirtualIpsResourceModel]{
+			resourceType:  "virtual_ips",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

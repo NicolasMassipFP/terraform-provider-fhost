@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DnsRpHostnameMappingResourceModel struct {
-	
-    Hostnames types.String `tfsdk:"hostnames" json:"hostnames,optional,omitempty" `
-        Ipaddress types.String `tfsdk:"ipaddress" json:"ipaddress,optional,omitempty" `
-        
+	Hostnames types.String `tfsdk:"hostnames" json:"hostnames,optional,omitempty" `
+	Ipaddress types.String `tfsdk:"ipaddress" json:"ipaddress,optional,omitempty" `
 }

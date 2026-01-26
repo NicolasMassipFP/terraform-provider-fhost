@@ -35,8 +35,7 @@ This represents the OSPFv2 Area. It is a logical grouping of OSPFv2 routers that
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -61,13 +60,3 @@ Optional:
 - `interface_settings_ref` (String) This represents the abstract OSPF Interface Settings used as Dynamic Routing element. It contains settings related to OSPF interface configuration.
 - `router_id_endpoint_a` (String) The IP address used as endpoint A.
 - `router_id_endpoint_b` (String) The IP address used as endpoint B.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

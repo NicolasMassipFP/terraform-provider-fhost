@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type VirtualResourceSettingsResourceModel struct {
-	
-    QosLimit types.Int64 `tfsdk:"qos_limit" json:"qos_limit,optional,omitempty" `
-        VirtualMapping types.String `tfsdk:"virtual_mapping" json:"virtual_mapping,optional,omitempty" `
-        VirtualResourceName types.String `tfsdk:"virtual_resource_name" json:"virtual_resource_name,optional,omitempty" `
-        
+	QosLimit            types.Int64  `tfsdk:"qos_limit" json:"qos_limit,optional,omitempty" `
+	VirtualMapping      types.String `tfsdk:"virtual_mapping" json:"virtual_mapping,optional,omitempty" `
+	VirtualResourceName types.String `tfsdk:"virtual_resource_name" json:"virtual_resource_name,optional,omitempty" `
 }

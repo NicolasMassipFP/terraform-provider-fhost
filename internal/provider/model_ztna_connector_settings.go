@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ZtnaConnectorSettingsResourceModel struct {
-	
-    AutoUpdate types.Bool `tfsdk:"auto_update" json:"auto_update,optional,omitempty" `
-        Bgkey types.String `tfsdk:"bgkey" json:"bgkey,optional,omitempty" `
-        Datacenter types.String `tfsdk:"datacenter" json:"datacenter,optional,omitempty" `
-        
+	AutoUpdate types.Bool   `tfsdk:"auto_update" json:"auto_update,optional,omitempty" `
+	Bgkey      types.String `tfsdk:"bgkey" json:"bgkey,optional,omitempty" `
+	Datacenter types.String `tfsdk:"datacenter" json:"datacenter,optional,omitempty" `
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type Ospfv2VirtualLinksEndPointsContainerResourceModel struct {
-	
-    InterfaceSettingsRef types.String `tfsdk:"interface_settings_ref" json:"interface_settings_ref,optional,omitempty" `
-        RouterIdEndpointA types.String `tfsdk:"router_id_endpoint_a" json:"router_id_endpoint_A,optional,omitempty" `
-        RouterIdEndpointB types.String `tfsdk:"router_id_endpoint_b" json:"router_id_endpoint_B,optional,omitempty" `
-        
+	InterfaceSettingsRef types.String `tfsdk:"interface_settings_ref" json:"interface_settings_ref,optional,omitempty" `
+	RouterIdEndpointA    types.String `tfsdk:"router_id_endpoint_a" json:"router_id_endpoint_A,optional,omitempty" `
+	RouterIdEndpointB    types.String `tfsdk:"router_id_endpoint_b" json:"router_id_endpoint_B,optional,omitempty" `
 }

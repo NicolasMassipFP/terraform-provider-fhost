@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Ospfv2InterfaceSettingsResource{}
 var _ resource.ResourceWithImportState = &Ospfv2InterfaceSettingsResource{}
 var _ context.Context = context.Background()
 
-
 // Ospfv2InterfaceSettingsResource defines the resource implementation.
 type Ospfv2InterfaceSettingsResource struct {
-    ResourceBase[Ospfv2InterfaceSettingsResourceModel]
+	ResourceBase[Ospfv2InterfaceSettingsResourceModel]
 }
-
 
 // Schema defines the schema for the Ospfv2InterfaceSettings resource.
 func (r *Ospfv2InterfaceSettingsResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the OSPFv2 Interface Settings, which are used to configure OSPFv2 interfaces in the Dynamic Routing Firewall functionality.",
-      Attributes: GetOspfv2InterfaceSettingsSchemaAttributes(ctx),
-      Blocks: GetOspfv2InterfaceSettingsSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the OSPFv2 Interface Settings, which are used to configure OSPFv2 interfaces in the Dynamic Routing Firewall functionality.",
+		Attributes:  GetOspfv2InterfaceSettingsSchemaAttributes(ctx),
+		Blocks:      GetOspfv2InterfaceSettingsSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Ospfv2InterfaceSettingsResource) Schema(ctx context.Context, _ resource
 func NewOspfv2InterfaceSettingsResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Ospfv2InterfaceSettings resource")
 	r := &Ospfv2InterfaceSettingsResource{
-        ResourceBase: ResourceBase[Ospfv2InterfaceSettingsResourceModel]{
-             resourceType: "ospfv2_interface_settings",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Ospfv2InterfaceSettingsResourceModel]{
+			resourceType:  "ospfv2_interface_settings",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

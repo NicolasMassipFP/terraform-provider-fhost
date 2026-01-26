@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PaTlsInspectionPolicyValueResourceModel struct {
-	
-    ParameterRef types.String `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
-        TlsInspectionPolicyRef types.String `tfsdk:"tls_inspection_policy_ref" json:"tls_inspection_policy_ref,optional,omitempty" `
-        
+	ParameterRef           types.String `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
+	TlsInspectionPolicyRef types.String `tfsdk:"tls_inspection_policy_ref" json:"tls_inspection_policy_ref,optional,omitempty" `
 }

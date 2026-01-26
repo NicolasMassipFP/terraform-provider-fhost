@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &MasterEngineResource{}
 var _ resource.ResourceWithImportState = &MasterEngineResource{}
 var _ context.Context = context.Background()
 
-
 // MasterEngineResource defines the resource implementation.
 type MasterEngineResource struct {
-    ResourceBase[MasterEngineResourceModel]
+	ResourceBase[MasterEngineResourceModel]
 }
-
 
 // Schema defines the schema for the MasterEngine resource.
 func (r *MasterEngineResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.",
-      Attributes: GetMasterEngineSchemaAttributes(ctx),
-      Blocks: GetMasterEngineSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.",
+		Attributes:  GetMasterEngineSchemaAttributes(ctx),
+		Blocks:      GetMasterEngineSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *MasterEngineResource) Schema(ctx context.Context, _ resource.SchemaRequ
 func NewMasterEngineResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing MasterEngine resource")
 	r := &MasterEngineResource{
-        ResourceBase: ResourceBase[MasterEngineResourceModel]{
-             resourceType: "master_engine",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[MasterEngineResourceModel]{
+			resourceType:  "master_engine",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &VssContainerNodeResource{}
 var _ resource.ResourceWithImportState = &VssContainerNodeResource{}
 var _ context.Context = context.Background()
 
-
 // VssContainerNodeResource defines the resource implementation.
 type VssContainerNodeResource struct {
-    ResourceBase[VssContainerNodeResourceModel]
+	ResourceBase[VssContainerNodeResourceModel]
 }
-
 
 // Schema defines the schema for the VssContainerNode resource.
 func (r *VssContainerNodeResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an individual VSS Container Engine node in the Security Management Client, which is a device that runs firewall software as part of a VSS Container.",
-      Attributes: GetVssContainerNodeSchemaAttributes(ctx),
-      Blocks: GetVssContainerNodeSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an individual VSS Container Engine node in the Security Management Client, which is a device that runs firewall software as part of a VSS Container.",
+		Attributes:  GetVssContainerNodeSchemaAttributes(ctx),
+		Blocks:      GetVssContainerNodeSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *VssContainerNodeResource) Schema(ctx context.Context, _ resource.Schema
 func NewVssContainerNodeResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing VssContainerNode resource")
 	r := &VssContainerNodeResource{
-        ResourceBase: ResourceBase[VssContainerNodeResourceModel]{
-             resourceType: "vss_container_node",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[VssContainerNodeResourceModel]{
+			resourceType:  "vss_container_node",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &BookmarkGroupResource{}
 var _ resource.ResourceWithImportState = &BookmarkGroupResource{}
 var _ context.Context = context.Background()
 
-
 // BookmarkGroupResource defines the resource implementation.
 type BookmarkGroupResource struct {
-    ResourceBase[BookmarkGroupResourceModel]
+	ResourceBase[BookmarkGroupResourceModel]
 }
-
 
 // Schema defines the schema for the BookmarkGroup resource.
 func (r *BookmarkGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Bookmark Group, which is used to categorize bookmarks in the system. It allows for organizing bookmarks into groups for better management and retrieval.",
-      Attributes: GetBookmarkGroupSchemaAttributes(ctx),
-      Blocks: GetBookmarkGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Bookmark Group, which is used to categorize bookmarks in the system. It allows for organizing bookmarks into groups for better management and retrieval.",
+		Attributes:  GetBookmarkGroupSchemaAttributes(ctx),
+		Blocks:      GetBookmarkGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *BookmarkGroupResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewBookmarkGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing BookmarkGroup resource")
 	r := &BookmarkGroupResource{
-        ResourceBase: ResourceBase[BookmarkGroupResourceModel]{
-             resourceType: "bookmark_group",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[BookmarkGroupResourceModel]{
+			resourceType:  "bookmark_group",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

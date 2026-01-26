@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type RouteMapMatchingConditionResourceModel struct {
-	
-    AccessListRef types.String `tfsdk:"access_list_ref" json:"access_list_ref,optional,omitempty" `
-        ExternalBgpPeerAddressRef types.String `tfsdk:"external_bgp_peer_address_ref" json:"external_bgp_peer_address_ref,optional,omitempty" `
-        FwclusterPeerAddressRef types.String `tfsdk:"fwcluster_peer_address_ref" json:"fwcluster_peer_address_ref,optional,omitempty" `
-        Metric types.Int64 `tfsdk:"metric" json:"metric,optional,omitempty" `
-        NextHopRef types.String `tfsdk:"next_hop_ref" json:"next_hop_ref,optional,omitempty" `
-        Rank types.Int64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        
+	AccessListRef             types.String `tfsdk:"access_list_ref" json:"access_list_ref,optional,omitempty" `
+	ExternalBgpPeerAddressRef types.String `tfsdk:"external_bgp_peer_address_ref" json:"external_bgp_peer_address_ref,optional,omitempty" `
+	FwclusterPeerAddressRef   types.String `tfsdk:"fwcluster_peer_address_ref" json:"fwcluster_peer_address_ref,optional,omitempty" `
+	Metric                    types.Int64  `tfsdk:"metric" json:"metric,optional,omitempty" `
+	NextHopRef                types.String `tfsdk:"next_hop_ref" json:"next_hop_ref,optional,omitempty" `
+	Rank                      types.Int64  `tfsdk:"rank" json:"rank,optional,omitempty" `
+	Type                      types.String `tfsdk:"type" json:"type,optional,omitempty" `
 }

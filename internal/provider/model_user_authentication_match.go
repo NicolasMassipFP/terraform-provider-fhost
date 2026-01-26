@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type UserAuthenticationMatchResourceModel struct {
-	
-    Methods *[]types.String `tfsdk:"methods" json:"methods,optional,omitempty" `
-        RequireAuth types.Bool `tfsdk:"require_auth" json:"require_auth,optional,omitempty" `
-        Users *[]types.String `tfsdk:"users" json:"users,optional,omitempty" `
-        
+	Methods     *[]types.String `tfsdk:"methods" json:"methods,optional,omitempty" `
+	RequireAuth types.Bool      `tfsdk:"require_auth" json:"require_auth,optional,omitempty" `
+	Users       *[]types.String `tfsdk:"users" json:"users,optional,omitempty" `
 }

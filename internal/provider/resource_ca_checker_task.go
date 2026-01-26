@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &CaCheckerTaskResource{}
 var _ resource.ResourceWithImportState = &CaCheckerTaskResource{}
 var _ context.Context = context.Background()
 
-
 // CaCheckerTaskResource defines the resource implementation.
 type CaCheckerTaskResource struct {
-    ResourceBase[CaCheckerTaskResourceModel]
+	ResourceBase[CaCheckerTaskResourceModel]
 }
-
 
 // Schema defines the schema for the CaCheckerTask resource.
 func (r *CaCheckerTaskResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a CA Checker Task, which is used to check and renew internal certificate authorities in the system. It is a type of system task that can be scheduled and executed to ensure that the internal CA certificates are up-to-date.",
-      Attributes: GetCaCheckerTaskSchemaAttributes(ctx),
-      Blocks: GetCaCheckerTaskSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a CA Checker Task, which is used to check and renew internal certificate authorities in the system. It is a type of system task that can be scheduled and executed to ensure that the internal CA certificates are up-to-date.",
+		Attributes:  GetCaCheckerTaskSchemaAttributes(ctx),
+		Blocks:      GetCaCheckerTaskSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *CaCheckerTaskResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewCaCheckerTaskResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing CaCheckerTask resource")
 	r := &CaCheckerTaskResource{
-        ResourceBase: ResourceBase[CaCheckerTaskResourceModel]{
-             resourceType: "renew_internal_ca_task",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[CaCheckerTaskResourceModel]{
+			resourceType:  "renew_internal_ca_task",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

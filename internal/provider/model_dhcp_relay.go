@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DhcpRelayResourceModel struct {
-	
-    Element *[]types.String `tfsdk:"element" json:"element,optional,omitempty" `
-        Enabled types.Bool `tfsdk:"enabled" json:"enabled,optional,omitempty" `
-        MaxPacketSize types.Int64 `tfsdk:"max_packet_size" json:"max_packet_size,optional,omitempty" `
-        TrustedCircuit types.Bool `tfsdk:"trusted_circuit" json:"trusted_circuit,optional,omitempty" `
-        
+	Element        *[]types.String `tfsdk:"element" json:"element,optional,omitempty" `
+	Enabled        types.Bool      `tfsdk:"enabled" json:"enabled,optional,omitempty" `
+	MaxPacketSize  types.Int64     `tfsdk:"max_packet_size" json:"max_packet_size,optional,omitempty" `
+	TrustedCircuit types.Bool      `tfsdk:"trusted_circuit" json:"trusted_circuit,optional,omitempty" `
 }

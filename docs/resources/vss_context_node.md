@@ -34,8 +34,7 @@ This represents a VSS Context Engine node in the Security Management Client, whi
 ### Read-Only
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--appliance_info"></a>
 ### Nested Schema for `appliance_info`
@@ -111,18 +110,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests"></a>
@@ -167,18 +155,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--external_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--external_test--link"></a>
-### Nested Schema for `tests.dto.external_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--filesystemspace_test"></a>
@@ -202,18 +179,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--filesystemspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--filesystemspace_test--link"></a>
-### Nested Schema for `tests.dto.filesystemspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--freeswapspace_test"></a>
@@ -236,18 +202,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--freeswapspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--freeswapspace_test--link"></a>
-### Nested Schema for `tests.dto.freeswapspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--inline_test"></a>
@@ -270,18 +225,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--inline_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--inline_test--link"></a>
-### Nested Schema for `tests.dto.inline_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--linkstatus_test"></a>
@@ -305,18 +249,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--linkstatus_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--linkstatus_test--link"></a>
-### Nested Schema for `tests.dto.linkstatus_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--multiping_test"></a>
@@ -343,8 +276,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--multiping_test--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--tests--dto--multiping_test--enabled_interface"></a>
 ### Nested Schema for `tests.dto.multiping_test.enabled_interface`
@@ -353,26 +285,3 @@ Optional:
 
 - `address` (String) The IP address associated with the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.
 - `nicid` (String) The interface ID of the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.
-
-
-<a id="nestedatt--tests--dto--multiping_test--link"></a>
-### Nested Schema for `tests.dto.multiping_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
-
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

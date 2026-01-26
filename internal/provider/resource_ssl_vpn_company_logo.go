@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SslVpnCompanyLogoResource{}
 var _ resource.ResourceWithImportState = &SslVpnCompanyLogoResource{}
 var _ context.Context = context.Background()
 
-
 // SslVpnCompanyLogoResource defines the resource implementation.
 type SslVpnCompanyLogoResource struct {
-    ResourceBase[SslVpnCompanyLogoResourceModel]
+	ResourceBase[SslVpnCompanyLogoResourceModel]
 }
-
 
 // Schema defines the schema for the SslVpnCompanyLogo resource.
 func (r *SslVpnCompanyLogoResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This is an SSL VPN Company Logo. It represents a company logo used in the SSL VPN interface, typically for branding purposes.",
-      Attributes: GetSslVpnCompanyLogoSchemaAttributes(ctx),
-      Blocks: GetSslVpnCompanyLogoSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This is an SSL VPN Company Logo. It represents a company logo used in the SSL VPN interface, typically for branding purposes.",
+		Attributes:  GetSslVpnCompanyLogoSchemaAttributes(ctx),
+		Blocks:      GetSslVpnCompanyLogoSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SslVpnCompanyLogoResource) Schema(ctx context.Context, _ resource.Schem
 func NewSslVpnCompanyLogoResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SslVpnCompanyLogo resource")
 	r := &SslVpnCompanyLogoResource{
-        ResourceBase: ResourceBase[SslVpnCompanyLogoResourceModel]{
-             resourceType: "ssl_vpn_company_logo",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SslVpnCompanyLogoResourceModel]{
+			resourceType:  "ssl_vpn_company_logo",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

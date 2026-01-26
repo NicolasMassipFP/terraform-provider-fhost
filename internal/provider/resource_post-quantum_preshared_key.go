@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &PostQuantumPresharedKeyResource{}
 var _ resource.ResourceWithImportState = &PostQuantumPresharedKeyResource{}
 var _ context.Context = context.Background()
 
-
 // PostQuantumPresharedKeyResource defines the resource implementation.
 type PostQuantumPresharedKeyResource struct {
-    ResourceBase[PostQuantumPresharedKeyResourceModel]
+	ResourceBase[PostQuantumPresharedKeyResourceModel]
 }
-
 
 // Schema defines the schema for the PostQuantumPresharedKey resource.
 func (r *PostQuantumPresharedKeyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Post-quantum Preshared Key to use in VPN Gateway-Gateway tunnels and Route-Based VPN Tunnels. It is used for internal purposes and does not require a name.",
-      Attributes: GetPostQuantumPresharedKeySchemaAttributes(ctx),
-      Blocks: GetPostQuantumPresharedKeySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Post-quantum Preshared Key to use in VPN Gateway-Gateway tunnels and Route-Based VPN Tunnels. It is used for internal purposes and does not require a name.",
+		Attributes:  GetPostQuantumPresharedKeySchemaAttributes(ctx),
+		Blocks:      GetPostQuantumPresharedKeySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *PostQuantumPresharedKeyResource) Schema(ctx context.Context, _ resource
 func NewPostQuantumPresharedKeyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing PostQuantumPresharedKey resource")
 	r := &PostQuantumPresharedKeyResource{
-        ResourceBase: ResourceBase[PostQuantumPresharedKeyResourceModel]{
-             resourceType: "ppk",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[PostQuantumPresharedKeyResourceModel]{
+			resourceType:  "ppk",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &AbstractParameterGroupResource{}
 var _ resource.ResourceWithImportState = &AbstractParameterGroupResource{}
 var _ context.Context = context.Background()
 
-
 // AbstractParameterGroupResource defines the resource implementation.
 type AbstractParameterGroupResource struct {
-    ResourceBase[AbstractParameterGroupResourceModel]
+	ResourceBase[AbstractParameterGroupResourceModel]
 }
-
 
 // Schema defines the schema for the AbstractParameterGroup resource.
 func (r *AbstractParameterGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a group of parameters that can be used to configure inspection settings.",
-      Attributes: GetAbstractParameterGroupSchemaAttributes(ctx),
-      Blocks: GetAbstractParameterGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a group of parameters that can be used to configure inspection settings.",
+		Attributes:  GetAbstractParameterGroupSchemaAttributes(ctx),
+		Blocks:      GetAbstractParameterGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *AbstractParameterGroupResource) Schema(ctx context.Context, _ resource.
 func NewAbstractParameterGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing AbstractParameterGroup resource")
 	r := &AbstractParameterGroupResource{
-        ResourceBase: ResourceBase[AbstractParameterGroupResourceModel]{
-             resourceType: "AbstractParameterGroup",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[AbstractParameterGroupResourceModel]{
+			resourceType:  "AbstractParameterGroup",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

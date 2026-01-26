@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,23 +16,20 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type EventGroupSituationParameterValueResourceModel struct {
-	
-    BindingSetRef types.String `tfsdk:"binding_set_ref" json:"binding_set_ref,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Counts *[]types.Int64 `tfsdk:"counts" json:"counts,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        Order types.Int64 `tfsdk:"order" json:"order,optional,omitempty" `
-        ParameterRef types.String `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
-        PrimaryFilters *[]types.String `tfsdk:"primary_filters" json:"primary_filters,optional,omitempty" `
-        SecondaryContextMembers *[]types.Int64 `tfsdk:"secondary_context_members" json:"secondary_context_members,optional,omitempty" `
-        
+	BindingSetRef           types.String                                       `tfsdk:"binding_set_ref" json:"binding_set_ref,optional,omitempty" `
+	Comment                 types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Counts                  *[]types.Int64                                     `tfsdk:"counts" json:"counts,optional,omitempty" `
+	Key                     types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link                    customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                      customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Name                    types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	Order                   types.Int64                                        `tfsdk:"order" json:"order,optional,omitempty" `
+	ParameterRef            types.String                                       `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
+	PrimaryFilters          *[]types.String                                    `tfsdk:"primary_filters" json:"primary_filters,optional,omitempty" `
+	SecondaryContextMembers *[]types.Int64                                     `tfsdk:"secondary_context_members" json:"secondary_context_members,optional,omitempty" `
 }
+
 func (r *EventGroupSituationParameterValueResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

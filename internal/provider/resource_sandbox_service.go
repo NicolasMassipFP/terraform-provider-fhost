@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SandboxServiceResource{}
 var _ resource.ResourceWithImportState = &SandboxServiceResource{}
 var _ context.Context = context.Background()
 
-
 // SandboxServiceResource defines the resource implementation.
 type SandboxServiceResource struct {
-    ResourceBase[SandboxServiceResourceModel]
+	ResourceBase[SandboxServiceResourceModel]
 }
-
 
 // Schema defines the schema for the SandboxService resource.
 func (r *SandboxServiceResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the Sandbox service element (referenced by sandbox settings). It contains information about the portal account, data center, license key and token.",
-      Attributes: GetSandboxServiceSchemaAttributes(ctx),
-      Blocks: GetSandboxServiceSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the Sandbox service element (referenced by sandbox settings). It contains information about the portal account, data center, license key and token.",
+		Attributes:  GetSandboxServiceSchemaAttributes(ctx),
+		Blocks:      GetSandboxServiceSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SandboxServiceResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewSandboxServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SandboxService resource")
 	r := &SandboxServiceResource{
-        ResourceBase: ResourceBase[SandboxServiceResourceModel]{
-             resourceType: "sandbox_service",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SandboxServiceResourceModel]{
+			resourceType:  "sandbox_service",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

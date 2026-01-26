@@ -29,8 +29,7 @@ This represents a Policy Snapshot, which is a record of policy configuration tha
 - `config_id` (Number) The configuration ID associated with this policy snapshot, used for dynamic uploads.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `package_id` (Number) The ID of the update package associated with this policy snapshot, indicating which package was activated when the policy was uploaded.
 - `policy_name` (String) The name of the policy associated with this snapshot, if the policy does not exist.
@@ -44,12 +43,3 @@ This represents a Policy Snapshot, which is a record of policy configuration tha
 - `upload_time` (Number) The date and time when the policy was uploaded, represented as a Unix timestamp in milliseconds.
 - `uploaded_rule_tags` (String) A comma-separated list of rule tags that were uploaded with this policy snapshot, used for tracking rule counters.
 - `uploader` (String) The name of the person who started the upload, such as an administrator.
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

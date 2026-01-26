@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,10 +16,6 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type CertificateValidationCommonSettingsResourceModel struct {
-	
-    CrlDistributionPointList *[]types.String `tfsdk:"crl_distribution_point_list" json:"crl_distribution_point_list,optional,omitempty" `
-        
+	CrlDistributionPointList *[]types.String `tfsdk:"crl_distribution_point_list" json:"crl_distribution_point_list,optional,omitempty" `
 }

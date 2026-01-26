@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SslVpnServiceProfileResource{}
 var _ resource.ResourceWithImportState = &SslVpnServiceProfileResource{}
 var _ context.Context = context.Background()
 
-
 // SslVpnServiceProfileResource defines the resource implementation.
 type SslVpnServiceProfileResource struct {
-    ResourceBase[SslVpnServiceProfileResourceModel]
+	ResourceBase[SslVpnServiceProfileResourceModel]
 }
-
 
 // Schema defines the schema for the SslVpnServiceProfile resource.
 func (r *SslVpnServiceProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Application Access Service Profile. It contains settings for exceptions, HTTP fields, authentication type, NTLM support, and user input formats.",
-      Attributes: GetSslVpnServiceProfileSchemaAttributes(ctx),
-      Blocks: GetSslVpnServiceProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Application Access Service Profile. It contains settings for exceptions, HTTP fields, authentication type, NTLM support, and user input formats.",
+		Attributes:  GetSslVpnServiceProfileSchemaAttributes(ctx),
+		Blocks:      GetSslVpnServiceProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SslVpnServiceProfileResource) Schema(ctx context.Context, _ resource.Sc
 func NewSslVpnServiceProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SslVpnServiceProfile resource")
 	r := &SslVpnServiceProfileResource{
-        ResourceBase: ResourceBase[SslVpnServiceProfileResourceModel]{
-             resourceType: "ssl_vpn_service_profile",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SslVpnServiceProfileResourceModel]{
+			resourceType:  "ssl_vpn_service_profile",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,18 +16,14 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type NetflowCollectorResourceModel struct {
-	
-    DataContext types.String `tfsdk:"data_context" json:"data_context,optional,omitempty" `
-        Filter types.String `tfsdk:"filter" json:"filter,optional,omitempty" `
-        Host types.String `tfsdk:"host" json:"host,optional,omitempty" `
-        KafkaTopic types.String `tfsdk:"kafka_topic" json:"kafkaTopic,optional,omitempty" `
-        NetflowCollectorPort types.Int64 `tfsdk:"netflow_collector_port" json:"netflow_collector_port,optional,omitempty" `
-        NetflowCollectorService types.String `tfsdk:"netflow_collector_service" json:"netflow_collector_service,optional,omitempty" `
-        NetflowCollectorVersion types.String `tfsdk:"netflow_collector_version" json:"netflow_collector_version,optional,omitempty" `
-        TlsProfile types.String `tfsdk:"tls_profile" json:"tls_profile,optional,omitempty" `
-        TlsIdentity *TlsIdentityResourceModel `tfsdk:"tls_identity" json:"tlsIdentity,optional,omitempty" `
-        
+	DataContext             types.String              `tfsdk:"data_context" json:"data_context,optional,omitempty" `
+	Filter                  types.String              `tfsdk:"filter" json:"filter,optional,omitempty" `
+	Host                    types.String              `tfsdk:"host" json:"host,optional,omitempty" `
+	KafkaTopic              types.String              `tfsdk:"kafka_topic" json:"kafkaTopic,optional,omitempty" `
+	NetflowCollectorPort    types.Int64               `tfsdk:"netflow_collector_port" json:"netflow_collector_port,optional,omitempty" `
+	NetflowCollectorService types.String              `tfsdk:"netflow_collector_service" json:"netflow_collector_service,optional,omitempty" `
+	NetflowCollectorVersion types.String              `tfsdk:"netflow_collector_version" json:"netflow_collector_version,optional,omitempty" `
+	TlsProfile              types.String              `tfsdk:"tls_profile" json:"tls_profile,optional,omitempty" `
+	TlsIdentity             *TlsIdentityResourceModel `tfsdk:"tls_identity" json:"tlsIdentity,optional,omitempty" `
 }

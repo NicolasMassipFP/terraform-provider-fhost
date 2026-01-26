@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type AdminPermissionResourceModel struct {
-	
-    GrantedDomainRef types.String `tfsdk:"granted_domain_ref" json:"granted_domain_ref,optional,omitempty" `
-        GrantedElements *[]types.String `tfsdk:"granted_elements" json:"granted_elements,optional,omitempty" `
-        RoleRef types.String `tfsdk:"role_ref" json:"role_ref,optional,omitempty" `
-        
+	GrantedDomainRef types.String    `tfsdk:"granted_domain_ref" json:"granted_domain_ref,optional,omitempty" `
+	GrantedElements  *[]types.String `tfsdk:"granted_elements" json:"granted_elements,optional,omitempty" `
+	RoleRef          types.String    `tfsdk:"role_ref" json:"role_ref,optional,omitempty" `
 }

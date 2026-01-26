@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,176 +30,194 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetTunnelInterfaceSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "aggregate_mode": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The aggregation type for the interface, which can be 'ha' for High Availability and represents two interfaces on the Firewall engine. Only the first interface in the aggregated link is actively used. The second interface becomes active only if the first interface fails. If you configure an Aggregated Link in High-Availability mode, connect the first interface to one switch and the second interface to another switch OR 'lb' for Load Balancing and Represents two interfaces on the Firewall engine. Both interfaces in the aggregated link are actively used and connections are automatically balanced between the two interfaces. Link aggregation in the load-balancing mode is implemented based on the IEEE 802.3ad Link Aggregation standard. If you configure an Aggregated Link in Load-Balancing Mode, connect both interfaces to a single switch. Make sure that the switch supports the Link Aggregation Control Protocol (LACP) and that LACP is configured on the switch.",
-        },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "custom_configuration": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Custom configuration for the physical interface, used for specific test or configuration purposes.",
-        },
-       "duplicate_address_detection": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether Duplicate Address Detection is enabled for IPv6, which helps prevent address conflicts on the network.",
-       },
-       "include_prefix_info_option_flag": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the Include Prefix Information option is set in IPv6 Router Advertisements, which allows devices to automatically configure their IPv6 addresses based on the advertised prefixes.",
-       },
-       "interface_id": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Interface ID automatically maps to a physical network port of the same number during the initial configuration of the engine, but the mapping can be changed as necessary through the engine's command line interface. In case of VLAN Physical Interface, enter the VLAN ID (1-4094). The VLAN IDs you add must be the same as the VLAN IDs that are used in the switch at the other end of the VLAN trunk. Each VLAN Interface is identified as Interface-ID.VLAN-ID, for example 2.100 for Interface ID 2 and VLAN ID 100.",
-        },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "mac_prefix": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The MAC Address prefix used for a shared interface, which is used to generate unique MAC addresses for interfaces in a shared configuration.",
-        },
-       "managed_address_flag": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether Managed Address Configuration is enabled in IPv6 Router Advertisements, which allows the Firewall to offer IPv6 addresses over DHCPv6.",
-       },
-       "mtu": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The MTU (maximum transmission unit) size on the connected link. Either enter a value between 400-65535. The default value is 1500.",
-       },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "other_configuration_flag": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether Other Configuration is enabled in IPv6 Router Advertisements, which allows the Firewall to offer additional configuration information over DHCPv6.",
-       },
-       "override_engine_settings": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the Engine's Default Settings are overridden for this interface, allowing for custom configurations.",
-       },
-       "override_log_moderation_settings": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the Log Moderation settings are overridden for this interface, allowing for custom log moderation configurations.",
-       },
-       "qos_limit": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The throughput limit for the link on this interface in kilobits per second (kbps). The same throughput is automatically applied to any VLANs created under this Physical Interface.",
-       },
-       "qos_mode": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Defines how QoS is applied to the link on this interface, such as 'none', 'dscp_handling', 'full_qos', or 'throttling'.",
-        },
-       "qos_policy_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a QoS Policy, which is used for Bandwidth Management and Traffic Prioritization based on QoS Classes or DSCP Matches.",
-        },
-       "route_replies_back_mode": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the Route Replies Back Mode is enabled for this Tunnel Interface. When enabled, it allows the interface to send route replies back through the tunnel.",
-       },
-       "router_advertisement": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether IPv6 Router Advertisements are sent, which provides configuration information to devices on the network.",
-       },
-       "second_interface_id": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The second interface ID in the aggregated link, which is used in conjunction with the first interface for high availability or load balancing.",
-        },
-       "set_autonomous_address_flag": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the Set Autonomous Address-Configuration option is set in IPv6 Router Advertisements, which allows devices to automatically configure their IPv6 addresses based on the advertised prefixes.",
-       },
-       "shared_interface": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether this interface is shared across multiple engines, allowing for shared configurations and resources.",
-       },
-       "syn_max_bursts": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The SYN Burst Size value, which is the number of allowed SYNs before the engine starts limiting the SYN rate. Must be at least 1.",
-       },
-       "syn_mode": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The SYN Rate Limits Mode, which can be 'off' for disabled, 'auto' for automatic calculation, or 'custom' for manual settings.",
-        },
-       "syn_per_second": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The Allowed SYNs per Second value, which is the number of allowed SYN packets per second. Must be at least 1.",
-       },
-       "zone_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
-        },
+	attrs := map[string]schema.Attribute{"aggregate_mode": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The aggregation type for the interface, which can be 'ha' for High Availability and represents two interfaces on the Firewall engine. Only the first interface in the aggregated link is actively used. The second interface becomes active only if the first interface fails. If you configure an Aggregated Link in High-Availability mode, connect the first interface to one switch and the second interface to another switch OR 'lb' for Load Balancing and Represents two interfaces on the Firewall engine. Both interfaces in the aggregated link are actively used and connections are automatically balanced between the two interfaces. Link aggregation in the load-balancing mode is implemented based on the IEEE 802.3ad Link Aggregation standard. If you configure an Aggregated Link in Load-Balancing Mode, connect both interfaces to a single switch. Make sure that the switch supports the Link Aggregation Control Protocol (LACP) and that LACP is configured on the switch.",
+	},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"custom_configuration": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Custom configuration for the physical interface, used for specific test or configuration purposes.",
+		},
+		"duplicate_address_detection": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether Duplicate Address Detection is enabled for IPv6, which helps prevent address conflicts on the network.",
+		},
+		"include_prefix_info_option_flag": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the Include Prefix Information option is set in IPv6 Router Advertisements, which allows devices to automatically configure their IPv6 addresses based on the advertised prefixes.",
+		},
+		"interface_id": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Interface ID automatically maps to a physical network port of the same number during the initial configuration of the engine, but the mapping can be changed as necessary through the engine's command line interface. In case of VLAN Physical Interface, enter the VLAN ID (1-4094). The VLAN IDs you add must be the same as the VLAN IDs that are used in the switch at the other end of the VLAN trunk. Each VLAN Interface is identified as Interface-ID.VLAN-ID, for example 2.100 for Interface ID 2 and VLAN ID 100.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"mac_prefix": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The MAC Address prefix used for a shared interface, which is used to generate unique MAC addresses for interfaces in a shared configuration.",
+		},
+		"managed_address_flag": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether Managed Address Configuration is enabled in IPv6 Router Advertisements, which allows the Firewall to offer IPv6 addresses over DHCPv6.",
+		},
+		"mtu": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The MTU (maximum transmission unit) size on the connected link. Either enter a value between 400-65535. The default value is 1500.",
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"other_configuration_flag": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether Other Configuration is enabled in IPv6 Router Advertisements, which allows the Firewall to offer additional configuration information over DHCPv6.",
+		},
+		"override_engine_settings": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the Engine's Default Settings are overridden for this interface, allowing for custom configurations.",
+		},
+		"override_log_moderation_settings": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the Log Moderation settings are overridden for this interface, allowing for custom log moderation configurations.",
+		},
+		"qos_limit": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The throughput limit for the link on this interface in kilobits per second (kbps). The same throughput is automatically applied to any VLANs created under this Physical Interface.",
+		},
+		"qos_mode": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Defines how QoS is applied to the link on this interface, such as 'none', 'dscp_handling', 'full_qos', or 'throttling'.",
+		},
+		"qos_policy_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a QoS Policy, which is used for Bandwidth Management and Traffic Prioritization based on QoS Classes or DSCP Matches.",
+		},
+		"route_replies_back_mode": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the Route Replies Back Mode is enabled for this Tunnel Interface. When enabled, it allows the interface to send route replies back through the tunnel.",
+		},
+		"router_advertisement": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether IPv6 Router Advertisements are sent, which provides configuration information to devices on the network.",
+		},
+		"second_interface_id": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The second interface ID in the aggregated link, which is used in conjunction with the first interface for high availability or load balancing.",
+		},
+		"set_autonomous_address_flag": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the Set Autonomous Address-Configuration option is set in IPv6 Router Advertisements, which allows devices to automatically configure their IPv6 addresses based on the advertised prefixes.",
+		},
+		"shared_interface": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether this interface is shared across multiple engines, allowing for shared configurations and resources.",
+		},
+		"syn_max_bursts": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The SYN Burst Size value, which is the number of allowed SYNs before the engine starts limiting the SYN rate. Must be at least 1.",
+		},
+		"syn_mode": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The SYN Rate Limits Mode, which can be 'off' for disabled, 'auto' for automatic calculation, or 'custom' for manual settings.",
+		},
+		"syn_per_second": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Allowed SYNs per Second value, which is the number of allowed SYN packets per second. Must be at least 1.",
+		},
+		"zone_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getTunnelInterfaceSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetTunnelInterfaceSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getTunnelInterfaceSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "arp_entry": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetArpEntrySchemaAttributes(ctx),
-         Blocks: GetArpEntrySchemaBlocks(ctx),
-          },
-         },
-       "dhcp_relay": schema.SingleNestedBlock{
-        Description: "This represents the definition of DHCP Relay on an interface, allowing you to select which firewall interfaces perform DHCP relay and activate it towards the DHCP clients.",
-        CustomType:  customfield.NewNestedObjectType[DhcpRelayResourceModel](ctx),
-        Attributes: GetDhcpRelaySchemaAttributes(ctx),Blocks: GetDhcpRelaySchemaBlocks(ctx),},
-       "dhcp_server_on_interface": schema.SingleNestedBlock{
-        Description: "This represents the definition of DHCP Server on an interface, which includes settings for IP ranges, DNS servers, WINS servers, gateways, and lease times.",
-        CustomType:  customfield.NewNestedObjectType[DhcpServerSettingsResourceModel](ctx),
-        Attributes: GetDhcpServerSettingsSchemaAttributes(ctx),Blocks: GetDhcpServerSettingsSchemaBlocks(ctx),},
-       "dhcpv6_relay": schema.SingleNestedBlock{
-        Description: "This represents the definition of DHCP Relay on an interface, allowing you to select which firewall interfaces perform DHCP relay and activate it towards the DHCP clients.",
-        CustomType:  customfield.NewNestedObjectType[DhcpRelayResourceModel](ctx),
-        Attributes: GetDhcpRelaySchemaAttributes(ctx),Blocks: GetDhcpRelaySchemaBlocks(ctx),},
-       "interfaces": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetAbstractEngineInterfaceSchemaAttributes(ctx),
-         Blocks: GetAbstractEngineInterfaceSchemaBlocks(ctx),
-          },
-         },
-       "log_moderation": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetLogModerationSchemaAttributes(ctx),
-         Blocks: GetLogModerationSchemaBlocks(ctx),
-          },
-         },
-       "sync_parameter": schema.SingleNestedBlock{
-        Description: "This represents the synchronization parameters for a cluster of engines, including sync mode, intervals, security level, and multicast IP addresses.",
-        CustomType:  customfield.NewNestedObjectType[SyncParameterResourceModel](ctx),
-        Attributes: GetSyncParameterSchemaAttributes(ctx),Blocks: GetSyncParameterSchemaBlocks(ctx),},
-       "virtual_resource_settings": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetVirtualResourceSettingsSchemaAttributes(ctx),
-         Blocks: GetVirtualResourceSettingsSchemaBlocks(ctx),
-          },
-         },
-
-    }
+func getTunnelInterfaceSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"arp_entry": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetArpEntrySchemaAttributes(ctx),
+				Blocks:     GetArpEntrySchemaBlocks(ctx),
+			},
+		},
+		"dhcp_relay": schema.SingleNestedBlock{
+			Description: "This represents the definition of DHCP Relay on an interface, allowing you to select which firewall interfaces perform DHCP relay and activate it towards the DHCP clients.",
+			CustomType:  customfield.NewNestedObjectType[DhcpRelayResourceModel](ctx),
+			Attributes:  GetDhcpRelaySchemaAttributes(ctx),
+			Blocks:      GetDhcpRelaySchemaBlocks(ctx),
+		},
+		"dhcp_server_on_interface": schema.SingleNestedBlock{
+			Description: "This represents the definition of DHCP Server on an interface, which includes settings for IP ranges, DNS servers, WINS servers, gateways, and lease times.",
+			CustomType:  customfield.NewNestedObjectType[DhcpServerSettingsResourceModel](ctx),
+			Attributes:  GetDhcpServerSettingsSchemaAttributes(ctx),
+			Blocks:      GetDhcpServerSettingsSchemaBlocks(ctx),
+		},
+		"dhcpv6_relay": schema.SingleNestedBlock{
+			Description: "This represents the definition of DHCP Relay on an interface, allowing you to select which firewall interfaces perform DHCP relay and activate it towards the DHCP clients.",
+			CustomType:  customfield.NewNestedObjectType[DhcpRelayResourceModel](ctx),
+			Attributes:  GetDhcpRelaySchemaAttributes(ctx),
+			Blocks:      GetDhcpRelaySchemaBlocks(ctx),
+		},
+		"interfaces": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetAbstractEngineInterfaceSchemaAttributes(ctx),
+				Blocks:     GetAbstractEngineInterfaceSchemaBlocks(ctx),
+			},
+		},
+		"log_moderation": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetLogModerationSchemaAttributes(ctx),
+				Blocks:     GetLogModerationSchemaBlocks(ctx),
+			},
+		},
+		"sync_parameter": schema.SingleNestedBlock{
+			Description: "This represents the synchronization parameters for a cluster of engines, including sync mode, intervals, security level, and multicast IP addresses.",
+			CustomType:  customfield.NewNestedObjectType[SyncParameterResourceModel](ctx),
+			Attributes:  GetSyncParameterSchemaAttributes(ctx),
+			Blocks:      GetSyncParameterSchemaBlocks(ctx),
+		},
+		"virtual_resource_settings": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetVirtualResourceSettingsSchemaAttributes(ctx),
+				Blocks:     GetVirtualResourceSettingsSchemaBlocks(ctx),
+			},
+		},
+	}
 }

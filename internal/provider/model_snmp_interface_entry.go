@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SnmpInterfaceEntryResourceModel struct {
-	
-    Address types.String `tfsdk:"address" json:"address,optional,omitempty" `
-        Nicid types.String `tfsdk:"nicid" json:"nicid,optional,omitempty" `
-        
+	Address types.String `tfsdk:"address" json:"address,optional,omitempty" `
+	Nicid   types.String `tfsdk:"nicid" json:"nicid,optional,omitempty" `
 }
+
 func (r *SnmpInterfaceEntryResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Address.IsNull() || r.Address.IsUnknown() {
 		return nil

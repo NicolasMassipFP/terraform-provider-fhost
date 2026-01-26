@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type TesterParametersResourceModel struct {
-	
-    AlertInterval types.Int64 `tfsdk:"alert_interval" json:"alert_interval,optional,omitempty" `
-        AutoRecovery types.Bool `tfsdk:"auto_recovery" json:"auto_recovery,optional,omitempty" `
-        BootDelay types.Int64 `tfsdk:"boot_delay" json:"boot_delay,optional,omitempty" `
-        BootRecovery types.Bool `tfsdk:"boot_recovery" json:"boot_recovery,optional,omitempty" `
-        RestartDelay types.Int64 `tfsdk:"restart_delay" json:"restart_delay,optional,omitempty" `
-        StatusDelay types.Int64 `tfsdk:"status_delay" json:"status_delay,optional,omitempty" `
-        
+	AlertInterval types.Int64 `tfsdk:"alert_interval" json:"alert_interval,optional,omitempty" `
+	AutoRecovery  types.Bool  `tfsdk:"auto_recovery" json:"auto_recovery,optional,omitempty" `
+	BootDelay     types.Int64 `tfsdk:"boot_delay" json:"boot_delay,optional,omitempty" `
+	BootRecovery  types.Bool  `tfsdk:"boot_recovery" json:"boot_recovery,optional,omitempty" `
+	RestartDelay  types.Int64 `tfsdk:"restart_delay" json:"restart_delay,optional,omitempty" `
+	StatusDelay   types.Int64 `tfsdk:"status_delay" json:"status_delay,optional,omitempty" `
 }

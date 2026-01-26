@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &RpcServiceGroupResource{}
 var _ resource.ResourceWithImportState = &RpcServiceGroupResource{}
 var _ context.Context = context.Background()
 
-
 // RpcServiceGroupResource defines the resource implementation.
 type RpcServiceGroupResource struct {
-    ResourceBase[RpcServiceGroupResourceModel]
+	ResourceBase[RpcServiceGroupResourceModel]
 }
-
 
 // Schema defines the schema for the RpcServiceGroup resource.
 func (r *RpcServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a SUN-RPC Service Group, which is used to group a list of SUN-RPC Services. It can contain both individual SUN-RPC Services and other Service Groups.",
-      Attributes: GetRpcServiceGroupSchemaAttributes(ctx),
-      Blocks: GetRpcServiceGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a SUN-RPC Service Group, which is used to group a list of SUN-RPC Services. It can contain both individual SUN-RPC Services and other Service Groups.",
+		Attributes:  GetRpcServiceGroupSchemaAttributes(ctx),
+		Blocks:      GetRpcServiceGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *RpcServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewRpcServiceGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing RpcServiceGroup resource")
 	r := &RpcServiceGroupResource{
-        ResourceBase: ResourceBase[RpcServiceGroupResourceModel]{
-             resourceType: "rpc_service_group",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[RpcServiceGroupResourceModel]{
+			resourceType:  "rpc_service_group",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

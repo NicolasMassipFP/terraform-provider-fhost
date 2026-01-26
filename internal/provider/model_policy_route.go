@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PolicyRouteResourceModel struct {
-	
-    Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Destination types.String `tfsdk:"destination" json:"destination,optional,omitempty" `
-        GatewayIp types.String `tfsdk:"gateway_ip" json:"gateway_ip,optional,omitempty" `
-        Source types.String `tfsdk:"source" json:"source,optional,omitempty" `
-        
+	Comment     types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Destination types.String `tfsdk:"destination" json:"destination,optional,omitempty" `
+	GatewayIp   types.String `tfsdk:"gateway_ip" json:"gateway_ip,optional,omitempty" `
+	Source      types.String `tfsdk:"source" json:"source,optional,omitempty" `
 }

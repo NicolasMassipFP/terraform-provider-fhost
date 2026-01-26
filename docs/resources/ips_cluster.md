@@ -110,8 +110,7 @@ This represents a group of two or more layer 2 IPS devices in the Stonesoft Mana
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -292,8 +291,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--nodes--firewall_node--appliance_info"></a>
 ### Nested Schema for `nodes.firewall_node.appliance_info`
@@ -369,18 +367,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `nodes.firewall_node.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests"></a>
@@ -425,18 +412,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--external_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--tests--dto--external_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.external_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--filesystemspace_test"></a>
@@ -460,18 +436,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--filesystemspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--tests--dto--filesystemspace_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.filesystemspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--freeswapspace_test"></a>
@@ -494,18 +459,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--freeswapspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--tests--dto--freeswapspace_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.freeswapspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--inline_test"></a>
@@ -528,18 +482,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--inline_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--tests--dto--inline_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.inline_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--linkstatus_test"></a>
@@ -563,18 +506,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--linkstatus_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--nodes--firewall_node--tests--dto--linkstatus_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.linkstatus_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--multiping_test"></a>
@@ -601,8 +533,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--nodes--firewall_node--tests--dto--multiping_test--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--nodes--firewall_node--tests--dto--multiping_test--enabled_interface"></a>
 ### Nested Schema for `nodes.firewall_node.tests.dto.multiping_test.enabled_interface`
@@ -613,27 +544,7 @@ Optional:
 - `nicid` (String) The interface ID of the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.
 
 
-<a id="nestedatt--nodes--firewall_node--tests--dto--multiping_test--link"></a>
-### Nested Schema for `nodes.firewall_node.tests.dto.multiping_test.link`
 
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
-
-
-
-<a id="nestedatt--nodes--firewall_node--link"></a>
-### Nested Schema for `nodes.firewall_node.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -716,8 +627,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--adsl_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.adsl_interface.arp_entry`
@@ -811,18 +721,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--cluster_virtual_interface"></a>
@@ -842,18 +741,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--inline_interface"></a>
@@ -876,18 +764,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--inline_ips_interface"></a>
@@ -910,18 +787,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--inline_l2fw_interface"></a>
@@ -943,18 +809,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -976,18 +831,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -1035,18 +879,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--node_interface"></a>
@@ -1092,18 +925,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--adsl_interface--interfaces--single_node_interface"></a>
@@ -1150,18 +972,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--adsl_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--adsl_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -1183,16 +994,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--adsl_interface--link"></a>
-### Nested Schema for `physical_interfaces.adsl_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -1238,8 +1039,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--modem_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.modem_interface.arp_entry`
@@ -1333,18 +1133,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--cluster_virtual_interface"></a>
@@ -1364,18 +1153,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--inline_interface"></a>
@@ -1398,18 +1176,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--inline_ips_interface"></a>
@@ -1432,18 +1199,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--inline_l2fw_interface"></a>
@@ -1465,18 +1221,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -1498,18 +1243,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -1557,18 +1291,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--node_interface"></a>
@@ -1614,18 +1337,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--modem_interface--interfaces--single_node_interface"></a>
@@ -1672,18 +1384,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--modem_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--modem_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -1705,16 +1406,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--modem_interface--link"></a>
-### Nested Schema for `physical_interfaces.modem_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -1768,8 +1459,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--physical_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.physical_interface.arp_entry`
@@ -1863,18 +1553,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--cluster_virtual_interface"></a>
@@ -1894,18 +1573,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--inline_interface"></a>
@@ -1928,18 +1596,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--inline_ips_interface"></a>
@@ -1962,18 +1619,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--inline_l2fw_interface"></a>
@@ -1995,18 +1641,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -2028,18 +1663,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -2087,18 +1711,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--node_interface"></a>
@@ -2144,18 +1757,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--interfaces--single_node_interface"></a>
@@ -2202,18 +1804,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -2294,8 +1885,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.arp_entry`
@@ -2389,18 +1979,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--cluster_virtual_interface"></a>
@@ -2420,18 +1999,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_interface"></a>
@@ -2454,18 +2022,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_ips_interface"></a>
@@ -2488,18 +2045,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_l2fw_interface"></a>
@@ -2521,18 +2067,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_cluster_virtual_interface"></a>
@@ -2554,18 +2089,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_node_dedicated_interface"></a>
@@ -2613,18 +2137,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--node_interface"></a>
@@ -2670,18 +2183,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--physical_interface--vlan_interfaces--interfaces--single_node_interface"></a>
@@ -2728,18 +2230,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -2775,26 +2266,6 @@ Optional:
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
 
-
-<a id="nestedatt--physical_interfaces--physical_interface--vlan_interfaces--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.vlan_interfaces.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
-
-<a id="nestedatt--physical_interfaces--physical_interface--link"></a>
-### Nested Schema for `physical_interfaces.physical_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -2839,8 +2310,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--port_group_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.port_group_interface.arp_entry`
@@ -2934,18 +2404,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--cluster_virtual_interface"></a>
@@ -2965,18 +2424,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--inline_interface"></a>
@@ -2999,18 +2447,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--inline_ips_interface"></a>
@@ -3033,18 +2470,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--inline_l2fw_interface"></a>
@@ -3066,18 +2492,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -3099,18 +2514,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -3158,18 +2562,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--node_interface"></a>
@@ -3215,18 +2608,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--port_group_interface--interfaces--single_node_interface"></a>
@@ -3273,18 +2655,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--port_group_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--port_group_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -3316,16 +2687,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--port_group_interface--link"></a>
-### Nested Schema for `physical_interfaces.port_group_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -3384,8 +2745,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--ssid_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.ssid_interface.arp_entry`
@@ -3479,18 +2839,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--cluster_virtual_interface"></a>
@@ -3510,18 +2859,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--inline_interface"></a>
@@ -3544,18 +2882,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--inline_ips_interface"></a>
@@ -3578,18 +2905,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--inline_l2fw_interface"></a>
@@ -3611,18 +2927,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -3644,18 +2949,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -3703,18 +2997,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--node_interface"></a>
@@ -3760,18 +3043,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--ssid_interface--interfaces--single_node_interface"></a>
@@ -3818,18 +3090,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--ssid_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--ssid_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -3860,16 +3121,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--ssid_interface--link"></a>
-### Nested Schema for `physical_interfaces.ssid_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -3915,8 +3166,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--switch_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.switch_interface.arp_entry`
@@ -4010,18 +3260,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--cluster_virtual_interface"></a>
@@ -4041,18 +3280,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--inline_interface"></a>
@@ -4075,18 +3303,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--inline_ips_interface"></a>
@@ -4109,18 +3326,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--inline_l2fw_interface"></a>
@@ -4142,18 +3348,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -4175,18 +3370,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -4234,18 +3418,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--node_interface"></a>
@@ -4291,18 +3464,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--interfaces--single_node_interface"></a>
@@ -4349,18 +3511,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -4415,8 +3566,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.arp_entry`
@@ -4510,18 +3660,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--cluster_virtual_interface"></a>
@@ -4541,18 +3680,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_interface"></a>
@@ -4575,18 +3703,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_ips_interface"></a>
@@ -4609,18 +3726,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_l2fw_interface"></a>
@@ -4642,18 +3748,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -4675,18 +3770,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -4734,18 +3818,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--node_interface"></a>
@@ -4791,18 +3864,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--switch_interface--port_group_interface--interfaces--single_node_interface"></a>
@@ -4849,18 +3911,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -4894,16 +3945,6 @@ Optional:
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
 
 
-<a id="nestedatt--physical_interfaces--switch_interface--port_group_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.port_group_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
 
 <a id="nestedblock--physical_interfaces--switch_interface--virtual_resource_settings"></a>
 ### Nested Schema for `physical_interfaces.switch_interface.virtual_resource_settings`
@@ -4913,16 +3954,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--switch_interface--link"></a>
-### Nested Schema for `physical_interfaces.switch_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -4968,8 +3999,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.tunnel_interface.arp_entry`
@@ -5063,18 +4093,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--cluster_virtual_interface"></a>
@@ -5094,18 +4113,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--inline_interface"></a>
@@ -5128,18 +4136,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--inline_ips_interface"></a>
@@ -5162,18 +4159,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--inline_l2fw_interface"></a>
@@ -5195,18 +4181,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -5228,18 +4203,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -5287,18 +4251,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--node_interface"></a>
@@ -5344,18 +4297,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--tunnel_interface--interfaces--single_node_interface"></a>
@@ -5402,18 +4344,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--tunnel_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -5448,16 +4379,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--tunnel_interface--link"></a>
-### Nested Schema for `physical_interfaces.tunnel_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -5504,8 +4425,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.virtual_vlan_interface.arp_entry`
@@ -5599,18 +4519,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--cluster_virtual_interface"></a>
@@ -5630,18 +4539,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--inline_interface"></a>
@@ -5664,18 +4562,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--inline_ips_interface"></a>
@@ -5698,18 +4585,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--inline_l2fw_interface"></a>
@@ -5731,18 +4607,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -5764,18 +4629,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -5823,18 +4677,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--node_interface"></a>
@@ -5880,18 +4723,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--virtual_vlan_interface--interfaces--single_node_interface"></a>
@@ -5938,18 +4770,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -5971,16 +4792,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--virtual_vlan_interface--link"></a>
-### Nested Schema for `physical_interfaces.virtual_vlan_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -6028,8 +4839,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--vlan_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.vlan_interface.arp_entry`
@@ -6123,18 +4933,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--cluster_virtual_interface"></a>
@@ -6154,18 +4953,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--inline_interface"></a>
@@ -6188,18 +4976,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--inline_ips_interface"></a>
@@ -6222,18 +4999,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--inline_l2fw_interface"></a>
@@ -6255,18 +5021,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -6288,18 +5043,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -6347,18 +5091,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--node_interface"></a>
@@ -6404,18 +5137,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vlan_interface--interfaces--single_node_interface"></a>
@@ -6462,18 +5184,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vlan_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vlan_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -6508,16 +5219,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--vlan_interface--link"></a>
-### Nested Schema for `physical_interfaces.vlan_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -6569,8 +5270,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.vpn_broker_interface.arp_entry`
@@ -6664,18 +5364,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--cluster_virtual_interface"></a>
@@ -6695,18 +5384,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--inline_interface"></a>
@@ -6729,18 +5407,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--inline_ips_interface"></a>
@@ -6763,18 +5430,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--inline_l2fw_interface"></a>
@@ -6796,18 +5452,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -6829,18 +5474,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -6888,18 +5522,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--node_interface"></a>
@@ -6945,18 +5568,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--vpn_broker_interface--interfaces--single_node_interface"></a>
@@ -7003,18 +5615,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--vpn_broker_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -7036,16 +5637,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--vpn_broker_interface--link"></a>
-### Nested Schema for `physical_interfaces.vpn_broker_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -7096,8 +5687,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--wireless_interface--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.wireless_interface.arp_entry`
@@ -7191,18 +5781,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--cluster_virtual_interface"></a>
@@ -7222,18 +5801,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--inline_interface"></a>
@@ -7256,18 +5824,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--inline_ips_interface"></a>
@@ -7290,18 +5847,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--inline_l2fw_interface"></a>
@@ -7323,18 +5869,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--loopback_cluster_virtual_interface"></a>
@@ -7356,18 +5891,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--loopback_node_dedicated_interface"></a>
@@ -7415,18 +5939,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--node_interface"></a>
@@ -7472,18 +5985,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--interfaces--single_node_interface"></a>
@@ -7530,18 +6032,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -7610,8 +6101,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--arp_entry"></a>
 ### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.arp_entry`
@@ -7705,18 +6195,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--capture_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--capture_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.capture_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--cluster_virtual_interface"></a>
@@ -7736,18 +6215,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_interface"></a>
@@ -7770,18 +6238,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.inline_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_ips_interface"></a>
@@ -7804,18 +6261,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_ips_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_ips_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.inline_ips_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_l2fw_interface"></a>
@@ -7837,18 +6283,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_l2fw_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--inline_l2fw_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.inline_l2fw_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_cluster_virtual_interface"></a>
@@ -7870,18 +6305,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_cluster_virtual_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_cluster_virtual_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.loopback_cluster_virtual_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_node_dedicated_interface"></a>
@@ -7929,18 +6353,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_node_dedicated_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--loopback_node_dedicated_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.loopback_node_dedicated_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--node_interface"></a>
@@ -7986,18 +6399,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--node_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--single_node_interface"></a>
@@ -8044,18 +6446,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--single_node_interface--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--interfaces--single_node_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.interfaces.single_node_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -8088,16 +6479,6 @@ Optional:
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
 
 
-<a id="nestedatt--physical_interfaces--wireless_interface--ssid_interfaces--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.ssid_interfaces.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
 
 <a id="nestedblock--physical_interfaces--wireless_interface--virtual_resource_settings"></a>
 ### Nested Schema for `physical_interfaces.wireless_interface.virtual_resource_settings`
@@ -8107,16 +6488,6 @@ Optional:
 - `qos_limit` (Number) The QoS interface throughput limit for the Virtual Resource, specified in kbps.
 - `virtual_mapping` (String) The identifier for the Virtual Mapping associated with this Virtual Resource.
 - `virtual_resource_name` (String) The name of the Virtual Resource associated with these settings.
-
-
-<a id="nestedatt--physical_interfaces--wireless_interface--link"></a>
-### Nested Schema for `physical_interfaces.wireless_interface.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -8216,18 +6587,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--external_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--external_test--link"></a>
-### Nested Schema for `tests.dto.external_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--filesystemspace_test"></a>
@@ -8251,18 +6611,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--filesystemspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--filesystemspace_test--link"></a>
-### Nested Schema for `tests.dto.filesystemspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--freeswapspace_test"></a>
@@ -8285,18 +6634,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--freeswapspace_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--freeswapspace_test--link"></a>
-### Nested Schema for `tests.dto.freeswapspace_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--inline_test"></a>
@@ -8319,18 +6657,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--inline_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--inline_test--link"></a>
-### Nested Schema for `tests.dto.inline_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--linkstatus_test"></a>
@@ -8354,18 +6681,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--linkstatus_test--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--tests--dto--linkstatus_test--link"></a>
-### Nested Schema for `tests.dto.linkstatus_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 <a id="nestedblock--tests--dto--multiping_test"></a>
@@ -8392,8 +6708,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--tests--dto--multiping_test--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--tests--dto--multiping_test--enabled_interface"></a>
 ### Nested Schema for `tests.dto.multiping_test.enabled_interface`
@@ -8402,16 +6717,6 @@ Optional:
 
 - `address` (String) The IP address associated with the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.
 - `nicid` (String) The interface ID of the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.
-
-
-<a id="nestedatt--tests--dto--multiping_test--link"></a>
-### Nested Schema for `tests.dto.multiping_test.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
 
 
 
@@ -8436,13 +6741,3 @@ Optional:
 - `http_proxy` (List of String) URI of the HTTP Proxy.
 - `local_url_categorization_enabled` (Boolean) Indicates whether local URL categorization is enabled.
 - `ts_enabled` (Boolean) Indicates whether Threat Seeker is enabled.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

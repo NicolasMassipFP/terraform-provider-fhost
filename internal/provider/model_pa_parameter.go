@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,32 +16,29 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PaParameterResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-	FromRef              types.String `tfsdk:"from_ref"`
-    Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        DefaultInteger types.Int64 `tfsdk:"default_integer" json:"default_integer,optional,omitempty" `
-        DefaultString types.String `tfsdk:"default_string" json:"default_string,optional,omitempty" `
-        Description types.String `tfsdk:"description" json:"description,optional,omitempty" `
-        Explanation types.String `tfsdk:"explanation" json:"explanation,optional,omitempty" `
-        IsVisible types.Bool `tfsdk:"is_visible" json:"is_visible,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        MaxInteger types.Int64 `tfsdk:"max_integer" json:"max_integer,optional,omitempty" `
-        MaxVersion types.String `tfsdk:"max_version" json:"max_version,optional,omitempty" `
-        MinInteger types.Int64 `tfsdk:"min_integer" json:"min_integer,optional,omitempty" `
-        MinPaVersion types.Int64 `tfsdk:"min_pa_version" json:"min_pa_version,optional,omitempty" `
-        MinVersion types.String `tfsdk:"min_version" json:"min_version,optional,omitempty" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        ParentGroup *PaParameterGroupResourceModel `tfsdk:"parent_group" json:"parent_group,optional,omitempty" `
-        Rank types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        
+	ID             types.String                                       `tfsdk:"id"`
+	FromRef        types.String                                       `tfsdk:"from_ref"`
+	Comment        types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	DefaultInteger types.Int64                                        `tfsdk:"default_integer" json:"default_integer,optional,omitempty" `
+	DefaultString  types.String                                       `tfsdk:"default_string" json:"default_string,optional,omitempty" `
+	Description    types.String                                       `tfsdk:"description" json:"description,optional,omitempty" `
+	Explanation    types.String                                       `tfsdk:"explanation" json:"explanation,optional,omitempty" `
+	IsVisible      types.Bool                                         `tfsdk:"is_visible" json:"is_visible,optional,omitempty" `
+	Key            types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link           customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk             customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	MaxInteger     types.Int64                                        `tfsdk:"max_integer" json:"max_integer,optional,omitempty" `
+	MaxVersion     types.String                                       `tfsdk:"max_version" json:"max_version,optional,omitempty" `
+	MinInteger     types.Int64                                        `tfsdk:"min_integer" json:"min_integer,optional,omitempty" `
+	MinPaVersion   types.Int64                                        `tfsdk:"min_pa_version" json:"min_pa_version,optional,omitempty" `
+	MinVersion     types.String                                       `tfsdk:"min_version" json:"min_version,optional,omitempty" `
+	Name           types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	ParentGroup    *PaParameterGroupResourceModel                     `tfsdk:"parent_group" json:"parent_group,optional,omitempty" `
+	Rank           types.Float64                                      `tfsdk:"rank" json:"rank,optional,omitempty" `
+	Type           types.String                                       `tfsdk:"type" json:"type,optional,omitempty" `
 }
+
 func (r *PaParameterResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,53 +30,74 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetNetflowCollectorSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "data_context": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents the Data Context. It contains a tag that is used to identify the data context in event filtering operations.",
-        },
-       "filter": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a container for filter expressions, which can be used to define complex filtering rules. It contains a root node that holds the main filter expression.",
-        },
-       "host": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
-        },
-       "kafka_topic": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Kafka Topic used for forwarding logs through Kafka. This is only applicable when the service is set to 'kafka'.",
-        },
-       "netflow_collector_port": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The port used for log forwarding.",
-       },
-       "netflow_collector_service": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The network protocol for forwarding the log data, such as 'udp', 'tcp', or 'tcp_with_tls'.",
-        },
-       "netflow_collector_version": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The format for forwarding the log data, such as 'cef', 'csv', 'leef', 'netflow_v11', 'ipfix', 'xml', or 'esm'.",
-        },
-       "tls_profile": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"data_context": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "This represents the Data Context. It contains a tag that is used to identify the data context in event filtering operations.",
+	},
+		"filter": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a container for filter expressions, which can be used to define complex filtering rules. It contains a root node that holds the main filter expression.",
+		},
+		"host": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
+		},
+		"kafka_topic": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Kafka Topic used for forwarding logs through Kafka. This is only applicable when the service is set to 'kafka'.",
+		},
+		"netflow_collector_port": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The port used for log forwarding.",
+		},
+		"netflow_collector_service": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The network protocol for forwarding the log data, such as 'udp', 'tcp', or 'tcp_with_tls'.",
+		},
+		"netflow_collector_version": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The format for forwarding the log data, such as 'cef', 'csv', 'leef', 'netflow_v11', 'ipfix', 'xml', or 'esm'.",
+		},
+		"tls_profile": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getNetflowCollectorSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetNetflowCollectorSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getNetflowCollectorSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "tls_identity": schema.SingleNestedBlock{
-        Description: "This represents a TLS Identity, which contains data to check server identity when establishing a TLS connection. It includes fields such as DNS name, IP address, common name, distinguished name, and various hash values.",
-        CustomType:  customfield.NewNestedObjectType[TlsIdentityResourceModel](ctx),
-        Attributes: GetTlsIdentitySchemaAttributes(ctx),Blocks: GetTlsIdentitySchemaBlocks(ctx),},
-
-    }
+func getNetflowCollectorSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"tls_identity": schema.SingleNestedBlock{
+			Description: "This represents a TLS Identity, which contains data to check server identity when establishing a TLS connection. It includes fields such as DNS name, IP address, common name, distinguished name, and various hash values.",
+			CustomType:  customfield.NewNestedObjectType[TlsIdentityResourceModel](ctx),
+			Attributes:  GetTlsIdentitySchemaAttributes(ctx),
+			Blocks:      GetTlsIdentitySchemaBlocks(ctx),
+		},
+	}
 }

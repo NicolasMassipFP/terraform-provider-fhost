@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ThirdPartyProbingProfileResource{}
 var _ resource.ResourceWithImportState = &ThirdPartyProbingProfileResource{}
 var _ context.Context = context.Background()
 
-
 // ThirdPartyProbingProfileResource defines the resource implementation.
 type ThirdPartyProbingProfileResource struct {
-    ResourceBase[ThirdPartyProbingProfileResourceModel]
+	ResourceBase[ThirdPartyProbingProfileResourceModel]
 }
-
 
 // Schema defines the schema for the ThirdPartyProbingProfile resource.
 func (r *ThirdPartyProbingProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Probing Profile used in Third Party Monitoring. It contains settings that define how a Log Server monitors third-party components.",
-      Attributes: GetThirdPartyProbingProfileSchemaAttributes(ctx),
-      Blocks: GetThirdPartyProbingProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Probing Profile used in Third Party Monitoring. It contains settings that define how a Log Server monitors third-party components.",
+		Attributes:  GetThirdPartyProbingProfileSchemaAttributes(ctx),
+		Blocks:      GetThirdPartyProbingProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ThirdPartyProbingProfileResource) Schema(ctx context.Context, _ resourc
 func NewThirdPartyProbingProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ThirdPartyProbingProfile resource")
 	r := &ThirdPartyProbingProfileResource{
-        ResourceBase: ResourceBase[ThirdPartyProbingProfileResourceModel]{
-             resourceType: "probing_profile",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ThirdPartyProbingProfileResourceModel]{
+			resourceType:  "probing_profile",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

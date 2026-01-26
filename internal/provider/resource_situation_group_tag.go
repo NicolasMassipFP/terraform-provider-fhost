@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SituationGroupTagResource{}
 var _ resource.ResourceWithImportState = &SituationGroupTagResource{}
 var _ context.Context = context.Background()
 
-
 // SituationGroupTagResource defines the resource implementation.
 type SituationGroupTagResource struct {
-    ResourceBase[SituationGroupTagResourceModel]
+	ResourceBase[SituationGroupTagResourceModel]
 }
-
 
 // Schema defines the schema for the SituationGroupTag resource.
 func (r *SituationGroupTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Situation Group Tag, which is used to categorize elements based on their situation group classification. It is a type of tag that can be applied to various elements in the system to indicate their association with specific situation groups.",
-      Attributes: GetSituationGroupTagSchemaAttributes(ctx),
-      Blocks: GetSituationGroupTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Situation Group Tag, which is used to categorize elements based on their situation group classification. It is a type of tag that can be applied to various elements in the system to indicate their association with specific situation groups.",
+		Attributes:  GetSituationGroupTagSchemaAttributes(ctx),
+		Blocks:      GetSituationGroupTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SituationGroupTagResource) Schema(ctx context.Context, _ resource.Schem
 func NewSituationGroupTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SituationGroupTag resource")
 	r := &SituationGroupTagResource{
-        ResourceBase: ResourceBase[SituationGroupTagResourceModel]{
-             resourceType: "situation_group_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SituationGroupTagResourceModel]{
+			resourceType:  "situation_group_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

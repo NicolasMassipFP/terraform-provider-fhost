@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type StaticMulticastRouteResourceModel struct {
-	
-    DestInterface *[]types.String `tfsdk:"dest_interface" json:"dest_interface,optional,omitempty" `
-        DestIp types.String `tfsdk:"dest_ip" json:"dest_ip,optional,omitempty" `
-        SourceInterface types.String `tfsdk:"source_interface" json:"source_interface,optional,omitempty" `
-        SourceIp types.String `tfsdk:"source_ip" json:"source_ip,optional,omitempty" `
-        
+	DestInterface   *[]types.String `tfsdk:"dest_interface" json:"dest_interface,optional,omitempty" `
+	DestIp          types.String    `tfsdk:"dest_ip" json:"dest_ip,optional,omitempty" `
+	SourceInterface types.String    `tfsdk:"source_interface" json:"source_interface,optional,omitempty" `
+	SourceIp        types.String    `tfsdk:"source_ip" json:"source_ip,optional,omitempty" `
 }

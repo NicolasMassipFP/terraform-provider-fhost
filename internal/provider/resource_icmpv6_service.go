@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Icmpv6ServiceResource{}
 var _ resource.ResourceWithImportState = &Icmpv6ServiceResource{}
 var _ context.Context = context.Background()
 
-
 // Icmpv6ServiceResource defines the resource implementation.
 type Icmpv6ServiceResource struct {
-    ResourceBase[Icmpv6ServiceResourceModel]
+	ResourceBase[Icmpv6ServiceResourceModel]
 }
-
 
 // Schema defines the schema for the Icmpv6Service resource.
 func (r *Icmpv6ServiceResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an ICMP service for IPv6.",
-      Attributes: GetIcmpv6ServiceSchemaAttributes(ctx),
-      Blocks: GetIcmpv6ServiceSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an ICMP service for IPv6.",
+		Attributes:  GetIcmpv6ServiceSchemaAttributes(ctx),
+		Blocks:      GetIcmpv6ServiceSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Icmpv6ServiceResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewIcmpv6ServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Icmpv6Service resource")
 	r := &Icmpv6ServiceResource{
-        ResourceBase: ResourceBase[Icmpv6ServiceResourceModel]{
-             resourceType: "icmp_ipv6_service",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Icmpv6ServiceResourceModel]{
+			resourceType:  "icmp_ipv6_service",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

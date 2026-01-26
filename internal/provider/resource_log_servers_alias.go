@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LogServersAliasResource{}
 var _ resource.ResourceWithImportState = &LogServersAliasResource{}
 var _ context.Context = context.Background()
 
-
 // LogServersAliasResource defines the resource implementation.
 type LogServersAliasResource struct {
-    ResourceBase[LogServersAliasResourceModel]
+	ResourceBase[LogServersAliasResourceModel]
 }
-
 
 // Schema defines the schema for the LogServersAlias resource.
 func (r *LogServersAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ Log Servers', which is used to substitute the log server object defined in the firewall where the policy is uploaded.",
-      Attributes: GetLogServersAliasSchemaAttributes(ctx),
-      Blocks: GetLogServersAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ Log Servers', which is used to substitute the log server object defined in the firewall where the policy is uploaded.",
+		Attributes:  GetLogServersAliasSchemaAttributes(ctx),
+		Blocks:      GetLogServersAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LogServersAliasResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewLogServersAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing LogServersAlias resource")
 	r := &LogServersAliasResource{
-        ResourceBase: ResourceBase[LogServersAliasResourceModel]{
-             resourceType: "log_servers_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LogServersAliasResourceModel]{
+			resourceType:  "log_servers_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

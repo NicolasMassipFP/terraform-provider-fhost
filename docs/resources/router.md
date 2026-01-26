@@ -32,8 +32,7 @@ This represents a Router, which is a Network Element representing a physical rou
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -52,13 +51,3 @@ Optional:
 - `probing_profile_ref` (String) This represents a Probing Profile used in Third Party Monitoring. It contains settings that define how a Log Server monitors third-party components.
 - `snmp_trap` (Boolean) Indicates whether SNMP trap reception is enabled for this device.
 - `time_zone` (String) The time zone ID for log reception, which determines the time zone used for timestamps in logs.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

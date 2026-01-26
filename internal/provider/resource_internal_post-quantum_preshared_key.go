@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &InternalPostQuantumPresharedKeyResource{}
 var _ resource.ResourceWithImportState = &InternalPostQuantumPresharedKeyResource{}
 var _ context.Context = context.Background()
 
-
 // InternalPostQuantumPresharedKeyResource defines the resource implementation.
 type InternalPostQuantumPresharedKeyResource struct {
-    ResourceBase[InternalPostQuantumPresharedKeyResourceModel]
+	ResourceBase[InternalPostQuantumPresharedKeyResourceModel]
 }
-
 
 // Schema defines the schema for the InternalPostQuantumPresharedKey resource.
 func (r *InternalPostQuantumPresharedKeyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Post-quantum Preshared Key to use in VPN Gateway-Gateway tunnels and Route-Based VPN Tunnels. It is used for internal purposes and does not require a name.",
-      Attributes: GetInternalPostQuantumPresharedKeySchemaAttributes(ctx),
-      Blocks: GetInternalPostQuantumPresharedKeySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Post-quantum Preshared Key to use in VPN Gateway-Gateway tunnels and Route-Based VPN Tunnels. It is used for internal purposes and does not require a name.",
+		Attributes:  GetInternalPostQuantumPresharedKeySchemaAttributes(ctx),
+		Blocks:      GetInternalPostQuantumPresharedKeySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *InternalPostQuantumPresharedKeyResource) Schema(ctx context.Context, _ 
 func NewInternalPostQuantumPresharedKeyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing InternalPostQuantumPresharedKey resource")
 	r := &InternalPostQuantumPresharedKeyResource{
-        ResourceBase: ResourceBase[InternalPostQuantumPresharedKeyResourceModel]{
-             resourceType: "internal_ppk",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[InternalPostQuantumPresharedKeyResourceModel]{
+			resourceType:  "internal_ppk",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

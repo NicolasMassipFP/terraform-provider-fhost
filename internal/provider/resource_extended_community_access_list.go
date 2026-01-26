@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ExtendedCommunityAccessListResource{}
 var _ resource.ResourceWithImportState = &ExtendedCommunityAccessListResource{}
 var _ context.Context = context.Background()
 
-
 // ExtendedCommunityAccessListResource defines the resource implementation.
 type ExtendedCommunityAccessListResource struct {
-    ResourceBase[ExtendedCommunityAccessListResourceModel]
+	ResourceBase[ExtendedCommunityAccessListResourceModel]
 }
-
 
 // Schema defines the schema for the ExtendedCommunityAccessList resource.
 func (r *ExtendedCommunityAccessListResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.",
-      Attributes: GetExtendedCommunityAccessListSchemaAttributes(ctx),
-      Blocks: GetExtendedCommunityAccessListSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.",
+		Attributes:  GetExtendedCommunityAccessListSchemaAttributes(ctx),
+		Blocks:      GetExtendedCommunityAccessListSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ExtendedCommunityAccessListResource) Schema(ctx context.Context, _ reso
 func NewExtendedCommunityAccessListResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ExtendedCommunityAccessList resource")
 	r := &ExtendedCommunityAccessListResource{
-        ResourceBase: ResourceBase[ExtendedCommunityAccessListResourceModel]{
-             resourceType: "extended_community_access_list",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ExtendedCommunityAccessListResourceModel]{
+			resourceType:  "extended_community_access_list",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

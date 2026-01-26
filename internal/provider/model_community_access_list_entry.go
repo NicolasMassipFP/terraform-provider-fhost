@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,13 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type CommunityAccessListEntryResourceModel struct {
-	
-    Action types.String `tfsdk:"action" json:"action,optional,omitempty" `
-        Community types.String `tfsdk:"community" json:"community,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Rank types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-        
+	Action    types.String  `tfsdk:"action" json:"action,optional,omitempty" `
+	Community types.String  `tfsdk:"community" json:"community,optional,omitempty" `
+	Key       types.Int64   `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Rank      types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
 }
+
 func (r *CommunityAccessListEntryResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Community.IsNull() || r.Community.IsUnknown() {
 		return nil

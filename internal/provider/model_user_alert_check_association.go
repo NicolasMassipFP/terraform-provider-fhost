@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type UserAlertCheckAssociationResourceModel struct {
-	
-    Enabled types.Bool `tfsdk:"enabled" json:"enabled,optional,omitempty" `
-        Ref types.String `tfsdk:"ref" json:"ref,optional,omitempty" `
-        
+	Enabled types.Bool   `tfsdk:"enabled" json:"enabled,optional,omitempty" `
+	Ref     types.String `tfsdk:"ref" json:"ref,optional,omitempty" `
 }

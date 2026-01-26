@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Ipv6AccessRuleResource{}
 var _ resource.ResourceWithImportState = &Ipv6AccessRuleResource{}
 var _ context.Context = context.Background()
 
-
 // Ipv6AccessRuleResource defines the resource implementation.
 type Ipv6AccessRuleResource struct {
-    ResourceBase[Ipv6AccessRuleResourceModel]
+	ResourceBase[Ipv6AccessRuleResourceModel]
 }
-
 
 // Schema defines the schema for the Ipv6AccessRule resource.
 func (r *Ipv6AccessRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.",
-      Attributes: GetIpv6AccessRuleSchemaAttributes(ctx),
-      Blocks: GetIpv6AccessRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.",
+		Attributes:  GetIpv6AccessRuleSchemaAttributes(ctx),
+		Blocks:      GetIpv6AccessRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *Ipv6AccessRuleResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewIpv6AccessRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Ipv6AccessRule resource")
 	r := &Ipv6AccessRuleResource{
-        ResourceBase: ResourceBase[Ipv6AccessRuleResourceModel]{
-             resourceType: "fw_ipv6_access_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Ipv6AccessRuleResourceModel]{
+			resourceType:  "fw_ipv6_access_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *Ipv6AccessRuleResource) getCreateRequestParams(_ context.Context, data *Ipv6AccessRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *Ipv6AccessRuleResource) getCreateRequestParams(_ context.Context, data *Ipv6AccessRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

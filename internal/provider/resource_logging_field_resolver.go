@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LoggingFieldResolverResource{}
 var _ resource.ResourceWithImportState = &LoggingFieldResolverResource{}
 var _ context.Context = context.Background()
 
-
 // LoggingFieldResolverResource defines the resource implementation.
 type LoggingFieldResolverResource struct {
-    ResourceBase[LoggingFieldResolverResourceModel]
+	ResourceBase[LoggingFieldResolverResourceModel]
 }
-
 
 // Schema defines the schema for the LoggingFieldResolver resource.
 func (r *LoggingFieldResolverResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Logging Field Resolver, which is used to resolve fields in logging profiles for third-party integrations. It allows for the mapping and resolution of fields in logs to ensure accurate data representation.",
-      Attributes: GetLoggingFieldResolverSchemaAttributes(ctx),
-      Blocks: GetLoggingFieldResolverSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Logging Field Resolver, which is used to resolve fields in logging profiles for third-party integrations. It allows for the mapping and resolution of fields in logs to ensure accurate data representation.",
+		Attributes:  GetLoggingFieldResolverSchemaAttributes(ctx),
+		Blocks:      GetLoggingFieldResolverSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LoggingFieldResolverResource) Schema(ctx context.Context, _ resource.Sc
 func NewLoggingFieldResolverResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing LoggingFieldResolver resource")
 	r := &LoggingFieldResolverResource{
-        ResourceBase: ResourceBase[LoggingFieldResolverResourceModel]{
-             resourceType: "resolver",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LoggingFieldResolverResourceModel]{
+			resourceType:  "resolver",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

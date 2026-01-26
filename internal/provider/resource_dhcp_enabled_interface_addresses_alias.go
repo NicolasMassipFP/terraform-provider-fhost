@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &DhcpEnabledInterfaceAddressesAliasResource{}
 var _ resource.ResourceWithImportState = &DhcpEnabledInterfaceAddressesAliasResource{}
 var _ context.Context = context.Background()
 
-
 // DhcpEnabledInterfaceAddressesAliasResource defines the resource implementation.
 type DhcpEnabledInterfaceAddressesAliasResource struct {
-    ResourceBase[DhcpEnabledInterfaceAddressesAliasResourceModel]
+	ResourceBase[DhcpEnabledInterfaceAddressesAliasResourceModel]
 }
-
 
 // Schema defines the schema for the DhcpEnabledInterfaceAddressesAlias resource.
 func (r *DhcpEnabledInterfaceAddressesAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ DHCP Enabled Interface Addresses', which is used to substitute all IP addresses of CVIs that have DHCP relay enabled.",
-      Attributes: GetDhcpEnabledInterfaceAddressesAliasSchemaAttributes(ctx),
-      Blocks: GetDhcpEnabledInterfaceAddressesAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ DHCP Enabled Interface Addresses', which is used to substitute all IP addresses of CVIs that have DHCP relay enabled.",
+		Attributes:  GetDhcpEnabledInterfaceAddressesAliasSchemaAttributes(ctx),
+		Blocks:      GetDhcpEnabledInterfaceAddressesAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *DhcpEnabledInterfaceAddressesAliasResource) Schema(ctx context.Context,
 func NewDhcpEnabledInterfaceAddressesAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing DhcpEnabledInterfaceAddressesAlias resource")
 	r := &DhcpEnabledInterfaceAddressesAliasResource{
-        ResourceBase: ResourceBase[DhcpEnabledInterfaceAddressesAliasResourceModel]{
-             resourceType: "dhcp_enabled_interface_addresses_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[DhcpEnabledInterfaceAddressesAliasResourceModel]{
+			resourceType:  "dhcp_enabled_interface_addresses_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

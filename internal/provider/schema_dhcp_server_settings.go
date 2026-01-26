@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,59 +30,78 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetDhcpServerSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "default_gateway": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The IP address of the Default Gateway through which traffic from clients is routed.",
-        },
-       "default_lease_time": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The Default Lease Time in seconds after which IP addresses assigned to clients must be renewed.",
-       },
-       "dhcp_address_range": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The manual DHCP address range or address in the same network space defined for the Physical Interface.",
-        },
-       "dhcp_range_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents an Address Range, which is a Network Element that defines a range of IP addresses. It includes attributes for the range of IP addresses, which must be valid IPv4 or IPv6 addresses.",
-        },
-       "domain_name_search_list": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The 'search list' of Domain Names to be used by the client to locate not-fully-qualified domain names.",
-        },
-       "primary_dns_server": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Primary DNS Server IP address that clients use to resolve domain names.",
-        },
-       "primary_wins_server": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Primary WINS Server IP address that clients use to resolve NetBIOS computer names.",
-        },
-       "secondary_dns_server": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Secondary DNS Server IP address that clients use to resolve domain names.",
-        },
-       "secondary_wins_server": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Secondary WINS Server IP address that clients use to resolve NetBIOS computer names.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"default_gateway": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The IP address of the Default Gateway through which traffic from clients is routed.",
+	},
+		"default_lease_time": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Default Lease Time in seconds after which IP addresses assigned to clients must be renewed.",
+		},
+		"dhcp_address_range": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The manual DHCP address range or address in the same network space defined for the Physical Interface.",
+		},
+		"dhcp_range_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents an Address Range, which is a Network Element that defines a range of IP addresses. It includes attributes for the range of IP addresses, which must be valid IPv4 or IPv6 addresses.",
+		},
+		"domain_name_search_list": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The 'search list' of Domain Names to be used by the client to locate not-fully-qualified domain names.",
+		},
+		"primary_dns_server": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Primary DNS Server IP address that clients use to resolve domain names.",
+		},
+		"primary_wins_server": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Primary WINS Server IP address that clients use to resolve NetBIOS computer names.",
+		},
+		"secondary_dns_server": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Secondary DNS Server IP address that clients use to resolve domain names.",
+		},
+		"secondary_wins_server": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Secondary WINS Server IP address that clients use to resolve NetBIOS computer names.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getDhcpServerSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetDhcpServerSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getDhcpServerSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "dhcp_range_per_node": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetDhcpRangeNodeSchemaAttributes(ctx),
-         Blocks: GetDhcpRangeNodeSchemaBlocks(ctx),
-          },
-         },
-
-    }
+func getDhcpServerSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"dhcp_range_per_node": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetDhcpRangeNodeSchemaAttributes(ctx),
+				Blocks:     GetDhcpRangeNodeSchemaBlocks(ctx),
+			},
+		},
+	}
 }

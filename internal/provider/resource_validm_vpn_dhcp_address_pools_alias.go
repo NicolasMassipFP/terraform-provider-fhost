@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ValidmVpnDhcpAddressPoolsAliasResource{}
 var _ resource.ResourceWithImportState = &ValidmVpnDhcpAddressPoolsAliasResource{}
 var _ context.Context = context.Background()
 
-
 // ValidmVpnDhcpAddressPoolsAliasResource defines the resource implementation.
 type ValidmVpnDhcpAddressPoolsAliasResource struct {
-    ResourceBase[ValidmVpnDhcpAddressPoolsAliasResourceModel]
+	ResourceBase[ValidmVpnDhcpAddressPoolsAliasResourceModel]
 }
-
 
 // Schema defines the schema for the ValidmVpnDhcpAddressPoolsAlias resource.
 func (r *ValidmVpnDhcpAddressPoolsAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ Valid DHCP Address Pools for IPsec VPN clients', which is used to substitute address pools defined in the Internal Security Gateway properties for assigning virtual IP addresses to IPsec VPN clients.",
-      Attributes: GetValidmVpnDhcpAddressPoolsAliasSchemaAttributes(ctx),
-      Blocks: GetValidmVpnDhcpAddressPoolsAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ Valid DHCP Address Pools for IPsec VPN clients', which is used to substitute address pools defined in the Internal Security Gateway properties for assigning virtual IP addresses to IPsec VPN clients.",
+		Attributes:  GetValidmVpnDhcpAddressPoolsAliasSchemaAttributes(ctx),
+		Blocks:      GetValidmVpnDhcpAddressPoolsAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ValidmVpnDhcpAddressPoolsAliasResource) Schema(ctx context.Context, _ r
 func NewValidmVpnDhcpAddressPoolsAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ValidmVpnDhcpAddressPoolsAlias resource")
 	r := &ValidmVpnDhcpAddressPoolsAliasResource{
-        ResourceBase: ResourceBase[ValidmVpnDhcpAddressPoolsAliasResourceModel]{
-             resourceType: "valid_vpn_dhcp_address_pools_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ValidmVpnDhcpAddressPoolsAliasResourceModel]{
+			resourceType:  "valid_vpn_dhcp_address_pools_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

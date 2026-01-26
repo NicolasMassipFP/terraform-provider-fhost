@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type OspfKeyChainEntryResourceModel struct {
-	
-    Algorithm types.String `tfsdk:"algorithm" json:"algorithm,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Key types.String `tfsdk:"key" json:"key,optional,omitempty" `
-        KeyId types.Int64 `tfsdk:"key_id" json:"key_id,optional,omitempty" `
-        SendKey types.Bool `tfsdk:"send_key" json:"send_key,optional,omitempty" `
-        
+	Algorithm types.String `tfsdk:"algorithm" json:"algorithm,optional,omitempty" `
+	Comment   types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Key       types.String `tfsdk:"key" json:"key,optional,omitempty" `
+	KeyId     types.Int64  `tfsdk:"key_id" json:"key_id,optional,omitempty" `
+	SendKey   types.Bool   `tfsdk:"send_key" json:"send_key,optional,omitempty" `
 }

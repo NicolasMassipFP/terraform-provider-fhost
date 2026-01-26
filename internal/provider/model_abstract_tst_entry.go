@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type AbstractTestEntryResourceModel struct {
-	
-    ExternalTest *ExternalTestResourceModel `tfsdk:"external_test" json:"external_test,optional,omitempty" `
-        FilesystemspaceTest *FileSystemSpaceTestResourceModel `tfsdk:"filesystemspace_test" json:"filesystemspace_test,optional,omitempty" `
-        FreeswapspaceTest *SwapFreeSpaceTestResourceModel `tfsdk:"freeswapspace_test" json:"freeswapspace_test,optional,omitempty" `
-        InlineTest *InlinePairLinkSpeedTestResourceModel `tfsdk:"inline_test" json:"inline_test,optional,omitempty" `
-        LinkstatusTest *InterfaceLinkTestResourceModel `tfsdk:"linkstatus_test" json:"linkstatus_test,optional,omitempty" `
-        MultipingTest *MultipingTestResourceModel `tfsdk:"multiping_test" json:"multiping_test,optional,omitempty" `
-        
+	ExternalTest        *ExternalTestResourceModel            `tfsdk:"external_test" json:"external_test,optional,omitempty" `
+	FilesystemspaceTest *FileSystemSpaceTestResourceModel     `tfsdk:"filesystemspace_test" json:"filesystemspace_test,optional,omitempty" `
+	FreeswapspaceTest   *SwapFreeSpaceTestResourceModel       `tfsdk:"freeswapspace_test" json:"freeswapspace_test,optional,omitempty" `
+	InlineTest          *InlinePairLinkSpeedTestResourceModel `tfsdk:"inline_test" json:"inline_test,optional,omitempty" `
+	LinkstatusTest      *InterfaceLinkTestResourceModel       `tfsdk:"linkstatus_test" json:"linkstatus_test,optional,omitempty" `
+	MultipingTest       *MultipingTestResourceModel           `tfsdk:"multiping_test" json:"multiping_test,optional,omitempty" `
 }

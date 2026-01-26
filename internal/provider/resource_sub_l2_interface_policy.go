@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SubL2InterfacePolicyResource{}
 var _ resource.ResourceWithImportState = &SubL2InterfacePolicyResource{}
 var _ context.Context = context.Background()
 
-
 // SubL2InterfacePolicyResource defines the resource implementation.
 type SubL2InterfacePolicyResource struct {
-    ResourceBase[SubL2InterfacePolicyResourceModel]
+	ResourceBase[SubL2InterfacePolicyResourceModel]
 }
-
 
 // Schema defines the schema for the SubL2InterfacePolicy resource.
 func (r *SubL2InterfacePolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Layer 2 Interface Sub-Policy, which is used to group related L2FW Interface IPv4 Access rules for better organization and processing efficiency.",
-      Attributes: GetSubL2InterfacePolicySchemaAttributes(ctx),
-      Blocks: GetSubL2InterfacePolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Layer 2 Interface Sub-Policy, which is used to group related L2FW Interface IPv4 Access rules for better organization and processing efficiency.",
+		Attributes:  GetSubL2InterfacePolicySchemaAttributes(ctx),
+		Blocks:      GetSubL2InterfacePolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SubL2InterfacePolicyResource) Schema(ctx context.Context, _ resource.Sc
 func NewSubL2InterfacePolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SubL2InterfacePolicy resource")
 	r := &SubL2InterfacePolicyResource{
-        ResourceBase: ResourceBase[SubL2InterfacePolicyResourceModel]{
-             resourceType: "sub_l2_interface_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SubL2InterfacePolicyResourceModel]{
+			resourceType:  "sub_l2_interface_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

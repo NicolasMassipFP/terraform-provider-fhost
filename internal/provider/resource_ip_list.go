@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IpListResource{}
 var _ resource.ResourceWithImportState = &IpListResource{}
 var _ context.Context = context.Background()
 
-
 // IpListResource defines the resource implementation.
 type IpListResource struct {
-    ResourceBase[IpListResourceModel]
+	ResourceBase[IpListResourceModel]
 }
-
 
 // Schema defines the schema for the IpList resource.
 func (r *IpListResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a list of IP addresses.",
-      Attributes: GetIpListSchemaAttributes(ctx),
-      Blocks: GetIpListSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a list of IP addresses.",
+		Attributes:  GetIpListSchemaAttributes(ctx),
+		Blocks:      GetIpListSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IpListResource) Schema(ctx context.Context, _ resource.SchemaRequest, r
 func NewIpListResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IpList resource")
 	r := &IpListResource{
-        ResourceBase: ResourceBase[IpListResourceModel]{
-             resourceType: "ip_list",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IpListResourceModel]{
+			resourceType:  "ip_list",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

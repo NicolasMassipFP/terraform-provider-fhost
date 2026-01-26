@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SnmpAgentResource{}
 var _ resource.ResourceWithImportState = &SnmpAgentResource{}
 var _ context.Context = context.Background()
 
-
 // SnmpAgentResource defines the resource implementation.
 type SnmpAgentResource struct {
-    ResourceBase[SnmpAgentResourceModel]
+	ResourceBase[SnmpAgentResourceModel]
 }
-
 
 // Schema defines the schema for the SnmpAgent resource.
 func (r *SnmpAgentResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an SNMP Agent. It contains the configuration details for SNMP (Simple Network Management Protocol) on an engine, including SNMP version, users, monitoring settings, and trap destinations.",
-      Attributes: GetSnmpAgentSchemaAttributes(ctx),
-      Blocks: GetSnmpAgentSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an SNMP Agent. It contains the configuration details for SNMP (Simple Network Management Protocol) on an engine, including SNMP version, users, monitoring settings, and trap destinations.",
+		Attributes:  GetSnmpAgentSchemaAttributes(ctx),
+		Blocks:      GetSnmpAgentSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SnmpAgentResource) Schema(ctx context.Context, _ resource.SchemaRequest
 func NewSnmpAgentResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SnmpAgent resource")
 	r := &SnmpAgentResource{
-        ResourceBase: ResourceBase[SnmpAgentResourceModel]{
-             resourceType: "snmp_agent",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SnmpAgentResourceModel]{
+			resourceType:  "snmp_agent",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

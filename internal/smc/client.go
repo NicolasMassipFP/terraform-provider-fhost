@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"time"
 )
@@ -123,9 +124,13 @@ func (c *SmcClient) unsafeRequest(opts *Options) (*ResponseData, error) {
 		body = bytes.NewReader(opts.Body)
 	}
 
-	// todo must replace the scheme, host and port with those from the
+	// replace the scheme, host and port with those from the
 	// client (reverse proxy)
-	req, err := http.NewRequestWithContext(ctx, opts.Method, opts.URL, body)
+	newUrl, err := ReplaceBaseInURL(opts.URL, c.BaseUrl)
+	if err != nil {
+		return nil, fmt.Errorf("failed to replace base URL: %w", err)
+	}
+	req, err := http.NewRequestWithContext(ctx, opts.Method, newUrl, body)
 	if err != nil {
 		return nil, err
 	}
@@ -267,6 +272,31 @@ func (c *SmcClient) UpdateLogContext(ctx context.Context, mgtServerId string) {
 	c.SmcContext = NewLogContext(ctx, mgtServerId)
 }
 
+// ResolveCertificate resolves the certificate from either a file path or PEM-encoded content.
+// If the input looks like a file path (exists as a file), it reads the file.
+// Otherwise, it assumes the input is PEM-encoded certificate content.
+func ResolveCertificate(certInput string) (string, error) {
+	// First, try to check if it's a valid file path
+	if _, err := os.Stat(certInput); err == nil {
+		// File exists, read it
+		certContent, err := os.ReadFile(certInput)
+		if err != nil {
+			return "", fmt.Errorf("failed to read certificate file: %w", err)
+		}
+		return string(certContent), nil
+	}
+
+	// If file doesn't exist, assume it's PEM content directly
+	// Check if it looks like PEM content (starts with -----BEGIN)
+	trimmedInput := strings.TrimSpace(certInput)
+	if strings.HasPrefix(trimmedInput, "-----BEGIN") {
+		return trimmedInput, nil
+	}
+
+	// If it's neither a file nor PEM content, return an error
+	return "", fmt.Errorf("certificate input is neither a valid file path nor PEM-encoded content")
+}
+
 // NewClient creates a new SmcClient
 // use GetOrCreateClientFromAuth if you need to reuse sessions
 func NewClient(ctx context.Context,
@@ -285,9 +315,15 @@ func NewClient(ctx context.Context,
 
 	// todo the client/transport configured here is not used
 	if trustedCert != "" {
+		// Resolve the certificate - either from file path or direct content
+		certContent, err := ResolveCertificate(trustedCert)
+		if err != nil {
+			return nil, fmt.Errorf("failed to resolve certificate: %w", err)
+		}
+
 		// Load custom trusted cert
 		certPool := x509.NewCertPool()
-		if !certPool.AppendCertsFromPEM([]byte(trustedCert)) {
+		if !certPool.AppendCertsFromPEM([]byte(certContent)) {
 			return nil, fmt.Errorf("failed to append trusted certificate")
 		}
 		tlsConfig.RootCAs = certPool

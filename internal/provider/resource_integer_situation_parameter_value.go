@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IntegerSituationParameterValueResource{}
 var _ resource.ResourceWithImportState = &IntegerSituationParameterValueResource{}
 var _ context.Context = context.Background()
 
-
 // IntegerSituationParameterValueResource defines the resource implementation.
 type IntegerSituationParameterValueResource struct {
-    ResourceBase[IntegerSituationParameterValueResourceModel]
+	ResourceBase[IntegerSituationParameterValueResourceModel]
 }
-
 
 // Schema defines the schema for the IntegerSituationParameterValue resource.
 func (r *IntegerSituationParameterValueResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an integer parameter value within a situation, allowing for the application of specific integer values to the situation's parameters.",
-      Attributes: GetIntegerSituationParameterValueSchemaAttributes(ctx),
-      Blocks: GetIntegerSituationParameterValueSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an integer parameter value within a situation, allowing for the application of specific integer values to the situation's parameters.",
+		Attributes:  GetIntegerSituationParameterValueSchemaAttributes(ctx),
+		Blocks:      GetIntegerSituationParameterValueSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IntegerSituationParameterValueResource) Schema(ctx context.Context, _ r
 func NewIntegerSituationParameterValueResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IntegerSituationParameterValue resource")
 	r := &IntegerSituationParameterValueResource{
-        ResourceBase: ResourceBase[IntegerSituationParameterValueResourceModel]{
-             resourceType: "integer_situation_parameter_value",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IntegerSituationParameterValueResourceModel]{
+			resourceType:  "integer_situation_parameter_value",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

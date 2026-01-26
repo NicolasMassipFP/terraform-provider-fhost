@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type EcaExecutableResourceModel struct {
-	
-    FileName types.String `tfsdk:"file_name" json:"file_name,optional,omitempty" `
-        Md5Hash types.String `tfsdk:"md5_hash" json:"md5_hash,optional,omitempty" `
-        ProductName types.String `tfsdk:"product_name" json:"product_name,optional,omitempty" `
-        Sha256Hash types.String `tfsdk:"sha256_hash" json:"sha256_hash,optional,omitempty" `
-        VersionNumber types.String `tfsdk:"version_number" json:"version_number,optional,omitempty" `
-        
+	FileName      types.String `tfsdk:"file_name" json:"file_name,optional,omitempty" `
+	Md5Hash       types.String `tfsdk:"md5_hash" json:"md5_hash,optional,omitempty" `
+	ProductName   types.String `tfsdk:"product_name" json:"product_name,optional,omitempty" `
+	Sha256Hash    types.String `tfsdk:"sha256_hash" json:"sha256_hash,optional,omitempty" `
+	VersionNumber types.String `tfsdk:"version_number" json:"version_number,optional,omitempty" `
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SourceMatchPartResourceModel struct {
-	
-    Any types.Bool `tfsdk:"any" json:"any,optional,omitempty" `
-        NetworkDetails *[]types.String `tfsdk:"resolved_src" json:"resolved_src,optional,omitempty" `
-        None types.Bool `tfsdk:"none" json:"none,optional,omitempty" `
-        Src *[]types.String `tfsdk:"src" json:"src,optional,omitempty" `
-        
+	Any            types.Bool      `tfsdk:"any" json:"any,optional,omitempty" `
+	NetworkDetails *[]types.String `tfsdk:"resolved_src" json:"resolved_src,optional,omitempty" `
+	None           types.Bool      `tfsdk:"none" json:"none,optional,omitempty" `
+	Src            *[]types.String `tfsdk:"src" json:"src,optional,omitempty" `
 }

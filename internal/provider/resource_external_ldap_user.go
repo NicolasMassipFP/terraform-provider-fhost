@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ExternalLdapUserResource{}
 var _ resource.ResourceWithImportState = &ExternalLdapUserResource{}
 var _ context.Context = context.Background()
 
-
 // ExternalLdapUserResource defines the resource implementation.
 type ExternalLdapUserResource struct {
-    ResourceBase[ExternalLdapUserResourceModel]
+	ResourceBase[ExternalLdapUserResourceModel]
 }
-
 
 // Schema defines the schema for the ExternalLdapUser resource.
 func (r *ExternalLdapUserResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an external LDAP User defined on the external LDAP server. It contains user details such as display name, email, phone number, job title, office location, frame IP, activation date, expiration date, and days left until expiration.",
-      Attributes: GetExternalLdapUserSchemaAttributes(ctx),
-      Blocks: GetExternalLdapUserSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an external LDAP User defined on the external LDAP server. It contains user details such as display name, email, phone number, job title, office location, frame IP, activation date, expiration date, and days left until expiration.",
+		Attributes:  GetExternalLdapUserSchemaAttributes(ctx),
+		Blocks:      GetExternalLdapUserSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ExternalLdapUserResource) Schema(ctx context.Context, _ resource.Schema
 func NewExternalLdapUserResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ExternalLdapUser resource")
 	r := &ExternalLdapUserResource{
-        ResourceBase: ResourceBase[ExternalLdapUserResourceModel]{
-             resourceType: "external_ldap_user",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ExternalLdapUserResourceModel]{
+			resourceType:  "external_ldap_user",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

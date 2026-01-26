@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,46 +30,65 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetEcaSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "eca_client_config": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a ECA Client Configuration, which is used to manage the client-side configuration for ECA (Endpoint Compliance Agent). It includes settings such as trusted certificate authorities and auto-discovery options.",
-        },
-       "eca_client_network_ref": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the Network representing the client network for this ECA settings.",
-         ElementType: types.StringType,
-       },
-       "eca_server_network_ref": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the Network representing the server network for this ECA settings.",
-         ElementType: types.StringType,
-       },
-       "listened_zone_ref": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the Interface Zone representing the listened zone for this ECA settings.",
-         ElementType: types.StringType,
-       },
-       "listening_port": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The port on which the ECA settings will listen for incoming connections.",
-       },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"eca_client_config": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "This represents a ECA Client Configuration, which is used to manage the client-side configuration for ECA (Endpoint Compliance Agent). It includes settings such as trusted certificate authorities and auto-discovery options.",
+	},
+		"eca_client_network_ref": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the Network representing the client network for this ECA settings.",
+			ElementType: types.StringType,
+		},
+		"eca_server_network_ref": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the Network representing the server network for this ECA settings.",
+			ElementType: types.StringType,
+		},
+		"listened_zone_ref": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the Interface Zone representing the listened zone for this ECA settings.",
+			ElementType: types.StringType,
+		},
+		"listening_port": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The port on which the ECA settings will listen for incoming connections.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getEcaSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetEcaSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getEcaSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "enabled_interface": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetEnabledInterfaceEntrySchemaAttributes(ctx),
-         Blocks: GetEnabledInterfaceEntrySchemaBlocks(ctx),
-          },
-         },
-
-    }
+func getEcaSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"enabled_interface": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetEnabledInterfaceEntrySchemaAttributes(ctx),
+				Blocks:     GetEnabledInterfaceEntrySchemaBlocks(ctx),
+			},
+		},
+	}
 }

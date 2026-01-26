@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &TlsServerCredentialsResource{}
 var _ resource.ResourceWithImportState = &TlsServerCredentialsResource{}
 var _ context.Context = context.Background()
 
-
 // TlsServerCredentialsResource defines the resource implementation.
 type TlsServerCredentialsResource struct {
-    ResourceBase[TlsServerCredentialsResourceModel]
+	ResourceBase[TlsServerCredentialsResourceModel]
 }
-
 
 // Schema defines the schema for the TlsServerCredentials resource.
 func (r *TlsServerCredentialsResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
-      Attributes: GetTlsServerCredentialsSchemaAttributes(ctx),
-      Blocks: GetTlsServerCredentialsSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
+		Attributes:  GetTlsServerCredentialsSchemaAttributes(ctx),
+		Blocks:      GetTlsServerCredentialsSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *TlsServerCredentialsResource) Schema(ctx context.Context, _ resource.Sc
 func NewTlsServerCredentialsResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing TlsServerCredentials resource")
 	r := &TlsServerCredentialsResource{
-        ResourceBase: ResourceBase[TlsServerCredentialsResourceModel]{
-             resourceType: "tls_server_credentials",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[TlsServerCredentialsResourceModel]{
+			resourceType:  "tls_server_credentials",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

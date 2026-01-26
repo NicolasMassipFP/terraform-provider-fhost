@@ -38,8 +38,7 @@ This represents a parameter for the Protocol Agent, allowing for detailed config
 ### Read-Only
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--parent_group"></a>
 ### Nested Schema for `parent_group`
@@ -64,25 +63,4 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--parent_group--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--parent_group--link"></a>
-### Nested Schema for `parent_group.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
+- `link` (Map of String) provides additional actions or resources.

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type AliasValueResourceModel struct {
-	
-    AliasRef types.String `tfsdk:"alias_ref" json:"alias_ref,optional,omitempty" `
-        ClusterRef types.String `tfsdk:"cluster_ref" json:"cluster_ref,optional,omitempty" `
-        ResolvedValue *[]types.String `tfsdk:"resolved_value" json:"resolved_value,optional,omitempty" `
-        TranslatedElement *[]types.String `tfsdk:"translated_element" json:"translated_element,optional,omitempty" `
-        
+	AliasRef          types.String    `tfsdk:"alias_ref" json:"alias_ref,optional,omitempty" `
+	ClusterRef        types.String    `tfsdk:"cluster_ref" json:"cluster_ref,optional,omitempty" `
+	ResolvedValue     *[]types.String `tfsdk:"resolved_value" json:"resolved_value,optional,omitempty" `
+	TranslatedElement *[]types.String `tfsdk:"translated_element" json:"translated_element,optional,omitempty" `
 }

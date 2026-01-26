@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &DnsRelayProfileResource{}
 var _ resource.ResourceWithImportState = &DnsRelayProfileResource{}
 var _ context.Context = context.Background()
 
-
 // DnsRelayProfileResource defines the resource implementation.
 type DnsRelayProfileResource struct {
-    ResourceBase[DnsRelayProfileResourceModel]
+	ResourceBase[DnsRelayProfileResourceModel]
 }
-
 
 // Schema defines the schema for the DnsRelayProfile resource.
 func (r *DnsRelayProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a DNS Relay profile element, which contains settings for hostname mappings, domain-specific DNS servers, fixed domain answers, and DNS answer translations.",
-      Attributes: GetDnsRelayProfileSchemaAttributes(ctx),
-      Blocks: GetDnsRelayProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a DNS Relay profile element, which contains settings for hostname mappings, domain-specific DNS servers, fixed domain answers, and DNS answer translations.",
+		Attributes:  GetDnsRelayProfileSchemaAttributes(ctx),
+		Blocks:      GetDnsRelayProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *DnsRelayProfileResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewDnsRelayProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing DnsRelayProfile resource")
 	r := &DnsRelayProfileResource{
-        ResourceBase: ResourceBase[DnsRelayProfileResourceModel]{
-             resourceType: "dns_relay_profile",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[DnsRelayProfileResourceModel]{
+			resourceType:  "dns_relay_profile",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

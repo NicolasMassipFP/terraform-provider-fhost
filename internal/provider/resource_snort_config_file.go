@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SnortConfigFileResource{}
 var _ resource.ResourceWithImportState = &SnortConfigFileResource{}
 var _ context.Context = context.Background()
 
-
 // SnortConfigFileResource defines the resource implementation.
 type SnortConfigFileResource struct {
-    ResourceBase[SnortConfigFileResourceModel]
+	ResourceBase[SnortConfigFileResourceModel]
 }
-
 
 // Schema defines the schema for the SnortConfigFile resource.
 func (r *SnortConfigFileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This is a Snort Configuration File. It contains the configuration settings for the Snort intrusion detection system, used to define rules and behaviors for network traffic analysis.",
-      Attributes: GetSnortConfigFileSchemaAttributes(ctx),
-      Blocks: GetSnortConfigFileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This is a Snort Configuration File. It contains the configuration settings for the Snort intrusion detection system, used to define rules and behaviors for network traffic analysis.",
+		Attributes:  GetSnortConfigFileSchemaAttributes(ctx),
+		Blocks:      GetSnortConfigFileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SnortConfigFileResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewSnortConfigFileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SnortConfigFile resource")
 	r := &SnortConfigFileResource{
-        ResourceBase: ResourceBase[SnortConfigFileResourceModel]{
-             resourceType: "snort_configuration_file",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SnortConfigFileResourceModel]{
+			resourceType:  "snort_configuration_file",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

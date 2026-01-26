@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Ipv4AddressSituationParameterValueResource{}
 var _ resource.ResourceWithImportState = &Ipv4AddressSituationParameterValueResource{}
 var _ context.Context = context.Background()
 
-
 // Ipv4AddressSituationParameterValueResource defines the resource implementation.
 type Ipv4AddressSituationParameterValueResource struct {
-    ResourceBase[Ipv4AddressSituationParameterValueResourceModel]
+	ResourceBase[Ipv4AddressSituationParameterValueResourceModel]
 }
-
 
 // Schema defines the schema for the Ipv4AddressSituationParameterValue resource.
 func (r *Ipv4AddressSituationParameterValueResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IPv4 address parameter value within a situation, allowing for the application of specific IPv4 address values to the situation's parameters.",
-      Attributes: GetIpv4AddressSituationParameterValueSchemaAttributes(ctx),
-      Blocks: GetIpv4AddressSituationParameterValueSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IPv4 address parameter value within a situation, allowing for the application of specific IPv4 address values to the situation's parameters.",
+		Attributes:  GetIpv4AddressSituationParameterValueSchemaAttributes(ctx),
+		Blocks:      GetIpv4AddressSituationParameterValueSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Ipv4AddressSituationParameterValueResource) Schema(ctx context.Context,
 func NewIpv4AddressSituationParameterValueResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Ipv4AddressSituationParameterValue resource")
 	r := &Ipv4AddressSituationParameterValueResource{
-        ResourceBase: ResourceBase[Ipv4AddressSituationParameterValueResourceModel]{
-             resourceType: "ipv4_address_situation_parameter_value",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Ipv4AddressSituationParameterValueResourceModel]{
+			resourceType:  "ipv4_address_situation_parameter_value",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

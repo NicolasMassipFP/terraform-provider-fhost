@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ApiClientResource{}
 var _ resource.ResourceWithImportState = &ApiClientResource{}
 var _ context.Context = context.Background()
 
-
 // ApiClientResource defines the resource implementation.
 type ApiClientResource struct {
-    ResourceBase[ApiClientResourceModel]
+	ResourceBase[ApiClientResourceModel]
 }
-
 
 // Schema defines the schema for the ApiClient resource.
 func (r *ApiClientResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.",
-      Attributes: GetApiClientSchemaAttributes(ctx),
-      Blocks: GetApiClientSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.",
+		Attributes:  GetApiClientSchemaAttributes(ctx),
+		Blocks:      GetApiClientSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ApiClientResource) Schema(ctx context.Context, _ resource.SchemaRequest
 func NewApiClientResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ApiClient resource")
 	r := &ApiClientResource{
-        ResourceBase: ResourceBase[ApiClientResourceModel]{
-             resourceType: "api_user",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ApiClientResourceModel]{
+			resourceType:  "api_user",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

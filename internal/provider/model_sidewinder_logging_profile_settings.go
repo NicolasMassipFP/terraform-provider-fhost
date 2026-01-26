@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SidewinderLoggingProfileSettingsResourceModel struct {
-	
-    Element types.String `tfsdk:"element" json:"element,optional,omitempty" `
-        Enable types.String `tfsdk:"enable" json:"enable,optional,omitempty" `
-        Interval types.Int64 `tfsdk:"interval" json:"interval,optional,omitempty" `
-        Threshold types.Int64 `tfsdk:"threshold" json:"threshold,optional,omitempty" `
-        
+	Element   types.String `tfsdk:"element" json:"element,optional,omitempty" `
+	Enable    types.String `tfsdk:"enable" json:"enable,optional,omitempty" `
+	Interval  types.Int64  `tfsdk:"interval" json:"interval,optional,omitempty" `
+	Threshold types.Int64  `tfsdk:"threshold" json:"threshold,optional,omitempty" `
 }

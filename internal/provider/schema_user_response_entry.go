@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,41 +30,59 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetUserResponseEntrySchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "reason": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The reason for sending this response, which can be used to provide context or explanation for the response.",
-        },
-       "redirect": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The type of redirect for the response, which can be 'automatic' or 'manual'.",
-        },
-       "type": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The type of response being sent, which can be one of the predefined response types such as 'tcp_close', 'url_redirect', or 'html_page'.",
-        },
-       "user_response_message": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The message content of the response, which is applicable for HTML advanced responses.",
-        },
-       "user_response_text": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The text content of the response, which can be a URL for URL redirects or HTML content for HTML responses.",
-        },
-       "user_response_title": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The title of the response message, which is applicable for HTML advanced responses.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"reason": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The reason for sending this response, which can be used to provide context or explanation for the response.",
+	},
+		"redirect": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The type of redirect for the response, which can be 'automatic' or 'manual'.",
+		},
+		"type": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The type of response being sent, which can be one of the predefined response types such as 'tcp_close', 'url_redirect', or 'html_page'.",
+		},
+		"user_response_message": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The message content of the response, which is applicable for HTML advanced responses.",
+		},
+		"user_response_text": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The text content of the response, which can be a URL for URL redirects or HTML content for HTML responses.",
+		},
+		"user_response_title": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The title of the response message, which is applicable for HTML advanced responses.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getUserResponseEntrySchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetUserResponseEntrySchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getUserResponseEntrySchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getUserResponseEntrySchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

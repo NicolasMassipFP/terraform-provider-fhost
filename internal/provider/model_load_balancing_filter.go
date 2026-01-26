@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,20 +16,17 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type LoadBalancingFilterResourceModel struct {
-	
-    Action types.String `tfsdk:"action" json:"action,optional,omitempty" `
-        IgnoreOther types.Bool `tfsdk:"ignore_other" json:"ignore_other,optional,omitempty" `
-        IpDescriptor types.String `tfsdk:"ip_descriptor" json:"ip_descriptor,optional,omitempty" `
-        NatEnforce types.Bool `tfsdk:"nat_enforce" json:"nat_enforce,optional,omitempty" `
-        Nodeid types.Int64 `tfsdk:"nodeid" json:"nodeid,optional,omitempty" `
-        ReplaceIp types.String `tfsdk:"replace_ip" json:"replace_ip,optional,omitempty" `
-        UseIpsec types.Bool `tfsdk:"use_ipsec" json:"use_ipsec,optional,omitempty" `
-        UsePorts types.Bool `tfsdk:"use_ports" json:"use_ports,optional,omitempty" `
-        
+	Action       types.String `tfsdk:"action" json:"action,optional,omitempty" `
+	IgnoreOther  types.Bool   `tfsdk:"ignore_other" json:"ignore_other,optional,omitempty" `
+	IpDescriptor types.String `tfsdk:"ip_descriptor" json:"ip_descriptor,optional,omitempty" `
+	NatEnforce   types.Bool   `tfsdk:"nat_enforce" json:"nat_enforce,optional,omitempty" `
+	Nodeid       types.Int64  `tfsdk:"nodeid" json:"nodeid,optional,omitempty" `
+	ReplaceIp    types.String `tfsdk:"replace_ip" json:"replace_ip,optional,omitempty" `
+	UseIpsec     types.Bool   `tfsdk:"use_ipsec" json:"use_ipsec,optional,omitempty" `
+	UsePorts     types.Bool   `tfsdk:"use_ports" json:"use_ports,optional,omitempty" `
 }
+
 func (r *LoadBalancingFilterResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Nodeid.IsNull() || r.Nodeid.IsUnknown() {
 		return nil

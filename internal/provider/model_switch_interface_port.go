@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SwitchInterfacePortResourceModel struct {
-	
-    PhysicalSwitchPortNumber types.String `tfsdk:"physical_switch_port_number" json:"physical_switch_port_number,optional,omitempty" `
-        SoftSwitchPintRef types.String `tfsdk:"soft_switch_pint_ref" json:"soft_switch_pint_ref,optional,omitempty" `
-        SwitchInterfacePortComment types.String `tfsdk:"switch_interface_port_comment" json:"switch_interface_port_comment,optional,omitempty" `
-        
+	PhysicalSwitchPortNumber   types.String `tfsdk:"physical_switch_port_number" json:"physical_switch_port_number,optional,omitempty" `
+	SoftSwitchPintRef          types.String `tfsdk:"soft_switch_pint_ref" json:"soft_switch_pint_ref,optional,omitempty" `
+	SwitchInterfacePortComment types.String `tfsdk:"switch_interface_port_comment" json:"switch_interface_port_comment,optional,omitempty" `
 }

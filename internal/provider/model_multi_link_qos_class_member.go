@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type MultiLinkQosClassMemberResourceModel struct {
-	
-    BalanceMethod types.String `tfsdk:"balance_method" json:"balance_method,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" `
-        QosClassRef types.String `tfsdk:"qos_class_ref" json:"qos_class_ref,optional,omitempty" `
-        
+	BalanceMethod types.String `tfsdk:"balance_method" json:"balance_method,optional,omitempty" `
+	Key           types.Int64  `tfsdk:"key" json:"key,optional,omitempty" `
+	QosClassRef   types.String `tfsdk:"qos_class_ref" json:"qos_class_ref,optional,omitempty" `
 }

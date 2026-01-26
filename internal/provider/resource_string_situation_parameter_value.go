@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &StringSituationParameterValueResource{}
 var _ resource.ResourceWithImportState = &StringSituationParameterValueResource{}
 var _ context.Context = context.Background()
 
-
 // StringSituationParameterValueResource defines the resource implementation.
 type StringSituationParameterValueResource struct {
-    ResourceBase[StringSituationParameterValueResourceModel]
+	ResourceBase[StringSituationParameterValueResourceModel]
 }
-
 
 // Schema defines the schema for the StringSituationParameterValue resource.
 func (r *StringSituationParameterValueResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a string parameter value within a situation, allowing for the application of specific string values to the situation's parameters.",
-      Attributes: GetStringSituationParameterValueSchemaAttributes(ctx),
-      Blocks: GetStringSituationParameterValueSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a string parameter value within a situation, allowing for the application of specific string values to the situation's parameters.",
+		Attributes:  GetStringSituationParameterValueSchemaAttributes(ctx),
+		Blocks:      GetStringSituationParameterValueSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *StringSituationParameterValueResource) Schema(ctx context.Context, _ re
 func NewStringSituationParameterValueResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing StringSituationParameterValue resource")
 	r := &StringSituationParameterValueResource{
-        ResourceBase: ResourceBase[StringSituationParameterValueResourceModel]{
-             resourceType: "string_situation_parameter_value",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[StringSituationParameterValueResourceModel]{
+			resourceType:  "string_situation_parameter_value",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

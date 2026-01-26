@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &PaParameterResource{}
 var _ resource.ResourceWithImportState = &PaParameterResource{}
 var _ context.Context = context.Background()
 
-
 // PaParameterResource defines the resource implementation.
 type PaParameterResource struct {
-    ResourceBase[PaParameterResourceModel]
+	ResourceBase[PaParameterResourceModel]
 }
-
 
 // Schema defines the schema for the PaParameter resource.
 func (r *PaParameterResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
-      Attributes: GetPaParameterSchemaAttributes(ctx),
-      Blocks: GetPaParameterSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
+		Attributes:  GetPaParameterSchemaAttributes(ctx),
+		Blocks:      GetPaParameterSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *PaParameterResource) Schema(ctx context.Context, _ resource.SchemaReque
 func NewPaParameterResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing PaParameter resource")
 	r := &PaParameterResource{
-        ResourceBase: ResourceBase[PaParameterResourceModel]{
-             resourceType: "pa_parameter",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[PaParameterResourceModel]{
+			resourceType:  "pa_parameter",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *PaParameterResource) getCreateRequestParams(_ context.Context, data *PaParameterResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *PaParameterResource) getCreateRequestParams(_ context.Context, data *PaParameterResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

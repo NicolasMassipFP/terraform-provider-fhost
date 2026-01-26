@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IpsTemplatePolicyResource{}
 var _ resource.ResourceWithImportState = &IpsTemplatePolicyResource{}
 var _ context.Context = context.Background()
 
-
 // IpsTemplatePolicyResource defines the resource implementation.
 type IpsTemplatePolicyResource struct {
-    ResourceBase[IpsTemplatePolicyResourceModel]
+	ResourceBase[IpsTemplatePolicyResourceModel]
 }
-
 
 // Schema defines the schema for the IpsTemplatePolicy resource.
 func (r *IpsTemplatePolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IPS Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.",
-      Attributes: GetIpsTemplatePolicySchemaAttributes(ctx),
-      Blocks: GetIpsTemplatePolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IPS Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.",
+		Attributes:  GetIpsTemplatePolicySchemaAttributes(ctx),
+		Blocks:      GetIpsTemplatePolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IpsTemplatePolicyResource) Schema(ctx context.Context, _ resource.Schem
 func NewIpsTemplatePolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IpsTemplatePolicy resource")
 	r := &IpsTemplatePolicyResource{
-        ResourceBase: ResourceBase[IpsTemplatePolicyResourceModel]{
-             resourceType: "ips_template_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IpsTemplatePolicyResourceModel]{
+			resourceType:  "ips_template_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

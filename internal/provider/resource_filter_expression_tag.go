@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &FilterExpressionTagResource{}
 var _ resource.ResourceWithImportState = &FilterExpressionTagResource{}
 var _ context.Context = context.Background()
 
-
 // FilterExpressionTagResource defines the resource implementation.
 type FilterExpressionTagResource struct {
-    ResourceBase[FilterExpressionTagResourceModel]
+	ResourceBase[FilterExpressionTagResourceModel]
 }
-
 
 // Schema defines the schema for the FilterExpressionTag resource.
 func (r *FilterExpressionTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Filter Expression Tag, which is used to categorize elements based on filter expressions. It is a type of tag that can be applied to various elements in the system to indicate their association with specific filter expressions.",
-      Attributes: GetFilterExpressionTagSchemaAttributes(ctx),
-      Blocks: GetFilterExpressionTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Filter Expression Tag, which is used to categorize elements based on filter expressions. It is a type of tag that can be applied to various elements in the system to indicate their association with specific filter expressions.",
+		Attributes:  GetFilterExpressionTagSchemaAttributes(ctx),
+		Blocks:      GetFilterExpressionTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *FilterExpressionTagResource) Schema(ctx context.Context, _ resource.Sch
 func NewFilterExpressionTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing FilterExpressionTag resource")
 	r := &FilterExpressionTagResource{
-        ResourceBase: ResourceBase[FilterExpressionTagResourceModel]{
-             resourceType: "filter_expression_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[FilterExpressionTagResourceModel]{
+			resourceType:  "filter_expression_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

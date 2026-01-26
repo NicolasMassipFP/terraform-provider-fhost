@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ActiveDirectoryServerResource{}
 var _ resource.ResourceWithImportState = &ActiveDirectoryServerResource{}
 var _ context.Context = context.Background()
 
-
 // ActiveDirectoryServerResource defines the resource implementation.
 type ActiveDirectoryServerResource struct {
-    ResourceBase[ActiveDirectoryServerResourceModel]
+	ResourceBase[ActiveDirectoryServerResourceModel]
 }
-
 
 // Schema defines the schema for the ActiveDirectoryServer resource.
 func (r *ActiveDirectoryServerResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Active Directory Server, which is used to store user information in a user database and can be queried during the user authentication process. It includes attributes for authentication IP, domain controllers, IAS service, retries, shared secret, and authentication port.",
-      Attributes: GetActiveDirectoryServerSchemaAttributes(ctx),
-      Blocks: GetActiveDirectoryServerSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Active Directory Server, which is used to store user information in a user database and can be queried during the user authentication process. It includes attributes for authentication IP, domain controllers, IAS service, retries, shared secret, and authentication port.",
+		Attributes:  GetActiveDirectoryServerSchemaAttributes(ctx),
+		Blocks:      GetActiveDirectoryServerSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ActiveDirectoryServerResource) Schema(ctx context.Context, _ resource.S
 func NewActiveDirectoryServerResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ActiveDirectoryServer resource")
 	r := &ActiveDirectoryServerResource{
-        ResourceBase: ResourceBase[ActiveDirectoryServerResourceModel]{
-             resourceType: "active_directory_server",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ActiveDirectoryServerResourceModel]{
+			resourceType:  "active_directory_server",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

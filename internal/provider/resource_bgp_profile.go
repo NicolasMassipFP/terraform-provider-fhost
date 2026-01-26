@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &BgpProfileResource{}
 var _ resource.ResourceWithImportState = &BgpProfileResource{}
 var _ context.Context = context.Background()
 
-
 // BgpProfileResource defines the resource implementation.
 type BgpProfileResource struct {
-    ResourceBase[BgpProfileResourceModel]
+	ResourceBase[BgpProfileResourceModel]
 }
-
 
 // Schema defines the schema for the BgpProfile resource.
 func (r *BgpProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the BGP Profile for Dynamic Routing Firewall functionality, including port settings, distances, and BGP entries.",
-      Attributes: GetBgpProfileSchemaAttributes(ctx),
-      Blocks: GetBgpProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the BGP Profile for Dynamic Routing Firewall functionality, including port settings, distances, and BGP entries.",
+		Attributes:  GetBgpProfileSchemaAttributes(ctx),
+		Blocks:      GetBgpProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *BgpProfileResource) Schema(ctx context.Context, _ resource.SchemaReques
 func NewBgpProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing BgpProfile resource")
 	r := &BgpProfileResource{
-        ResourceBase: ResourceBase[BgpProfileResourceModel]{
-             resourceType: "bgp_profile",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[BgpProfileResourceModel]{
+			resourceType:  "bgp_profile",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

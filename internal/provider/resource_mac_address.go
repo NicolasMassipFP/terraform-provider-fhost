@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &MacAddressResource{}
 var _ resource.ResourceWithImportState = &MacAddressResource{}
 var _ context.Context = context.Background()
 
-
 // MacAddressResource defines the resource implementation.
 type MacAddressResource struct {
-    ResourceBase[MacAddressResourceModel]
+	ResourceBase[MacAddressResourceModel]
 }
-
 
 // Schema defines the schema for the MacAddress resource.
 func (r *MacAddressResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a MAC Address, which is used to identify network interfaces.",
-      Attributes: GetMacAddressSchemaAttributes(ctx),
-      Blocks: GetMacAddressSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a MAC Address, which is used to identify network interfaces.",
+		Attributes:  GetMacAddressSchemaAttributes(ctx),
+		Blocks:      GetMacAddressSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *MacAddressResource) Schema(ctx context.Context, _ resource.SchemaReques
 func NewMacAddressResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing MacAddress resource")
 	r := &MacAddressResource{
-        ResourceBase: ResourceBase[MacAddressResourceModel]{
-             resourceType: "mac_address",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[MacAddressResourceModel]{
+			resourceType:  "mac_address",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

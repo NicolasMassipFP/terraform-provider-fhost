@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IpServiceGroupResource{}
 var _ resource.ResourceWithImportState = &IpServiceGroupResource{}
 var _ context.Context = context.Background()
 
-
 // IpServiceGroupResource defines the resource implementation.
 type IpServiceGroupResource struct {
-    ResourceBase[IpServiceGroupResourceModel]
+	ResourceBase[IpServiceGroupResourceModel]
 }
-
 
 // Schema defines the schema for the IpServiceGroup resource.
 func (r *IpServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IP-proto Service Group, which is used to group a list of IP-proto Services. It can contain both individual IP-proto Services and other Service Groups.",
-      Attributes: GetIpServiceGroupSchemaAttributes(ctx),
-      Blocks: GetIpServiceGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IP-proto Service Group, which is used to group a list of IP-proto Services. It can contain both individual IP-proto Services and other Service Groups.",
+		Attributes:  GetIpServiceGroupSchemaAttributes(ctx),
+		Blocks:      GetIpServiceGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IpServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewIpServiceGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IpServiceGroup resource")
 	r := &IpServiceGroupResource{
-        ResourceBase: ResourceBase[IpServiceGroupResourceModel]{
-             resourceType: "ip_service_group",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IpServiceGroupResourceModel]{
+			resourceType:  "ip_service_group",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

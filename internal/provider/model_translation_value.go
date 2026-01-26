@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type TranslationValueResourceModel struct {
-	
-    Element types.String `tfsdk:"element" json:"element,optional,omitempty" `
-        IpDescriptor types.String `tfsdk:"ip_descriptor" json:"ip_descriptor,optional,omitempty" `
-        MaxPort types.Int64 `tfsdk:"max_port" json:"max_port,optional,omitempty" `
-        MinPort types.Int64 `tfsdk:"min_port" json:"min_port,optional,omitempty" `
-        
+	Element      types.String `tfsdk:"element" json:"element,optional,omitempty" `
+	IpDescriptor types.String `tfsdk:"ip_descriptor" json:"ip_descriptor,optional,omitempty" `
+	MaxPort      types.Int64  `tfsdk:"max_port" json:"max_port,optional,omitempty" `
+	MinPort      types.Int64  `tfsdk:"min_port" json:"min_port,optional,omitempty" `
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &FirewallClusterResource{}
 var _ resource.ResourceWithImportState = &FirewallClusterResource{}
 var _ context.Context = context.Background()
 
-
 // FirewallClusterResource defines the resource implementation.
 type FirewallClusterResource struct {
-    ResourceBase[FirewallClusterResourceModel]
+	ResourceBase[FirewallClusterResourceModel]
 }
-
 
 // Schema defines the schema for the FirewallCluster resource.
 func (r *FirewallClusterResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a group of two or more firewall devices in the Stonesoft Management Center. It includes attributes for virtual defragmentation, connection limits, filter modes, cluster modes, and various settings related to firewall operations.",
-      Attributes: GetFirewallClusterSchemaAttributes(ctx),
-      Blocks: GetFirewallClusterSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a group of two or more firewall devices in the Stonesoft Management Center. It includes attributes for virtual defragmentation, connection limits, filter modes, cluster modes, and various settings related to firewall operations.",
+		Attributes:  GetFirewallClusterSchemaAttributes(ctx),
+		Blocks:      GetFirewallClusterSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *FirewallClusterResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewFirewallClusterResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing FirewallCluster resource")
 	r := &FirewallClusterResource{
-        ResourceBase: ResourceBase[FirewallClusterResourceModel]{
-             resourceType: "fw_cluster",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[FirewallClusterResourceModel]{
+			resourceType:  "fw_cluster",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

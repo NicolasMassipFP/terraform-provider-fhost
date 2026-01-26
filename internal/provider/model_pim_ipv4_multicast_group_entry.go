@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,13 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PimIpv4MulticastGroupEntryResourceModel struct {
-	
-    Mapping types.String `tfsdk:"mapping" json:"mapping,optional,omitempty" `
-        Mode types.String `tfsdk:"mode" json:"mode,optional,omitempty" `
-        MulticastGroupRef types.String `tfsdk:"multicast_group_ref" json:"multicast_group_ref,optional,omitempty" `
-        MulticastIpNetwork types.String `tfsdk:"multicast_ip_network" json:"multicast_ip_network,optional,omitempty" `
-        
+	Mapping            types.String `tfsdk:"mapping" json:"mapping,optional,omitempty" `
+	Mode               types.String `tfsdk:"mode" json:"mode,optional,omitempty" `
+	MulticastGroupRef  types.String `tfsdk:"multicast_group_ref" json:"multicast_group_ref,optional,omitempty" `
+	MulticastIpNetwork types.String `tfsdk:"multicast_ip_network" json:"multicast_ip_network,optional,omitempty" `
 }
+
 func (r *PimIpv4MulticastGroupEntryResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Mapping.IsNull() || r.Mapping.IsUnknown() {
 		return nil

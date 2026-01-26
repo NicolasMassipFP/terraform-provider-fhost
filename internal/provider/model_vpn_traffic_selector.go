@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,28 +16,25 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type VpnTrafficSelectorResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-    AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
-        Ipaddress types.String `tfsdk:"ipaddress" json:"ipaddress,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        PortNumber types.String `tfsdk:"port_number" json:"port_number,optional,omitempty" `
-        ProtocolNumber types.String `tfsdk:"protocol_number" json:"protocol_number,optional,omitempty" `
-        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
-        System types.Bool `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
-        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
-        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
-        
+	ID             types.String                                       `tfsdk:"id"`
+	AdminDomain    types.String                                       `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
+	Comment        types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Etag           types.String                                       `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
+	Ipaddress      types.String                                       `tfsdk:"ipaddress" json:"ipaddress,optional,omitempty" `
+	Key            types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link           customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk             customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Locked         types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
+	Name           types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	PortNumber     types.String                                       `tfsdk:"port_number" json:"port_number,optional,omitempty" `
+	ProtocolNumber types.String                                       `tfsdk:"protocol_number" json:"protocol_number,optional,omitempty" `
+	ReadOnly       types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
+	System         types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
+	SystemKey      types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
+	Trashed        types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 }
+
 func (r *VpnTrafficSelectorResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

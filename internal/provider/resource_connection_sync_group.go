@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ConnectionSyncGroupResource{}
 var _ resource.ResourceWithImportState = &ConnectionSyncGroupResource{}
 var _ context.Context = context.Background()
 
-
 // ConnectionSyncGroupResource defines the resource implementation.
 type ConnectionSyncGroupResource struct {
-    ResourceBase[ConnectionSyncGroupResourceModel]
+	ResourceBase[ConnectionSyncGroupResourceModel]
 }
-
 
 // Schema defines the schema for the ConnectionSyncGroup resource.
 func (r *ConnectionSyncGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Connection Sync Group, which is used for external high availability in single Engines. It includes attributes for monitoring and a list of elements that are part of the group.",
-      Attributes: GetConnectionSyncGroupSchemaAttributes(ctx),
-      Blocks: GetConnectionSyncGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Connection Sync Group, which is used for external high availability in single Engines. It includes attributes for monitoring and a list of elements that are part of the group.",
+		Attributes:  GetConnectionSyncGroupSchemaAttributes(ctx),
+		Blocks:      GetConnectionSyncGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ConnectionSyncGroupResource) Schema(ctx context.Context, _ resource.Sch
 func NewConnectionSyncGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ConnectionSyncGroup resource")
 	r := &ConnectionSyncGroupResource{
-        ResourceBase: ResourceBase[ConnectionSyncGroupResourceModel]{
-             resourceType: "connection_sync_group",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ConnectionSyncGroupResourceModel]{
+			resourceType:  "connection_sync_group",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

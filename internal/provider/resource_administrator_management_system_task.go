@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &AdministratorManagementSystemTaskResource{}
 var _ resource.ResourceWithImportState = &AdministratorManagementSystemTaskResource{}
 var _ context.Context = context.Background()
 
-
 // AdministratorManagementSystemTaskResource defines the resource implementation.
 type AdministratorManagementSystemTaskResource struct {
-    ResourceBase[AdministratorManagementSystemTaskResourceModel]
+	ResourceBase[AdministratorManagementSystemTaskResourceModel]
 }
-
 
 // Schema defines the schema for the AdministratorManagementSystemTask resource.
 func (r *AdministratorManagementSystemTaskResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Administrator Management System Task, which is used to manage administrator accounts in the system. It is a type of system task that can be scheduled and executed to ensure that administrator accounts are properly managed.",
-      Attributes: GetAdministratorManagementSystemTaskSchemaAttributes(ctx),
-      Blocks: GetAdministratorManagementSystemTaskSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Administrator Management System Task, which is used to manage administrator accounts in the system. It is a type of system task that can be scheduled and executed to ensure that administrator accounts are properly managed.",
+		Attributes:  GetAdministratorManagementSystemTaskSchemaAttributes(ctx),
+		Blocks:      GetAdministratorManagementSystemTaskSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *AdministratorManagementSystemTaskResource) Schema(ctx context.Context, 
 func NewAdministratorManagementSystemTaskResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing AdministratorManagementSystemTask resource")
 	r := &AdministratorManagementSystemTaskResource{
-        ResourceBase: ResourceBase[AdministratorManagementSystemTaskResourceModel]{
-             resourceType: "disable_unused_admin_task",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[AdministratorManagementSystemTaskResourceModel]{
+			resourceType:  "disable_unused_admin_task",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
