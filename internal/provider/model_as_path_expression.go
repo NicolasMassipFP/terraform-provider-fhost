@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type AsPathExpressionResourceModel struct {
-	
-    Expression types.String `tfsdk:"expression" json:"expression,optional,omitempty" `
-        Rank types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-        
+	Expression types.String  `tfsdk:"expression" json:"expression,optional,omitempty" `
+	Rank       types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
 }
+
 func (r *AsPathExpressionResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Expression.IsNull() || r.Expression.IsUnknown() {
 		return nil

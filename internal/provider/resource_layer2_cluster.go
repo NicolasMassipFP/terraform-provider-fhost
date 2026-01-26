@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Layer2ClusterResource{}
 var _ resource.ResourceWithImportState = &Layer2ClusterResource{}
 var _ context.Context = context.Background()
 
-
 // Layer2ClusterResource defines the resource implementation.
 type Layer2ClusterResource struct {
-    ResourceBase[Layer2ClusterResourceModel]
+	ResourceBase[Layer2ClusterResourceModel]
 }
-
 
 // Schema defines the schema for the Layer2Cluster resource.
 func (r *Layer2ClusterResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.",
-      Attributes: GetLayer2ClusterSchemaAttributes(ctx),
-      Blocks: GetLayer2ClusterSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.",
+		Attributes:  GetLayer2ClusterSchemaAttributes(ctx),
+		Blocks:      GetLayer2ClusterSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Layer2ClusterResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewLayer2ClusterResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Layer2Cluster resource")
 	r := &Layer2ClusterResource{
-        ResourceBase: ResourceBase[Layer2ClusterResourceModel]{
-             resourceType: "firewall_layer2_cluster",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Layer2ClusterResourceModel]{
+			resourceType:  "firewall_layer2_cluster",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

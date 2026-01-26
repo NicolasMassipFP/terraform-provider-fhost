@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LogoFileResource{}
 var _ resource.ResourceWithImportState = &LogoFileResource{}
 var _ context.Context = context.Background()
 
-
 // LogoFileResource defines the resource implementation.
 type LogoFileResource struct {
-    ResourceBase[LogoFileResourceModel]
+	ResourceBase[LogoFileResourceModel]
 }
-
 
 // Schema defines the schema for the LogoFile resource.
 func (r *LogoFileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.",
-      Attributes: GetLogoFileSchemaAttributes(ctx),
-      Blocks: GetLogoFileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.",
+		Attributes:  GetLogoFileSchemaAttributes(ctx),
+		Blocks:      GetLogoFileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LogoFileResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 func NewLogoFileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing LogoFile resource")
 	r := &LogoFileResource{
-        ResourceBase: ResourceBase[LogoFileResourceModel]{
-             resourceType: "logo_file",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LogoFileResourceModel]{
+			resourceType:  "logo_file",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

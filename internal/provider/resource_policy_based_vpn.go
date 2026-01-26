@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &PolicyBasedVpnResource{}
 var _ resource.ResourceWithImportState = &PolicyBasedVpnResource{}
 var _ context.Context = context.Background()
 
-
 // PolicyBasedVpnResource defines the resource implementation.
 type PolicyBasedVpnResource struct {
-    ResourceBase[PolicyBasedVpnResourceModel]
+	ResourceBase[PolicyBasedVpnResourceModel]
 }
-
 
 // Schema defines the schema for the PolicyBasedVpn resource.
 func (r *PolicyBasedVpnResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
-      Attributes: GetPolicyBasedVpnSchemaAttributes(ctx),
-      Blocks: GetPolicyBasedVpnSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
+		Attributes:  GetPolicyBasedVpnSchemaAttributes(ctx),
+		Blocks:      GetPolicyBasedVpnSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *PolicyBasedVpnResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewPolicyBasedVpnResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing PolicyBasedVpn resource")
 	r := &PolicyBasedVpnResource{
-        ResourceBase: ResourceBase[PolicyBasedVpnResourceModel]{
-             resourceType: "vpn",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[PolicyBasedVpnResourceModel]{
+			resourceType:  "vpn",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

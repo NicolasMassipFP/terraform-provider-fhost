@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &NotBrowsedLdapUserResource{}
 var _ resource.ResourceWithImportState = &NotBrowsedLdapUserResource{}
 var _ context.Context = context.Background()
 
-
 // NotBrowsedLdapUserResource defines the resource implementation.
 type NotBrowsedLdapUserResource struct {
-    ResourceBase[NotBrowsedLdapUserResourceModel]
+	ResourceBase[NotBrowsedLdapUserResourceModel]
 }
-
 
 // Schema defines the schema for the NotBrowsedLdapUser resource.
 func (r *NotBrowsedLdapUserResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a User of a Domain where SMC does not connect to the directory server for browsing users and groups. It contains the ETag for versioning.",
-      Attributes: GetNotBrowsedLdapUserSchemaAttributes(ctx),
-      Blocks: GetNotBrowsedLdapUserSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a User of a Domain where SMC does not connect to the directory server for browsing users and groups. It contains the ETag for versioning.",
+		Attributes:  GetNotBrowsedLdapUserSchemaAttributes(ctx),
+		Blocks:      GetNotBrowsedLdapUserSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *NotBrowsedLdapUserResource) Schema(ctx context.Context, _ resource.Sche
 func NewNotBrowsedLdapUserResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing NotBrowsedLdapUser resource")
 	r := &NotBrowsedLdapUserResource{
-        ResourceBase: ResourceBase[NotBrowsedLdapUserResourceModel]{
-             resourceType: "ldap_user",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[NotBrowsedLdapUserResourceModel]{
+			resourceType:  "ldap_user",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

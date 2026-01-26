@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type VssContextIscSettingsResourceModel struct {
-	
-    IscName types.String `tfsdk:"isc_name" json:"isc_name,optional,omitempty" `
-        IscPolicyId types.Int64 `tfsdk:"isc_policy_id" json:"isc_policy_id,optional,omitempty" `
-        IscTrafficTag types.String `tfsdk:"isc_traffic_tag" json:"isc_traffic_tag,optional,omitempty" `
-        
+	IscName       types.String `tfsdk:"isc_name" json:"isc_name,optional,omitempty" `
+	IscPolicyId   types.Int64  `tfsdk:"isc_policy_id" json:"isc_policy_id,optional,omitempty" `
+	IscTrafficTag types.String `tfsdk:"isc_traffic_tag" json:"isc_traffic_tag,optional,omitempty" `
 }

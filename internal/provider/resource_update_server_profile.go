@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &UpdateServerProfileResource{}
 var _ resource.ResourceWithImportState = &UpdateServerProfileResource{}
 var _ context.Context = context.Background()
 
-
 // UpdateServerProfileResource defines the resource implementation.
 type UpdateServerProfileResource struct {
-    ResourceBase[UpdateServerProfileResourceModel]
+	ResourceBase[UpdateServerProfileResourceModel]
 }
-
 
 // Schema defines the schema for the UpdateServerProfile resource.
 func (r *UpdateServerProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents Update Server Profile (aka Update Service). It contains the URLs to connect to the update server, the TLS profile used for secure connections, and connection parameters such as timeout and retry count.",
-      Attributes: GetUpdateServerProfileSchemaAttributes(ctx),
-      Blocks: GetUpdateServerProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents Update Server Profile (aka Update Service). It contains the URLs to connect to the update server, the TLS profile used for secure connections, and connection parameters such as timeout and retry count.",
+		Attributes:  GetUpdateServerProfileSchemaAttributes(ctx),
+		Blocks:      GetUpdateServerProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *UpdateServerProfileResource) Schema(ctx context.Context, _ resource.Sch
 func NewUpdateServerProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing UpdateServerProfile resource")
 	r := &UpdateServerProfileResource{
-        ResourceBase: ResourceBase[UpdateServerProfileResourceModel]{
-             resourceType: "update_service",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[UpdateServerProfileResourceModel]{
+			resourceType:  "update_service",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

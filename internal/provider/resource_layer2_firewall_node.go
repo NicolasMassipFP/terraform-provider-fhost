@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Layer2FirewallNodeResource{}
 var _ resource.ResourceWithImportState = &Layer2FirewallNodeResource{}
 var _ context.Context = context.Background()
 
-
 // Layer2FirewallNodeResource defines the resource implementation.
 type Layer2FirewallNodeResource struct {
-    ResourceBase[Layer2FirewallNodeResourceModel]
+	ResourceBase[Layer2FirewallNodeResourceModel]
 }
-
 
 // Schema defines the schema for the Layer2FirewallNode resource.
 func (r *Layer2FirewallNodeResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Layer 2 Firewall Engine node in the Security Management Client, which is a device that runs layer 2 firewall software as part of a Layer 2 Firewall Cluster or a Single Layer 2 Firewall.",
-      Attributes: GetLayer2FirewallNodeSchemaAttributes(ctx),
-      Blocks: GetLayer2FirewallNodeSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Layer 2 Firewall Engine node in the Security Management Client, which is a device that runs layer 2 firewall software as part of a Layer 2 Firewall Cluster or a Single Layer 2 Firewall.",
+		Attributes:  GetLayer2FirewallNodeSchemaAttributes(ctx),
+		Blocks:      GetLayer2FirewallNodeSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Layer2FirewallNodeResource) Schema(ctx context.Context, _ resource.Sche
 func NewLayer2FirewallNodeResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Layer2FirewallNode resource")
 	r := &Layer2FirewallNodeResource{
-        ResourceBase: ResourceBase[Layer2FirewallNodeResourceModel]{
-             resourceType: "fwlayer2_node",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Layer2FirewallNodeResourceModel]{
+			resourceType:  "fwlayer2_node",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

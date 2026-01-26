@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IpsEthernetRuleResource{}
 var _ resource.ResourceWithImportState = &IpsEthernetRuleResource{}
 var _ context.Context = context.Background()
 
-
 // IpsEthernetRuleResource defines the resource implementation.
 type IpsEthernetRuleResource struct {
-    ResourceBase[IpsEthernetRuleResourceModel]
+	ResourceBase[IpsEthernetRuleResourceModel]
 }
-
 
 // Schema defines the schema for the IpsEthernetRule resource.
 func (r *IpsEthernetRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.",
-      Attributes: GetIpsEthernetRuleSchemaAttributes(ctx),
-      Blocks: GetIpsEthernetRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.",
+		Attributes:  GetIpsEthernetRuleSchemaAttributes(ctx),
+		Blocks:      GetIpsEthernetRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *IpsEthernetRuleResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewIpsEthernetRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IpsEthernetRule resource")
 	r := &IpsEthernetRuleResource{
-        ResourceBase: ResourceBase[IpsEthernetRuleResourceModel]{
-             resourceType: "ips_ethernet_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IpsEthernetRuleResourceModel]{
+			resourceType:  "ips_ethernet_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *IpsEthernetRuleResource) getCreateRequestParams(_ context.Context, data *IpsEthernetRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *IpsEthernetRuleResource) getCreateRequestParams(_ context.Context, data *IpsEthernetRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

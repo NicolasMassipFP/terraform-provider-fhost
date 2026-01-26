@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,34 +16,31 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type TlsProfileResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-    AcceptWildcard types.Bool `tfsdk:"accept_wildcard" json:"accept_wildcard,optional,omitempty" `
-        AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
-        CheckRevocation types.Bool `tfsdk:"check_revocation" json:"check_revocation,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        CrlDelay types.Int64 `tfsdk:"crl_delay" json:"crl_delay,optional,omitempty" `
-        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
-        IgnoreNetworkIssues types.Bool `tfsdk:"ignore_network_issues" json:"ignore_network_issues,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        OcspDelay types.Int64 `tfsdk:"ocsp_delay" json:"ocsp_delay,optional,omitempty" `
-        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
-        System types.Bool `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
-        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
-        TlsCryptographySuites types.String `tfsdk:"tls_cryptography_suites" json:"tls_cryptography_suites,optional,omitempty" `
-        TlsTrustedCaRef *[]types.String `tfsdk:"tls_trusted_ca_ref" json:"tls_trusted_ca_ref,optional,omitempty" `
-        TlsVersion types.String `tfsdk:"tls_version" json:"tls_version,optional,omitempty" `
-        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
-        UseOnlySubjectAltName types.Bool `tfsdk:"use_only_subject_alt_name" json:"use_only_subject_alt_name,optional,omitempty" `
-        
+	ID                    types.String                                       `tfsdk:"id"`
+	AcceptWildcard        types.Bool                                         `tfsdk:"accept_wildcard" json:"accept_wildcard,optional,omitempty" `
+	AdminDomain           types.String                                       `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
+	CheckRevocation       types.Bool                                         `tfsdk:"check_revocation" json:"check_revocation,optional,omitempty" `
+	Comment               types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	CrlDelay              types.Int64                                        `tfsdk:"crl_delay" json:"crl_delay,optional,omitempty" `
+	Etag                  types.String                                       `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
+	IgnoreNetworkIssues   types.Bool                                         `tfsdk:"ignore_network_issues" json:"ignore_network_issues,optional,omitempty" `
+	Key                   types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link                  customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                    customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Locked                types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
+	Name                  types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	OcspDelay             types.Int64                                        `tfsdk:"ocsp_delay" json:"ocsp_delay,optional,omitempty" `
+	ReadOnly              types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
+	System                types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
+	SystemKey             types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
+	TlsCryptographySuites types.String                                       `tfsdk:"tls_cryptography_suites" json:"tls_cryptography_suites,optional,omitempty" `
+	TlsTrustedCaRef       *[]types.String                                    `tfsdk:"tls_trusted_ca_ref" json:"tls_trusted_ca_ref,optional,omitempty" `
+	TlsVersion            types.String                                       `tfsdk:"tls_version" json:"tls_version,optional,omitempty" `
+	Trashed               types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
+	UseOnlySubjectAltName types.Bool                                         `tfsdk:"use_only_subject_alt_name" json:"use_only_subject_alt_name,optional,omitempty" `
 }
+
 func (r *TlsProfileResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

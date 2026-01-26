@@ -32,8 +32,7 @@ This represents an Outbound Multi-Link, which is used for load balancing outboun
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -69,13 +68,3 @@ Optional:
 - `balance_method` (String) The method used for load balancing in the Multi-Link QOS Class, which can be 'notdefined', 'ratio', or 'rtt'.
 - `key` (Number) The unique key for this Multi-Link QOS Class Member, used for updates. For internal use only.
 - `qos_class_ref` (String) This represents a QoS Class, which is an element that links a rule in a QoS Policy to one or more Firewall Actions. The traffic allowed in the access rule is assigned the QoS Class defined for the rule, and the QoS class is used as the matching criteria for applying QoS Policy rules.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DynamicRoutingRedistributionEntryResourceModel struct {
-	
-    Enabled types.Bool `tfsdk:"enabled" json:"enabled,optional,omitempty" `
-        FilterType types.String `tfsdk:"filter_type" json:"filter_type,optional,omitempty" `
-        Metric types.Int64 `tfsdk:"metric" json:"metric,optional,omitempty" `
-        MetricType types.String `tfsdk:"metric_type" json:"metric_type,optional,omitempty" `
-        RedistributionFilterRef types.String `tfsdk:"redistribution_filter_ref" json:"redistribution_filter_ref,optional,omitempty" `
-        RedistributionRmRef types.String `tfsdk:"redistribution_rm_ref" json:"redistribution_rm_ref,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        
+	Enabled                 types.Bool   `tfsdk:"enabled" json:"enabled,optional,omitempty" `
+	FilterType              types.String `tfsdk:"filter_type" json:"filter_type,optional,omitempty" `
+	Metric                  types.Int64  `tfsdk:"metric" json:"metric,optional,omitempty" `
+	MetricType              types.String `tfsdk:"metric_type" json:"metric_type,optional,omitempty" `
+	RedistributionFilterRef types.String `tfsdk:"redistribution_filter_ref" json:"redistribution_filter_ref,optional,omitempty" `
+	RedistributionRmRef     types.String `tfsdk:"redistribution_rm_ref" json:"redistribution_rm_ref,optional,omitempty" `
+	Type                    types.String `tfsdk:"type" json:"type,optional,omitempty" `
 }

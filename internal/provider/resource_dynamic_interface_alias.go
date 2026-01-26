@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &DynamicInterfaceAliasResource{}
 var _ resource.ResourceWithImportState = &DynamicInterfaceAliasResource{}
 var _ context.Context = context.Background()
 
-
 // DynamicInterfaceAliasResource defines the resource implementation.
 type DynamicInterfaceAliasResource struct {
-    ResourceBase[DynamicInterfaceAliasResourceModel]
+	ResourceBase[DynamicInterfaceAliasResourceModel]
 }
-
 
 // Schema defines the schema for the DynamicInterfaceAlias resource.
 func (r *DynamicInterfaceAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.",
-      Attributes: GetDynamicInterfaceAliasSchemaAttributes(ctx),
-      Blocks: GetDynamicInterfaceAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.",
+		Attributes:  GetDynamicInterfaceAliasSchemaAttributes(ctx),
+		Blocks:      GetDynamicInterfaceAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *DynamicInterfaceAliasResource) Schema(ctx context.Context, _ resource.S
 func NewDynamicInterfaceAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing DynamicInterfaceAlias resource")
 	r := &DynamicInterfaceAliasResource{
-        ResourceBase: ResourceBase[DynamicInterfaceAliasResourceModel]{
-             resourceType: "dynamic_interface_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[DynamicInterfaceAliasResourceModel]{
+			resourceType:  "dynamic_interface_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

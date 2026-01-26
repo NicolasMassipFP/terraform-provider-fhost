@@ -38,8 +38,7 @@ This represents a Alert Chain Rule for Alert Chain Policy. It contains informati
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `parent_insert_point` (String) This represents a rule in a policy, including its parent policy, parent insert point, rank, tag, background color, and insert point type.
 - `parent_policy` (String) This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.
@@ -48,12 +47,3 @@ This represents a Alert Chain Rule for Alert Chain Policy. It contains informati
 - `system_key` (Number) The system key of the System element. This field is not required.
 - `tag` (String) The unique identifier of the rule in this policy. It contains a static part that does not change when rules are added, removed, or moved, and a changing part that indicates the version of the rule.
 - `trashed` (Boolean) Indicates if the element is trashed. This field is not required.
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

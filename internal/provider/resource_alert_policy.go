@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &AlertPolicyResource{}
 var _ resource.ResourceWithImportState = &AlertPolicyResource{}
 var _ context.Context = context.Background()
 
-
 // AlertPolicyResource defines the resource implementation.
 type AlertPolicyResource struct {
-    ResourceBase[AlertPolicyResourceModel]
+	ResourceBase[AlertPolicyResourceModel]
 }
-
 
 // Schema defines the schema for the AlertPolicy resource.
 func (r *AlertPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Alert Policy, which is used to define alert rules and configurations for the alerting system. It includes properties such as alert rules and configuration settings.",
-      Attributes: GetAlertPolicySchemaAttributes(ctx),
-      Blocks: GetAlertPolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Alert Policy, which is used to define alert rules and configurations for the alerting system. It includes properties such as alert rules and configuration settings.",
+		Attributes:  GetAlertPolicySchemaAttributes(ctx),
+		Blocks:      GetAlertPolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *AlertPolicyResource) Schema(ctx context.Context, _ resource.SchemaReque
 func NewAlertPolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing AlertPolicy resource")
 	r := &AlertPolicyResource{
-        ResourceBase: ResourceBase[AlertPolicyResourceModel]{
-             resourceType: "alert_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[AlertPolicyResourceModel]{
+			resourceType:  "alert_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

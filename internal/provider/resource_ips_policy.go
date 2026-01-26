@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IpsPolicyResource{}
 var _ resource.ResourceWithImportState = &IpsPolicyResource{}
 var _ context.Context = context.Background()
 
-
 // IpsPolicyResource defines the resource implementation.
 type IpsPolicyResource struct {
-    ResourceBase[IpsPolicyResourceModel]
+	ResourceBase[IpsPolicyResourceModel]
 }
-
 
 // Schema defines the schema for the IpsPolicy resource.
 func (r *IpsPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IPS Policy, which is used to define the action and inspection rules for IPS Engines.",
-      Attributes: GetIpsPolicySchemaAttributes(ctx),
-      Blocks: GetIpsPolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IPS Policy, which is used to define the action and inspection rules for IPS Engines.",
+		Attributes:  GetIpsPolicySchemaAttributes(ctx),
+		Blocks:      GetIpsPolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IpsPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest
 func NewIpsPolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IpsPolicy resource")
 	r := &IpsPolicyResource{
-        ResourceBase: ResourceBase[IpsPolicyResourceModel]{
-             resourceType: "ips_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IpsPolicyResourceModel]{
+			resourceType:  "ips_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

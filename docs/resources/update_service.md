@@ -31,8 +31,7 @@ This represents Update Server Profile (aka Update Service). It contains the URLs
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -55,13 +54,3 @@ Optional:
 
 - `tls_field` (String) The field used to check the identity, which can be one of the following: DNS_NAME, IP_ADDRESS, COMMON_NAME, DISTINGUISHED_NAME, SHA_1, SHA_256, SHA_512, MD5, EMAIL_ADDRESS.
 - `tls_value` (String) The value to check the selected field with, such as a DNS name, IP address, or hash value.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

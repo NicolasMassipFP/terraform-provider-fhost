@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type BgpAnnouncedNetworkAssociationResourceModel struct {
-	
-    AnnouncedNeRef types.String `tfsdk:"announced_ne_ref" json:"announced_ne_ref,optional,omitempty" `
-        AnnouncedRmRef types.String `tfsdk:"announced_rm_ref" json:"announced_rm_ref,optional,omitempty" `
-        
+	AnnouncedNeRef types.String `tfsdk:"announced_ne_ref" json:"announced_ne_ref,optional,omitempty" `
+	AnnouncedRmRef types.String `tfsdk:"announced_rm_ref" json:"announced_rm_ref,optional,omitempty" `
 }

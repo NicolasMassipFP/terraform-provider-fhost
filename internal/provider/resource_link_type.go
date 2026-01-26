@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LinkTypeResource{}
 var _ resource.ResourceWithImportState = &LinkTypeResource{}
 var _ context.Context = context.Background()
 
-
 // LinkTypeResource defines the resource implementation.
 type LinkTypeResource struct {
-    ResourceBase[LinkTypeResourceModel]
+	ResourceBase[LinkTypeResourceModel]
 }
-
 
 // Schema defines the schema for the LinkType resource.
 func (r *LinkTypeResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the Link Type, which defines the characteristics and behavior of a link in the VPN configuration.",
-      Attributes: GetLinkTypeSchemaAttributes(ctx),
-      Blocks: GetLinkTypeSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the Link Type, which defines the characteristics and behavior of a link in the VPN configuration.",
+		Attributes:  GetLinkTypeSchemaAttributes(ctx),
+		Blocks:      GetLinkTypeSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LinkTypeResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 func NewLinkTypeResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing LinkType resource")
 	r := &LinkTypeResource{
-        ResourceBase: ResourceBase[LinkTypeResourceModel]{
-             resourceType: "link_type",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LinkTypeResourceModel]{
+			resourceType:  "link_type",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

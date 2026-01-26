@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ThirdPartyLoggingProfileResource{}
 var _ resource.ResourceWithImportState = &ThirdPartyLoggingProfileResource{}
 var _ context.Context = context.Background()
 
-
 // ThirdPartyLoggingProfileResource defines the resource implementation.
 type ThirdPartyLoggingProfileResource struct {
-    ResourceBase[ThirdPartyLoggingProfileResourceModel]
+	ResourceBase[ThirdPartyLoggingProfileResourceModel]
 }
-
 
 // Schema defines the schema for the ThirdPartyLoggingProfile resource.
 func (r *ThirdPartyLoggingProfileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.",
-      Attributes: GetThirdPartyLoggingProfileSchemaAttributes(ctx),
-      Blocks: GetThirdPartyLoggingProfileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.",
+		Attributes:  GetThirdPartyLoggingProfileSchemaAttributes(ctx),
+		Blocks:      GetThirdPartyLoggingProfileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ThirdPartyLoggingProfileResource) Schema(ctx context.Context, _ resourc
 func NewThirdPartyLoggingProfileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ThirdPartyLoggingProfile resource")
 	r := &ThirdPartyLoggingProfileResource{
-        ResourceBase: ResourceBase[ThirdPartyLoggingProfileResourceModel]{
-             resourceType: "logging_profile",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ThirdPartyLoggingProfileResourceModel]{
+			resourceType:  "logging_profile",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

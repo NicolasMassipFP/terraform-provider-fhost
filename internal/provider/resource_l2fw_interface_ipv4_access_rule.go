@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &L2fwInterfaceIpv4AccessRuleResource{}
 var _ resource.ResourceWithImportState = &L2fwInterfaceIpv4AccessRuleResource{}
 var _ context.Context = context.Background()
 
-
 // L2fwInterfaceIpv4AccessRuleResource defines the resource implementation.
 type L2fwInterfaceIpv4AccessRuleResource struct {
-    ResourceBase[L2fwInterfaceIpv4AccessRuleResourceModel]
+	ResourceBase[L2fwInterfaceIpv4AccessRuleResourceModel]
 }
-
 
 // Schema defines the schema for the L2fwInterfaceIpv4AccessRule resource.
 func (r *L2fwInterfaceIpv4AccessRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a L2FW Interface Access Rule. It defines how one type of IPv4 connection is handled by providing matching criteria based on the source, destination, and protocol information.",
-      Attributes: GetL2fwInterfaceIpv4AccessRuleSchemaAttributes(ctx),
-      Blocks: GetL2fwInterfaceIpv4AccessRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a L2FW Interface Access Rule. It defines how one type of IPv4 connection is handled by providing matching criteria based on the source, destination, and protocol information.",
+		Attributes:  GetL2fwInterfaceIpv4AccessRuleSchemaAttributes(ctx),
+		Blocks:      GetL2fwInterfaceIpv4AccessRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *L2fwInterfaceIpv4AccessRuleResource) Schema(ctx context.Context, _ reso
 func NewL2fwInterfaceIpv4AccessRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing L2fwInterfaceIpv4AccessRule resource")
 	r := &L2fwInterfaceIpv4AccessRuleResource{
-        ResourceBase: ResourceBase[L2fwInterfaceIpv4AccessRuleResourceModel]{
-             resourceType: "l2_interface_ipv4_access_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[L2fwInterfaceIpv4AccessRuleResourceModel]{
+			resourceType:  "l2_interface_ipv4_access_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *L2fwInterfaceIpv4AccessRuleResource) getCreateRequestParams(_ context.Context, data *L2fwInterfaceIpv4AccessRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *L2fwInterfaceIpv4AccessRuleResource) getCreateRequestParams(_ context.Context, data *L2fwInterfaceIpv4AccessRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

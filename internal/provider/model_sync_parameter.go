@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SyncParameterResourceModel struct {
-	
-    FullSyncInterval types.Int64 `tfsdk:"full_sync_interval" json:"full_sync_interval,optional,omitempty" `
-        HeartbeatGroupIp types.String `tfsdk:"heartbeat_group_ip" json:"heartbeat_group_ip,optional,omitempty" `
-        IncrSyncInterval types.Int64 `tfsdk:"incr_sync_interval" json:"incr_sync_interval,optional,omitempty" `
-        StatesyncGroupIp types.String `tfsdk:"statesync_group_ip" json:"statesync_group_ip,optional,omitempty" `
-        SyncMode types.String `tfsdk:"sync_mode" json:"sync_mode,optional,omitempty" `
-        SyncSecurity types.String `tfsdk:"sync_security" json:"sync_security,optional,omitempty" `
-        
+	FullSyncInterval types.Int64  `tfsdk:"full_sync_interval" json:"full_sync_interval,optional,omitempty" `
+	HeartbeatGroupIp types.String `tfsdk:"heartbeat_group_ip" json:"heartbeat_group_ip,optional,omitempty" `
+	IncrSyncInterval types.Int64  `tfsdk:"incr_sync_interval" json:"incr_sync_interval,optional,omitempty" `
+	StatesyncGroupIp types.String `tfsdk:"statesync_group_ip" json:"statesync_group_ip,optional,omitempty" `
+	SyncMode         types.String `tfsdk:"sync_mode" json:"sync_mode,optional,omitempty" `
+	SyncSecurity     types.String `tfsdk:"sync_security" json:"sync_security,optional,omitempty" `
 }

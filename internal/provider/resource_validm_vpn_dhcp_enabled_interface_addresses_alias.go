@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ValidmVpnDhcpEnabledInterfaceAddressesAliasResource{}
 var _ resource.ResourceWithImportState = &ValidmVpnDhcpEnabledInterfaceAddressesAliasResource{}
 var _ context.Context = context.Background()
 
-
 // ValidmVpnDhcpEnabledInterfaceAddressesAliasResource defines the resource implementation.
 type ValidmVpnDhcpEnabledInterfaceAddressesAliasResource struct {
-    ResourceBase[ValidmVpnDhcpEnabledInterfaceAddressesAliasResourceModel]
+	ResourceBase[ValidmVpnDhcpEnabledInterfaceAddressesAliasResourceModel]
 }
-
 
 // Schema defines the schema for the ValidmVpnDhcpEnabledInterfaceAddressesAlias resource.
 func (r *ValidmVpnDhcpEnabledInterfaceAddressesAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ DHCP Enabled interface addresses for IPsec VPN clients', which is used to substitute enabled interface addresses defined in the Internal Security Gateway properties for assigning DHCP relay to IPsec VPN clients.",
-      Attributes: GetValidmVpnDhcpEnabledInterfaceAddressesAliasSchemaAttributes(ctx),
-      Blocks: GetValidmVpnDhcpEnabledInterfaceAddressesAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ DHCP Enabled interface addresses for IPsec VPN clients', which is used to substitute enabled interface addresses defined in the Internal Security Gateway properties for assigning DHCP relay to IPsec VPN clients.",
+		Attributes:  GetValidmVpnDhcpEnabledInterfaceAddressesAliasSchemaAttributes(ctx),
+		Blocks:      GetValidmVpnDhcpEnabledInterfaceAddressesAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ValidmVpnDhcpEnabledInterfaceAddressesAliasResource) Schema(ctx context
 func NewValidmVpnDhcpEnabledInterfaceAddressesAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ValidmVpnDhcpEnabledInterfaceAddressesAlias resource")
 	r := &ValidmVpnDhcpEnabledInterfaceAddressesAliasResource{
-        ResourceBase: ResourceBase[ValidmVpnDhcpEnabledInterfaceAddressesAliasResourceModel]{
-             resourceType: "valid_vpn_dhcp_enabled_interface_addresses_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ValidmVpnDhcpEnabledInterfaceAddressesAliasResourceModel]{
+			resourceType:  "valid_vpn_dhcp_enabled_interface_addresses_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

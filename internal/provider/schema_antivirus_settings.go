@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,65 +30,83 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetAntivirusSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "antivirus_enabled": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the antivirus feature is enabled on the firewall element.",
-       },
-       "antivirus_http_proxy": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The HTTP Proxy address used for antivirus updates.",
-        },
-       "antivirus_http_proxy_enabled": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the HTTP Proxy is enabled for antivirus updates. By default, it is not enabled.",
-       },
-       "antivirus_proxy_password": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The HTTP Proxy password used for authentication when accessing the antivirus update server.",
-        },
-       "antivirus_proxy_port": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The HTTP Proxy port used for antivirus updates.",
-       },
-       "antivirus_proxy_user": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The HTTP Proxy username used for authentication when accessing the antivirus update server.",
-        },
-       "antivirus_update": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The frequency at which the antivirus updates are performed.",
-        },
-       "antivirus_update_day": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The day of the week when antivirus updates are performed, represented as a two-letter abbreviation.",
-        },
-       "antivirus_update_time": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The time of the day the Antivirus updates are performed, given as a long value in a 24-hour format.",
-       },
-       "virus_alert": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
-        },
-       "virus_log_level": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The log level for antivirus events, which determines how antivirus-related logs are handled.",
-        },
-       "virus_mirror": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The URL of the antivirus signature mirrors used for updating malware signatures.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"antivirus_enabled": schema.BoolAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "Indicates whether the antivirus feature is enabled on the firewall element.",
+	},
+		"antivirus_http_proxy": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The HTTP Proxy address used for antivirus updates.",
+		},
+		"antivirus_http_proxy_enabled": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the HTTP Proxy is enabled for antivirus updates. By default, it is not enabled.",
+		},
+		"antivirus_proxy_password": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The HTTP Proxy password used for authentication when accessing the antivirus update server.",
+		},
+		"antivirus_proxy_port": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The HTTP Proxy port used for antivirus updates.",
+		},
+		"antivirus_proxy_user": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The HTTP Proxy username used for authentication when accessing the antivirus update server.",
+		},
+		"antivirus_update": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The frequency at which the antivirus updates are performed.",
+		},
+		"antivirus_update_day": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The day of the week when antivirus updates are performed, represented as a two-letter abbreviation.",
+		},
+		"antivirus_update_time": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The time of the day the Antivirus updates are performed, given as a long value in a 24-hour format.",
+		},
+		"virus_alert": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
+		},
+		"virus_log_level": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The log level for antivirus events, which determines how antivirus-related logs are handled.",
+		},
+		"virus_mirror": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The URL of the antivirus signature mirrors used for updating malware signatures.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getAntivirusSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetAntivirusSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getAntivirusSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getAntivirusSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

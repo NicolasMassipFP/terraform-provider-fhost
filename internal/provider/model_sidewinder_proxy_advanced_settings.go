@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SidewinderProxyAdvancedSettingsResourceModel struct {
-	
-    Attribute types.String `tfsdk:"attribute" json:"attribute,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        Value types.String `tfsdk:"value" json:"value,optional,omitempty" `
-        
+	Attribute types.String `tfsdk:"attribute" json:"attribute,optional,omitempty" `
+	Type      types.String `tfsdk:"type" json:"type,optional,omitempty" `
+	Value     types.String `tfsdk:"value" json:"value,optional,omitempty" `
 }

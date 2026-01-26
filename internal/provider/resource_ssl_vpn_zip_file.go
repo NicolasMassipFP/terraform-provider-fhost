@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SslVpnZipFileResource{}
 var _ resource.ResourceWithImportState = &SslVpnZipFileResource{}
 var _ context.Context = context.Background()
 
-
 // SslVpnZipFileResource defines the resource implementation.
 type SslVpnZipFileResource struct {
-    ResourceBase[SslVpnZipFileResourceModel]
+	ResourceBase[SslVpnZipFileResourceModel]
 }
-
 
 // Schema defines the schema for the SslVpnZipFile resource.
 func (r *SslVpnZipFileResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This is a SSL VPN Zip File. It represents a zip file used in the SSL VPN context, typically containing configuration or other related files.",
-      Attributes: GetSslVpnZipFileSchemaAttributes(ctx),
-      Blocks: GetSslVpnZipFileSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This is a SSL VPN Zip File. It represents a zip file used in the SSL VPN context, typically containing configuration or other related files.",
+		Attributes:  GetSslVpnZipFileSchemaAttributes(ctx),
+		Blocks:      GetSslVpnZipFileSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SslVpnZipFileResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewSslVpnZipFileResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SslVpnZipFile resource")
 	r := &SslVpnZipFileResource{
-        ResourceBase: ResourceBase[SslVpnZipFileResourceModel]{
-             resourceType: "ssl_vpn_zip_file",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SslVpnZipFileResourceModel]{
+			resourceType:  "ssl_vpn_zip_file",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

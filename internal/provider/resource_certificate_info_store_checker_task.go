@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &CertificateInfoStoreCheckerTaskResource{}
 var _ resource.ResourceWithImportState = &CertificateInfoStoreCheckerTaskResource{}
 var _ context.Context = context.Background()
 
-
 // CertificateInfoStoreCheckerTaskResource defines the resource implementation.
 type CertificateInfoStoreCheckerTaskResource struct {
-    ResourceBase[CertificateInfoStoreCheckerTaskResourceModel]
+	ResourceBase[CertificateInfoStoreCheckerTaskResourceModel]
 }
-
 
 // Schema defines the schema for the CertificateInfoStoreCheckerTask resource.
 func (r *CertificateInfoStoreCheckerTaskResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Certificate Info Store Checker Task, which is used to check the status of the certificate info store. It is a type of system task that can be scheduled and executed to ensure that the certificate info store is correctly maintained.",
-      Attributes: GetCertificateInfoStoreCheckerTaskSchemaAttributes(ctx),
-      Blocks: GetCertificateInfoStoreCheckerTaskSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Certificate Info Store Checker Task, which is used to check the status of the certificate info store. It is a type of system task that can be scheduled and executed to ensure that the certificate info store is correctly maintained.",
+		Attributes:  GetCertificateInfoStoreCheckerTaskSchemaAttributes(ctx),
+		Blocks:      GetCertificateInfoStoreCheckerTaskSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *CertificateInfoStoreCheckerTaskResource) Schema(ctx context.Context, _ 
 func NewCertificateInfoStoreCheckerTaskResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing CertificateInfoStoreCheckerTask resource")
 	r := &CertificateInfoStoreCheckerTaskResource{
-        ResourceBase: ResourceBase[CertificateInfoStoreCheckerTaskResourceModel]{
-             resourceType: "renew_internal_certificates_task",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[CertificateInfoStoreCheckerTaskResourceModel]{
+			resourceType:  "renew_internal_certificates_task",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

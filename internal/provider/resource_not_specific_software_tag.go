@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &NotSpecificSoftwareTagResource{}
 var _ resource.ResourceWithImportState = &NotSpecificSoftwareTagResource{}
 var _ context.Context = context.Background()
 
-
 // NotSpecificSoftwareTagResource defines the resource implementation.
 type NotSpecificSoftwareTagResource struct {
-    ResourceBase[NotSpecificSoftwareTagResourceModel]
+	ResourceBase[NotSpecificSoftwareTagResourceModel]
 }
-
 
 // Schema defines the schema for the NotSpecificSoftwareTag resource.
 func (r *NotSpecificSoftwareTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Not Specific Software Tag, which is used to categorize elements that do not belong to a specific software category. It is a type of tag that can be applied to various elements in the system to indicate that they are not associated with any particular software.",
-      Attributes: GetNotSpecificSoftwareTagSchemaAttributes(ctx),
-      Blocks: GetNotSpecificSoftwareTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Not Specific Software Tag, which is used to categorize elements that do not belong to a specific software category. It is a type of tag that can be applied to various elements in the system to indicate that they are not associated with any particular software.",
+		Attributes:  GetNotSpecificSoftwareTagSchemaAttributes(ctx),
+		Blocks:      GetNotSpecificSoftwareTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *NotSpecificSoftwareTagResource) Schema(ctx context.Context, _ resource.
 func NewNotSpecificSoftwareTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing NotSpecificSoftwareTag resource")
 	r := &NotSpecificSoftwareTagResource{
-        ResourceBase: ResourceBase[NotSpecificSoftwareTagResourceModel]{
-             resourceType: "application_not_specific_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[NotSpecificSoftwareTagResourceModel]{
+			resourceType:  "application_not_specific_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

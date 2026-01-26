@@ -35,8 +35,7 @@ This represents a Traffic Capture Task, which is used to capture network traffic
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -51,13 +50,3 @@ Optional:
 - `filter` (String) The filter applied to the traffic capture, which can be an IP address or a specific filtering rule. By default, no filtering is applied.
 - `node_ref` (String) This represents an individual Engine Node in the Security Management Client, which is part of an Engine Cluster.
 - `pint_ref` (String) This represents the abstract physical interface used in the engine cluster, which includes various settings and configurations for network interfaces.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

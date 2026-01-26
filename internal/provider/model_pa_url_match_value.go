@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PaUrlMatchValueResourceModel struct {
-	
-    MatchParamter types.String `tfsdk:"match_paramter" json:"match_paramter,optional,omitempty" `
-        MatchType types.String `tfsdk:"match_type" json:"match_type,optional,omitempty" `
-        UrlString types.String `tfsdk:"url_string" json:"url_string,optional,omitempty" `
-        
+	MatchParamter types.String `tfsdk:"match_paramter" json:"match_paramter,optional,omitempty" `
+	MatchType     types.String `tfsdk:"match_type" json:"match_type,optional,omitempty" `
+	UrlString     types.String `tfsdk:"url_string" json:"url_string,optional,omitempty" `
 }

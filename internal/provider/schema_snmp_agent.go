@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,111 +30,120 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetSnmpAgentSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-        "id": schema.StringAttribute{
-        Optional:            true,
-        Computed:            true,
-        Description: "this attribute is the identifier of terraform resource",
-        
-        },
-       "admin_domain": schema.StringAttribute {
-        Computed: true,
-       Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
-        },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "etag": schema.StringAttribute {
-        Computed: true,
-       Description: "The ETag of the element, used for versioning. This field is not required.",
-        },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "locked": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is locked. This field is not required.",
-       },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "read_only": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is read-only. This field is not required.",
-       },
-       "snmp_monitoring_contact": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The contact information of the person responsible for the engine. This is used for SNMP monitoring purposes.",
-        },
-       "snmp_monitoring_listening_port": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The UDP listening port number that the SNMP agent listens to. Default is 161.",
-       },
-       "snmp_monitoring_user_name": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "The SNMP monitoring user names. This is used for SNMP monitoring purposes.",
-         ElementType: types.StringType,
-       },
-       "snmp_trap_user_name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The SNMP trap user name. This is used for SNMP trap notifications.",
-        },
-       "snmp_version": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The version of the SNMP agent.",
-        },
-       "system": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is a System element. This field is not required.",
-       },
-       "system_key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The system key of the System element. This field is not required.",
-       },
-       "trashed": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is trashed. This field is not required.",
-       },
+	attrs := map[string]schema.Attribute{
+		"id": schema.StringAttribute{
+			Optional:    true,
+			Computed:    true,
+			Description: "this attribute is the identifier of terraform resource",
+		}, "admin_domain": schema.StringAttribute{
+			Computed:    true,
+			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
+		},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"etag": schema.StringAttribute{
+			Computed:    true,
+			Description: "The ETag of the element, used for versioning. This field is not required.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"locked": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is locked. This field is not required.",
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"read_only": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is read-only. This field is not required.",
+		},
+		"snmp_monitoring_contact": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The contact information of the person responsible for the engine. This is used for SNMP monitoring purposes.",
+		},
+		"snmp_monitoring_listening_port": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The UDP listening port number that the SNMP agent listens to. Default is 161.",
+		},
+		"snmp_monitoring_user_name": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The SNMP monitoring user names. This is used for SNMP monitoring purposes.",
+			ElementType: types.StringType,
+		},
+		"snmp_trap_user_name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The SNMP trap user name. This is used for SNMP trap notifications.",
+		},
+		"snmp_version": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The version of the SNMP agent.",
+		},
+		"system": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is a System element. This field is not required.",
+		},
+		"system_key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The system key of the System element. This field is not required.",
+		},
+		"trashed": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is trashed. This field is not required.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getSnmpAgentSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetSnmpAgentSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getSnmpAgentSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "snmp_trap_destination": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetSnmpTrapDestinationSchemaAttributes(ctx),
-         Blocks: GetSnmpTrapDestinationSchemaBlocks(ctx),
-          },
-         },
-       "snmp_user_name": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetSnmpUserSchemaAttributes(ctx),
-         Blocks: GetSnmpUserSchemaBlocks(ctx),
-          },
-         },
-
-    }
+func getSnmpAgentSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"snmp_trap_destination": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetSnmpTrapDestinationSchemaAttributes(ctx),
+				Blocks:     GetSnmpTrapDestinationSchemaBlocks(ctx),
+			},
+		},
+		"snmp_user_name": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetSnmpUserSchemaAttributes(ctx),
+				Blocks:     GetSnmpUserSchemaBlocks(ctx),
+			},
+		},
+	}
 }

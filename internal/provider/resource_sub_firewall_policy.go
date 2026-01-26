@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SubFirewallPolicyResource{}
 var _ resource.ResourceWithImportState = &SubFirewallPolicyResource{}
 var _ context.Context = context.Background()
 
-
 // SubFirewallPolicyResource defines the resource implementation.
 type SubFirewallPolicyResource struct {
-    ResourceBase[SubFirewallPolicyResourceModel]
+	ResourceBase[SubFirewallPolicyResourceModel]
 }
-
 
 // Schema defines the schema for the SubFirewallPolicy resource.
 func (r *SubFirewallPolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Firewall Sub-Policy, which is used to group related Firewall IPv4 Access rules for better organization and processing efficiency.",
-      Attributes: GetSubFirewallPolicySchemaAttributes(ctx),
-      Blocks: GetSubFirewallPolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Firewall Sub-Policy, which is used to group related Firewall IPv4 Access rules for better organization and processing efficiency.",
+		Attributes:  GetSubFirewallPolicySchemaAttributes(ctx),
+		Blocks:      GetSubFirewallPolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SubFirewallPolicyResource) Schema(ctx context.Context, _ resource.Schem
 func NewSubFirewallPolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SubFirewallPolicy resource")
 	r := &SubFirewallPolicyResource{
-        ResourceBase: ResourceBase[SubFirewallPolicyResourceModel]{
-             resourceType: "sub_ipv4_fw_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SubFirewallPolicyResourceModel]{
+			resourceType:  "sub_ipv4_fw_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

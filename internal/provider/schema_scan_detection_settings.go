@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,69 +30,87 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetScanDetectionSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "alert_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
-        },
-       "log_level": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Log Level for Scan Detection. 'none': does not create any log entry, 'transient': creates a log entry that is displayed in the Current Events mode in the Logs view (if someone is viewing it at the moment) but is not stored,'stored': creates a log entry that is stored on the Log Server, 'essential': creates a log entry that is shown in the Logs view and saved for further use. When the Log Server is unavailable, log entries are temporarily stored on the engine. When the engine is running out of space to store the log entries, it begins discarding log data in the order of importance. Monitoring data is discarded first, followed by log entries marked as Transient and Stored, and finally log entries marked as Essential. The Alert entries are the last log entries to be discarded. Note! The settings for storing the logs temporarily on the engine are defined in the log spooling policy, and 'alert': triggers the alert you add to the Alert field.",
-        },
-       "scan_detection_icmp_events": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The ICMP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_icmp_timewindow": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The ICMP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_icmp_unit": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The ICMP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
-        },
-       "scan_detection_tcp_events": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The TCP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_tcp_timewindow": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The TCP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_tcp_unit": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The TCP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
-        },
-       "scan_detection_type": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The type of Scan Detection. Possible values are 'off' (Scan Detection is not enabled), 'default off' (Scan Detection is not enabled, but you can override this setting in individual Access rules. This is the default setting), and 'default on' (Scan Detection is enabled. You can override this setting in individual Access rules if scan detection is not needed or to avoid false positives).",
-        },
-       "scan_detection_udp_events": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The UDP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_udp_timewindow": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The UDP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
-       },
-       "scan_detection_udp_unit": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The UDP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
-        },
-       "severity": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "If Log Level is set to Alert, allows you to override the severity defined in the Alert element. Possible values are '1' (Info), '2-4' (Low), '5-7' (High), and '8-10' (Critical).",
-       },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"alert_ref": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
+	},
+		"log_level": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Log Level for Scan Detection. 'none': does not create any log entry, 'transient': creates a log entry that is displayed in the Current Events mode in the Logs view (if someone is viewing it at the moment) but is not stored,'stored': creates a log entry that is stored on the Log Server, 'essential': creates a log entry that is shown in the Logs view and saved for further use. When the Log Server is unavailable, log entries are temporarily stored on the engine. When the engine is running out of space to store the log entries, it begins discarding log data in the order of importance. Monitoring data is discarded first, followed by log entries marked as Transient and Stored, and finally log entries marked as Essential. The Alert entries are the last log entries to be discarded. Note! The settings for storing the logs temporarily on the engine are defined in the log spooling policy, and 'alert': triggers the alert you add to the Alert field.",
+		},
+		"scan_detection_icmp_events": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The ICMP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_icmp_timewindow": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The ICMP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_icmp_unit": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The ICMP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
+		},
+		"scan_detection_tcp_events": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The TCP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_tcp_timewindow": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The TCP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_tcp_unit": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The TCP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
+		},
+		"scan_detection_type": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The type of Scan Detection. Possible values are 'off' (Scan Detection is not enabled), 'default off' (Scan Detection is not enabled, but you can override this setting in individual Access rules. This is the default setting), and 'default on' (Scan Detection is enabled. You can override this setting in individual Access rules if scan detection is not needed or to avoid false positives).",
+		},
+		"scan_detection_udp_events": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The UDP Scan Events sensitivity for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_udp_timewindow": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The UDP Time window in seconds for Scan Detection. If Scan Detection is set to Default On or Default Off, this defines the number of events needed in the selected time period to generate an alert.",
+		},
+		"scan_detection_udp_unit": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The UDP Scan time window unit for Scan Detection. Possible values are 'second', 'minute', or 'hour'. Default is 'minute'.",
+		},
+		"severity": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "If Log Level is set to Alert, allows you to override the severity defined in the Alert element. Possible values are '1' (Info), '2-4' (Low), '5-7' (High), and '8-10' (Critical).",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getScanDetectionSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetScanDetectionSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getScanDetectionSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getScanDetectionSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SandboxSettingsResourceModel struct {
-	
-    HttpProxy *[]types.String `tfsdk:"http_proxy" json:"http_proxy,optional,omitempty" `
-        SandboxLicenseKey types.String `tfsdk:"sandbox_license_key" json:"sandbox_license_key,optional,omitempty" `
-        SandboxLicenseToken types.String `tfsdk:"sandbox_license_token" json:"sandbox_license_token,optional,omitempty" `
-        SandboxService types.String `tfsdk:"sandbox_service" json:"sandbox_service,optional,omitempty" `
-        
+	HttpProxy           *[]types.String `tfsdk:"http_proxy" json:"http_proxy,optional,omitempty" `
+	SandboxLicenseKey   types.String    `tfsdk:"sandbox_license_key" json:"sandbox_license_key,optional,omitempty" `
+	SandboxLicenseToken types.String    `tfsdk:"sandbox_license_token" json:"sandbox_license_token,optional,omitempty" `
+	SandboxService      types.String    `tfsdk:"sandbox_service" json:"sandbox_service,optional,omitempty" `
 }

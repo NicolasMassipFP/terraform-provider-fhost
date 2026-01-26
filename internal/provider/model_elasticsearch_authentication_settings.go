@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ElasticsearchAuthenticationSettingsResourceModel struct {
-	
-    ApiKey types.String `tfsdk:"api_key" json:"api_key,optional,omitempty" `
-        Login types.String `tfsdk:"login" json:"login,optional,omitempty" `
-        Method types.String `tfsdk:"method" json:"method,optional,omitempty" `
-        Password types.String `tfsdk:"password" json:"password,optional,omitempty" `
-        TlsCredentials types.String `tfsdk:"tls_credentials" json:"tls_credentials,optional,omitempty" `
-        
+	ApiKey         types.String `tfsdk:"api_key" json:"api_key,optional,omitempty" `
+	Login          types.String `tfsdk:"login" json:"login,optional,omitempty" `
+	Method         types.String `tfsdk:"method" json:"method,optional,omitempty" `
+	Password       types.String `tfsdk:"password" json:"password,optional,omitempty" `
+	TlsCredentials types.String `tfsdk:"tls_credentials" json:"tls_credentials,optional,omitempty" `
 }

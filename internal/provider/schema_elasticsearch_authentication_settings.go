@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,37 +30,55 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetElasticsearchAuthenticationSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "api_key": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The API key for authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'api_key' authentication method is used.",
-        },
-       "login": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The login for basic authentication to connect to the Elasticsearch cluster. This must be set when the 'basic' authentication method is used.",
-        },
-       "method": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The authentication method used for connecting to the Elasticsearch cluster.",
-        },
-       "password": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The password for basic authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'basic' authentication method is used.",
-        },
-       "tls_credentials": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"api_key": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The API key for authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'api_key' authentication method is used.",
+	},
+		"login": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The login for basic authentication to connect to the Elasticsearch cluster. This must be set when the 'basic' authentication method is used.",
+		},
+		"method": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The authentication method used for connecting to the Elasticsearch cluster.",
+		},
+		"password": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The password for basic authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'basic' authentication method is used.",
+		},
+		"tls_credentials": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getElasticsearchAuthenticationSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetElasticsearchAuthenticationSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getElasticsearchAuthenticationSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getElasticsearchAuthenticationSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

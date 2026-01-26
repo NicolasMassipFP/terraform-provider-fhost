@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type Ospfv2SettingsResourceModel struct {
-	
-    Enabled types.Bool `tfsdk:"enabled" json:"enabled,optional,omitempty" `
-        Ospfv2ProfileRef types.String `tfsdk:"ospfv2_profile_ref" json:"ospfv2_profile_ref,optional,omitempty" `
-        RouterId types.String `tfsdk:"router_id" json:"router_id,optional,omitempty" `
-        
+	Enabled          types.Bool   `tfsdk:"enabled" json:"enabled,optional,omitempty" `
+	Ospfv2ProfileRef types.String `tfsdk:"ospfv2_profile_ref" json:"ospfv2_profile_ref,optional,omitempty" `
+	RouterId         types.String `tfsdk:"router_id" json:"router_id,optional,omitempty" `
 }

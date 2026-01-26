@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type L2fwSettingsResourceModel struct {
-	
-    BypassOverloadTraffic types.Bool `tfsdk:"bypass_overload_traffic" json:"bypass_overload_traffic,optional,omitempty" `
-        L2InterfacePolicyRef types.String `tfsdk:"l2_interface_policy_ref" json:"l2_interface_policy_ref,optional,omitempty" `
-        TrackingMode types.String `tfsdk:"tracking_mode" json:"tracking_mode,optional,omitempty" `
-        
+	BypassOverloadTraffic types.Bool   `tfsdk:"bypass_overload_traffic" json:"bypass_overload_traffic,optional,omitempty" `
+	L2InterfacePolicyRef  types.String `tfsdk:"l2_interface_policy_ref" json:"l2_interface_policy_ref,optional,omitempty" `
+	TrackingMode          types.String `tfsdk:"tracking_mode" json:"tracking_mode,optional,omitempty" `
 }

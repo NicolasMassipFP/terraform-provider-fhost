@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type TlsIdentityResourceModel struct {
-	
-    TlsField types.String `tfsdk:"tls_field" json:"tls_field,optional,omitempty" `
-        TlsValue types.String `tfsdk:"tls_value" json:"tls_value,optional,omitempty" `
-        
+	TlsField types.String `tfsdk:"tls_field" json:"tls_field,optional,omitempty" `
+	TlsValue types.String `tfsdk:"tls_value" json:"tls_value,optional,omitempty" `
 }

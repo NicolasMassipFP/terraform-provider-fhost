@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,29 +30,47 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetOspfv2SettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "enabled": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether OSPFv2 Dynamic Routing is enabled.",
-       },
-       "ospfv2_profile_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents an abstract OSPF Profile used as Dynamic Routing element. It contains settings for OSPF routing, including distances and redistribution entries.",
-        },
-       "router_id": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The OSPFv2 Router ID, which can be an IPv4 address or null for automatic mode.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"enabled": schema.BoolAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "Indicates whether OSPFv2 Dynamic Routing is enabled.",
+	},
+		"ospfv2_profile_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents an abstract OSPF Profile used as Dynamic Routing element. It contains settings for OSPF routing, including distances and redistribution entries.",
+		},
+		"router_id": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The OSPFv2 Router ID, which can be an IPv4 address or null for automatic mode.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getOspfv2SettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetOspfv2SettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getOspfv2SettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getOspfv2SettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

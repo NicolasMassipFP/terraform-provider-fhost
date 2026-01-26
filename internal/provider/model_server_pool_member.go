@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ServerPoolMemberResourceModel struct {
-	
-    Member types.String `tfsdk:"member" json:"member,optional,omitempty" `
-        MemberRank types.Int64 `tfsdk:"member_rank" json:"member_rank,optional,omitempty" `
-        
+	Member     types.String `tfsdk:"member" json:"member,optional,omitempty" `
+	MemberRank types.Int64  `tfsdk:"member_rank" json:"member_rank,optional,omitempty" `
 }

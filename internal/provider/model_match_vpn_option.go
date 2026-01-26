@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type MatchVpnOptionResourceModel struct {
-	
-    MatchType types.String `tfsdk:"match_type" json:"match_type,optional,omitempty" `
-        MatchVpns *[]types.String `tfsdk:"match_vpns" json:"match_vpns,optional,omitempty" `
-        
+	MatchType types.String    `tfsdk:"match_type" json:"match_type,optional,omitempty" `
+	MatchVpns *[]types.String `tfsdk:"match_vpns" json:"match_vpns,optional,omitempty" `
 }

@@ -132,7 +132,7 @@ func TestNewClientFromAuth_InvalidTrustedCert(t *testing.T) {
 	if err == nil {
 		t.Error("Expected error for invalid trusted certificate")
 	}
-	if !strings.Contains(err.Error(), "failed to append trusted certificate") {
+	if !strings.Contains(err.Error(), "failed to resolve certificate") {
 		t.Errorf("Expected certificate error, got %v", err)
 	}
 }

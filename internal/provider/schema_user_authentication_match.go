@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,31 +30,49 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetUserAuthenticationMatchSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "methods": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the authentication method.",
-         ElementType: types.StringType,
-       },
-       "require_auth": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether the users are required to authenticate themselves.",
-       },
-       "users": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "URI of the user or user group.",
-         ElementType: types.StringType,
-       },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"methods": schema.ListAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "URI of the authentication method.",
+		ElementType: types.StringType,
+	},
+		"require_auth": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether the users are required to authenticate themselves.",
+		},
+		"users": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "URI of the user or user group.",
+			ElementType: types.StringType,
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getUserAuthenticationMatchSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetUserAuthenticationMatchSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getUserAuthenticationMatchSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getUserAuthenticationMatchSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

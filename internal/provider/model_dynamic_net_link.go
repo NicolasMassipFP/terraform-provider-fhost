@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,36 +16,33 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DynamicNetlinkResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-    ActiveModePeriod types.Int64 `tfsdk:"active_mode_period" json:"active_mode_period,optional,omitempty" `
-        ActiveModeTimeout types.Int64 `tfsdk:"active_mode_timeout" json:"active_mode_timeout,optional,omitempty" `
-        AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        ConnectionTypeRef types.String `tfsdk:"connection_type_ref" json:"connection_type_ref,optional,omitempty" `
-        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
-        InputSpeed types.Int64 `tfsdk:"input_speed" json:"input_speed,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        LearnDnsServerAutomatically types.Bool `tfsdk:"learn_dns_server_automatically" json:"learn_dns_server_automatically,optional,omitempty" `
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
-        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        NspName types.String `tfsdk:"nsp_name" json:"nsp_name,optional,omitempty" `
-        OutputSpeed types.Int64 `tfsdk:"output_speed" json:"output_speed,optional,omitempty" `
-        ProbeAddress *[]types.String `tfsdk:"probe_address" json:"probe_address,optional,omitempty" `
-        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
-        StandbyModePeriod types.Int64 `tfsdk:"standby_mode_period" json:"standby_mode_period,optional,omitempty" `
-        StandbyModeTimeout types.Int64 `tfsdk:"standby_mode_timeout" json:"standby_mode_timeout,optional,omitempty" `
-        System types.Bool `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
-        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
-        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
-        
+	ID                          types.String                                       `tfsdk:"id"`
+	ActiveModePeriod            types.Int64                                        `tfsdk:"active_mode_period" json:"active_mode_period,optional,omitempty" `
+	ActiveModeTimeout           types.Int64                                        `tfsdk:"active_mode_timeout" json:"active_mode_timeout,optional,omitempty" `
+	AdminDomain                 types.String                                       `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
+	Comment                     types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	ConnectionTypeRef           types.String                                       `tfsdk:"connection_type_ref" json:"connection_type_ref,optional,omitempty" `
+	Etag                        types.String                                       `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
+	InputSpeed                  types.Int64                                        `tfsdk:"input_speed" json:"input_speed,optional,omitempty" `
+	Key                         types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	LearnDnsServerAutomatically types.Bool                                         `tfsdk:"learn_dns_server_automatically" json:"learn_dns_server_automatically,optional,omitempty" `
+	Link                        customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                          customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	LocationRef                 types.String                                       `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
+	Locked                      types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
+	Name                        types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	NspName                     types.String                                       `tfsdk:"nsp_name" json:"nsp_name,optional,omitempty" `
+	OutputSpeed                 types.Int64                                        `tfsdk:"output_speed" json:"output_speed,optional,omitempty" `
+	ProbeAddress                *[]types.String                                    `tfsdk:"probe_address" json:"probe_address,optional,omitempty" `
+	ReadOnly                    types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
+	StandbyModePeriod           types.Int64                                        `tfsdk:"standby_mode_period" json:"standby_mode_period,optional,omitempty" `
+	StandbyModeTimeout          types.Int64                                        `tfsdk:"standby_mode_timeout" json:"standby_mode_timeout,optional,omitempty" `
+	System                      types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
+	SystemKey                   types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
+	Trashed                     types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 }
+
 func (r *DynamicNetlinkResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

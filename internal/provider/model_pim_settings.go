@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PimSettingsResourceModel struct {
-	
-    BsrCandidateInterface *BsrCandidateInterfaceEntryResourceModel `tfsdk:"bsr_candidate_interface" json:"bsr_candidate_interface,optional,omitempty" `
-        BsrPriority types.Int64 `tfsdk:"bsr_priority" json:"bsr_priority,optional,omitempty" `
-        MroutePreference types.String `tfsdk:"mroute_preference" json:"mroute_preference,optional,omitempty" `
-        PimProfileRef types.String `tfsdk:"pim_profile_ref" json:"pim_profile_ref,optional,omitempty" `
-        RpCandidateInterface *RpCandidateInterfaceEntryResourceModel `tfsdk:"rp_candidate_interface" json:"rp_candidate_interface,optional,omitempty" `
-        RpPriority types.Int64 `tfsdk:"rp_priority" json:"rp_priority,optional,omitempty" `
-        SmRpCandidateEntry *[]PimSmBootstrapSettingsRpCandidateEntryResourceModel `tfsdk:"sm_rp_candidate_entry" json:"sm_rp_candidate_entry,optional,omitempty" `
-        
+	BsrCandidateInterface *BsrCandidateInterfaceEntryResourceModel               `tfsdk:"bsr_candidate_interface" json:"bsr_candidate_interface,optional,omitempty" `
+	BsrPriority           types.Int64                                            `tfsdk:"bsr_priority" json:"bsr_priority,optional,omitempty" `
+	MroutePreference      types.String                                           `tfsdk:"mroute_preference" json:"mroute_preference,optional,omitempty" `
+	PimProfileRef         types.String                                           `tfsdk:"pim_profile_ref" json:"pim_profile_ref,optional,omitempty" `
+	RpCandidateInterface  *RpCandidateInterfaceEntryResourceModel                `tfsdk:"rp_candidate_interface" json:"rp_candidate_interface,optional,omitempty" `
+	RpPriority            types.Int64                                            `tfsdk:"rp_priority" json:"rp_priority,optional,omitempty" `
+	SmRpCandidateEntry    *[]PimSmBootstrapSettingsRpCandidateEntryResourceModel `tfsdk:"sm_rp_candidate_entry" json:"sm_rp_candidate_entry,optional,omitempty" `
 }

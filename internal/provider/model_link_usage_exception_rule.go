@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type LinkUsageExceptionRuleResourceModel struct {
-	
-    Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Destinations *DestinationMatchingPartResourceModel `tfsdk:"destinations" json:"destinations,optional,omitempty" `
-        IspLinkRef types.String `tfsdk:"isp_link_ref" json:"isp_link_ref,optional,omitempty" `
-        Services *ServiceMatchPartResourceModel `tfsdk:"services" json:"services,optional,omitempty" `
-        Sources *SourceMatchPartResourceModel `tfsdk:"sources" json:"sources,optional,omitempty" `
-        
+	Comment      types.String                          `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Destinations *DestinationMatchingPartResourceModel `tfsdk:"destinations" json:"destinations,optional,omitempty" `
+	IspLinkRef   types.String                          `tfsdk:"isp_link_ref" json:"isp_link_ref,optional,omitempty" `
+	Services     *ServiceMatchPartResourceModel        `tfsdk:"services" json:"services,optional,omitempty" `
+	Sources      *SourceMatchPartResourceModel         `tfsdk:"sources" json:"sources,optional,omitempty" `
 }

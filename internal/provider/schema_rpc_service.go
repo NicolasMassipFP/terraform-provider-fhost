@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,100 +30,109 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetRpcServiceSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-        "id": schema.StringAttribute{
-        Optional:            true,
-        Computed:            true,
-        Description: "this attribute is the identifier of terraform resource",
-        
-        },
-       "admin_domain": schema.StringAttribute {
-        Computed: true,
-       Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
-        },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "etag": schema.StringAttribute {
-        Computed: true,
-       Description: "The ETag of the element, used for versioning. This field is not required.",
-        },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "locked": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is locked. This field is not required.",
-       },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "program_number": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The program number that the RPC traffic uses, which is a unique identifier for the RPC program.",
-        },
-       "protocol_agent_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a Protocol Agent. It is a process on the engines that assists the engine in handling a particular Protocol. Protocol Agents ensure that related connections for a service are properly grouped and evaluated by the engine, as well as assisting the engine with content filtering or network address translation tasks.",
-        },
-       "read_only": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is read-only. This field is not required.",
-       },
-       "rpc_version": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The RPC version number for the service, which is optional. If not specified, it matches traffic of any version.",
-        },
-       "system": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is a System element. This field is not required.",
-       },
-       "system_key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The system key of the System element. This field is not required.",
-       },
-       "transport": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The transport type for the RPC service, which can be 'tcp', 'udp', or 'both'. If not specified, it defaults to 'both'.",
-        },
-       "trashed": schema.BoolAttribute {
-          Computed: true,
-         Description: "Indicates if the element is trashed. This field is not required.",
-       },
+	attrs := map[string]schema.Attribute{
+		"id": schema.StringAttribute{
+			Optional:    true,
+			Computed:    true,
+			Description: "this attribute is the identifier of terraform resource",
+		}, "admin_domain": schema.StringAttribute{
+			Computed:    true,
+			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
+		},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"etag": schema.StringAttribute{
+			Computed:    true,
+			Description: "The ETag of the element, used for versioning. This field is not required.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"locked": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is locked. This field is not required.",
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"program_number": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The program number that the RPC traffic uses, which is a unique identifier for the RPC program.",
+		},
+		"protocol_agent_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a Protocol Agent. It is a process on the engines that assists the engine in handling a particular Protocol. Protocol Agents ensure that related connections for a service are properly grouped and evaluated by the engine, as well as assisting the engine with content filtering or network address translation tasks.",
+		},
+		"read_only": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is read-only. This field is not required.",
+		},
+		"rpc_version": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The RPC version number for the service, which is optional. If not specified, it matches traffic of any version.",
+		},
+		"system": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is a System element. This field is not required.",
+		},
+		"system_key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The system key of the System element. This field is not required.",
+		},
+		"transport": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The transport type for the RPC service, which can be 'tcp', 'udp', or 'both'. If not specified, it defaults to 'both'.",
+		},
+		"trashed": schema.BoolAttribute{
+			Computed:    true,
+			Description: "Indicates if the element is trashed. This field is not required.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getRpcServiceSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetRpcServiceSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getRpcServiceSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "pa_values": schema.ListNestedBlock {
-         NestedObject: schema.NestedBlockObject{
-         Attributes: GetPaParameterValueSchemaAttributes(ctx),
-         Blocks: GetPaParameterValueSchemaBlocks(ctx),
-          },
-         },
-
-    }
+func getRpcServiceSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"pa_values": schema.ListNestedBlock{
+			NestedObject: schema.NestedBlockObject{
+				Attributes: GetPaParameterValueSchemaAttributes(ctx),
+				Blocks:     GetPaParameterValueSchemaBlocks(ctx),
+			},
+		},
+	}
 }

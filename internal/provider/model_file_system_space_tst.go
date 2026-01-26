@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,27 +16,24 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type FileSystemSpaceTestResourceModel struct {
-	
-    AlertNotification types.Bool `tfsdk:"alert_notification" json:"alert_notification,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        FreeSpace types.Int64 `tfsdk:"free_space" json:"free_space,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        OfflineState types.Bool `tfsdk:"offline_state" json:"offline_state,optional,omitempty" `
-        OnPartition types.String `tfsdk:"on_partition" json:"on_partition,optional,omitempty" `
-        OnlineState types.Bool `tfsdk:"online_state" json:"online_state,optional,omitempty" `
-        SnmpNotification types.Bool `tfsdk:"snmp_notification" json:"snmp_notification,optional,omitempty" `
-        StandbyState types.Bool `tfsdk:"standby_state" json:"standby_state,optional,omitempty" `
-        TestAction types.String `tfsdk:"test_action" json:"test_action,optional,omitempty" `
-        TestActive types.Bool `tfsdk:"test_active" json:"test_active,optional,omitempty" `
-        TestInterval types.Int64 `tfsdk:"test_interval" json:"test_interval,optional,omitempty" `
-        
+	AlertNotification types.Bool                                         `tfsdk:"alert_notification" json:"alert_notification,optional,omitempty" `
+	Comment           types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	FreeSpace         types.Int64                                        `tfsdk:"free_space" json:"free_space,optional,omitempty" `
+	Key               types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link              customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Name              types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	OfflineState      types.Bool                                         `tfsdk:"offline_state" json:"offline_state,optional,omitempty" `
+	OnPartition       types.String                                       `tfsdk:"on_partition" json:"on_partition,optional,omitempty" `
+	OnlineState       types.Bool                                         `tfsdk:"online_state" json:"online_state,optional,omitempty" `
+	SnmpNotification  types.Bool                                         `tfsdk:"snmp_notification" json:"snmp_notification,optional,omitempty" `
+	StandbyState      types.Bool                                         `tfsdk:"standby_state" json:"standby_state,optional,omitempty" `
+	TestAction        types.String                                       `tfsdk:"test_action" json:"test_action,optional,omitempty" `
+	TestActive        types.Bool                                         `tfsdk:"test_active" json:"test_active,optional,omitempty" `
+	TestInterval      types.Int64                                        `tfsdk:"test_interval" json:"test_interval,optional,omitempty" `
 }
+
 func (r *FileSystemSpaceTestResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

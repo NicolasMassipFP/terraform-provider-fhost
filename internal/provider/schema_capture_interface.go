@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,72 +30,81 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetCaptureInterfaceSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "address": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The IP Address (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
-        },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "inspect_qinq": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether QinQ is inspected or not. This option allows the IPS engine to inspect traffic that uses QinQ encapsulation.",
-       },
-       "inspect_unspecified_vlans": schema.BoolAttribute {
-         Optional: true, // todo optional parameters
-         Description: "Indicates whether unspecified VLANs are inspected or not. Deselect this option to make the IPS engine ignore traffic from VLANs that are not included in the IPS engine's interface configuration. We recommend that you keep this option selected if you do not have a specific reason to deselect it.",
-       },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "logical_interface_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a Logical Interface. It is an IPS Element used in the IPS policies to represent one or more physical network interfaces as defined in the IPS engine properties.",
-        },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "network_value": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The IP Network (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
-        },
-       "nicid": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Interface ID of the interface.",
-        },
-       "reset_interface_nicid": schema.Int64Attribute {
-         Optional: true, // todo optional parameters
-         Description: "The Reset Interface to specify the interface through which TCP connection resets are sent when Reset responses are used in your IPS policy.",
-       },
+	attrs := map[string]schema.Attribute{"address": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The IP Address (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
+	},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"inspect_qinq": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether QinQ is inspected or not. This option allows the IPS engine to inspect traffic that uses QinQ encapsulation.",
+		},
+		"inspect_unspecified_vlans": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Indicates whether unspecified VLANs are inspected or not. Deselect this option to make the IPS engine ignore traffic from VLANs that are not included in the IPS engine's interface configuration. We recommend that you keep this option selected if you do not have a specific reason to deselect it.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"logical_interface_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a Logical Interface. It is an IPS Element used in the IPS policies to represent one or more physical network interfaces as defined in the IPS engine properties.",
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"network_value": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The IP Network (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
+		},
+		"nicid": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Interface ID of the interface.",
+		},
+		"reset_interface_nicid": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Reset Interface to specify the interface through which TCP connection resets are sent when Reset responses are used in your IPS policy.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getCaptureInterfaceSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetCaptureInterfaceSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getCaptureInterfaceSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getCaptureInterfaceSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

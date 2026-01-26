@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &RpcServiceResource{}
 var _ resource.ResourceWithImportState = &RpcServiceResource{}
 var _ context.Context = context.Background()
 
-
 // RpcServiceResource defines the resource implementation.
 type RpcServiceResource struct {
-    ResourceBase[RpcServiceResourceModel]
+	ResourceBase[RpcServiceResourceModel]
 }
-
 
 // Schema defines the schema for the RpcService resource.
 func (r *RpcServiceResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a SUN-RPC service, which is used to define a service based on the Remote Procedure Call (RPC) protocol. It includes a program number, transport type, and optional RPC version for traffic identification.",
-      Attributes: GetRpcServiceSchemaAttributes(ctx),
-      Blocks: GetRpcServiceSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a SUN-RPC service, which is used to define a service based on the Remote Procedure Call (RPC) protocol. It includes a program number, transport type, and optional RPC version for traffic identification.",
+		Attributes:  GetRpcServiceSchemaAttributes(ctx),
+		Blocks:      GetRpcServiceSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *RpcServiceResource) Schema(ctx context.Context, _ resource.SchemaReques
 func NewRpcServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing RpcService resource")
 	r := &RpcServiceResource{
-        ResourceBase: ResourceBase[RpcServiceResourceModel]{
-             resourceType: "rpc_service",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[RpcServiceResourceModel]{
+			resourceType:  "rpc_service",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

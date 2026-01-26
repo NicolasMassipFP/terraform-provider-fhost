@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ThreatSeekerServerResource{}
 var _ resource.ResourceWithImportState = &ThreatSeekerServerResource{}
 var _ context.Context = context.Background()
 
-
 // ThreatSeekerServerResource defines the resource implementation.
 type ThreatSeekerServerResource struct {
-    ResourceBase[ThreatSeekerServerResourceModel]
+	ResourceBase[ThreatSeekerServerResourceModel]
 }
-
 
 // Schema defines the schema for the ThreatSeekerServer resource.
 func (r *ThreatSeekerServerResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Threat Seeker Server, which is a System object holding configuration needed to use Threat Seeker URL Categories. It includes attributes for the complete URL, license key, expiration date, and CA certificate.",
-      Attributes: GetThreatSeekerServerSchemaAttributes(ctx),
-      Blocks: GetThreatSeekerServerSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Threat Seeker Server, which is a System object holding configuration needed to use Threat Seeker URL Categories. It includes attributes for the complete URL, license key, expiration date, and CA certificate.",
+		Attributes:  GetThreatSeekerServerSchemaAttributes(ctx),
+		Blocks:      GetThreatSeekerServerSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ThreatSeekerServerResource) Schema(ctx context.Context, _ resource.Sche
 func NewThreatSeekerServerResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ThreatSeekerServer resource")
 	r := &ThreatSeekerServerResource{
-        ResourceBase: ResourceBase[ThreatSeekerServerResourceModel]{
-             resourceType: "threatseeker_server",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ThreatSeekerServerResourceModel]{
+			resourceType:  "threatseeker_server",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

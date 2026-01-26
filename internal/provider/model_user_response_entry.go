@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type UserResponseEntryResourceModel struct {
-	
-    Reason types.String `tfsdk:"reason" json:"reason,optional,omitempty" `
-        Redirect types.String `tfsdk:"redirect" json:"redirect,optional,omitempty" `
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" `
-        UserResponseMessage types.String `tfsdk:"user_response_message" json:"user_response_message,optional,omitempty" `
-        UserResponseText types.String `tfsdk:"user_response_text" json:"user_response_text,optional,omitempty" `
-        UserResponseTitle types.String `tfsdk:"user_response_title" json:"user_response_title,optional,omitempty" `
-        
+	Reason              types.String `tfsdk:"reason" json:"reason,optional,omitempty" `
+	Redirect            types.String `tfsdk:"redirect" json:"redirect,optional,omitempty" `
+	Type                types.String `tfsdk:"type" json:"type,optional,omitempty" `
+	UserResponseMessage types.String `tfsdk:"user_response_message" json:"user_response_message,optional,omitempty" `
+	UserResponseText    types.String `tfsdk:"user_response_text" json:"user_response_text,optional,omitempty" `
+	UserResponseTitle   types.String `tfsdk:"user_response_title" json:"user_response_title,optional,omitempty" `
 }

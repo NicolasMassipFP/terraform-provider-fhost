@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,11 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type EcaSettingsResourceModel struct {
-	
-    EcaClientConfig types.String `tfsdk:"eca_client_config" json:"eca_client_config,optional,omitempty" `
-        EcaClientNetworkRef *[]types.String `tfsdk:"eca_client_network_ref" json:"eca_client_network_ref,optional,omitempty" `
-        EcaServerNetworkRef *[]types.String `tfsdk:"eca_server_network_ref" json:"eca_server_network_ref,optional,omitempty" `
-        EnabledInterface *[]EnabledInterfaceEntryResourceModel `tfsdk:"enabled_interface" json:"enabled_interface,optional,omitempty" `
-        ListenedZoneRef *[]types.String `tfsdk:"listened_zone_ref" json:"listened_zone_ref,optional,omitempty" `
-        ListeningPort types.Int64 `tfsdk:"listening_port" json:"listening_port,optional,omitempty" `
-        
+	EcaClientConfig     types.String                          `tfsdk:"eca_client_config" json:"eca_client_config,optional,omitempty" `
+	EcaClientNetworkRef *[]types.String                       `tfsdk:"eca_client_network_ref" json:"eca_client_network_ref,optional,omitempty" `
+	EcaServerNetworkRef *[]types.String                       `tfsdk:"eca_server_network_ref" json:"eca_server_network_ref,optional,omitempty" `
+	EnabledInterface    *[]EnabledInterfaceEntryResourceModel `tfsdk:"enabled_interface" json:"enabled_interface,optional,omitempty" `
+	ListenedZoneRef     *[]types.String                       `tfsdk:"listened_zone_ref" json:"listened_zone_ref,optional,omitempty" `
+	ListeningPort       types.Int64                           `tfsdk:"listening_port" json:"listening_port,optional,omitempty" `
 }

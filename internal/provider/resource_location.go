@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LocationResource{}
 var _ resource.ResourceWithImportState = &LocationResource{}
 var _ context.Context = context.Background()
 
-
 // LocationResource defines the resource implementation.
 type LocationResource struct {
-    ResourceBase[LocationResourceModel]
+	ResourceBase[LocationResourceModel]
 }
-
 
 // Schema defines the schema for the Location resource.
 func (r *LocationResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
-      Attributes: GetLocationSchemaAttributes(ctx),
-      Blocks: GetLocationSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
+		Attributes:  GetLocationSchemaAttributes(ctx),
+		Blocks:      GetLocationSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LocationResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 func NewLocationResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Location resource")
 	r := &LocationResource{
-        ResourceBase: ResourceBase[LocationResourceModel]{
-             resourceType: "location",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LocationResourceModel]{
+			resourceType:  "location",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

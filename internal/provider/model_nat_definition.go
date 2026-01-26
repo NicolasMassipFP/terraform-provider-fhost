@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,23 +16,20 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type NatDefinitionResourceModel struct {
-	
-    Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        EnabledInterface *[]EnabledInterfaceEntryResourceModel `tfsdk:"enabled_interface" json:"enabled_interface,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        NatType types.String `tfsdk:"nat_type" json:"nat_type,optional,omitempty" `
-        PrivateNeRef types.String `tfsdk:"private_ne_ref" json:"private_ne_ref,optional,omitempty" `
-        PublicIp types.String `tfsdk:"public_ip" json:"public_ip,optional,omitempty" `
-        PublicNeRef types.String `tfsdk:"public_ne_ref" json:"public_ne_ref,optional,omitempty" `
-        ServiceRef *[]types.String `tfsdk:"service_ref" json:"service_ref,optional,omitempty" `
-        
+	Comment          types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	EnabledInterface *[]EnabledInterfaceEntryResourceModel              `tfsdk:"enabled_interface" json:"enabled_interface,optional,omitempty" `
+	Key              types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link             customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk               customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Name             types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	NatType          types.String                                       `tfsdk:"nat_type" json:"nat_type,optional,omitempty" `
+	PrivateNeRef     types.String                                       `tfsdk:"private_ne_ref" json:"private_ne_ref,optional,omitempty" `
+	PublicIp         types.String                                       `tfsdk:"public_ip" json:"public_ip,optional,omitempty" `
+	PublicNeRef      types.String                                       `tfsdk:"public_ne_ref" json:"public_ne_ref,optional,omitempty" `
+	ServiceRef       *[]types.String                                    `tfsdk:"service_ref" json:"service_ref,optional,omitempty" `
 }
+
 func (r *NatDefinitionResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

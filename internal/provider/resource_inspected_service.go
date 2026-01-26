@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &InspectedServiceResource{}
 var _ resource.ResourceWithImportState = &InspectedServiceResource{}
 var _ context.Context = context.Background()
 
-
 // InspectedServiceResource defines the resource implementation.
 type InspectedServiceResource struct {
-    ResourceBase[InspectedServiceResourceModel]
+	ResourceBase[InspectedServiceResourceModel]
 }
-
 
 // Schema defines the schema for the InspectedService resource.
 func (r *InspectedServiceResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.",
-      Attributes: GetInspectedServiceSchemaAttributes(ctx),
-      Blocks: GetInspectedServiceSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.",
+		Attributes:  GetInspectedServiceSchemaAttributes(ctx),
+		Blocks:      GetInspectedServiceSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *InspectedServiceResource) Schema(ctx context.Context, _ resource.Schema
 func NewInspectedServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing InspectedService resource")
 	r := &InspectedServiceResource{
-        ResourceBase: ResourceBase[InspectedServiceResourceModel]{
-             resourceType: "inspected_service",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[InspectedServiceResourceModel]{
+			resourceType:  "inspected_service",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

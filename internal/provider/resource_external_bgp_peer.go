@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ExternalBgpPeerResource{}
 var _ resource.ResourceWithImportState = &ExternalBgpPeerResource{}
 var _ context.Context = context.Background()
 
-
 // ExternalBgpPeerResource defines the resource implementation.
 type ExternalBgpPeerResource struct {
-    ResourceBase[ExternalBgpPeerResourceModel]
+	ResourceBase[ExternalBgpPeerResourceModel]
 }
-
 
 // Schema defines the schema for the ExternalBgpPeer resource.
 func (r *ExternalBgpPeerResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the External BGP Peer for Dynamic Routing Firewall functionality. It is used to configure external BGP peers in the firewall's dynamic routing capabilities.",
-      Attributes: GetExternalBgpPeerSchemaAttributes(ctx),
-      Blocks: GetExternalBgpPeerSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the External BGP Peer for Dynamic Routing Firewall functionality. It is used to configure external BGP peers in the firewall's dynamic routing capabilities.",
+		Attributes:  GetExternalBgpPeerSchemaAttributes(ctx),
+		Blocks:      GetExternalBgpPeerSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ExternalBgpPeerResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewExternalBgpPeerResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ExternalBgpPeer resource")
 	r := &ExternalBgpPeerResource{
-        ResourceBase: ResourceBase[ExternalBgpPeerResourceModel]{
-             resourceType: "external_bgp_peer",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ExternalBgpPeerResourceModel]{
+			resourceType:  "external_bgp_peer",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,15 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ApiLinkResourceModel struct {
-	
-    Href types.String `tfsdk:"href" json:"href,optional,omitempty" fpro:"href"`
-        Rel types.String `tfsdk:"rel" json:"rel,optional,omitempty" fpro:"rel"`
-        Type types.String `tfsdk:"type" json:"type,optional,omitempty" fpro:"type"`
-        
+	Href types.String `tfsdk:"href" json:"href,optional,omitempty" fpro:"href"`
+	Rel  types.String `tfsdk:"rel" json:"rel,optional,omitempty" fpro:"rel"`
+	Type types.String `tfsdk:"type" json:"type,optional,omitempty" fpro:"type"`
 }
+
 func (r *ApiLinkResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Href.IsNull() || r.Href.IsUnknown() {
 		return nil

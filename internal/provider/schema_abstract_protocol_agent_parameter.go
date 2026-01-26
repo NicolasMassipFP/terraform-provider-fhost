@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,25 +30,48 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetAbstractProtocolAgentParameterSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getAbstractProtocolAgentParameterSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetAbstractProtocolAgentParameterSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getAbstractProtocolAgentParameterSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-       "pa_parameter": schema.SingleNestedBlock{
-        Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
-        CustomType:  customfield.NewNestedObjectType[PaParameterResourceModel](ctx),
-        Attributes: GetPaParameterSchemaAttributes(ctx),Blocks: GetPaParameterSchemaBlocks(ctx),},
-       "pa_parameter_group": schema.SingleNestedBlock{
-        Description: "This represents a group of parameters for the Protocol Agent, allowing for structured configuration of agent settings.",
-        CustomType:  customfield.NewNestedObjectType[PaParameterGroupResourceModel](ctx),
-        Attributes: GetPaParameterGroupSchemaAttributes(ctx),Blocks: GetPaParameterGroupSchemaBlocks(ctx),},
-
-    }
+func getAbstractProtocolAgentParameterSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{
+		"pa_parameter": schema.SingleNestedBlock{
+			Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
+			CustomType:  customfield.NewNestedObjectType[PaParameterResourceModel](ctx),
+			Attributes:  GetPaParameterSchemaAttributes(ctx),
+			Blocks:      GetPaParameterSchemaBlocks(ctx),
+		},
+		"pa_parameter_group": schema.SingleNestedBlock{
+			Description: "This represents a group of parameters for the Protocol Agent, allowing for structured configuration of agent settings.",
+			CustomType:  customfield.NewNestedObjectType[PaParameterGroupResourceModel](ctx),
+			Attributes:  GetPaParameterGroupSchemaAttributes(ctx),
+			Blocks:      GetPaParameterGroupSchemaBlocks(ctx),
+		},
+	}
 }

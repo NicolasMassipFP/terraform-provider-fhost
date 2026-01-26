@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ServiceGroupResource{}
 var _ resource.ResourceWithImportState = &ServiceGroupResource{}
 var _ context.Context = context.Background()
 
-
 // ServiceGroupResource defines the resource implementation.
 type ServiceGroupResource struct {
-    ResourceBase[ServiceGroupResourceModel]
+	ResourceBase[ServiceGroupResourceModel]
 }
-
 
 // Schema defines the schema for the ServiceGroup resource.
 func (r *ServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Group of services, which can contain both individual services and other service groups.",
-      Attributes: GetServiceGroupSchemaAttributes(ctx),
-      Blocks: GetServiceGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Group of services, which can contain both individual services and other service groups.",
+		Attributes:  GetServiceGroupSchemaAttributes(ctx),
+		Blocks:      GetServiceGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ServiceGroupResource) Schema(ctx context.Context, _ resource.SchemaRequ
 func NewServiceGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ServiceGroup resource")
 	r := &ServiceGroupResource{
-        ResourceBase: ResourceBase[ServiceGroupResourceModel]{
-             resourceType: "service_group",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ServiceGroupResourceModel]{
+			resourceType:  "service_group",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

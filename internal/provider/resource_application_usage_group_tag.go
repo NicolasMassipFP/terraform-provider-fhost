@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ApplicationUsageGroupTagResource{}
 var _ resource.ResourceWithImportState = &ApplicationUsageGroupTagResource{}
 var _ context.Context = context.Background()
 
-
 // ApplicationUsageGroupTagResource defines the resource implementation.
 type ApplicationUsageGroupTagResource struct {
-    ResourceBase[ApplicationUsageGroupTagResourceModel]
+	ResourceBase[ApplicationUsageGroupTagResourceModel]
 }
-
 
 // Schema defines the schema for the ApplicationUsageGroupTag resource.
 func (r *ApplicationUsageGroupTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Application Usage Group Tag, which is used to categorize elements based on their application usage group. It is a type of tag that can be applied to various elements in the system to indicate their application usage group classification.",
-      Attributes: GetApplicationUsageGroupTagSchemaAttributes(ctx),
-      Blocks: GetApplicationUsageGroupTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Application Usage Group Tag, which is used to categorize elements based on their application usage group. It is a type of tag that can be applied to various elements in the system to indicate their application usage group classification.",
+		Attributes:  GetApplicationUsageGroupTagSchemaAttributes(ctx),
+		Blocks:      GetApplicationUsageGroupTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ApplicationUsageGroupTagResource) Schema(ctx context.Context, _ resourc
 func NewApplicationUsageGroupTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ApplicationUsageGroupTag resource")
 	r := &ApplicationUsageGroupTagResource{
-        ResourceBase: ResourceBase[ApplicationUsageGroupTagResourceModel]{
-             resourceType: "application_usage_group_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ApplicationUsageGroupTagResourceModel]{
+			resourceType:  "application_usage_group_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

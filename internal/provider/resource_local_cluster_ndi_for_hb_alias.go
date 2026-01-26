@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &LocalClusterNdiForHbAliasResource{}
 var _ resource.ResourceWithImportState = &LocalClusterNdiForHbAliasResource{}
 var _ context.Context = context.Background()
 
-
 // LocalClusterNdiForHbAliasResource defines the resource implementation.
 type LocalClusterNdiForHbAliasResource struct {
-    ResourceBase[LocalClusterNdiForHbAliasResourceModel]
+	ResourceBase[LocalClusterNdiForHbAliasResourceModel]
 }
-
 
 // Schema defines the schema for the LocalClusterNdiForHbAlias resource.
 func (r *LocalClusterNdiForHbAliasResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the System alias for '$$ Local Cluster(NDI for heartbeat addresses only)', which is used to substitute all NDI addresses that are used for Heartbeat on the local cluster object where the policy is uploaded. If the firewall is a single node, the alias remains empty.",
-      Attributes: GetLocalClusterNdiForHbAliasSchemaAttributes(ctx),
-      Blocks: GetLocalClusterNdiForHbAliasSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the System alias for '$$ Local Cluster(NDI for heartbeat addresses only)', which is used to substitute all NDI addresses that are used for Heartbeat on the local cluster object where the policy is uploaded. If the firewall is a single node, the alias remains empty.",
+		Attributes:  GetLocalClusterNdiForHbAliasSchemaAttributes(ctx),
+		Blocks:      GetLocalClusterNdiForHbAliasSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *LocalClusterNdiForHbAliasResource) Schema(ctx context.Context, _ resour
 func NewLocalClusterNdiForHbAliasResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing LocalClusterNdiForHbAlias resource")
 	r := &LocalClusterNdiForHbAliasResource{
-        ResourceBase: ResourceBase[LocalClusterNdiForHbAliasResourceModel]{
-             resourceType: "local_cluster_ndi_for_hb_alias",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[LocalClusterNdiForHbAliasResourceModel]{
+			resourceType:  "local_cluster_ndi_for_hb_alias",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

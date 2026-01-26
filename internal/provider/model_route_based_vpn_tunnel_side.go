@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type RouteBasedVpnTunnelSideResourceModel struct {
-	
-    EndpointRef types.String `tfsdk:"endpoint_ref" json:"endpoint_ref,optional,omitempty" `
-        GatewayRef types.String `tfsdk:"gateway_ref" json:"gateway_ref,optional,omitempty" `
-        IpAddress types.String `tfsdk:"ip_address" json:"ip_address,optional,omitempty" `
-        TunnelInterfaceRef types.String `tfsdk:"tunnel_interface_ref" json:"tunnel_interface_ref,optional,omitempty" `
-        
+	EndpointRef        types.String `tfsdk:"endpoint_ref" json:"endpoint_ref,optional,omitempty" `
+	GatewayRef         types.String `tfsdk:"gateway_ref" json:"gateway_ref,optional,omitempty" `
+	IpAddress          types.String `tfsdk:"ip_address" json:"ip_address,optional,omitempty" `
+	TunnelInterfaceRef types.String `tfsdk:"tunnel_interface_ref" json:"tunnel_interface_ref,optional,omitempty" `
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type CapabilitiesResourceModel struct {
-	
-    Sha2IkeHashLength types.Int64 `tfsdk:"sha2_ike_hash_length" json:"sha2_ike_hash_length,optional,omitempty" `
-        Sha2IpsecHashLength types.Int64 `tfsdk:"sha2_ipsec_hash_length" json:"sha2_ipsec_hash_length,optional,omitempty" `
-        
+	Sha2IkeHashLength   types.Int64 `tfsdk:"sha2_ike_hash_length" json:"sha2_ike_hash_length,optional,omitempty" `
+	Sha2IpsecHashLength types.Int64 `tfsdk:"sha2_ipsec_hash_length" json:"sha2_ipsec_hash_length,optional,omitempty" `
 }

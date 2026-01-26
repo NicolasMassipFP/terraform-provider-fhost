@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type PaProxyServiceValueResourceModel struct {
-	
-    AddressRange types.String `tfsdk:"address_range" json:"address_range,optional,omitempty" `
-        MaxPort types.Int64 `tfsdk:"max_port" json:"max_port,optional,omitempty" `
-        MinPort types.Int64 `tfsdk:"min_port" json:"min_port,optional,omitempty" `
-        ParameterRef types.String `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
-        ProxyServerRef types.String `tfsdk:"proxy_server_ref" json:"proxy_server_ref,optional,omitempty" `
-        
+	AddressRange   types.String `tfsdk:"address_range" json:"address_range,optional,omitempty" `
+	MaxPort        types.Int64  `tfsdk:"max_port" json:"max_port,optional,omitempty" `
+	MinPort        types.Int64  `tfsdk:"min_port" json:"min_port,optional,omitempty" `
+	ParameterRef   types.String `tfsdk:"parameter_ref" json:"parameter_ref,optional,omitempty" `
+	ProxyServerRef types.String `tfsdk:"proxy_server_ref" json:"proxy_server_ref,optional,omitempty" `
 }

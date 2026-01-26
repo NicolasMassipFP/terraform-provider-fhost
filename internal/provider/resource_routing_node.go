@@ -3,38 +3,43 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &RoutingNodeResource{}
 var _ resource.ResourceWithImportState = &RoutingNodeResource{}
 var _ context.Context = context.Background()
 
-
 // RoutingNodeResource defines the resource implementation.
 type RoutingNodeResource struct {
-    ResourceBase[RoutingNodeResourceModel]
+	ResourceBase[RoutingNodeResourceModel]
 }
-
 
 // Schema defines the schema for the RoutingNode resource.
 func (r *RoutingNodeResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
+	ctx = context.WithValue(ctx, "max_recursion", 6)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.",
-      Attributes: GetRoutingNodeSchemaAttributes(ctx),
-      Blocks: GetRoutingNodeSchemaBlocks(ctx, 7),
-    } // schema
-    
+		Description: "This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.",
+		Attributes:  GetRoutingNodeSchemaAttributes(ctx),
+		Blocks: GetRoutingNodeSchemaBlocks(
+			context.WithValue(ctx, "max_recursion", 6)),
+	} // schema
 
 }
 
@@ -42,12 +47,11 @@ func (r *RoutingNodeResource) Schema(ctx context.Context, _ resource.SchemaReque
 func NewRoutingNodeResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing RoutingNode resource")
 	r := &RoutingNodeResource{
-        ResourceBase: ResourceBase[RoutingNodeResourceModel]{
-             resourceType: "routing_node",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[RoutingNodeResourceModel]{
+			resourceType:  "routing_node",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

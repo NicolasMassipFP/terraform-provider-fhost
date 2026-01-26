@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,83 +30,91 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetInternalGatewayCertificateSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-        "id": schema.StringAttribute{
-        Optional:            true,
-        Computed:            true,
-        Description: "this attribute is the identifier of terraform resource",
-        
-        },        
-        "from_ref": schema.StringAttribute{
-        Optional:            true, 
-        Description: "parent href of this sub-resource",
-        },
-       "certificate_authority": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.",
-        },
-       "certificate_base64": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The PEM-encoded certificate for the internal gateway, which contains the public key and other metadata.",
-        },
-       "comment": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "An optional comment for the element. This field is not required.",
-        },
-       "expiration_date": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The date when the certificate expires, indicating when the certificate is no longer valid.",
-        },
-       "key": schema.Int64Attribute {
-          Computed: true,
-         Description: "The unique identifier for the element. This field is required for updates but not for creation.",
-       },
-       "link": schema.ListNestedAttribute {
-          Computed: true,
-         Description: "The API's links of the element, providing additional actions or resources.",
-         CustomType:  customfield.NewNestedObjectListType[ApiLinkResourceModel](ctx),
-         NestedObject: schema.NestedAttributeObject{
-         Attributes: GetApiLinkSchemaAttributes(ctx),
-          },
-         },
-       "lk": schema.MapAttribute {
-          Computed: true,
-         Description: "",
-  	ElementType: types.StringType,
-      CustomType:  customfield.NewMapType[types.String](ctx),
+	useHcl2 := UseHCL2(ctx)
 
-       },
-       "name": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "Name of the object.",
-        },
-       "public_key_algorithm": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The public key algorithm used in the certificate, which defines the cryptographic method for the public key.",
-        },
-       "signature_algorithm": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The signature algorithm used in the certificate, which defines how the certificate is signed and verified.",
-        },
-       "subject_alt_name": schema.ListAttribute {
-         Optional: true, // todo optional parameters
-         Description: "The subject alternative names (SAN) of the certificate, which provide additional identities for the certificate beyond the common name.",
-         ElementType: types.StringType,
-       },
-       "valid_from": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The date from which the certificate is valid, indicating when the certificate starts being effective.",
-        },
+	attrs := map[string]schema.Attribute{
+		"id": schema.StringAttribute{
+			Optional:    true,
+			Computed:    true,
+			Description: "this attribute is the identifier of terraform resource",
+		},
+		"from_ref": schema.StringAttribute{
+			Optional:    true,
+			Description: "parent href of this sub-resource",
+		}, "certificate_authority": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.",
+		},
+		"certificate_base64": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The PEM-encoded certificate for the internal gateway, which contains the public key and other metadata.",
+		},
+		"comment": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "An optional comment for the element. This field is not required.",
+		},
+		"expiration_date": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The date when the certificate expires, indicating when the certificate is no longer valid.",
+		},
+		"key": schema.Int64Attribute{
+			Computed:    true,
+			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
+		},
+		"link": schema.MapAttribute{
+			Computed:    true,
+			Description: "provides additional actions or resources.",
+			ElementType: types.StringType,
+			CustomType:  customfield.NewMapType[types.String](ctx),
+		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
+		"public_key_algorithm": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The public key algorithm used in the certificate, which defines the cryptographic method for the public key.",
+		},
+		"signature_algorithm": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The signature algorithm used in the certificate, which defines how the certificate is signed and verified.",
+		},
+		"subject_alt_name": schema.ListAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The subject alternative names (SAN) of the certificate, which provide additional identities for the certificate beyond the common name.",
+			ElementType: types.StringType,
+		},
+		"valid_from": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The date from which the certificate is valid, indicating when the certificate starts being effective.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
 
-    }
+	blocks := getInternalGatewayCertificateSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetInternalGatewayCertificateSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getInternalGatewayCertificateSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getInternalGatewayCertificateSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

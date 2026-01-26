@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &Ipv6PrefixListResource{}
 var _ resource.ResourceWithImportState = &Ipv6PrefixListResource{}
 var _ context.Context = context.Background()
 
-
 // Ipv6PrefixListResource defines the resource implementation.
 type Ipv6PrefixListResource struct {
-    ResourceBase[Ipv6PrefixListResourceModel]
+	ResourceBase[Ipv6PrefixListResourceModel]
 }
-
 
 // Schema defines the schema for the Ipv6PrefixList resource.
 func (r *Ipv6PrefixListResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an IPv6 Prefix List, which is used to define a list of IPv6 prefixes for dynamic routing configurations.",
-      Attributes: GetIpv6PrefixListSchemaAttributes(ctx),
-      Blocks: GetIpv6PrefixListSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an IPv6 Prefix List, which is used to define a list of IPv6 prefixes for dynamic routing configurations.",
+		Attributes:  GetIpv6PrefixListSchemaAttributes(ctx),
+		Blocks:      GetIpv6PrefixListSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *Ipv6PrefixListResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewIpv6PrefixListResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing Ipv6PrefixList resource")
 	r := &Ipv6PrefixListResource{
-        ResourceBase: ResourceBase[Ipv6PrefixListResourceModel]{
-             resourceType: "ipv6_prefix_list",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[Ipv6PrefixListResourceModel]{
+			resourceType:  "ipv6_prefix_list",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

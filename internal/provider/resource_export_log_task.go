@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &ExportLogTaskResource{}
 var _ resource.ResourceWithImportState = &ExportLogTaskResource{}
 var _ context.Context = context.Background()
 
-
 // ExportLogTaskResource defines the resource implementation.
 type ExportLogTaskResource struct {
-    ResourceBase[ExportLogTaskResourceModel]
+	ResourceBase[ExportLogTaskResourceModel]
 }
-
 
 // Schema defines the schema for the ExportLogTask resource.
 func (r *ExportLogTaskResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an Export Log Task, which is used to export logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are exported properly.",
-      Attributes: GetExportLogTaskSchemaAttributes(ctx),
-      Blocks: GetExportLogTaskSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an Export Log Task, which is used to export logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are exported properly.",
+		Attributes:  GetExportLogTaskSchemaAttributes(ctx),
+		Blocks:      GetExportLogTaskSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *ExportLogTaskResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewExportLogTaskResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing ExportLogTask resource")
 	r := &ExportLogTaskResource{
-        ResourceBase: ResourceBase[ExportLogTaskResourceModel]{
-             resourceType: "export_log_task",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[ExportLogTaskResourceModel]{
+			resourceType:  "export_log_task",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

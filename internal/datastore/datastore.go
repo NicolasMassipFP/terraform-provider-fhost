@@ -31,7 +31,7 @@ var (
 	stateFileMutex = &sync.Mutex{}
 )
 
-const stateFileName = "tfsmcstate.json"
+const stateFileName = "tfsmc.state.json"
 const lockTimeout = 30 * time.Second
 
 // PendingDeleteOperation defines the type of operation to perform

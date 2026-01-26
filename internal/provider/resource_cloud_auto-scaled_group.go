@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &CloudAutoScaledGroupResource{}
 var _ resource.ResourceWithImportState = &CloudAutoScaledGroupResource{}
 var _ context.Context = context.Background()
 
-
 // CloudAutoScaledGroupResource defines the resource implementation.
 type CloudAutoScaledGroupResource struct {
-    ResourceBase[CloudAutoScaledGroupResourceModel]
+	ResourceBase[CloudAutoScaledGroupResourceModel]
 }
-
 
 // Schema defines the schema for the CloudAutoScaledGroup resource.
 func (r *CloudAutoScaledGroupResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Cloud Auto-Scaled Group, which is used to manage a group of cloud firewalls that can scale automatically based on load. It includes configurations for monitoring, installed policies, and the elements within the group.",
-      Attributes: GetCloudAutoScaledGroupSchemaAttributes(ctx),
-      Blocks: GetCloudAutoScaledGroupSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Cloud Auto-Scaled Group, which is used to manage a group of cloud firewalls that can scale automatically based on load. It includes configurations for monitoring, installed policies, and the elements within the group.",
+		Attributes:  GetCloudAutoScaledGroupSchemaAttributes(ctx),
+		Blocks:      GetCloudAutoScaledGroupSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *CloudAutoScaledGroupResource) Schema(ctx context.Context, _ resource.Sc
 func NewCloudAutoScaledGroupResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing CloudAutoScaledGroup resource")
 	r := &CloudAutoScaledGroupResource{
-        ResourceBase: ResourceBase[CloudAutoScaledGroupResourceModel]{
-             resourceType: "scale_set",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[CloudAutoScaledGroupResourceModel]{
+			resourceType:  "scale_set",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

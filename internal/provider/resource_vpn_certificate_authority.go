@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &VpnCertificateAuthorityResource{}
 var _ resource.ResourceWithImportState = &VpnCertificateAuthorityResource{}
 var _ context.Context = context.Background()
 
-
 // VpnCertificateAuthorityResource defines the resource implementation.
 type VpnCertificateAuthorityResource struct {
-    ResourceBase[VpnCertificateAuthorityResourceModel]
+	ResourceBase[VpnCertificateAuthorityResourceModel]
 }
-
 
 // Schema defines the schema for the VpnCertificateAuthority resource.
 func (r *VpnCertificateAuthorityResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.",
-      Attributes: GetVpnCertificateAuthoritySchemaAttributes(ctx),
-      Blocks: GetVpnCertificateAuthoritySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.",
+		Attributes:  GetVpnCertificateAuthoritySchemaAttributes(ctx),
+		Blocks:      GetVpnCertificateAuthoritySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *VpnCertificateAuthorityResource) Schema(ctx context.Context, _ resource
 func NewVpnCertificateAuthorityResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing VpnCertificateAuthority resource")
 	r := &VpnCertificateAuthorityResource{
-        ResourceBase: ResourceBase[VpnCertificateAuthorityResourceModel]{
-             resourceType: "vpn_certificate_authority",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[VpnCertificateAuthorityResourceModel]{
+			resourceType:  "vpn_certificate_authority",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

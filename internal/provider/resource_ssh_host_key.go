@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SshHostKeyResource{}
 var _ resource.ResourceWithImportState = &SshHostKeyResource{}
 var _ context.Context = context.Background()
 
-
 // SshHostKeyResource defines the resource implementation.
 type SshHostKeyResource struct {
-    ResourceBase[SshHostKeyResourceModel]
+	ResourceBase[SshHostKeyResourceModel]
 }
-
 
 // Schema defines the schema for the SshHostKey resource.
 func (r *SshHostKeyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents an SSH Host Key for the Sidewinder SSH Proxy. It stores a key pair for use in the SSH Proxy. The key data is not directly accessible through this interface. During creation of a new key, the type and length fields are required.",
-      Attributes: GetSshHostKeySchemaAttributes(ctx),
-      Blocks: GetSshHostKeySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents an SSH Host Key for the Sidewinder SSH Proxy. It stores a key pair for use in the SSH Proxy. The key data is not directly accessible through this interface. During creation of a new key, the type and length fields are required.",
+		Attributes:  GetSshHostKeySchemaAttributes(ctx),
+		Blocks:      GetSshHostKeySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SshHostKeyResource) Schema(ctx context.Context, _ resource.SchemaReques
 func NewSshHostKeyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SshHostKey resource")
 	r := &SshHostKeyResource{
-        ResourceBase: ResourceBase[SshHostKeyResourceModel]{
-             resourceType: "ssh_host_key",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SshHostKeyResourceModel]{
+			resourceType:  "ssh_host_key",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

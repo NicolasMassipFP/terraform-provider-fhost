@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &L2fwInterfaceEthernetRuleResource{}
 var _ resource.ResourceWithImportState = &L2fwInterfaceEthernetRuleResource{}
 var _ context.Context = context.Background()
 
-
 // L2fwInterfaceEthernetRuleResource defines the resource implementation.
 type L2fwInterfaceEthernetRuleResource struct {
-    ResourceBase[L2fwInterfaceEthernetRuleResourceModel]
+	ResourceBase[L2fwInterfaceEthernetRuleResourceModel]
 }
-
 
 // Schema defines the schema for the L2fwInterfaceEthernetRule resource.
 func (r *L2fwInterfaceEthernetRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a L2FW Interface Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a NGFW in Transparent Access Control Mode.",
-      Attributes: GetL2fwInterfaceEthernetRuleSchemaAttributes(ctx),
-      Blocks: GetL2fwInterfaceEthernetRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a L2FW Interface Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a NGFW in Transparent Access Control Mode.",
+		Attributes:  GetL2fwInterfaceEthernetRuleSchemaAttributes(ctx),
+		Blocks:      GetL2fwInterfaceEthernetRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *L2fwInterfaceEthernetRuleResource) Schema(ctx context.Context, _ resour
 func NewL2fwInterfaceEthernetRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing L2fwInterfaceEthernetRule resource")
 	r := &L2fwInterfaceEthernetRuleResource{
-        ResourceBase: ResourceBase[L2fwInterfaceEthernetRuleResourceModel]{
-             resourceType: "l2_interface_ethernet_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[L2fwInterfaceEthernetRuleResourceModel]{
+			resourceType:  "l2_interface_ethernet_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *L2fwInterfaceEthernetRuleResource) getCreateRequestParams(_ context.Context, data *L2fwInterfaceEthernetRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *L2fwInterfaceEthernetRuleResource) getCreateRequestParams(_ context.Context, data *L2fwInterfaceEthernetRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

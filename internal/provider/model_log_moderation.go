@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type LogModerationResourceModel struct {
-	
-    Burst types.Int64 `tfsdk:"burst" json:"burst,optional,omitempty" `
-        LogEvent types.String `tfsdk:"log_event" json:"log_event,optional,omitempty" `
-        Rate types.Int64 `tfsdk:"rate" json:"rate,optional,omitempty" `
-        
+	Burst    types.Int64  `tfsdk:"burst" json:"burst,optional,omitempty" `
+	LogEvent types.String `tfsdk:"log_event" json:"log_event,optional,omitempty" `
+	Rate     types.Int64  `tfsdk:"rate" json:"rate,optional,omitempty" `
 }

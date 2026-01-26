@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type OspfAbrSubstituteContainerResourceModel struct {
-	
-    SubnetRef types.String `tfsdk:"subnet_ref" json:"subnet_ref,optional,omitempty" `
-        SubstituteRef types.String `tfsdk:"substitute_ref" json:"substitute_ref,optional,omitempty" `
-        SubstituteType types.String `tfsdk:"substitute_type" json:"substitute_type,optional,omitempty" `
-        
+	SubnetRef      types.String `tfsdk:"subnet_ref" json:"subnet_ref,optional,omitempty" `
+	SubstituteRef  types.String `tfsdk:"substitute_ref" json:"substitute_ref,optional,omitempty" `
+	SubstituteType types.String `tfsdk:"substitute_type" json:"substitute_type,optional,omitempty" `
 }

@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &FileFilteringRuleResource{}
 var _ resource.ResourceWithImportState = &FileFilteringRuleResource{}
 var _ context.Context = context.Background()
 
-
 // FileFilteringRuleResource defines the resource implementation.
 type FileFilteringRuleResource struct {
-    ResourceBase[FileFilteringRuleResourceModel]
+	ResourceBase[FileFilteringRuleResourceModel]
 }
-
 
 // Schema defines the schema for the FileFilteringRule resource.
 func (r *FileFilteringRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a File Filtering Rule. It can be used to match and filter files based on various criteria.",
-      Attributes: GetFileFilteringRuleSchemaAttributes(ctx),
-      Blocks: GetFileFilteringRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a File Filtering Rule. It can be used to match and filter files based on various criteria.",
+		Attributes:  GetFileFilteringRuleSchemaAttributes(ctx),
+		Blocks:      GetFileFilteringRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *FileFilteringRuleResource) Schema(ctx context.Context, _ resource.Schem
 func NewFileFilteringRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing FileFilteringRule resource")
 	r := &FileFilteringRuleResource{
-        ResourceBase: ResourceBase[FileFilteringRuleResourceModel]{
-             resourceType: "file_filtering_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[FileFilteringRuleResourceModel]{
+			resourceType:  "file_filtering_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *FileFilteringRuleResource) getCreateRequestParams(_ context.Context, data *FileFilteringRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *FileFilteringRuleResource) getCreateRequestParams(_ context.Context, data *FileFilteringRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

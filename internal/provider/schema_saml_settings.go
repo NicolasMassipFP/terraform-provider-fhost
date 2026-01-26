@@ -6,22 +6,22 @@ package provider
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/float64planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 
 	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
 var _ = types.String{}
-var _ =  (*planmodifier.Bool)(nil)
+var _ = (*planmodifier.Bool)(nil)
 var _ = (*customfield.NestedObjectType[struct{}])(nil)
 var _ = stringplanmodifier.UseStateForUnknown()
 var _ = boolplanmodifier.UseStateForUnknown()
@@ -30,49 +30,67 @@ var _ = float64planmodifier.UseStateForUnknown()
 var _ = listplanmodifier.UseStateForUnknown()
 var _ = listdefault.StaticValue
 
-
-
-
 func GetSamlSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
-    return map[string]schema.Attribute {
-       "saml_acs_url": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The URL where the SAML assertions are sent and processed.",
-        },
-       "saml_metadata_file": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The SAML Setting specific IdP Metadata, this overrides IdP Metadata defined in SAML Method.",
-        },
-       "saml_method_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.",
-        },
-       "saml_name_id_policy_format": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The Name ID policy format used in SAML authentication. Options include 'persistent', 'transient', 'emailAddress', and 'unspecified'.",
-        },
-       "saml_service_provider_id": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The unique identifier for the SAML service provider.",
-        },
-       "saml_setting_usage": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The intended usage of the SAML settings. Options include 'bba' for user authentication, 'app_access' for Application Access Portal, and 'web_access' for Web Access.",
-        },
-       "saml_tls_credentials_ref": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
-        },
-       "saml_user_attribute": schema.StringAttribute {
-       Optional: true, // todo optional parameters
-       Description: "The attribute used to identify the user in SAML authentication.",
-        },
+	useHcl2 := UseHCL2(ctx)
 
-    }
+	attrs := map[string]schema.Attribute{"saml_acs_url": schema.StringAttribute{
+		Optional:    true, // todo optional parameters
+		Description: "The URL where the SAML assertions are sent and processed.",
+	},
+		"saml_metadata_file": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The SAML Setting specific IdP Metadata, this overrides IdP Metadata defined in SAML Method.",
+		},
+		"saml_method_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.",
+		},
+		"saml_name_id_policy_format": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Name ID policy format used in SAML authentication. Options include 'persistent', 'transient', 'emailAddress', and 'unspecified'.",
+		},
+		"saml_service_provider_id": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The unique identifier for the SAML service provider.",
+		},
+		"saml_setting_usage": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The intended usage of the SAML settings. Options include 'bba' for user authentication, 'app_access' for Application Access Portal, and 'web_access' for Web Access.",
+		},
+		"saml_tls_credentials_ref": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
+		},
+		"saml_user_attribute": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The attribute used to identify the user in SAML authentication.",
+		},
+	}
+	if !useHcl2 {
+		return attrs
+	}
+
+	blocks := getSamlSettingsSchemaBlocksInternal(ctx)
+	extra_attrs := ConvertToHCL2(ctx, attrs, blocks)
+	return extra_attrs
 }
+
 func GetSamlSettingsSchemaBlocks(ctx context.Context) map[string]schema.Block {
+	useHcl2 := UseHCL2(ctx)
+	if useHcl2 {
+		return map[string]schema.Block{}
+	}
+	return getSamlSettingsSchemaBlocksInternal(ctx)
+}
 
-    return map[string]schema.Block{
-
-    }
+func getSamlSettingsSchemaBlocksInternal(ctx context.Context) map[string]schema.Block {
+	max_recursion_val := ctx.Value("max_recursion")
+	if max_recursion_val != nil {
+		max_recursion, ok := max_recursion_val.(int)
+		if ok && max_recursion <= 0 {
+			return map[string]schema.Block{}
+		}
+		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
+	}
+	return map[string]schema.Block{}
 }

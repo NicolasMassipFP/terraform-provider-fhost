@@ -46,8 +46,7 @@ This represents an ECA Application Situation, which is used for managing ECA app
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -64,13 +63,3 @@ Optional:
 - `product_name` (String) The name of the product associated with the executable.
 - `sha256_hash` (String) The SHA256 hash of the executable file, used for integrity verification.
 - `version_number` (String) The version number of the executable file.
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

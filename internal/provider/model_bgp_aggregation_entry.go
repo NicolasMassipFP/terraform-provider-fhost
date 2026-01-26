@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,11 +16,7 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type BgpAggregationEntryResourceModel struct {
-	
-    Mode types.String `tfsdk:"mode" json:"mode,optional,omitempty" `
-        Subnet types.String `tfsdk:"subnet" json:"subnet,optional,omitempty" `
-        
+	Mode   types.String `tfsdk:"mode" json:"mode,optional,omitempty" `
+	Subnet types.String `tfsdk:"subnet" json:"subnet,optional,omitempty" `
 }

@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type BlockListEndPointResourceModel struct {
-	
-    AddressMode types.String `tfsdk:"address_mode" json:"address_mode,optional,omitempty" `
-        IpNetwork types.String `tfsdk:"ip_network" json:"ip_network,optional,omitempty" `
-        Port1 types.Int64 `tfsdk:"port1" json:"port1,optional,omitempty" `
-        Port2 types.Int64 `tfsdk:"port2" json:"port2,optional,omitempty" `
-        PortMode types.String `tfsdk:"port_mode" json:"port_mode,optional,omitempty" `
-        
+	AddressMode types.String `tfsdk:"address_mode" json:"address_mode,optional,omitempty" `
+	IpNetwork   types.String `tfsdk:"ip_network" json:"ip_network,optional,omitempty" `
+	Port1       types.Int64  `tfsdk:"port1" json:"port1,optional,omitempty" `
+	Port2       types.Int64  `tfsdk:"port2" json:"port2,optional,omitempty" `
+	PortMode    types.String `tfsdk:"port_mode" json:"port_mode,optional,omitempty" `
 }

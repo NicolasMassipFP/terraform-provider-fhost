@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,19 +16,15 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type DhcpServerSettingsResourceModel struct {
-	
-    DefaultGateway types.String `tfsdk:"default_gateway" json:"default_gateway,optional,omitempty" `
-        DefaultLeaseTime types.Int64 `tfsdk:"default_lease_time" json:"default_lease_time,optional,omitempty" `
-        DhcpAddressRange types.String `tfsdk:"dhcp_address_range" json:"dhcp_address_range,optional,omitempty" `
-        DhcpRangePerNode *[]DhcpRangeNodeResourceModel `tfsdk:"dhcp_range_per_node" json:"dhcp_range_per_node,optional,omitempty" `
-        DhcpRangeRef types.String `tfsdk:"dhcp_range_ref" json:"dhcp_range_ref,optional,omitempty" `
-        DomainNameSearchList types.String `tfsdk:"domain_name_search_list" json:"domain_name_search_list,optional,omitempty" `
-        PrimaryDnsServer types.String `tfsdk:"primary_dns_server" json:"primary_dns_server,optional,omitempty" `
-        PrimaryWinsServer types.String `tfsdk:"primary_wins_server" json:"primary_wins_server,optional,omitempty" `
-        SecondaryDnsServer types.String `tfsdk:"secondary_dns_server" json:"secondary_dns_server,optional,omitempty" `
-        SecondaryWinsServer types.String `tfsdk:"secondary_wins_server" json:"secondary_wins_server,optional,omitempty" `
-        
+	DefaultGateway       types.String                  `tfsdk:"default_gateway" json:"default_gateway,optional,omitempty" `
+	DefaultLeaseTime     types.Int64                   `tfsdk:"default_lease_time" json:"default_lease_time,optional,omitempty" `
+	DhcpAddressRange     types.String                  `tfsdk:"dhcp_address_range" json:"dhcp_address_range,optional,omitempty" `
+	DhcpRangePerNode     *[]DhcpRangeNodeResourceModel `tfsdk:"dhcp_range_per_node" json:"dhcp_range_per_node,optional,omitempty" `
+	DhcpRangeRef         types.String                  `tfsdk:"dhcp_range_ref" json:"dhcp_range_ref,optional,omitempty" `
+	DomainNameSearchList types.String                  `tfsdk:"domain_name_search_list" json:"domain_name_search_list,optional,omitempty" `
+	PrimaryDnsServer     types.String                  `tfsdk:"primary_dns_server" json:"primary_dns_server,optional,omitempty" `
+	PrimaryWinsServer    types.String                  `tfsdk:"primary_wins_server" json:"primary_wins_server,optional,omitempty" `
+	SecondaryDnsServer   types.String                  `tfsdk:"secondary_dns_server" json:"secondary_dns_server,optional,omitempty" `
+	SecondaryWinsServer  types.String                  `tfsdk:"secondary_wins_server" json:"secondary_wins_server,optional,omitempty" `
 }

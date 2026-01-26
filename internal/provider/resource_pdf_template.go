@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &PdfTemplateResource{}
 var _ resource.ResourceWithImportState = &PdfTemplateResource{}
 var _ context.Context = context.Background()
 
-
 // PdfTemplateResource defines the resource implementation.
 type PdfTemplateResource struct {
-    ResourceBase[PdfTemplateResourceModel]
+	ResourceBase[PdfTemplateResourceModel]
 }
-
 
 // Schema defines the schema for the PdfTemplate resource.
 func (r *PdfTemplateResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents the PDF Template used as Style template for PDF reports. It contains settings for page indices, header and footer heights, font colors, and a reference to the content file.",
-      Attributes: GetPdfTemplateSchemaAttributes(ctx),
-      Blocks: GetPdfTemplateSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents the PDF Template used as Style template for PDF reports. It contains settings for page indices, header and footer heights, font colors, and a reference to the content file.",
+		Attributes:  GetPdfTemplateSchemaAttributes(ctx),
+		Blocks:      GetPdfTemplateSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *PdfTemplateResource) Schema(ctx context.Context, _ resource.SchemaReque
 func NewPdfTemplateResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing PdfTemplate resource")
 	r := &PdfTemplateResource{
-        ResourceBase: ResourceBase[PdfTemplateResourceModel]{
-             resourceType: "pdf_template",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[PdfTemplateResourceModel]{
+			resourceType:  "pdf_template",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

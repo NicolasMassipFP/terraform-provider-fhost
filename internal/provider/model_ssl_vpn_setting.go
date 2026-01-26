@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SslVpnSettingResourceModel struct {
-	
-    RenegociationTimeout types.Int64 `tfsdk:"renegociation_timeout" json:"renegociation_timeout,optional,omitempty" `
-        Ssl30 types.Bool `tfsdk:"ssl_3_0" json:"ssl_3_0,optional,omitempty" `
-        Tls13 types.Bool `tfsdk:"tls_1_3" json:"tls_1_3,optional,omitempty" `
-        Tls10 types.Bool `tfsdk:"tls_1_0" json:"tls_1_0,optional,omitempty" `
-        Tls11 types.Bool `tfsdk:"tls_1_1" json:"tls_1_1,optional,omitempty" `
-        Tls12 types.Bool `tfsdk:"tls_1_2" json:"tls_1_2,optional,omitempty" `
-        TlsCryptographySuiteSet types.String `tfsdk:"tls_cryptography_suite_set" json:"tls_cryptography_suite_set,optional,omitempty" `
-        
+	RenegociationTimeout    types.Int64  `tfsdk:"renegociation_timeout" json:"renegociation_timeout,optional,omitempty" `
+	Ssl30                   types.Bool   `tfsdk:"ssl_3_0" json:"ssl_3_0,optional,omitempty" `
+	Tls13                   types.Bool   `tfsdk:"tls_1_3" json:"tls_1_3,optional,omitempty" `
+	Tls10                   types.Bool   `tfsdk:"tls_1_0" json:"tls_1_0,optional,omitempty" `
+	Tls11                   types.Bool   `tfsdk:"tls_1_1" json:"tls_1_1,optional,omitempty" `
+	Tls12                   types.Bool   `tfsdk:"tls_1_2" json:"tls_1_2,optional,omitempty" `
+	TlsCryptographySuiteSet types.String `tfsdk:"tls_cryptography_suite_set" json:"tls_cryptography_suite_set,optional,omitempty" `
 }

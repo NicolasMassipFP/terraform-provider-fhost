@@ -34,7 +34,7 @@ func TestManagePendingDelete_AddOperation(t *testing.T) {
 	}
 
 	// Verify file was created
-	data, err := os.ReadFile("tfsmcstate.json")
+	data, err := os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("State file not created: %v", err)
 	}
@@ -80,7 +80,7 @@ func TestManagePendingDelete_UpdateOperation(t *testing.T) {
 		},
 	}
 	data, _ := json.MarshalIndent(initialState, "", "  ")
-	os.WriteFile("tfsmcstate.json", data, 0644)
+	os.WriteFile("tfsmc.state.json", data, 0644)
 
 	// Act: update the entry with new baseUrl
 	newBaseUrl := "http://localhost:8082/7.5"
@@ -92,7 +92,7 @@ func TestManagePendingDelete_UpdateOperation(t *testing.T) {
 	}
 
 	// Verify update
-	data, err = os.ReadFile("tfsmcstate.json")
+	data, err = os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("Failed to read state file: %v", err)
 	}
@@ -171,7 +171,7 @@ func TestManagePendingDelete_RemoveOperation(t *testing.T) {
 		},
 	}
 	data, _ := json.MarshalIndent(initialState, "", "  ")
-	os.WriteFile("tfsmcstate.json", data, 0644)
+	os.WriteFile("tfsmc.state.json", data, 0644)
 
 	// Act: remove first entry
 	err = ManagePendingDelete(ctx, RemovePendingDelete, "", "", href1)
@@ -182,7 +182,7 @@ func TestManagePendingDelete_RemoveOperation(t *testing.T) {
 	}
 
 	// Verify removal
-	data, err = os.ReadFile("tfsmcstate.json")
+	data, err = os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("Failed to read state file: %v", err)
 	}
@@ -252,7 +252,7 @@ func TestSavePendingDelete_CreatesNewStateFile(t *testing.T) {
 	}
 
 	// Verify file was created
-	data, err := os.ReadFile("tfsmcstate.json")
+	data, err := os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("State file not created: %v", err)
 	}
@@ -302,7 +302,7 @@ func TestSavePendingDelete_AppendsToExistingStateFile(t *testing.T) {
     }
   ]
 }`
-	if err := os.WriteFile("tfsmcstate.json", []byte(initialState), 0644); err != nil {
+	if err := os.WriteFile("tfsmc.state.json", []byte(initialState), 0644); err != nil {
 		t.Fatalf("Failed to create initial state file: %v", err)
 	}
 
@@ -318,7 +318,7 @@ func TestSavePendingDelete_AppendsToExistingStateFile(t *testing.T) {
 	}
 
 	// Verify content
-	data, err := os.ReadFile("tfsmcstate.json")
+	data, err := os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("Failed to read state file: %v", err)
 	}
@@ -360,7 +360,7 @@ func TestSavePendingDelete_HandlesInvalidJsonGracefully(t *testing.T) {
 	ctx := context.Background()
 
 	// Create state file with invalid JSON
-	if err := os.WriteFile("tfsmcstate.json", []byte("{invalid json"), 0644); err != nil {
+	if err := os.WriteFile("tfsmc.state.json", []byte("{invalid json"), 0644); err != nil {
 		t.Fatalf("Failed to create state file: %v", err)
 	}
 
@@ -376,7 +376,7 @@ func TestSavePendingDelete_HandlesInvalidJsonGracefully(t *testing.T) {
 	}
 
 	// Verify file was updated with new entry
-	data, err := os.ReadFile("tfsmcstate.json")
+	data, err := os.ReadFile("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("Failed to read state file: %v", err)
 	}
@@ -416,7 +416,7 @@ func TestSavePendingDelete_FilePermissions(t *testing.T) {
 	}
 
 	// Verify file permissions (should be readable)
-	fileInfo, err := os.Stat("tfsmcstate.json")
+	fileInfo, err := os.Stat("tfsmc.state.json")
 	if err != nil {
 		t.Fatalf("Failed to stat state file: %v", err)
 	}

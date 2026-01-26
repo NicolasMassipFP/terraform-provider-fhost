@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type SingleContactAddressResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-	FromRef              types.String `tfsdk:"from_ref"`
-    ContactAddresses *[]SingleContactAddressElementResourceModel `tfsdk:"contact_addresses" json:"contact_addresses,optional,omitempty" `
-        
+	ID               types.String                                `tfsdk:"id"`
+	FromRef          types.String                                `tfsdk:"from_ref"`
+	ContactAddresses *[]SingleContactAddressElementResourceModel `tfsdk:"contact_addresses" json:"contact_addresses,optional,omitempty" `
 }

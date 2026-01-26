@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,26 +16,23 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type InternalGatewayCertificateResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-	FromRef              types.String `tfsdk:"from_ref"`
-    CertificateAuthority types.String `tfsdk:"certificate_authority" json:"certificate_authority,optional,omitempty" `
-        CertificateBase64 types.String `tfsdk:"certificate_base64" json:"certificate_base64,optional,omitempty" `
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        ExpirationDate types.String `tfsdk:"expiration_date" json:"expiration_date,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        PublicKeyAlgorithm types.String `tfsdk:"public_key_algorithm" json:"public_key_algorithm,optional,omitempty" `
-        SignatureAlgorithm types.String `tfsdk:"signature_algorithm" json:"signature_algorithm,optional,omitempty" `
-        SubjectAltName *[]types.String `tfsdk:"subject_alt_name" json:"subject_alt_name,optional,omitempty" `
-        ValidFrom types.String `tfsdk:"valid_from" json:"valid_from,optional,omitempty" `
-        
+	ID                   types.String                                       `tfsdk:"id"`
+	FromRef              types.String                                       `tfsdk:"from_ref"`
+	CertificateAuthority types.String                                       `tfsdk:"certificate_authority" json:"certificate_authority,optional,omitempty" `
+	CertificateBase64    types.String                                       `tfsdk:"certificate_base64" json:"certificate_base64,optional,omitempty" `
+	Comment              types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	ExpirationDate       types.String                                       `tfsdk:"expiration_date" json:"expiration_date,optional,omitempty" `
+	Key                  types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link                 customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                   customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	Name                 types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	PublicKeyAlgorithm   types.String                                       `tfsdk:"public_key_algorithm" json:"public_key_algorithm,optional,omitempty" `
+	SignatureAlgorithm   types.String                                       `tfsdk:"signature_algorithm" json:"signature_algorithm,optional,omitempty" `
+	SubjectAltName       *[]types.String                                    `tfsdk:"subject_alt_name" json:"subject_alt_name,optional,omitempty" `
+	ValidFrom            types.String                                       `tfsdk:"valid_from" json:"valid_from,optional,omitempty" `
 }
+
 func (r *InternalGatewayCertificateResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

@@ -42,8 +42,7 @@ This represents a Protocol Agent. It is a process on the engines that assists th
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
@@ -69,23 +68,12 @@ Read-Only:
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--link_selection--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
 - `system_key` (Number) The system key of the System element. This field is not required.
 - `trashed` (Boolean) Indicates if the element is trashed. This field is not required.
-
-<a id="nestedatt--link_selection--link"></a>
-### Nested Schema for `link_selection.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
 
 
 <a id="nestedblock--pa_parameters"></a>
@@ -122,8 +110,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--pa_parameters--pa_parameter--link))
-- `lk` (Map of String)
+- `link` (Map of String) provides additional actions or resources.
 
 <a id="nestedblock--pa_parameters--pa_parameter--parent_group"></a>
 ### Nested Schema for `pa_parameters.pa_parameter.parent_group`
@@ -148,28 +135,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--pa_parameters--pa_parameter--parent_group--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--pa_parameters--pa_parameter--parent_group--link"></a>
-### Nested Schema for `pa_parameters.pa_parameter.parent_group.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
-
-
-<a id="nestedatt--pa_parameters--pa_parameter--link"></a>
-### Nested Schema for `pa_parameters.pa_parameter.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -196,18 +162,7 @@ Optional:
 Read-Only:
 
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (Attributes List) The API's links of the element, providing additional actions or resources. (see [below for nested schema](#nestedatt--pa_parameters--pa_parameter_group--link))
-- `lk` (Map of String)
-
-<a id="nestedatt--pa_parameters--pa_parameter_group--link"></a>
-### Nested Schema for `pa_parameters.pa_parameter_group.link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.
-
+- `link` (Map of String) provides additional actions or resources.
 
 
 
@@ -377,14 +332,3 @@ Optional:
 
 - `parameter_ref` (String) This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 - `tls_inspection_policy_ref` (String) This represents the definition of a TLS Inspection policy. It is used to configure how TLS traffic is inspected and managed within the system.
-
-
-
-<a id="nestedatt--link"></a>
-### Nested Schema for `link`
-
-Read-Only:
-
-- `href` (String) The link URL.
-- `rel` (String) The link/verb.
-- `type` (String) The impacted type of this link.

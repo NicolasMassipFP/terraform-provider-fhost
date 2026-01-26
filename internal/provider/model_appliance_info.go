@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,19 +16,15 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ApplianceInfoResourceModel struct {
-	
-    CloudId types.String `tfsdk:"cloud_id" json:"cloud_id,optional,omitempty" `
-        CloudType types.String `tfsdk:"cloud_type" json:"cloud_type,optional,omitempty" `
-        FirstUploadTime types.Int64 `tfsdk:"first_upload_time" json:"first_upload_time,optional,omitempty" `
-        HardwareVersion types.String `tfsdk:"hardware_version" json:"hardware_version,optional,omitempty" `
-        InitialContactTime types.Int64 `tfsdk:"initial_contact_time" json:"initial_contact_time,optional,omitempty" `
-        InitialLicenseRemainingDays types.Int64 `tfsdk:"initial_license_remaining_days" json:"initial_license_remaining_days,optional,omitempty" `
-        ProductName types.String `tfsdk:"product_name" json:"product_name,optional,omitempty" `
-        ProofOfSerial types.String `tfsdk:"proof_of_serial" json:"proof_of_serial,optional,omitempty" `
-        SoftwareFeatures types.String `tfsdk:"software_features" json:"software_features,optional,omitempty" `
-        SoftwareVersion types.String `tfsdk:"software_version" json:"software_version,optional,omitempty" `
-        
+	CloudId                     types.String `tfsdk:"cloud_id" json:"cloud_id,optional,omitempty" `
+	CloudType                   types.String `tfsdk:"cloud_type" json:"cloud_type,optional,omitempty" `
+	FirstUploadTime             types.Int64  `tfsdk:"first_upload_time" json:"first_upload_time,optional,omitempty" `
+	HardwareVersion             types.String `tfsdk:"hardware_version" json:"hardware_version,optional,omitempty" `
+	InitialContactTime          types.Int64  `tfsdk:"initial_contact_time" json:"initial_contact_time,optional,omitempty" `
+	InitialLicenseRemainingDays types.Int64  `tfsdk:"initial_license_remaining_days" json:"initial_license_remaining_days,optional,omitempty" `
+	ProductName                 types.String `tfsdk:"product_name" json:"product_name,optional,omitempty" `
+	ProofOfSerial               types.String `tfsdk:"proof_of_serial" json:"proof_of_serial,optional,omitempty" `
+	SoftwareFeatures            types.String `tfsdk:"software_features" json:"software_features,optional,omitempty" `
+	SoftwareVersion             types.String `tfsdk:"software_version" json:"software_version,optional,omitempty" `
 }

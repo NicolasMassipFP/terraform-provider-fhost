@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &QosLimitRuleResource{}
 var _ resource.ResourceWithImportState = &QosLimitRuleResource{}
 var _ context.Context = context.Background()
 
-
 // QosLimitRuleResource defines the resource implementation.
 type QosLimitRuleResource struct {
-    ResourceBase[QosLimitRuleResourceModel]
+	ResourceBase[QosLimitRuleResourceModel]
 }
-
 
 // Schema defines the schema for the QosLimitRule resource.
 func (r *QosLimitRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.",
-      Attributes: GetQosLimitRuleSchemaAttributes(ctx),
-      Blocks: GetQosLimitRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.",
+		Attributes:  GetQosLimitRuleSchemaAttributes(ctx),
+		Blocks:      GetQosLimitRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *QosLimitRuleResource) Schema(ctx context.Context, _ resource.SchemaRequ
 func NewQosLimitRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing QosLimitRule resource")
 	r := &QosLimitRuleResource{
-        ResourceBase: ResourceBase[QosLimitRuleResourceModel]{
-             resourceType: "limit_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[QosLimitRuleResourceModel]{
+			resourceType:  "limit_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *QosLimitRuleResource) getCreateRequestParams(_ context.Context, data *QosLimitRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *QosLimitRuleResource) getCreateRequestParams(_ context.Context, data *QosLimitRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

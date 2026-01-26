@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,13 +16,9 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type LocalLogStorageSettingsResourceModel struct {
-	
-    LlsGuaranteedFreePercent types.Int64 `tfsdk:"lls_guaranteed_free_percent" json:"lls_guaranteed_free_percent,optional,omitempty" `
-        LlsGuaranteedFreeSizeInMb types.Int64 `tfsdk:"lls_guaranteed_free_size_in_mb" json:"lls_guaranteed_free_size_in_mb,optional,omitempty" `
-        LlsMaxTime types.Int64 `tfsdk:"lls_max_time" json:"lls_max_time,optional,omitempty" `
-        LocalLogStorageActivated types.Bool `tfsdk:"local_log_storage_activated" json:"local_log_storage_activated,optional,omitempty" `
-        
+	LlsGuaranteedFreePercent  types.Int64 `tfsdk:"lls_guaranteed_free_percent" json:"lls_guaranteed_free_percent,optional,omitempty" `
+	LlsGuaranteedFreeSizeInMb types.Int64 `tfsdk:"lls_guaranteed_free_size_in_mb" json:"lls_guaranteed_free_size_in_mb,optional,omitempty" `
+	LlsMaxTime                types.Int64 `tfsdk:"lls_max_time" json:"lls_max_time,optional,omitempty" `
+	LocalLogStorageActivated  types.Bool  `tfsdk:"local_log_storage_activated" json:"local_log_storage_activated,optional,omitempty" `
 }

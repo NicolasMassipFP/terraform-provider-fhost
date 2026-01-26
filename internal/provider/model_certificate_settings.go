@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type CertificateSettingsResourceModel struct {
-	
-    CertificateType types.String `tfsdk:"certificate_type" json:"certificate_type,optional,omitempty" `
-        CheckRevocation types.Bool `tfsdk:"check_revocation" json:"check_revocation,optional,omitempty" `
-        IgnoreRevocationOnFailure types.Bool `tfsdk:"ignore_revocation_on_failure" json:"ignore_revocation_on_failure,optional,omitempty" `
-        SubjectAltName types.String `tfsdk:"subject_alt_name" json:"subject_alt_name,optional,omitempty" `
-        SubjectName types.String `tfsdk:"subject_name" json:"subject_name,optional,omitempty" `
-        
+	CertificateType           types.String `tfsdk:"certificate_type" json:"certificate_type,optional,omitempty" `
+	CheckRevocation           types.Bool   `tfsdk:"check_revocation" json:"check_revocation,optional,omitempty" `
+	IgnoreRevocationOnFailure types.Bool   `tfsdk:"ignore_revocation_on_failure" json:"ignore_revocation_on_failure,optional,omitempty" `
+	SubjectAltName            types.String `tfsdk:"subject_alt_name" json:"subject_alt_name,optional,omitempty" `
+	SubjectName               types.String `tfsdk:"subject_name" json:"subject_name,optional,omitempty" `
 }

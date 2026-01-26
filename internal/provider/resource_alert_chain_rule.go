@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &AlertChainRuleResource{}
 var _ resource.ResourceWithImportState = &AlertChainRuleResource{}
 var _ context.Context = context.Background()
 
-
 // AlertChainRuleResource defines the resource implementation.
 type AlertChainRuleResource struct {
-    ResourceBase[AlertChainRuleResourceModel]
+	ResourceBase[AlertChainRuleResourceModel]
 }
-
 
 // Schema defines the schema for the AlertChainRule resource.
 func (r *AlertChainRuleResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.",
-      Attributes: GetAlertChainRuleSchemaAttributes(ctx),
-      Blocks: GetAlertChainRuleSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.",
+		Attributes:  GetAlertChainRuleSchemaAttributes(ctx),
+		Blocks:      GetAlertChainRuleSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,22 +45,22 @@ func (r *AlertChainRuleResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewAlertChainRuleResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing AlertChainRule resource")
 	r := &AlertChainRuleResource{
-        ResourceBase: ResourceBase[AlertChainRuleResourceModel]{
-             resourceType: "alert_chain_rule",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[AlertChainRuleResourceModel]{
+			resourceType:  "alert_chain_rule",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }
+
 // special case for rank attribute
-    func (r *AlertChainRuleResource) getCreateRequestParams(_ context.Context, data *AlertChainRuleResourceModel) (map[string]string, error) {
-  	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
-        queryParams := map[string]string{
-           "keep_specified_rank": "true",
-        }
-        return queryParams, nil
-    }
-    return nil, nil
+func (r *AlertChainRuleResource) getCreateRequestParams(_ context.Context, data *AlertChainRuleResourceModel) (map[string]string, error) {
+	if !data.Rank.IsNull() && !data.Rank.IsUnknown() {
+		queryParams := map[string]string{
+			"keep_specified_rank": "true",
+		}
+		return queryParams, nil
+	}
+	return nil, nil
 }

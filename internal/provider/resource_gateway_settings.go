@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &GatewaySettingsResource{}
 var _ resource.ResourceWithImportState = &GatewaySettingsResource{}
 var _ context.Context = context.Background()
 
-
 // GatewaySettingsResource defines the resource implementation.
 type GatewaySettingsResource struct {
-    ResourceBase[GatewaySettingsResourceModel]
+	ResourceBase[GatewaySettingsResourceModel]
 }
-
 
 // Schema defines the schema for the GatewaySettings resource.
 func (r *GatewaySettingsResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents various gateway and VPN parameters to be set at Firewall level. These settings are used for the negotiation of VPN connections.",
-      Attributes: GetGatewaySettingsSchemaAttributes(ctx),
-      Blocks: GetGatewaySettingsSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents various gateway and VPN parameters to be set at Firewall level. These settings are used for the negotiation of VPN connections.",
+		Attributes:  GetGatewaySettingsSchemaAttributes(ctx),
+		Blocks:      GetGatewaySettingsSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *GatewaySettingsResource) Schema(ctx context.Context, _ resource.SchemaR
 func NewGatewaySettingsResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing GatewaySettings resource")
 	r := &GatewaySettingsResource{
-        ResourceBase: ResourceBase[GatewaySettingsResourceModel]{
-             resourceType: "gateway_settings",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[GatewaySettingsResourceModel]{
+			resourceType:  "gateway_settings",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

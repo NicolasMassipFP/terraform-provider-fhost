@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &BrokerDomainResource{}
 var _ resource.ResourceWithImportState = &BrokerDomainResource{}
 var _ context.Context = context.Background()
 
-
 // BrokerDomainResource defines the resource implementation.
 type BrokerDomainResource struct {
-    ResourceBase[BrokerDomainResourceModel]
+	ResourceBase[BrokerDomainResourceModel]
 }
-
 
 // Schema defines the schema for the BrokerDomain resource.
 func (r *BrokerDomainResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a VPN Broker Domain. It is used to configure the broker domain settings, including the configuration file and MAC address prefix.",
-      Attributes: GetBrokerDomainSchemaAttributes(ctx),
-      Blocks: GetBrokerDomainSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a VPN Broker Domain. It is used to configure the broker domain settings, including the configuration file and MAC address prefix.",
+		Attributes:  GetBrokerDomainSchemaAttributes(ctx),
+		Blocks:      GetBrokerDomainSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *BrokerDomainResource) Schema(ctx context.Context, _ resource.SchemaRequ
 func NewBrokerDomainResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing BrokerDomain resource")
 	r := &BrokerDomainResource{
-        ResourceBase: ResourceBase[BrokerDomainResourceModel]{
-             resourceType: "vpn_broker_domain",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[BrokerDomainResourceModel]{
+			resourceType:  "vpn_broker_domain",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

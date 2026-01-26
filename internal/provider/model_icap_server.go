@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,39 +16,36 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type IcapServerResourceModel struct {
-	
-	ID                    types.String `tfsdk:"id"`
-    Address types.String `tfsdk:"address" json:"address,optional,omitempty" `
-        AdminDomain types.String `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
-        Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
-        Etag types.String `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
-        IcapIncludeXhdrs types.Bool `tfsdk:"icap_include_xhdrs" json:"icap_include_xhdrs,optional,omitempty" `
-        IcapPath types.String `tfsdk:"icap_path" json:"icap_path,optional,omitempty" `
-        IcapPort types.Int64 `tfsdk:"icap_port" json:"icap_port,optional,omitempty" `
-        IcapSecure types.Bool `tfsdk:"icap_secure" json:"icap_secure,optional,omitempty" `
-        IcapXhdrClientip types.String `tfsdk:"icap_xhdr_clientip" json:"icap_xhdr_clientip,optional,omitempty" `
-        IcapXhdrServerip types.String `tfsdk:"icap_xhdr_serverip" json:"icap_xhdr_serverip,optional,omitempty" `
-        IcapXhdrUsername types.String `tfsdk:"icap_xhdr_username" json:"icap_xhdr_username,optional,omitempty" `
-        Ipv6Address types.String `tfsdk:"ipv6_address" json:"ipv6_address,optional,omitempty" `
-        Key types.Int64 `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-        Link customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"link" json:"link,optional,omitempty" fpro:"link"`
-        Lk customfield.Map[types.String] `tfsdk:"lk" json:"-" `
-        LocationRef types.String `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
-        Locked types.Bool `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
-        Name types.String `tfsdk:"name" json:"name,optional,omitempty" `
-        ReadOnly types.Bool `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
-        Secondary *[]types.String `tfsdk:"secondary" json:"secondary,optional,omitempty" `
-        System types.Bool `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
-        SystemKey types.Int64 `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
-        ThirdPartyMonitoring *ThirdPartyMonitoringResourceModel `tfsdk:"third_party_monitoring" json:"third_party_monitoring,optional,omitempty" `
-        TlsProfileRef types.String `tfsdk:"tls_profile_ref" json:"tls_profile_ref,optional,omitempty" `
-        ToolsProfileRef types.String `tfsdk:"tools_profile_ref" json:"tools_profile_ref,optional,omitempty" `
-        Trashed types.Bool `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
-        
+	ID                   types.String                                       `tfsdk:"id"`
+	Address              types.String                                       `tfsdk:"address" json:"address,optional,omitempty" `
+	AdminDomain          types.String                                       `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
+	Comment              types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Etag                 types.String                                       `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
+	IcapIncludeXhdrs     types.Bool                                         `tfsdk:"icap_include_xhdrs" json:"icap_include_xhdrs,optional,omitempty" `
+	IcapPath             types.String                                       `tfsdk:"icap_path" json:"icap_path,optional,omitempty" `
+	IcapPort             types.Int64                                        `tfsdk:"icap_port" json:"icap_port,optional,omitempty" `
+	IcapSecure           types.Bool                                         `tfsdk:"icap_secure" json:"icap_secure,optional,omitempty" `
+	IcapXhdrClientip     types.String                                       `tfsdk:"icap_xhdr_clientip" json:"icap_xhdr_clientip,optional,omitempty" `
+	IcapXhdrServerip     types.String                                       `tfsdk:"icap_xhdr_serverip" json:"icap_xhdr_serverip,optional,omitempty" `
+	IcapXhdrUsername     types.String                                       `tfsdk:"icap_xhdr_username" json:"icap_xhdr_username,optional,omitempty" `
+	Ipv6Address          types.String                                       `tfsdk:"ipv6_address" json:"ipv6_address,optional,omitempty" `
+	Key                  types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Link                 customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
+	Lk                   customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
+	LocationRef          types.String                                       `tfsdk:"location_ref" json:"location_ref,optional,omitempty" `
+	Locked               types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
+	Name                 types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
+	ReadOnly             types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
+	Secondary            *[]types.String                                    `tfsdk:"secondary" json:"secondary,optional,omitempty" `
+	System               types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
+	SystemKey            types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
+	ThirdPartyMonitoring *ThirdPartyMonitoringResourceModel                 `tfsdk:"third_party_monitoring" json:"third_party_monitoring,optional,omitempty" `
+	TlsProfileRef        types.String                                       `tfsdk:"tls_profile_ref" json:"tls_profile_ref,optional,omitempty" `
+	ToolsProfileRef      types.String                                       `tfsdk:"tools_profile_ref" json:"tools_profile_ref,optional,omitempty" `
+	Trashed              types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 }
+
 func (r *IcapServerResourceModel) GetSliceIds(ctx context.Context) []string {
 	if r.Name.IsNull() || r.Name.IsUnknown() {
 		return nil

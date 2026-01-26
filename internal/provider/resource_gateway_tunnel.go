@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &GatewayTunnelResource{}
 var _ resource.ResourceWithImportState = &GatewayTunnelResource{}
 var _ context.Context = context.Background()
 
-
 // GatewayTunnelResource defines the resource implementation.
 type GatewayTunnelResource struct {
-    ResourceBase[GatewayTunnelResourceModel]
+	ResourceBase[GatewayTunnelResourceModel]
 }
-
 
 // Schema defines the schema for the GatewayTunnel resource.
 func (r *GatewayTunnelResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.",
-      Attributes: GetGatewayTunnelSchemaAttributes(ctx),
-      Blocks: GetGatewayTunnelSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.",
+		Attributes:  GetGatewayTunnelSchemaAttributes(ctx),
+		Blocks:      GetGatewayTunnelSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *GatewayTunnelResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewGatewayTunnelResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing GatewayTunnel resource")
 	r := &GatewayTunnelResource{
-        ResourceBase: ResourceBase[GatewayTunnelResourceModel]{
-             resourceType: "gateway_tunnel",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[GatewayTunnelResourceModel]{
+			resourceType:  "gateway_tunnel",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

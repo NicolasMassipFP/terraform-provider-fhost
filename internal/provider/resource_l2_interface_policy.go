@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &L2InterfacePolicyResource{}
 var _ resource.ResourceWithImportState = &L2InterfacePolicyResource{}
 var _ context.Context = context.Background()
 
-
 // L2InterfacePolicyResource defines the resource implementation.
 type L2InterfacePolicyResource struct {
-    ResourceBase[L2InterfacePolicyResourceModel]
+	ResourceBase[L2InterfacePolicyResourceModel]
 }
-
 
 // Schema defines the schema for the L2InterfacePolicy resource.
 func (r *L2InterfacePolicyResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Layer 2 Interface Policy, which is used to define the action and inspection rules for L2FW Interface Engines.",
-      Attributes: GetL2InterfacePolicySchemaAttributes(ctx),
-      Blocks: GetL2InterfacePolicySchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Layer 2 Interface Policy, which is used to define the action and inspection rules for L2FW Interface Engines.",
+		Attributes:  GetL2InterfacePolicySchemaAttributes(ctx),
+		Blocks:      GetL2InterfacePolicySchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *L2InterfacePolicyResource) Schema(ctx context.Context, _ resource.Schem
 func NewL2InterfacePolicyResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing L2InterfacePolicy resource")
 	r := &L2InterfacePolicyResource{
-        ResourceBase: ResourceBase[L2InterfacePolicyResourceModel]{
-             resourceType: "l2_interface_policy",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[L2InterfacePolicyResourceModel]{
+			resourceType:  "l2_interface_policy",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

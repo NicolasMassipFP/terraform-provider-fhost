@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &SpecificPlatformTagResource{}
 var _ resource.ResourceWithImportState = &SpecificPlatformTagResource{}
 var _ context.Context = context.Background()
 
-
 // SpecificPlatformTagResource defines the resource implementation.
 type SpecificPlatformTagResource struct {
-    ResourceBase[SpecificPlatformTagResourceModel]
+	ResourceBase[SpecificPlatformTagResourceModel]
 }
-
 
 // Schema defines the schema for the SpecificPlatformTag resource.
 func (r *SpecificPlatformTagResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Specific Platform Tag, which is used to categorize elements that are specific to a particular platform. It is a type of tag that can be applied to various elements in the system to indicate their specific platform classification.",
-      Attributes: GetSpecificPlatformTagSchemaAttributes(ctx),
-      Blocks: GetSpecificPlatformTagSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Specific Platform Tag, which is used to categorize elements that are specific to a particular platform. It is a type of tag that can be applied to various elements in the system to indicate their specific platform classification.",
+		Attributes:  GetSpecificPlatformTagSchemaAttributes(ctx),
+		Blocks:      GetSpecificPlatformTagSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *SpecificPlatformTagResource) Schema(ctx context.Context, _ resource.Sch
 func NewSpecificPlatformTagResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing SpecificPlatformTag resource")
 	r := &SpecificPlatformTagResource{
-        ResourceBase: ResourceBase[SpecificPlatformTagResourceModel]{
-             resourceType: "os_specific_tag",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[SpecificPlatformTagResourceModel]{
+			resourceType:  "os_specific_tag",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

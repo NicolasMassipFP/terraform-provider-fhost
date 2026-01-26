@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &IdsAlertResource{}
 var _ resource.ResourceWithImportState = &IdsAlertResource{}
 var _ context.Context = context.Background()
 
-
 // IdsAlertResource defines the resource implementation.
 type IdsAlertResource struct {
-    ResourceBase[IdsAlertResourceModel]
+	ResourceBase[IdsAlertResourceModel]
 }
-
 
 // Schema defines the schema for the IdsAlert resource.
 func (r *IdsAlertResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a predefined IDS Alert, which is used to define and manage IDS alert events in the system.",
-      Attributes: GetIdsAlertSchemaAttributes(ctx),
-      Blocks: GetIdsAlertSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a predefined IDS Alert, which is used to define and manage IDS alert events in the system.",
+		Attributes:  GetIdsAlertSchemaAttributes(ctx),
+		Blocks:      GetIdsAlertSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *IdsAlertResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 func NewIdsAlertResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing IdsAlert resource")
 	r := &IdsAlertResource{
-        ResourceBase: ResourceBase[IdsAlertResourceModel]{
-             resourceType: "ids_alert",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[IdsAlertResourceModel]{
+			resourceType:  "ids_alert",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

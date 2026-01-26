@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,16 +16,12 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type AbstractAccessListEntryResourceModel struct {
-	
-    AsPathAccessListEntry *AsPathAccessListEntryResourceModel `tfsdk:"as_path_access_list_entry" json:"as_path_access_list_entry,optional,omitempty" `
-        CommunityAccessListEntry *CommunityAccessListEntryResourceModel `tfsdk:"community_access_list_entry" json:"community_access_list_entry,optional,omitempty" `
-        ExtendedCommunityAccessListEntry *ExtendedCommunityAccessListEntryResourceModel `tfsdk:"extended_community_access_list_entry" json:"extended_community_access_list_entry,optional,omitempty" `
-        IpAccessListEntry *IpAccessListEntryResourceModel `tfsdk:"ip_access_list_entry" json:"ip_access_list_entry,optional,omitempty" `
-        IpPrefixListEntry *IpPrefixListEntryResourceModel `tfsdk:"ip_prefix_list_entry" json:"ip_prefix_list_entry,optional,omitempty" `
-        Ipv6AccessListEntry *Ipv6AccessListEntryResourceModel `tfsdk:"ipv6_access_list_entry" json:"ipv6_access_list_entry,optional,omitempty" `
-        Ipv6PrefixListEntry *Ipv6PrefixListEntryResourceModel `tfsdk:"ipv6_prefix_list_entry" json:"ipv6_prefix_list_entry,optional,omitempty" `
-        
+	AsPathAccessListEntry            *AsPathAccessListEntryResourceModel            `tfsdk:"as_path_access_list_entry" json:"as_path_access_list_entry,optional,omitempty" `
+	CommunityAccessListEntry         *CommunityAccessListEntryResourceModel         `tfsdk:"community_access_list_entry" json:"community_access_list_entry,optional,omitempty" `
+	ExtendedCommunityAccessListEntry *ExtendedCommunityAccessListEntryResourceModel `tfsdk:"extended_community_access_list_entry" json:"extended_community_access_list_entry,optional,omitempty" `
+	IpAccessListEntry                *IpAccessListEntryResourceModel                `tfsdk:"ip_access_list_entry" json:"ip_access_list_entry,optional,omitempty" `
+	IpPrefixListEntry                *IpPrefixListEntryResourceModel                `tfsdk:"ip_prefix_list_entry" json:"ip_prefix_list_entry,optional,omitempty" `
+	Ipv6AccessListEntry              *Ipv6AccessListEntryResourceModel              `tfsdk:"ipv6_access_list_entry" json:"ipv6_access_list_entry,optional,omitempty" `
+	Ipv6PrefixListEntry              *Ipv6PrefixListEntryResourceModel              `tfsdk:"ipv6_prefix_list_entry" json:"ipv6_prefix_list_entry,optional,omitempty" `
 }

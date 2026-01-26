@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &FirewallAlertResource{}
 var _ resource.ResourceWithImportState = &FirewallAlertResource{}
 var _ context.Context = context.Background()
 
-
 // FirewallAlertResource defines the resource implementation.
 type FirewallAlertResource struct {
-    ResourceBase[FirewallAlertResourceModel]
+	ResourceBase[FirewallAlertResourceModel]
 }
-
 
 // Schema defines the schema for the FirewallAlert resource.
 func (r *FirewallAlertResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a predefined Firewall Alert, which is used to define and manage firewall alert events in the system.",
-      Attributes: GetFirewallAlertSchemaAttributes(ctx),
-      Blocks: GetFirewallAlertSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a predefined Firewall Alert, which is used to define and manage firewall alert events in the system.",
+		Attributes:  GetFirewallAlertSchemaAttributes(ctx),
+		Blocks:      GetFirewallAlertSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *FirewallAlertResource) Schema(ctx context.Context, _ resource.SchemaReq
 func NewFirewallAlertResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing FirewallAlert resource")
 	r := &FirewallAlertResource{
-        ResourceBase: ResourceBase[FirewallAlertResourceModel]{
-             resourceType: "fw_alert",
-             isSubResource: false,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[FirewallAlertResourceModel]{
+			resourceType:  "fw_alert",
+			isSubResource: false,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

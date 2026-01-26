@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type StaticNatResourceModel struct {
-	
-    AutomaticProxy types.Bool `tfsdk:"automatic_proxy" json:"automatic_proxy,optional,omitempty" `
-        OriginalValue *TranslationValueResourceModel `tfsdk:"original_value" json:"original_value,optional,omitempty" `
-        TranslatedValue *TranslationValueResourceModel `tfsdk:"translated_value" json:"translated_value,optional,omitempty" `
-        
+	AutomaticProxy  types.Bool                     `tfsdk:"automatic_proxy" json:"automatic_proxy,optional,omitempty" `
+	OriginalValue   *TranslationValueResourceModel `tfsdk:"original_value" json:"original_value,optional,omitempty" `
+	TranslatedValue *TranslationValueResourceModel `tfsdk:"translated_value" json:"translated_value,optional,omitempty" `
 }

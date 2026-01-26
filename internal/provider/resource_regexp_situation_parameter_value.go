@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &RegexpSituationParameterValueResource{}
 var _ resource.ResourceWithImportState = &RegexpSituationParameterValueResource{}
 var _ context.Context = context.Background()
 
-
 // RegexpSituationParameterValueResource defines the resource implementation.
 type RegexpSituationParameterValueResource struct {
-    ResourceBase[RegexpSituationParameterValueResourceModel]
+	ResourceBase[RegexpSituationParameterValueResourceModel]
 }
-
 
 // Schema defines the schema for the RegexpSituationParameterValue resource.
 func (r *RegexpSituationParameterValueResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a regular expression parameter value within a situation, allowing for the application of specific regular expressions to the situation's parameters.",
-      Attributes: GetRegexpSituationParameterValueSchemaAttributes(ctx),
-      Blocks: GetRegexpSituationParameterValueSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a regular expression parameter value within a situation, allowing for the application of specific regular expressions to the situation's parameters.",
+		Attributes:  GetRegexpSituationParameterValueSchemaAttributes(ctx),
+		Blocks:      GetRegexpSituationParameterValueSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *RegexpSituationParameterValueResource) Schema(ctx context.Context, _ re
 func NewRegexpSituationParameterValueResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing RegexpSituationParameterValue resource")
 	r := &RegexpSituationParameterValueResource{
-        ResourceBase: ResourceBase[RegexpSituationParameterValueResourceModel]{
-             resourceType: "reg_exp_situation_parameter_value",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[RegexpSituationParameterValueResourceModel]{
+			resourceType:  "reg_exp_situation_parameter_value",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

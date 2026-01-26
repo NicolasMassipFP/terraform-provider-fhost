@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type VssIscSettingsResourceModel struct {
-	
-    IscIpAddress types.String `tfsdk:"isc_ip_address" json:"isc_ip_address,optional,omitempty" `
-        IscOvfApplianceModel types.String `tfsdk:"isc_ovf_appliance_model" json:"isc_ovf_appliance_model,optional,omitempty" `
-        IscOvfApplianceVersion types.String `tfsdk:"isc_ovf_appliance_version" json:"isc_ovf_appliance_version,optional,omitempty" `
-        IscVirtualConnectorName types.String `tfsdk:"isc_virtual_connector_name" json:"isc_virtual_connector_name,optional,omitempty" `
-        IscVssId types.String `tfsdk:"isc_vss_id" json:"isc_vss_id,optional,omitempty" `
-        
+	IscIpAddress            types.String `tfsdk:"isc_ip_address" json:"isc_ip_address,optional,omitempty" `
+	IscOvfApplianceModel    types.String `tfsdk:"isc_ovf_appliance_model" json:"isc_ovf_appliance_model,optional,omitempty" `
+	IscOvfApplianceVersion  types.String `tfsdk:"isc_ovf_appliance_version" json:"isc_ovf_appliance_version,optional,omitempty" `
+	IscVirtualConnectorName types.String `tfsdk:"isc_virtual_connector_name" json:"isc_virtual_connector_name,optional,omitempty" `
+	IscVssId                types.String `tfsdk:"isc_vss_id" json:"isc_vss_id,optional,omitempty" `
 }

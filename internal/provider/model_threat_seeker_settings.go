@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,12 +16,8 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type ThreatSeekerSettingsResourceModel struct {
-	
-    HttpProxy *[]types.String `tfsdk:"http_proxy" json:"http_proxy,optional,omitempty" `
-        LocalUrlCategorizationEnabled types.Bool `tfsdk:"local_url_categorization_enabled" json:"local_url_categorization_enabled,optional,omitempty" `
-        TsEnabled types.Bool `tfsdk:"ts_enabled" json:"ts_enabled,optional,omitempty" `
-        
+	HttpProxy                     *[]types.String `tfsdk:"http_proxy" json:"http_proxy,optional,omitempty" `
+	LocalUrlCategorizationEnabled types.Bool      `tfsdk:"local_url_categorization_enabled" json:"local_url_categorization_enabled,optional,omitempty" `
+	TsEnabled                     types.Bool      `tfsdk:"ts_enabled" json:"ts_enabled,optional,omitempty" `
 }

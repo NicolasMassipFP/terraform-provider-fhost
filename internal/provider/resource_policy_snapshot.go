@@ -3,38 +3,41 @@
 // Package provider implements the SMC Terraform provider resources and data sources.
 package provider
 
-
-
-
-
 import (
 	"context"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/config"
 )
-
 
 // Ensure provider defined types fully satisfy framework interfaces.
 var _ resource.Resource = &PolicySnapshotResource{}
 var _ resource.ResourceWithImportState = &PolicySnapshotResource{}
 var _ context.Context = context.Background()
 
-
 // PolicySnapshotResource defines the resource implementation.
 type PolicySnapshotResource struct {
-    ResourceBase[PolicySnapshotResourceModel]
+	ResourceBase[PolicySnapshotResourceModel]
 }
-
 
 // Schema defines the schema for the PolicySnapshot resource.
 func (r *PolicySnapshotResource) Schema(ctx context.Context, _ resource.SchemaRequest, resp *resource.SchemaResponse) {
+	use_hcl2, err := config.IsHcl2Enabled(PROVIDER_NAME + "_" + r.resourceType)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Error getting HCL2 setting",
+			err.Error(),
+		)
+		return
+	}
+
+	ctx = context.WithValue(ctx, "use_hcl2", use_hcl2)
 	resp.Schema = schema.Schema{
-      Description: "This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.",
-      Attributes: GetPolicySnapshotSchemaAttributes(ctx),
-      Blocks: GetPolicySnapshotSchemaBlocks(ctx),
-    } // schema
-    
+		Description: "This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.",
+		Attributes:  GetPolicySnapshotSchemaAttributes(ctx),
+		Blocks:      GetPolicySnapshotSchemaBlocks(ctx),
+	} // schema
 
 }
 
@@ -42,12 +45,11 @@ func (r *PolicySnapshotResource) Schema(ctx context.Context, _ resource.SchemaRe
 func NewPolicySnapshotResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing PolicySnapshot resource")
 	r := &PolicySnapshotResource{
-        ResourceBase: ResourceBase[PolicySnapshotResourceModel]{
-             resourceType: "snapshot",
-             isSubResource: true,
-
-        },
-    }
-    r.ResourceBase.dispatch = r
-    return r
+		ResourceBase: ResourceBase[PolicySnapshotResourceModel]{
+			resourceType:  "snapshot",
+			isSubResource: true,
+		},
+	}
+	r.ResourceBase.dispatch = r
+	return r
 }

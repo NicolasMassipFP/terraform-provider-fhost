@@ -4,11 +4,10 @@
 package provider
 
 import (
-    "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/terraform-providers/terraform-provider-smc/internal/customfield"
-    "fmt"
 	"context"
-
+	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/customfield"
 )
 
 // to avoid import errors if unused
@@ -17,14 +16,10 @@ var _ = types.String{}
 var _ = fmt.Sprintf
 var _ = context.Background()
 
-
-
 type MultilinkMemberResourceModel struct {
-	
-    IpRange types.String `tfsdk:"ip_range" json:"ip_range,optional,omitempty" `
-        NetlinkRef types.String `tfsdk:"netlink_ref" json:"netlink_ref,optional,omitempty" `
-        NetlinkRole types.String `tfsdk:"netlink_role" json:"netlink_role,optional,omitempty" `
-        NetworkRef types.String `tfsdk:"network_ref" json:"network_ref,optional,omitempty" `
-        QosRole *[]QosClassWithRoleResourceModel `tfsdk:"qos_role" json:"qos_role,optional,omitempty" `
-        
+	IpRange     types.String                     `tfsdk:"ip_range" json:"ip_range,optional,omitempty" `
+	NetlinkRef  types.String                     `tfsdk:"netlink_ref" json:"netlink_ref,optional,omitempty" `
+	NetlinkRole types.String                     `tfsdk:"netlink_role" json:"netlink_role,optional,omitempty" `
+	NetworkRef  types.String                     `tfsdk:"network_ref" json:"network_ref,optional,omitempty" `
+	QosRole     *[]QosClassWithRoleResourceModel `tfsdk:"qos_role" json:"qos_role,optional,omitempty" `
 }
