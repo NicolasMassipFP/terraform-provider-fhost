@@ -4,6 +4,9 @@ FROM golang:1.24
 # Install golangci-lint v2.4.0 using official script
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b /usr/local/bin v2.4.0
 
+# Install sudo, ca-certificates and gnupg for being able to add gpg keys
+RUN apt install ca-certificates gnupg
+
 # Install goreleaser latest version
 RUN go install github.com/goreleaser/goreleaser@latest
 
