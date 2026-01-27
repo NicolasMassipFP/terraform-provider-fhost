@@ -38,3 +38,7 @@ terraform.*
 # project specific
 plugins/
 dist/
+
+# specific file for forcepoint publication
+publish*
+scripts/init_pgp_and_make_release.sh

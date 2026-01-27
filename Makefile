@@ -1,6 +1,6 @@
 PROVIDER_NAME=fhost
 PROVIDER_FULLNAME=terraform-provider-fhost
-PROVIDER_VERSION=0.1.2
+PROVIDER_VERSION=0.1.4
 PROVIDER_ORGANIZATION=NicolasMassipFP
 PLUGIN_DIR=plugins/registry.terraform.io/${PROVIDER_ORGANIZATION}/${PROVIDER_NAME}/${PROVIDER_VERSION}/linux_amd64
 RUN=./scripts/run_go
@@ -26,7 +26,7 @@ help:
 build: docker-build go-build
 
 .PHONY: release
-release: docker-build go-build go-release
+release: docker-build go-release
 
 .PHONY: go-build
 go-build:
@@ -50,8 +50,8 @@ go-release-snapshot: docker-build
 	$(RUN) goreleaser build --snapshot --clean --skip=validate
 
 .PHONY: go-release
-go-release: docker-build
-	$(RUN) goreleaser release --clean
+go-release:
+	$(RUN) ./scripts/init_pgp_and_make_release.sh
 
 .PHONY: install
 install:
