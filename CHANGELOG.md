@@ -1,4 +1,4 @@
-## 0.1.4
+## 0.0.4
 
 Current "development version"
 - Block syntax will evolve without backward compatibility in the future
