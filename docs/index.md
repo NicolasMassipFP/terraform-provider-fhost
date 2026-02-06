@@ -22,20 +22,24 @@ This version is a pre release version for test purpose
 
 ## Which provider version to use ?
 
-## 7.3.x 
-Use version for SMC 7.4.x setup with SMC API 7.3
+## for SMC 7.3.x 
+Same as for SMC 7.4.x
+Use latest fp-ngfw-smc terraform version 1.74x.y **setup with SMC API 7.3**
+```
+"api_version" = "7.3"
+```
 
 > **SMC 7.3.x does not officially support the SMC Terraform Provider**.
 The Terraform provider released for **SMC 7.4.x**, which uses SMC API version 7.3, is mostly compatible with SMC 
 7.3.x. However, there are breaking changes introduced in the SMC API between versions 7.3 and 7.4, which may lead to incompatibilities.
 
-## 7.4.x 
-Use latest version 1.74x.y
+## for SMC 7.4.x 
+Use latest fp-ngfw-smc terraform version 1.74x.y
 
 > default SMC API version used by latest provider 1.74x.y is SMC API 7.4.
 
-## 7.5.x 
-Use latest version 1.75x.y  
+## for SMC 7.5.x 
+Use latest fp-ngfw-smc terraform version 1.75x.y  
 
 > default SMC API version used by latest provider 1.75x.y is SMC API 7.5.
 

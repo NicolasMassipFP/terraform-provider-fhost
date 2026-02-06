@@ -3,7 +3,7 @@
 page_title: "smc_command Action - NGFW-SMC"
 subcategory: ""
 description: |-
-  Generic action to invoke the smc api (not easy to use, but generic)
+  Generic action to invoke the smc api
 ---
 
 # smc_command (Action)
