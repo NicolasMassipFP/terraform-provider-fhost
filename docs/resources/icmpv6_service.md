@@ -1,0 +1,35 @@
+---
+page_title: "smc_icmp_ipv6_service"
+subcategory: ""
+description: |-
+  This represents an ICMP service for IPv6.
+---
+
+# smc_icmp_ipv6_service
+
+This represents an ICMP service for IPv6.
+
+
+## Simple Attributes
+    
+- `comment` (String) An optional comment for the element. This field is not required.
+- `icmp_code` (Number) The ICMP code number that the traffic uses.
+- `icmp_type` (Number) The ICMP type number that the traffic uses.
+- `name` (String) Name of the object.
+- `protocol_agent_ref` (String) This represents a Protocol Agent. It is a process on the engines that assists the engine in handling a particular Protocol. Protocol Agents ensure that related connections for a service are properly grouped and evaluated by the engine, as well as assisting the engine with content filtering or network address translation tasks.
+
+## Nested Attributes
+    
+- `paValues` (List of Blocks, see [here](../attributes/pa_parameter_value.md)) List of parameter values associated with this service. These values are used to configure the protocol agent for this service.
+
+## Readonly Attributes
+    
+- `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
+- `etag` (String) The ETag of the element, used for versioning. This field is not required.
+- `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
+- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `locked` (Boolean) Indicates if the element is locked. This field is not required.
+- `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
+- `system` (Boolean) Indicates if the element is a System element. This field is not required.
+- `system_key` (Number) The system key of the System element. This field is not required.
+- `trashed` (Boolean) Indicates if the element is trashed. This field is not required.
