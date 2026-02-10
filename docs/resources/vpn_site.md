@@ -1,6 +1,6 @@
 ---
 page_title: "vpn_site"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a VPN Site, which is a collection of network elements that are part of a VPN. It can be associated with a gateway and has references to VPNs.
 ---
@@ -8,6 +8,9 @@ description: |-
 # vpn_site
 
 This represents a VPN Site, which is a collection of network elements that are part of a VPN. It can be associated with a gateway and has references to VPNs.
+
+
+
 
 
 ## Simple Attributes
@@ -20,14 +23,14 @@ This represents a VPN Site, which is a collection of network elements that are p
 
 ## Nested Attributes
     
-- `vpn_references` (List of Blocks, see [here](../attributes/site_vpn_reference.md)) The VPN references associated with this site, which define the VPNs that this site is part of. These references link the site to specific VPN configurations.
+- `vpn_references` (List of Blocks, see [here](zzattrs_site_vpn_reference.md)) The VPN references associated with this site, which define the VPNs that this site is part of. These references link the site to specific VPN configurations.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

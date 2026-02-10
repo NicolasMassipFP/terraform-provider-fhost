@@ -1,6 +1,6 @@
 ---
 page_title: "gateway_tunnel"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.
 ---
@@ -8,6 +8,9 @@ description: |-
 # gateway_tunnel
 
 This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.
+
+
+
 
 
 ## Simple Attributes
@@ -26,4 +29,4 @@ This represents a gateway tunnel, which is used to manage the logical tunnels be
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

@@ -1,6 +1,6 @@
 ---
 page_title: "smc_rbvpn_tunnel"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a Route-Based VPN Tunnel. It defines the properties and configuration of a route-based VPN tunnel, including its sides, encryption mode, and other settings.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_rbvpn_tunnel
 
 This represents a Route-Based VPN Tunnel. It defines the properties and configuration of a route-based VPN tunnel, including its sides, encryption mode, and other settings.
+
+
+
 
 
 ## Simple Attributes
@@ -32,16 +35,16 @@ This represents a Route-Based VPN Tunnel. It defines the properties and configur
 
 ## Nested Attributes
     
-- `geneve_settings` (Single Block, see [here](../attributes/rbvpn_geneve_settings.md)) 
-- `rbvpn_tunnel_side_a` (Single Block, see [here](../attributes/route_based_vpn_tunnel_side.md)) 
-- `rbvpn_tunnel_side_b` (Single Block, see [here](../attributes/route_based_vpn_tunnel_side.md)) 
+- `geneve_settings` (Single Block, see [here](zzattrs_rbvpn_geneve_settings.md)) 
+- `rbvpn_tunnel_side_a` (Single Block, see [here](zzattrs_route_based_vpn_tunnel_side.md)) 
+- `rbvpn_tunnel_side_b` (Single Block, see [here](zzattrs_route_based_vpn_tunnel_side.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

@@ -1,6 +1,6 @@
 ---
 page_title: "vpn_broker_interface"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a VPN broker interface, which is used by the engine to establish communication with the Broker Domain and fetch VPN information.
 ---
@@ -8,6 +8,9 @@ description: |-
 # vpn_broker_interface
 
 This represents a VPN broker interface, which is used by the engine to establish communication with the Broker Domain and fetch VPN information.
+
+
+
 
 
 ## Simple Attributes
@@ -45,15 +48,15 @@ This represents a VPN broker interface, which is used by the engine to establish
 
 ## Nested Attributes
     
-- `arp_entry` (List of Blocks, see [here](../attributes/arp_entry.md)) the ARP entries associated with this physical interface.
-- `dhcp_relay` (Single Block, see [here](../attributes/dhcp_relay.md)) 
-- `dhcp_server_on_interface` (Single Block, see [here](../attributes/dhcp_server_settings.md)) 
-- `dhcpv6_relay` (Single Block, see [here](../attributes/dhcp_relay.md)) 
-- `interfaces` (List of Blocks, see [here](../attributes/abstract_engine_interface.md)) the interfaces associated with this physical interface.
-- `log_moderation` (List of Blocks, see [here](../attributes/log_moderation.md)) the log moderation settings associated with this physical interface.
-- `virtual_resource_settings` (List of Blocks, see [here](../attributes/virtual_resource_settings.md)) the virtual resource settings associated with this physical interface.
+- `arp_entry` (List of Blocks, see [here](zzattrs_arp_entry.md)) the ARP entries associated with this physical interface.
+- `dhcp_relay` (Single Block, see [here](zzattrs_dhcp_relay.md)) 
+- `dhcp_server_on_interface` (Single Block, see [here](zzattrs_dhcp_server_settings.md)) 
+- `dhcpv6_relay` (Single Block, see [here](zzattrs_dhcp_relay.md)) 
+- `interfaces` (List of Blocks, see [here](zzattrs_abstract_engine_interface.md)) the interfaces associated with this physical interface.
+- `log_moderation` (List of Blocks, see [here](zzattrs_log_moderation.md)) the log moderation settings associated with this physical interface.
+- `virtual_resource_settings` (List of Blocks, see [here](zzattrs_virtual_resource_settings.md)) the virtual resource settings associated with this physical interface.
 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

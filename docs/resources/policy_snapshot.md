@@ -1,6 +1,6 @@
 ---
 page_title: "snapshot"
-subcategory: ""
+subcategory: "policy"
 description: |-
   This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.
 ---
@@ -8,6 +8,9 @@ description: |-
 # snapshot
 
 This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.
+
+
+
 
 
 ## Simple Attributes
@@ -23,7 +26,7 @@ This represents a Policy Snapshot, which is a record of policy configuration tha
 - `config_id` (Number) The configuration ID associated with this policy snapshot, used for dynamic uploads.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `package_id` (Number) The ID of the update package associated with this policy snapshot, indicating which package was activated when the policy was uploaded.
 - `policy_name` (String) The name of the policy associated with this snapshot, if the policy does not exist.

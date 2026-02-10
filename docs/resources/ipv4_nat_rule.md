@@ -1,6 +1,6 @@
 ---
 page_title: "fw_ipv4_nat_rule"
-subcategory: ""
+subcategory: "policy"
 description: |-
   This represents an IPv4 NAT (Network Address Translation) Rule. It defines how one type of IPv4 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
 ---
@@ -8,6 +8,9 @@ description: |-
 # fw_ipv4_nat_rule
 
 This represents an IPv4 NAT (Network Address Translation) Rule. It defines how one type of IPv4 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
+
+
+
 
 
 ## Simple Attributes
@@ -20,18 +23,18 @@ This represents an IPv4 NAT (Network Address Translation) Rule. It defines how o
 
 ## Nested Attributes
     
-- `destinations` (Single Block, see [here](../attributes/destination_matching_part.md)) 
-- `options` (Single Block, see [here](../attributes/firewall_rule_options.md)) 
-- `services` (Single Block, see [here](../attributes/service_match_part.md)) 
-- `sources` (Single Block, see [here](../attributes/source_match_part.md)) 
-- `used_on` (Single Block, see [here](../attributes/used_on_engine.md)) 
+- `destinations` (Single Block, see [here](zzattrs_destination_matching_part.md)) 
+- `options` (Single Block, see [here](zzattrs_firewall_rule_options.md)) 
+- `services` (Single Block, see [here](zzattrs_service_match_part.md)) 
+- `sources` (Single Block, see [here](zzattrs_source_match_part.md)) 
+- `used_on` (Single Block, see [here](zzattrs_used_on_engine.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `parent_insert_point` (String) This represents a rule in a policy, including its parent policy, parent insert point, rank, tag, background color, and insert point type.
 - `parent_policy` (String) This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.

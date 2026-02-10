@@ -1,6 +1,6 @@
 ---
 page_title: "smc_integrated_uis"
-subcategory: ""
+subcategory: "services"
 description: |-
   This represents an Integrated User Identification Service, which is used to identify users based on their network activity. It allows for integration with authentication domains and provides configuration options for initial query time, polling interval, and ignore values.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_integrated_uis
 
 This represents an Integrated User Identification Service, which is used to identify users based on their network activity. It allows for integration with authentication domains and provides configuration options for initial query time, polling interval, and ignore values.
+
+
+
 
 
 ## Simple Attributes
@@ -20,14 +23,14 @@ This represents an Integrated User Identification Service, which is used to iden
 
 ## Nested Attributes
     
-- `iuis_ignore` (List of Blocks, see [here](../attributes/integrated_uis_ignore_value.md)) The ignore values, which define specific IP addresses or networks that should be ignored by the user identification service.
+- `iuis_ignore` (List of Blocks, see [here](zzattrs_integrated_uis_ignore_value.md)) The ignore values, which define specific IP addresses or networks that should be ignored by the user identification service.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

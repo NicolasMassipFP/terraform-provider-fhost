@@ -1,6 +1,6 @@
 ---
 page_title: "ips_ethernet_rule"
-subcategory: ""
+subcategory: "policy"
 description: |-
   This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.
 ---
@@ -8,6 +8,9 @@ description: |-
 # ips_ethernet_rule
 
 This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.
+
+
+
 
 
 ## Simple Attributes
@@ -21,19 +24,19 @@ This represents an Ethernet Rule. It defines which Ethernet traffic is allowed o
 
 ## Nested Attributes
     
-- `action` (Single Block, see [here](../attributes/ips_rule_action.md)) 
-- `destinations` (Single Block, see [here](../attributes/destination_matching_part.md)) 
-- `logical_interfaces` (Single Block, see [here](../attributes/logical_interface_match_part.md)) 
-- `options` (Single Block, see [here](../attributes/ips_rule_options.md)) 
-- `services` (Single Block, see [here](../attributes/service_match_part.md)) 
-- `sources` (Single Block, see [here](../attributes/source_match_part.md)) 
+- `action` (Single Block, see [here](zzattrs_ips_rule_action.md)) 
+- `destinations` (Single Block, see [here](zzattrs_destination_matching_part.md)) 
+- `logical_interfaces` (Single Block, see [here](zzattrs_logical_interface_match_part.md)) 
+- `options` (Single Block, see [here](zzattrs_ips_rule_options.md)) 
+- `services` (Single Block, see [here](zzattrs_service_match_part.md)) 
+- `sources` (Single Block, see [here](zzattrs_source_match_part.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `parent_insert_point` (String) This represents a rule in a policy, including its parent policy, parent insert point, rank, tag, background color, and insert point type.
 - `parent_policy` (String) This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.

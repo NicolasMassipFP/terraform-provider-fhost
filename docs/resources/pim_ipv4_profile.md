@@ -1,6 +1,6 @@
 ---
 page_title: "smc_pim_ipv4_profile"
-subcategory: ""
+subcategory: "routing"
 description: |-
   This represents the PIM IPv4 Profile for Dynamic Routing Firewall functionality. It is used to configure PIM (Protocol Independent Multicast) settings in the firewall's dynamic routing capabilities.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_pim_ipv4_profile
 
 This represents the PIM IPv4 Profile for Dynamic Routing Firewall functionality. It is used to configure PIM (Protocol Independent Multicast) settings in the firewall's dynamic routing capabilities.
+
+
+
 
 
 ## Simple Attributes
@@ -23,14 +26,14 @@ This represents the PIM IPv4 Profile for Dynamic Routing Firewall functionality.
 
 ## Nested Attributes
     
-- `pim_multicast_group_entry` (List of Blocks, see [here](../attributes/pim_ipv4_multicast_group_entry.md)) The PIM Multicast Group entries. These entries define the multicast groups that the PIM Profile will manage.
+- `pim_multicast_group_entry` (List of Blocks, see [here](zzattrs_pim_ipv4_multicast_group_entry.md)) The PIM Multicast Group entries. These entries define the multicast groups that the PIM Profile will manage.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

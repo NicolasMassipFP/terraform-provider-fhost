@@ -1,6 +1,6 @@
 ---
 page_title: "smc_situation_parameter"
-subcategory: ""
+subcategory: "situations"
 description: |-
   This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_situation_parameter
 
 This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
+
+
+
 
 
 ## Simple Attributes
@@ -29,4 +32,4 @@ This represents a parameter within a situation, allowing for the configuration o
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

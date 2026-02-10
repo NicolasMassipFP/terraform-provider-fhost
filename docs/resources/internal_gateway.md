@@ -1,6 +1,6 @@
 ---
 page_title: "internal_gateway"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents the Internal Gateway, which is used for managing VPN connections and related settings.
 ---
@@ -8,6 +8,9 @@ description: |-
 # internal_gateway
 
 This represents the Internal Gateway, which is used for managing VPN connections and related settings.
+
+
+
 
 
 ## Simple Attributes
@@ -30,17 +33,17 @@ This represents the Internal Gateway, which is used for managing VPN connections
 
 ## Nested Attributes
     
-- `dhcp_relay` (Single Block, see [here](../attributes/dhcp_client_configuration.md)) 
-- `ssl_vpn_portal_setting` (List of Blocks, see [here](../attributes/ssl_vpn_portal_setting.md)) The Application Access Portal Settings for this Internal Gateway.
-- `ssl_vpn_proxy` (Single Block, see [here](../attributes/ssl_vpn_setting.md)) 
-- `ssl_vpn_tunneling` (Single Block, see [here](../attributes/ssl_vpn_setting.md)) 
+- `dhcp_relay` (Single Block, see [here](zzattrs_dhcp_client_configuration.md)) 
+- `ssl_vpn_portal_setting` (List of Blocks, see [here](zzattrs_ssl_vpn_portal_setting.md)) The Application Access Portal Settings for this Internal Gateway.
+- `ssl_vpn_proxy` (Single Block, see [here](zzattrs_ssl_vpn_setting.md)) 
+- `ssl_vpn_tunneling` (Single Block, see [here](zzattrs_ssl_vpn_setting.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

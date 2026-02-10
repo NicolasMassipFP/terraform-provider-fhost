@@ -10,6 +10,9 @@ description: |-
 This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.
 
 
+
+
+
 ## Simple Attributes
     
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -18,7 +21,7 @@ This represents an Extended Community Access List, which is used to define a lis
 
 ## Nested Attributes
     
-- `entries` (List of Blocks, see [here](../attributes/abstract_access_list_entry.md)) The access list entries that define the rules for routing decisions.
+- `entries` (List of Blocks, see [here](zzattrs_abstract_access_list_entry.md)) The access list entries that define the rules for routing decisions.
 
 ## Readonly Attributes
     

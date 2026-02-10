@@ -1,6 +1,6 @@
 ---
 page_title: "gateway_node"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
 ---
@@ -8,6 +8,9 @@ description: |-
 # gateway_node
 
 This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
+
+
+
 
 
 ## Simple Attributes
@@ -24,4 +27,4 @@ This represents a gateway node, which is used to manage the VPN topology and its
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

@@ -1,6 +1,6 @@
 ---
 page_title: "configuration_situation_parameter_value"
-subcategory: ""
+subcategory: "situations"
 description: |-
   This represents a configuration parameter value within a situation, allowing for the application of specific configuration values to the situation's parameters.
 ---
@@ -8,6 +8,9 @@ description: |-
 # configuration_situation_parameter_value
 
 This represents a configuration parameter value within a situation, allowing for the application of specific configuration values to the situation's parameters.
+
+
+
 
 
 ## Simple Attributes
@@ -21,4 +24,4 @@ This represents a configuration parameter value within a situation, allowing for
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

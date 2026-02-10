@@ -1,6 +1,6 @@
 ---
 page_title: "virtual_resource"
-subcategory: ""
+subcategory: "engines"
 description: |-
   This represents a set of resources on the Master NGFW Engine that are allocated to each Virtual NGFW Engine. It includes properties such as ID, domain allocation, and resource limits.
 ---
@@ -8,6 +8,9 @@ description: |-
 # virtual_resource
 
 This represents a set of resources on the Master NGFW Engine that are allocated to each Virtual NGFW Engine. It includes properties such as ID, domain allocation, and resource limits.
+
+
+
 
 
 ## Simple Attributes
@@ -25,4 +28,4 @@ This represents a set of resources on the Master NGFW Engine that are allocated 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

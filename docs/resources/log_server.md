@@ -1,6 +1,6 @@
 ---
 page_title: "smc_log_server"
-subcategory: ""
+subcategory: "network_elements"
 description: |-
   This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_log_server
 
 This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
+
+
+
 
 
 ## Simple Attributes
@@ -27,19 +30,19 @@ This represents a Log Server, which is a component of the Management Center resp
 
 ## Nested Attributes
     
-- `backup_log_server` (List of Blocks, see [here](../attributes/secondary_log_server_container_for_storage.md)) The backup Log Server for this Log Server. You can specify several backup Log Servers, and the same Log Server can simultaneously be the main Log Server for some components and a backup Log Server for others.
-- `elasticsearch_authentication_settings` (Single Block, see [here](../attributes/elasticsearch_authentication_settings.md)) 
-- `external_pki_certificate_settings` (Single Block, see [here](../attributes/certificate_settings.md)) 
-- `forwarding_tls_settings` (Single Block, see [here](../attributes/tls_settings.md)) 
-- `netflow_collector` (List of Blocks, see [here](../attributes/netflow_collector.md)) The Netflow Collector associated with the Log Server. Log Servers can be configured to forward log data to external hosts, and you can define which type of log data you want to forward and in which format.
-- `third_party_monitoring` (Single Block, see [here](../attributes/third_party_monitoring.md)) 
+- `backup_log_server` (List of Blocks, see [here](zzattrs_secondary_log_server_container_for_storage.md)) The backup Log Server for this Log Server. You can specify several backup Log Servers, and the same Log Server can simultaneously be the main Log Server for some components and a backup Log Server for others.
+- `elasticsearch_authentication_settings` (Single Block, see [here](zzattrs_elasticsearch_authentication_settings.md)) 
+- `external_pki_certificate_settings` (Single Block, see [here](zzattrs_certificate_settings.md)) 
+- `forwarding_tls_settings` (Single Block, see [here](zzattrs_tls_settings.md)) 
+- `netflow_collector` (List of Blocks, see [here](zzattrs_netflow_collector.md)) The Netflow Collector associated with the Log Server. Log Servers can be configured to forward log data to external hosts, and you can define which type of log data you want to forward and in which format.
+- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

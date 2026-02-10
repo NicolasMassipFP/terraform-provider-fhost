@@ -10,6 +10,9 @@ description: |-
 This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 
 
+
+
+
 ## Simple Attributes
     
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -29,9 +32,9 @@ This represents a parameter for the Protocol Agent, allowing for detailed config
 
 ## Nested Attributes
     
-- `parent_group` (Single Block, see [here](../attributes/pa_parameter_group.md)) 
+- `parent_group` (Single Block, see [here](zzattrs_pa_parameter_group.md)) 
 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

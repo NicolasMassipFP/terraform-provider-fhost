@@ -10,6 +10,9 @@ description: |-
 This represents a Protocol Agent. It is a process on the engines that assists the engine in handling a particular Protocol. Protocol Agents ensure that related connections for a service are properly grouped and evaluated by the engine, as well as assisting the engine with content filtering or network address translation tasks.
 
 
+
+
+
 ## Simple Attributes
     
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -30,16 +33,16 @@ This represents a Protocol Agent. It is a process on the engines that assists th
 
 ## Nested Attributes
     
-- `link_selection` (Single Block, see [here](../attributes/link_selection_value.md)) 
-- `paParameters` (List of Blocks, see [here](../attributes/abstract_protocol_agent_parameter.md)) The parameters belonging to the protocol agent.
-- `paValues` (List of Blocks, see [here](../attributes/pa_parameter_value.md)) The values belonging to the protocol agent.
+- `link_selection` (Single Block, see [here](zzattrs_link_selection_value.md)) 
+- `paParameters` (List of Blocks, see [here](zzattrs_abstract_protocol_agent_parameter.md)) The parameters belonging to the protocol agent.
+- `paValues` (List of Blocks, see [here](zzattrs_pa_parameter_value.md)) The values belonging to the protocol agent.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

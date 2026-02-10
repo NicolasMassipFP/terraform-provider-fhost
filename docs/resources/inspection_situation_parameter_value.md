@@ -1,6 +1,6 @@
 ---
 page_title: "inspection_situation_situation_parameter_value"
-subcategory: ""
+subcategory: "situations"
 description: |-
   This represents an inspection situation parameter value within a situation, allowing for the application of specific inspection situations to the situation's parameters.
 ---
@@ -8,6 +8,9 @@ description: |-
 # inspection_situation_situation_parameter_value
 
 This represents an inspection situation parameter value within a situation, allowing for the application of specific inspection situations to the situation's parameters.
+
+
+
 
 
 ## Simple Attributes
@@ -22,4 +25,4 @@ This represents an inspection situation parameter value within a situation, allo
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

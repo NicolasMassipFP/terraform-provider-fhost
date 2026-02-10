@@ -1,6 +1,6 @@
 ---
 page_title: "cloud_fw_node"
-subcategory: ""
+subcategory: "engines"
 description: |-
   This represents an individual Cloud Firewall Engine in the Security Management Client, representing a device that runs firewall software as part of a Cloud Firewall.
 ---
@@ -8,6 +8,9 @@ description: |-
 # cloud_fw_node
 
 This represents an individual Cloud Firewall Engine in the Security Management Client, representing a device that runs firewall software as part of a Cloud Firewall.
+
+
+
 
 
 ## Simple Attributes
@@ -22,12 +25,12 @@ This represents an individual Cloud Firewall Engine in the Security Management C
 
 ## Nested Attributes
     
-- `appliance_info` (Single Block, see [here](../attributes/appliance_info.md)) 
-- `external_pki_certificate_settings` (Single Block, see [here](../attributes/certificate_settings.md)) 
-- `loopback_node_dedicated_interface` (List of Blocks, see [here](../attributes/loopback_node_interface.md)) The loopback Node Dedicated IP addresses that allow the firewall to communicate with itself, not connected to any physical interface.
-- `tests` (List of Blocks, see [here](../attributes/abstract_test_entry.md)) The list of test entries associated with this engine node, which are used to monitor the health and performance of the node.
+- `appliance_info` (Single Block, see [here](zzattrs_appliance_info.md)) 
+- `external_pki_certificate_settings` (Single Block, see [here](zzattrs_certificate_settings.md)) 
+- `loopback_node_dedicated_interface` (List of Blocks, see [here](zzattrs_loopback_node_interface.md)) The loopback Node Dedicated IP addresses that allow the firewall to communicate with itself, not connected to any physical interface.
+- `tests` (List of Blocks, see [here](zzattrs_abstract_test_entry.md)) The list of test entries associated with this engine node, which are used to monitor the health and performance of the node.
 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

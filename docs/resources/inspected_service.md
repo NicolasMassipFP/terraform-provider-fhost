@@ -1,6 +1,6 @@
 ---
 page_title: "inspected_service"
-subcategory: ""
+subcategory: "services"
 description: |-
   This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
 ---
@@ -8,6 +8,9 @@ description: |-
 # inspected_service
 
 This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
+
+
+
 
 
 ## Simple Attributes
@@ -21,4 +24,4 @@ This represents a sub part of a Proxy Server, defining the protocol to be inspec
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
