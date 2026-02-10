@@ -3,6 +3,11 @@ variable "resource_comment" {
   default = "Created by Terraform"
 }
 
+data "smc_href" "tuvalu" {
+  name = "Vanuatu"
+  type = "country"
+}
+
 data "smc_href" "ssh_service" {
   name = "SSH"
   type = "tcp_service"
@@ -26,13 +31,16 @@ resource "smc_fw_policy" "example" {
 
 resource "smc_fw_ipv4_access_rule" "allow_ssh" {
   from_ref = smc_fw_ipv4_access_rule.allow_https.link.add_after
-  name     = "allow-ssh-from-any-to-any"
+  name     = "allow-ssh-from-any-to-tuvalu"
   sources { any = true }
-  destinations { any = true }
+  destinations {
+    dst = [ data.smc_href.tuvalu.id ]
+  }
   services {
     service = [data.smc_href.ssh_service.id]
   }
   action { action = ["allow"] }
+  rank = 2
 }
 
 resource "smc_fw_ipv4_access_rule" "allow_https" {

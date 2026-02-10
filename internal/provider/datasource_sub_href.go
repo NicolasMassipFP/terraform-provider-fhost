@@ -10,6 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
+	"github.com/terraform-providers/terraform-provider-smc/internal/common"
 	"github.com/terraform-providers/terraform-provider-smc/internal/smc"
 )
 
@@ -142,7 +143,7 @@ func (d *SubElementDataSource) Read(ctx context.Context, req datasource.ReadRequ
 	href := ""
 	match := data.Match.ValueString()
 	if data.FromRef.IsNull() || data.FromRef.IsUnknown() {
-		href, err = resolveRef(ctx, config, match)
+		href, err = common.ResolveRef(ctx, config, match)
 	} else {
 		from_ref := data.FromRef.ValueString()
 		match := data.Match.ValueString()
@@ -152,7 +153,7 @@ func (d *SubElementDataSource) Read(ctx context.Context, req datasource.ReadRequ
 			"match":    match,
 		})
 
-		href, err = resolveRef2(ctx, config, from_ref, match)
+		href, err = common.ResolveRef2(ctx, config, from_ref, match)
 	}
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error",

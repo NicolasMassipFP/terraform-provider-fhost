@@ -29,7 +29,8 @@ const ConfigFileName = "tfsmc.conf.json"
 
 // Config represents the provider configuration
 type Config struct {
-	Hcl2 any `json:"hcl2"`
+	Hcl2         any  `json:"hcl2"`
+	Experimental bool `json:"experimental"`
 }
 
 var (
@@ -87,8 +88,11 @@ func loadConfigFromPathLocked(path string) error {
 
 // validateConfig validates the configuration content
 func validateConfig(cfg *Config) error {
-	// If hcl2 is nil, it's valid (means not configured)
+	// Validate experimental field
+	// No additional validation needed - bool type is validated during JSON unmarshaling
 
+	// Validate hcl2 field
+	// If hcl2 is nil, it's valid (means not configured)
 	if cfg.Hcl2 == nil {
 		return nil
 	}
@@ -154,4 +158,18 @@ func GetConfig() *Config {
 // ResetConfig resets the global configuration (for testing)
 func ResetConfig() {
 	globalConfig = nil
+}
+
+// IsExperimentalEnabled checks if experimental features are enabled
+func IsExperimentalEnabled() bool {
+	err := LoadConfig()
+	if err != nil {
+		return false
+	}
+
+	if globalConfig == nil {
+		return false
+	}
+
+	return globalConfig.Experimental
 }

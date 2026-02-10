@@ -1,3 +1,7 @@
+// this test should be in package resource with model_utils.go, but we
+// need struct from the schema to test and we would have a circular
+// dependencies
+
 package provider
 
 import (
@@ -11,9 +15,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 	"github.com/hashicorp/terraform-plugin-log/tflogtest"
 	"github.com/terraform-providers/terraform-provider-smc/internal/apijson"
+	"github.com/terraform-providers/terraform-provider-smc/internal/resource"
+	"github.com/terraform-providers/terraform-provider-smc/internal/schema"
 )
 
+func setupTest() {
+	resource.AddSpecialCopyHandlers("link", schema.CopyLinkField)
+}
+
 func TestGetElementId(t *testing.T) {
+	setupTest()
 	var config_data_json = `{
     "name": "mycluster",
     "nodes": [
@@ -33,14 +44,14 @@ func TestGetElementId(t *testing.T) {
 }`
 
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
-	var configData SingleFirewallResourceModel
+	var configData schema.SingleFirewallResourceModel
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &configData); err != nil {
 		t.Fatalf("Failed to unmarshal createdData: %v", err)
 	}
 
 	fwnode0 := (*configData.Nodes)[1]
-	elementIds, err := GetElementIds(ctx, reflect.ValueOf(fwnode0))
+	elementIds, err := resource.GetElementIds(ctx, reflect.ValueOf(fwnode0))
 	if err != nil {
 		t.Fatalf("GetElementIds failed: %v", err)
 	}
@@ -50,6 +61,8 @@ func TestGetElementId(t *testing.T) {
 }
 
 func TestMergeHost(t *testing.T) {
+	setupTest()
+
 	var config_data_json = `{
 		"address": "192.168.1.2",
 		"admin_domain": "http://localhost:8082/7.3/elements/admin_domain/1",
@@ -77,8 +90,8 @@ func TestMergeHost(t *testing.T) {
 		"secondary": ["212.20.1.1", "123.6.5.19"]
 	}`
 
-	var data HostResourceModel
-	var createdData HostResourceModel
+	var data schema.HostResourceModel
+	var createdData schema.HostResourceModel
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &createdData); err != nil {
@@ -88,9 +101,9 @@ func TestMergeHost(t *testing.T) {
 		t.Fatalf("Failed to unmarshal data: %v", err)
 	}
 
-	err := MergeResourceModels(ctx, &createdData, &data)
+	err := resource.MergeResourceModels(ctx, &createdData, &data)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	fmt.Printf("After merge, data: %+v\n", data)
@@ -107,6 +120,8 @@ func TestMergeHost(t *testing.T) {
 }
 
 func TestMergeCluster(t *testing.T) {
+	setupTest()
+
 	// nodes are out of order to test matching by nodeid
 	var config_data_json = `{
     "name": "mycluster",
@@ -167,8 +182,8 @@ func TestMergeCluster(t *testing.T) {
     ]
 }`
 
-	var configData FirewallClusterResourceModel
-	var createdData FirewallClusterResourceModel
+	var configData schema.FirewallClusterResourceModel
+	var createdData schema.FirewallClusterResourceModel
 
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
@@ -179,9 +194,9 @@ func TestMergeCluster(t *testing.T) {
 		t.Fatalf("Failed to unmarshal configData: %v", err)
 	}
 
-	err := MergeResourceModels(ctx /*src*/, &createdData /*dest*/, &configData)
+	err := resource.MergeResourceModels(ctx /*src*/, &createdData /*dest*/, &configData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	apiData, err := apijson.MarshalRoot(configData)
@@ -196,6 +211,8 @@ func TestMergeCluster(t *testing.T) {
 }
 
 func TestMergeSingleFw(t *testing.T) {
+	setupTest()
+
 	var config_data_json = `{
     "log_server_ref": "http://localhost:8082/7.3/elements/log_server/1441",
     "name": "myfw",
@@ -347,8 +364,8 @@ func TestMergeSingleFw(t *testing.T) {
 		"key": "value",
 	})
 
-	var configData SingleFirewallResourceModel
-	var createdData SingleFirewallResourceModel
+	var configData schema.SingleFirewallResourceModel
+	var createdData schema.SingleFirewallResourceModel
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &configData); err != nil {
 		t.Fatalf("Failed to unmarshal createdData: %v", err)
@@ -357,9 +374,9 @@ func TestMergeSingleFw(t *testing.T) {
 		t.Fatalf("Failed to unmarshal configData: %v", err)
 	}
 
-	err := MergeResourceModels(ctx, &createdData, &configData)
+	err := resource.MergeResourceModels(ctx, &createdData, &configData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	apiData, err := apijson.MarshalRoot(configData)
@@ -390,6 +407,8 @@ func TestMergeSingleFw(t *testing.T) {
 }
 
 func TestMergeSingleFwDynamicIntf(t *testing.T) {
+	setupTest()
+
 	var config_data_json = `
 {
     "log_server_ref": "http://localhost:8082/7.4/elements/log_server/268581077",
@@ -1263,8 +1282,8 @@ func TestMergeSingleFwDynamicIntf(t *testing.T) {
 		"key": "value",
 	})
 
-	var configData SingleFirewallResourceModel
-	var createdData SingleFirewallResourceModel
+	var configData schema.SingleFirewallResourceModel
+	var createdData schema.SingleFirewallResourceModel
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &configData); err != nil {
 		t.Fatalf("Failed to unmarshal createdData: %v", err)
@@ -1273,9 +1292,9 @@ func TestMergeSingleFwDynamicIntf(t *testing.T) {
 		t.Fatalf("Failed to unmarshal configData: %v", err)
 	}
 
-	err := MergeResourceModels(ctx, &createdData, &configData)
+	err := resource.MergeResourceModels(ctx, &createdData, &configData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	apiData, err := apijson.MarshalRoot(configData)
@@ -1301,6 +1320,8 @@ func TestMergeSingleFwDynamicIntf(t *testing.T) {
 }
 
 func TestMergeIpAccessList(t *testing.T) {
+	setupTest()
+
 	// terraform config
 	var config_data_json = `
 {
@@ -1348,8 +1369,8 @@ func TestMergeIpAccessList(t *testing.T) {
 
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
-	var configData IpAccessListResourceModel
-	var createdData IpAccessListResourceModel
+	var configData schema.IpAccessListResourceModel
+	var createdData schema.IpAccessListResourceModel
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &configData); err != nil {
 		t.Fatalf("Failed to unmarshal createdData: %v", err)
@@ -1358,9 +1379,9 @@ func TestMergeIpAccessList(t *testing.T) {
 		t.Fatalf("Failed to unmarshal configData: %v", err)
 	}
 
-	err := MergeResourceModels(ctx /*src=*/, &createdData /*dest=*/, &configData)
+	err := resource.MergeResourceModels(ctx /*src=*/, &createdData /*dest=*/, &configData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	apiData, err := apijson.MarshalRoot(configData)
@@ -1371,6 +1392,8 @@ func TestMergeIpAccessList(t *testing.T) {
 }
 
 func TestMergeRoutingNode(t *testing.T) {
+	setupTest()
+
 	var created_data_json = `
 {
     "href": "http://localhost:8082/7.4/elements/single_fw/268581978",
@@ -1541,8 +1564,8 @@ func TestMergeRoutingNode(t *testing.T) {
 
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
-	var configData RoutingNodeResourceModel
-	var createdData RoutingNodeResourceModel
+	var configData schema.RoutingNodeResourceModel
+	var createdData schema.RoutingNodeResourceModel
 
 	if err := apijson.UnmarshalRoot([]byte(config_data_json), &configData); err != nil {
 		t.Fatalf("Failed to unmarshal createdData: %v", err)
@@ -1551,9 +1574,9 @@ func TestMergeRoutingNode(t *testing.T) {
 		t.Fatalf("Failed to unmarshal configData: %v", err)
 	}
 
-	err := MergeResourceModels(ctx, &createdData, &configData)
+	err := resource.MergeResourceModels(ctx, &createdData, &configData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	apiData, err := apijson.MarshalRoot(configData)
@@ -1595,6 +1618,8 @@ func TestMergeRoutingNode(t *testing.T) {
 
 // skipped for now. merge full does not work (not needed currently)
 func TestMergeHostFull(t *testing.T) {
+	setupTest()
+
 	t.Skip("merge full does not work")
 	var smc_data_json = `{
 		"address": "192.168.1.2",
@@ -1620,8 +1645,8 @@ func TestMergeHostFull(t *testing.T) {
 		"comment": "Comment from Terraform",
 	}`
 
-	var tfData HostResourceModel
-	var smcData HostResourceModel
+	var tfData schema.HostResourceModel
+	var smcData schema.HostResourceModel
 	ctx := tflogtest.RootLogger(context.Background(), os.Stdout)
 
 	if err := apijson.UnmarshalRoot([]byte(smc_data_json), &smcData); err != nil {
@@ -1631,9 +1656,9 @@ func TestMergeHostFull(t *testing.T) {
 		t.Fatalf("Failed to unmarshal data: %v", err)
 	}
 
-	err := MergeResourceFull(ctx /*src*/, &smcData /*dest*/, &tfData)
+	err := resource.MergeResourceFull(ctx /*src*/, &smcData /*dest*/, &tfData)
 	if err != nil {
-		t.Fatalf("MergeResourceModels failed: %v", err)
+		t.Fatalf("resource.MergeResourceModels failed: %v", err)
 	}
 
 	fmt.Printf("After merge, data: %+v\n", tfData)

@@ -118,6 +118,25 @@ Additional logging variables:
 - Use `direnv` to automatically load environment variables when entering the examples directory
 - For production deployments, consider using secure secret management solutions
 
+
+## Experimental features
+
+To enable experimental resources, edit the config file
+"tfsmc.conf.json":
+
+```json
+{
+   "experimental": true
+}
+```
+
+To get the list of available resources:
+
+```bash
+terraform providers schema -json|jq -r '.provider_schemas["registry.terraform.io/forcepoint/fp-ngfw-smc"].resource_schemas|keys[]'
+```
+
+
 ## Troubleshooting
 
 ### Common Issues
