@@ -33,6 +33,7 @@ data "smc_sub_href" "impas_tls_policy" {
   match    = "tls_policy"
 }
 
+
 resource "smc_tcp_service" "tf_tcp_service" {
   max_dst_port       = 1554
   max_src_port       = 5642
@@ -42,6 +43,7 @@ resource "smc_tcp_service" "tf_tcp_service" {
   comment            = var.resource_comment
   protocol_agent_ref = data.smc_href.ssm_tcp_proxy.id
 }
+
 
 resource "smc_tcp_service" "tf_tcp_service_pa" {
   min_dst_port = 456

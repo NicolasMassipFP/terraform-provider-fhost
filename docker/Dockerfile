@@ -1,5 +1,5 @@
 # Dockerfile for Go CI with golangci-lint
-FROM golang:1.24
+FROM golang:1.25
 
 # Install golangci-lint v2.4.0 using official script
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b /usr/local/bin v2.4.0
@@ -7,10 +7,11 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/ins
 # Install sudo, ca-certificates and gnupg for being able to add gpg keys
 RUN apt install ca-certificates gnupg
 
-# Install goreleaser latest version
-RUN go install github.com/goreleaser/goreleaser@latest
+# Install goreleaser latest version - latest here will imply to upgrade go version sometimes
+RUN go install github.com/goreleaser/goreleaser/v2@latest
 
 RUN go install -v golang.org/x/tools/cmd/godoc@latest
+
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Create forcepoint user with home directory -- for signature purposes, it need a clean user setup with a used id allows to do the signature
@@ -19,7 +20,7 @@ RUN usermod -aG sudo forcepoint
 
 # gpg for goreleaser need a valid home directory
 RUN chown -R forcepoint:forcepoint /home/forcepoint
-ENV HOME /home/forcepoint
+ENV HOME=/home/forcepoint
 
 # Switch to forcepoint user
 USER forcepoint

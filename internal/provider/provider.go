@@ -6,12 +6,17 @@ package provider
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
 
 	"github.com/hashicorp/terraform-plugin-framework/action"
 	"github.com/hashicorp/terraform-plugin-framework/function"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
+	"github.com/terraform-providers/terraform-provider-smc/internal/common"
+	smcResource "github.com/terraform-providers/terraform-provider-smc/internal/resource"
+	smcSchema "github.com/terraform-providers/terraform-provider-smc/internal/schema"
 	"github.com/terraform-providers/terraform-provider-smc/internal/smc"
 )
 
@@ -19,8 +24,6 @@ import (
 var _ provider.Provider = &SmcProvider{}
 var _ provider.ProviderWithFunctions = &SmcProvider{}
 var _ provider.ProviderWithActions = &SmcProvider{}
-
-const PROVIDER_NAME = "smc"
 
 // SmcProvider defines the provider implementation.
 type SmcProvider struct {
@@ -43,7 +46,7 @@ type SmcProviderModel struct {
 
 // Metadata returns the provider type name and version.
 func (p *SmcProvider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = PROVIDER_NAME
+	resp.TypeName = common.PROVIDER_TYPE_NAME
 	resp.Version = p.version
 }
 
@@ -147,6 +150,8 @@ func (p *SmcProvider) Configure(ctx context.Context, req provider.ConfigureReque
 	resp.DataSourceData = client
 	resp.ResourceData = client
 	resp.ActionData = client
+
+	smcResource.AddSpecialCopyHandlers("link", smcSchema.CopyLinkField)
 }
 
 // Functions defines the functions implemented by the provider.
@@ -158,6 +163,17 @@ func (p *SmcProvider) Actions(_ context.Context) []func() action.Action {
 	return []func() action.Action{
 		NewInitialContactAction,
 		NewSmcGenericAction,
+	}
+}
+
+func (p *SmcProvider) Resources(ctx context.Context) []func() resource.Resource {
+	return smcSchema.GetResources(ctx)
+}
+
+func (p *SmcProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+	return []func() datasource.DataSource{
+		NewElementDataSource,
+		NewSubElementDataSource,
 	}
 }
 

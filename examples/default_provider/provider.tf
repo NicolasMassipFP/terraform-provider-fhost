@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     smc = {
-      source  = "NicolasMassipFP/fhost"
+      source  = "forcepoint/fp-ngfw-smc"
       version = "0.0.1"
     }
   }
@@ -33,9 +33,9 @@ variable "verify_ssl" {
 }
 
 provider "smc" {
-  url         = var.url
-  api_key     = var.api_key
-  api_version = var.api_version
+  url          = var.url
+  api_key      = var.api_key
+  api_version  = var.api_version
   trusted_cert = var.trusted_cert
-  verify_ssl  = var.verify_ssl
+  verify_ssl   = var.verify_ssl
 }

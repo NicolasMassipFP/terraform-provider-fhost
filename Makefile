@@ -1,7 +1,7 @@
-PROVIDER_NAME=fhost
-PROVIDER_FULLNAME=terraform-provider-fhost
-PROVIDER_VERSION=0.0.4
-PROVIDER_ORGANIZATION=NicolasMassipFP
+PROVIDER_NAME=fp-ngfw-smc
+PROVIDER_FULLNAME=terraform-provider-fp-ngfw-smc
+PROVIDER_VERSION=0.0.1
+PROVIDER_ORGANIZATION=Forcepoint
 PLUGIN_DIR=plugins/registry.terraform.io/${PROVIDER_ORGANIZATION}/${PROVIDER_NAME}/${PROVIDER_VERSION}/linux_amd64
 RUN=./scripts/run_go
 
@@ -17,7 +17,6 @@ help:
 	@echo "  make go-build           - Build the Go binary"
 	@echo "  make go-release         - Build multi-platform binaries with goreleaser (no dirty edit allowed, tag must be set on HEAD)"
 	@echo "  make go-release-snapshot- Build snapshot without publishing (no validation, dirty edit allowed, tag must be set on HEAD)"
-	@echo "  make docs               - Generate provider documentation"
 	@echo "  make clean              - Clean all build artifacts"
 	@echo "  make help               - Show this help message"
 
@@ -32,18 +31,6 @@ release: docker-build go-release
 go-build:
 	mkdir $(PLUGIN_DIR) 2>/dev/null; true
 	$(RUN) go build  -o $(PLUGIN_DIR)/${PROVIDER_FULLNAME} .
-
-.PHONY: docs
-docs:
-	mkdir docs 2>/dev/null; true
-	@echo "\nWARNING: us local go command, not docker go image\n"
-	@echo "Retrieving dependencies..."
-	cd tools && go mod tidy
-	@echo "Formating examples...(not working currenlty --> generate errors )"
-	@echo " NOT ENABLED: cd tools && terraform fmt -recursive ../examples/"
-	@echo "Generating provider documentation... ()"
-	# using docker image in sub folder do not work ( run_go rely o, $PWD to load cache )
-	cd tools && go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs generate --provider-dir .. -provider-name smc
 
 .PHONY: go-release-snapshot
 go-release-snapshot: docker-build

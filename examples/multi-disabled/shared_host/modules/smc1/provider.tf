@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     smc = {
-      source = "NicolasMassipFP/fhost"
+      source = "forcepoint/fp-ngfw-smc"
       #      configuration_aliases = [ smc.smc1 ]
     }
   }

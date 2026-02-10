@@ -19,10 +19,16 @@ resource "smc_fw_policy" "example" {
   comment  = var.resource_comment
 }
 
-# Create VPN
+resource "smc_vpn_profile" "tf_keepalive_vpn_profile" {
+  name       = "tf_keepalive_vpn_profile"
+  keep_alive = true
+}
+
+# Create VPN with a specific profile to keep alive tunnels
 resource "smc_vpn" "policy_vpn" {
-  name = "tf_vpn"
-  nat  = false
+  name        = "tf_vpn"
+  nat         = false
+  vpn_profile = smc_vpn_profile.tf_keepalive_vpn_profile.id
 }
 
 resource "smc_fw_ipv4_access_rule" "vpn_rule" {
