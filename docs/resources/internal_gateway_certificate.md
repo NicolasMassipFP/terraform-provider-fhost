@@ -1,6 +1,6 @@
 ---
 page_title: "gateway_certificate"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
 ---
@@ -8,6 +8,9 @@ description: |-
 # gateway_certificate
 
 This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
+
+
+
 
 
 ## Simple Attributes
@@ -26,4 +29,4 @@ This represents a certificate for an internal gateway, which includes details ab
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

@@ -1,6 +1,6 @@
 ---
 page_title: "smc_ssl_vpn_web_service"
-subcategory: ""
+subcategory: "sslvpn"
 description: |-
   This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_ssl_vpn_web_service
 
 This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
+
+
+
 
 
 ## Simple Attributes
@@ -34,15 +37,15 @@ This represents an Application Access Web Service. It contains settings for alte
 
 ## Nested Attributes
     
-- `ssl_vpn_allowed_url` (List of Blocks, see [here](../attributes/ssl_vpn_allowed_url.md)) List of allowed URLs for the Application Access Web Service.
-- `ssl_vpn_althost` (List of Blocks, see [here](../attributes/ssl_vpn_hostname.md)) List of alternative hostnames for the Application Access Web Service.
+- `ssl_vpn_allowed_url` (List of Blocks, see [here](zzattrs_ssl_vpn_allowed_url.md)) List of allowed URLs for the Application Access Web Service.
+- `ssl_vpn_althost` (List of Blocks, see [here](zzattrs_ssl_vpn_hostname.md)) List of alternative hostnames for the Application Access Web Service.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

@@ -1,6 +1,6 @@
 ---
 page_title: "smc_master_engine"
-subcategory: ""
+subcategory: "engines"
 description: |-
   This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_master_engine
 
 This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.
+
+
+
 
 
 ## Simple Attributes
@@ -105,50 +108,50 @@ This represents a physical engine device that provides resources for Virtual Sec
 
 ## Nested Attributes
     
-- `advanced_multilink_settings` (Single Block, see [here](../attributes/advanced_multi_link_settings.md)) 
-- `alias_value` (List of Blocks, see [here](../attributes/alias_value.md)) The alias values for the engine.
-- `antivirus` (Single Block, see [here](../attributes/antivirus_settings.md)) 
-- `automatic_rules_settings` (Single Block, see [here](../attributes/automatic_rules_settings.md)) 
-- `certificate_validation_settings` (Single Block, see [here](../attributes/certificate_validation_settings.md)) 
-- `connection_timeout` (List of Blocks, see [here](../attributes/idle_timeout.md)) The definitions of timeout by protocol or by TCP connection state.
-- `dns_relay_interface` (List of Blocks, see [here](../attributes/dns_relay_interface_entry.md)) The DNS Relay Interface Entries that define the interfaces used for DNS Relay in the Firewall Cluster.
-- `domain_server_address` (List of Blocks, see [here](../attributes/dns_element.md)) The DNS elements that define the IP addresses of the DNS server used by the Virtual IPS. You can enter a single IP address manually or define an IP address using a network element.
-- `dynamic_routing` (Single Block, see [here](../attributes/dynamic_routing_settings.md)) 
-- `eca_settings` (Single Block, see [here](../attributes/eca_settings.md)) 
-- `file_reputation_settings` (Single Block, see [here](../attributes/file_reputation_settings.md)) 
-- `l2fw_settings` (Single Block, see [here](../attributes/l2fw_settings.md)) 
-- `lbfilter` (List of Blocks, see [here](../attributes/load_balancing_filter.md)) List of Load Balancing Filters, which are used to manage traffic distribution across multiple servers or resources.
-- `link_usage_exception_rules` (List of Blocks, see [here](../attributes/link_usage_exception_rule.md)) The Link Usage Exception Rules that define specific routing rules for outbound network traffic in the Firewall Cluster.
-- `local_log_storage` (Single Block, see [here](../attributes/local_log_storage_settings.md)) 
-- `log_moderation` (List of Blocks, see [here](../attributes/log_moderation.md)) The Log Moderation settings that define how log entries are moderated in the Firewall Cluster.
-- `loopback_cluster_virtual_interface` (List of Blocks, see [here](../attributes/loopback_cluster_interface.md)) A Loopback IP address allows the firewall to communicate with itself. It is now possible to configure any IP address that is not already used as a Cluster Virtual IP Addresses (CVI) or Node Dedicated IP Addresses (NDI) on another interface as a loopback IP address. You can add several loopback IP addresses to each Firewall. Loopback IP addresses can also be used as Endpoint IP addresses in policy-based VPNs and in the Route-Based VPN.
-- `nat_definition` (List of Blocks, see [here](../attributes/nat_definition.md)) The NAT Definitions that define the Network Address Translation rules for the Firewall Cluster.
-- `nodes` (List of Blocks, see [here](../attributes/abstract_engine_node.md)) The nodes that are part of this cluster. Each node represents a device that shares the workload.
-- `ntp_settings` (Single Block, see [here](../attributes/ntp_settings.md)) 
-- `opcua_proxy_ca_credentials` (Single Block, see [here](../attributes/tls_client_protection_wrapper.md)) 
-- `physicalInterfaces` (List of Blocks, see [here](../attributes/abstract_physical_interface.md)) The specific physical interfaces for the engine.
-- `pim_settings` (Single Block, see [here](../attributes/pim_settings.md)) 
-- `policy_route` (List of Blocks, see [here](../attributes/policy_route.md)) The Policy Routes that define the routing rules for the Firewall Cluster. These routes are used to control the flow of traffic based on specific criteria.
-- `saml_settings` (List of Blocks, see [here](../attributes/saml_settings.md)) The SAML Settings for user authentication (BBA) and Application Access Portal.
-- `sandbox_settings` (Single Block, see [here](../attributes/sandbox_settings.md)) 
-- `scan_detection` (Single Block, see [here](../attributes/scan_detection_settings.md)) 
-- `snmp_interface` (List of Blocks, see [here](../attributes/snmp_interface_entry.md)) The SNMP listening interfaces for the engine.
-- `ssh_host_key` (List of Blocks, see [here](../attributes/ssh_host_key.md)) The SSH Host Keys that define the SSH keys used for secure communication in the Firewall Cluster.
-- `ssm_advanced_setting` (List of Blocks, see [here](../attributes/sidewinder_proxy_advanced_settings.md)) The Sidewinder Proxy Advanced Settings that define additional configurations for the Sidewinder Proxy.
-- `static_multicast_route` (List of Blocks, see [here](../attributes/static_multicast_route.md)) The Static Multicast Route entries that define the static multicast routing configuration.
-- `tester_parameters` (Single Block, see [here](../attributes/tester_parameters.md)) 
-- `tests` (List of Blocks, see [here](../attributes/abstract_test_entry.md)) The test entries for the engine.
-- `tls_client_protection` (Single Block, see [here](../attributes/tls_client_protection_wrapper.md)) 
-- `ts_settings` (Single Block, see [here](../attributes/threat_seeker_settings.md)) 
-- `virtualResources` (List of Blocks, see [here](../attributes/abstract_virtual_resource.md)) A list of Virtual Resources that associate Virtual NGFW Engines with interfaces on the Master NGFW Engine. You must create one Virtual Resource for each Virtual NGFW Engine that you plan to add.
-- `web_authentication` (Single Block, see [here](../attributes/user_authentication_bba.md)) 
+- `advanced_multilink_settings` (Single Block, see [here](zzattrs_advanced_multi_link_settings.md)) 
+- `alias_value` (List of Blocks, see [here](zzattrs_alias_value.md)) The alias values for the engine.
+- `antivirus` (Single Block, see [here](zzattrs_antivirus_settings.md)) 
+- `automatic_rules_settings` (Single Block, see [here](zzattrs_automatic_rules_settings.md)) 
+- `certificate_validation_settings` (Single Block, see [here](zzattrs_certificate_validation_settings.md)) 
+- `connection_timeout` (List of Blocks, see [here](zzattrs_idle_timeout.md)) The definitions of timeout by protocol or by TCP connection state.
+- `dns_relay_interface` (List of Blocks, see [here](zzattrs_dns_relay_interface_entry.md)) The DNS Relay Interface Entries that define the interfaces used for DNS Relay in the Firewall Cluster.
+- `domain_server_address` (List of Blocks, see [here](zzattrs_dns_element.md)) The DNS elements that define the IP addresses of the DNS server used by the Virtual IPS. You can enter a single IP address manually or define an IP address using a network element.
+- `dynamic_routing` (Single Block, see [here](zzattrs_dynamic_routing_settings.md)) 
+- `eca_settings` (Single Block, see [here](zzattrs_eca_settings.md)) 
+- `file_reputation_settings` (Single Block, see [here](zzattrs_file_reputation_settings.md)) 
+- `l2fw_settings` (Single Block, see [here](zzattrs_l2fw_settings.md)) 
+- `lbfilter` (List of Blocks, see [here](zzattrs_load_balancing_filter.md)) List of Load Balancing Filters, which are used to manage traffic distribution across multiple servers or resources.
+- `link_usage_exception_rules` (List of Blocks, see [here](zzattrs_link_usage_exception_rule.md)) The Link Usage Exception Rules that define specific routing rules for outbound network traffic in the Firewall Cluster.
+- `local_log_storage` (Single Block, see [here](zzattrs_local_log_storage_settings.md)) 
+- `log_moderation` (List of Blocks, see [here](zzattrs_log_moderation.md)) The Log Moderation settings that define how log entries are moderated in the Firewall Cluster.
+- `loopback_cluster_virtual_interface` (List of Blocks, see [here](zzattrs_loopback_cluster_interface.md)) A Loopback IP address allows the firewall to communicate with itself. It is now possible to configure any IP address that is not already used as a Cluster Virtual IP Addresses (CVI) or Node Dedicated IP Addresses (NDI) on another interface as a loopback IP address. You can add several loopback IP addresses to each Firewall. Loopback IP addresses can also be used as Endpoint IP addresses in policy-based VPNs and in the Route-Based VPN.
+- `nat_definition` (List of Blocks, see [here](zzattrs_nat_definition.md)) The NAT Definitions that define the Network Address Translation rules for the Firewall Cluster.
+- `nodes` (List of Blocks, see [here](zzattrs_abstract_engine_node.md)) The nodes that are part of this cluster. Each node represents a device that shares the workload.
+- `ntp_settings` (Single Block, see [here](zzattrs_ntp_settings.md)) 
+- `opcua_proxy_ca_credentials` (Single Block, see [here](zzattrs_tls_client_protection_wrapper.md)) 
+- `physicalInterfaces` (List of Blocks, see [here](zzattrs_abstract_physical_interface.md)) The specific physical interfaces for the engine.
+- `pim_settings` (Single Block, see [here](zzattrs_pim_settings.md)) 
+- `policy_route` (List of Blocks, see [here](zzattrs_policy_route.md)) The Policy Routes that define the routing rules for the Firewall Cluster. These routes are used to control the flow of traffic based on specific criteria.
+- `saml_settings` (List of Blocks, see [here](zzattrs_saml_settings.md)) The SAML Settings for user authentication (BBA) and Application Access Portal.
+- `sandbox_settings` (Single Block, see [here](zzattrs_sandbox_settings.md)) 
+- `scan_detection` (Single Block, see [here](zzattrs_scan_detection_settings.md)) 
+- `snmp_interface` (List of Blocks, see [here](zzattrs_snmp_interface_entry.md)) The SNMP listening interfaces for the engine.
+- `ssh_host_key` (List of Blocks, see [here](zzattrs_ssh_host_key.md)) The SSH Host Keys that define the SSH keys used for secure communication in the Firewall Cluster.
+- `ssm_advanced_setting` (List of Blocks, see [here](zzattrs_sidewinder_proxy_advanced_settings.md)) The Sidewinder Proxy Advanced Settings that define additional configurations for the Sidewinder Proxy.
+- `static_multicast_route` (List of Blocks, see [here](zzattrs_static_multicast_route.md)) The Static Multicast Route entries that define the static multicast routing configuration.
+- `tester_parameters` (Single Block, see [here](zzattrs_tester_parameters.md)) 
+- `tests` (List of Blocks, see [here](zzattrs_abstract_test_entry.md)) The test entries for the engine.
+- `tls_client_protection` (Single Block, see [here](zzattrs_tls_client_protection_wrapper.md)) 
+- `ts_settings` (Single Block, see [here](zzattrs_threat_seeker_settings.md)) 
+- `virtualResources` (List of Blocks, see [here](zzattrs_abstract_virtual_resource.md)) A list of Virtual Resources that associate Virtual NGFW Engines with interfaces on the Master NGFW Engine. You must create one Virtual Resource for each Virtual NGFW Engine that you plan to add.
+- `web_authentication` (Single Block, see [here](zzattrs_user_authentication_bba.md)) 
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

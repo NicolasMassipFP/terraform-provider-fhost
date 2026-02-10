@@ -1,6 +1,6 @@
 ---
 page_title: "smc_url_category_situation"
-subcategory: ""
+subcategory: "situations"
 description: |-
   This represents a URL Category Situation, which is used for category-based filtering in URL filtering. The categories are updated through dynamic update packages.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_url_category_situation
 
 This represents a URL Category Situation, which is used for category-based filtering in URL filtering. The categories are updated through dynamic update packages.
+
+
+
 
 
 ## Simple Attributes
@@ -35,15 +38,15 @@ This represents a URL Category Situation, which is used for category-based filte
 
 ## Nested Attributes
     
-- `application_port` (List of Blocks, see [here](../attributes/application_port.md)) A list of application ports associated with this application situation.
-- `paValues` (List of Blocks, see [here](../attributes/pa_parameter_value.md)) A list of parameter values associated with this application situation, allowing for dynamic configuration of inspection settings.
+- `application_port` (List of Blocks, see [here](zzattrs_application_port.md)) A list of application ports associated with this application situation.
+- `paValues` (List of Blocks, see [here](zzattrs_pa_parameter_value.md)) A list of parameter values associated with this application situation, allowing for dynamic configuration of inspection settings.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

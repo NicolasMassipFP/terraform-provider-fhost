@@ -1,6 +1,6 @@
 ---
 page_title: "smc_api_user"
-subcategory: ""
+subcategory: "admin"
 description: |-
   This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_api_user
 
 This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.
+
+
+
 
 
 ## Simple Attributes
@@ -20,7 +23,7 @@ This represents a API Client. It is an element that defines the details of a sin
 
 ## Nested Attributes
     
-- `permissions` (Single Block, see [here](../attributes/admin_permissions.md)) 
+- `permissions` (Single Block, see [here](zzattrs_admin_permissions.md)) 
 
 ## Readonly Attributes
     
@@ -29,7 +32,7 @@ This represents a API Client. It is an element that defines the details of a sin
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `is_user_locked` (Boolean) Indicates whether the administrator user is locked. A locked user cannot log in until it is unlocked by an administrator.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

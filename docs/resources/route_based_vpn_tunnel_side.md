@@ -1,6 +1,6 @@
 ---
 page_title: "smc_rbvpn_tunnel_side"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This defines one part of a Route-Based Tunnel, which can be a gateway, a gateway with its EndPoint, or just an external IP Address. None of the elements are mandatory, as the configuration of the Route-Based Tunnel determines which elements are required.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_rbvpn_tunnel_side
 
 This defines one part of a Route-Based Tunnel, which can be a gateway, a gateway with its EndPoint, or just an external IP Address. None of the elements are mandatory, as the configuration of the Route-Based Tunnel determines which elements are required.
+
+
+
 
 
 ## Simple Attributes

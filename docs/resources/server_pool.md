@@ -10,6 +10,9 @@ description: |-
 This represents a Server Pool, which is a group of servers used for inbound traffic management. It includes attributes for DNS name, monitoring frequency, monitoring mode, and server allocation.
 
 
+
+
+
 ## Simple Attributes
     
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -28,15 +31,15 @@ This represents a Server Pool, which is a group of servers used for inbound traf
 
 ## Nested Attributes
     
-- `ip_netlink_weight` (List of Blocks, see [here](../attributes/ip_net_link_weight.md)) List of IP NetLink Weights used to influence traffic distribution among servers in the Server Pool.
-- `members_list` (List of Blocks, see [here](../attributes/server_pool_member.md)) List of members in the Server Pool. Each member represents a server that handles incoming traffic.
+- `ip_netlink_weight` (List of Blocks, see [here](zzattrs_ip_net_link_weight.md)) List of IP NetLink Weights used to influence traffic distribution among servers in the Server Pool.
+- `members_list` (List of Blocks, see [here](zzattrs_server_pool_member.md)) List of members in the Server Pool. Each member represents a server that handles incoming traffic.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

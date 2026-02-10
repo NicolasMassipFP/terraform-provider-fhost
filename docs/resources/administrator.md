@@ -1,6 +1,6 @@
 ---
 page_title: "smc_administrator"
-subcategory: ""
+subcategory: "admin"
 description: |-
   This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_administrator
 
 This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
+
+
+
 
 
 ## Simple Attributes
@@ -28,8 +31,8 @@ This represents an administrator user. It contains the user's credentials, authe
 
 ## Nested Attributes
     
-- `client_identity` (Single Block, see [here](../attributes/tls_identity.md)) 
-- `permissions` (Single Block, see [here](../attributes/admin_permissions.md)) 
+- `client_identity` (Single Block, see [here](zzattrs_tls_identity.md)) 
+- `permissions` (Single Block, see [here](zzattrs_admin_permissions.md)) 
 
 ## Readonly Attributes
     
@@ -38,7 +41,7 @@ This represents an administrator user. It contains the user's credentials, authe
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `is_user_locked` (Boolean) Indicates whether the administrator user is locked. A locked user cannot log in until it is unlocked by an administrator.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

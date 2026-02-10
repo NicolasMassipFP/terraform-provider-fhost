@@ -10,6 +10,9 @@ description: |-
 This represents the Sidewinder Logging Profile Settings, which includes configuration for logging elements, activation status, threshold, and interval settings.
 
 
+
+
+
 ## Simple Attributes
     
 - `element` (String) This is the base class for all storable elements.

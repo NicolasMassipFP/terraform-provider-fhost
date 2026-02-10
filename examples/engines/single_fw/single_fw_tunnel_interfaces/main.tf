@@ -61,5 +61,4 @@ resource "smc_single_fw" "tf_single_fw" {
       name = "Tunnel Interface 1000"
     }
   }
-
 }

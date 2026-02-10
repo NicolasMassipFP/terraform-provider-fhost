@@ -1,6 +1,6 @@
 ---
 page_title: "vss_node_isc"
-subcategory: ""
+subcategory: "engines"
 description: |-
   This represents the ISC Firewall Node Settings container, which includes management IP, gateway, hypervisor, and network settings.
 ---
@@ -8,6 +8,9 @@ description: |-
 # vss_node_isc
 
 This represents the ISC Firewall Node Settings container, which includes management IP, gateway, hypervisor, and network settings.
+
+
+
 
 
 ## Simple Attributes
@@ -24,4 +27,4 @@ This represents the ISC Firewall Node Settings container, which includes managem
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

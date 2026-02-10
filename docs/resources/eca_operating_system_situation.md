@@ -1,6 +1,6 @@
 ---
 page_title: "smc_eca_operating_system_situation"
-subcategory: ""
+subcategory: "situations"
 description: |-
   This represents an ECA Operating System Situation, which is used to define the conditions and parameters for operating system situations in ECA (Endpoint Compliance Assessment).
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_eca_operating_system_situation
 
 This represents an ECA Operating System Situation, which is used to define the conditions and parameters for operating system situations in ECA (Endpoint Compliance Assessment).
+
+
+
 
 
 ## Simple Attributes
@@ -35,7 +38,7 @@ This represents an ECA Operating System Situation, which is used to define the c
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

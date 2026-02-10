@@ -1,6 +1,6 @@
 ---
 page_title: "task_schedule"
-subcategory: ""
+subcategory: "admin"
 description: |-
   This represents a schedule entry for a task element, defining when and how often the task should be executed.
 ---
@@ -8,6 +8,9 @@ description: |-
 # task_schedule
 
 This represents a schedule entry for a task element, defining when and how often the task should be executed.
+
+
+
 
 
 ## Simple Attributes
@@ -27,4 +30,4 @@ This represents a schedule entry for a task element, defining when and how often
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

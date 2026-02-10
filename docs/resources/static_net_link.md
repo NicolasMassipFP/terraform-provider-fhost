@@ -1,6 +1,6 @@
 ---
 page_title: "smc_netlink"
-subcategory: ""
+subcategory: "engines"
 description: |-
   This represents a Static NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for gateway, networks, DNS elements, and outbound IP addresses.
 ---
@@ -8,6 +8,9 @@ description: |-
 # smc_netlink
 
 This represents a Static NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for gateway, networks, DNS elements, and outbound IP addresses.
+
+
+
 
 
 ## Simple Attributes
@@ -31,14 +34,14 @@ This represents a Static NetLink, which is a type of NetLink used for routing in
 
 ## Nested Attributes
     
-- `domain_server_address` (List of Blocks, see [here](../attributes/dns_element.md)) The list of DNS elements that define the DNS servers provided by the ISP. Each element contains the DNS server address and other related information.
+- `domain_server_address` (List of Blocks, see [here](zzattrs_dns_element.md)) The list of DNS elements that define the DNS servers provided by the ISP. Each element contains the DNS server address and other related information.
 
 ## Readonly Attributes
     
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

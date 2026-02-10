@@ -1,6 +1,6 @@
 ---
 page_title: "routing_node"
-subcategory: ""
+subcategory: "routing"
 description: |-
   This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
 ---
@@ -8,6 +8,9 @@ description: |-
 # routing_node
 
 This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
+
+
+
 
 
 ## Simple Attributes
@@ -37,11 +40,11 @@ This represents a Routing Node in the Security Management Client, which is used 
 
 ## Nested Attributes
     
-- `routing_node` (List of Blocks, see [here](../attributes/routing_node.md)) A list of Routing child nodes, which represent individual routing configurations for interfaces.
+- `routing_node` (List of Blocks, see [here](zzattrs_routing_node.md)) A list of Routing child nodes, which represent individual routing configurations for interfaces.
 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `read_only` (Boolean) Indicates whether the view node is read-only or not.
 - `system` (Boolean) Indicates whether the view node is a system node or not.

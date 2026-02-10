@@ -1,6 +1,6 @@
 ---
 page_title: "gateway_certificate_request"
-subcategory: ""
+subcategory: "vpn"
 description: |-
   This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
 ---
@@ -8,6 +8,9 @@ description: |-
 # gateway_certificate_request
 
 This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
+
+
+
 
 
 ## Simple Attributes
@@ -23,4 +26,4 @@ This represents a certificate request for an internal gateway, allowing for the 
 ## Readonly Attributes
     
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](../attributes/api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.

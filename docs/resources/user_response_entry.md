@@ -10,6 +10,9 @@ description: |-
 This represents an entry in a User Response, which includes the reason for the response, type of response, and additional details such as redirect URL, text, title, and message.
 
 
+
+
+
 ## Simple Attributes
     
 - `reason` (String) The reason for sending this response, which can be used to provide context or explanation for the response.
