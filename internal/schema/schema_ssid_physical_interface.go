@@ -250,8 +250,8 @@ func getSsidPhysicalInterfaceSchemaBlocksInternal(ctx context.Context) map[strin
 		},
 		"interfaces": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractEngineInterfaceSchemaAttributes(ctx),
-				Blocks:     GetAbstractEngineInterfaceSchemaBlocks(ctx),
+				Attributes: GetEngineInterfaceWrapperSchemaAttributes(ctx),
+				Blocks:     GetEngineInterfaceWrapperSchemaBlocks(ctx),
 			},
 		},
 		"log_moderation": schema.ListNestedBlock{

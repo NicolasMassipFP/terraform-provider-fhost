@@ -29,7 +29,7 @@ resource "smc_pim_ipv4_profile" "pim_profile" {
     multicast_ip_network = "232.10.10.0/24"
   }
   smart_multicast_antispoofing = true
-  spt_switch_interval          = 90
-  spt_switch_threshold         = 10
-  spt_switch_threshold_unit    = "packets"
+  # spt_switch_interval          = 90
+  # spt_switch_threshold         = 10
+  # spt_switch_threshold_unit    = "packets"
 }

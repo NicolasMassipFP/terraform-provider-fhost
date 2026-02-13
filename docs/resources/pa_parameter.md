@@ -5,16 +5,16 @@ description: |-
   This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 ---
 
-# pa_parameter
+# pa_parameter (Sub-resource)
 
 This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `default_integer` (Number) The default integer value for this parameter, used if no value is provided by the user.
 - `default_string` (String) The default string value for this parameter, used if no value is provided by the user.
@@ -31,10 +31,8 @@ This represents a parameter for the Protocol Agent, allowing for detailed config
 - `type` (String) The type of the parameter, which determines how it is processed and displayed.
 
 ## Nested Attributes
-    
-- `parent_group` (Single Block, see [here](zzattrs_pa_parameter_group.md)) 
+- `parent_group` (Single Block, see [here](attr_pa_parameter_group.md)) 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

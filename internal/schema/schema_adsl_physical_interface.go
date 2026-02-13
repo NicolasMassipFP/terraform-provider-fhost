@@ -38,6 +38,10 @@ func GetAdslPhysicalInterfaceSchemaAttributes(ctx context.Context) map[string]sc
 		Optional:    true, // todo optional parameters
 		Description: "The aggregation type for the interface, which can be 'ha' for High Availability and represents two interfaces on the Firewall engine. Only the first interface in the aggregated link is actively used. The second interface becomes active only if the first interface fails. If you configure an Aggregated Link in High-Availability mode, connect the first interface to one switch and the second interface to another switch OR 'lb' for Load Balancing and Represents two interfaces on the Firewall engine. Both interfaces in the aggregated link are actively used and connections are automatically balanced between the two interfaces. Link aggregation in the load-balancing mode is implemented based on the IEEE 802.3ad Link Aggregation standard. If you configure an Aggregated Link in Load-Balancing Mode, connect both interfaces to a single switch. Make sure that the switch supports the Link Aggregation Control Protocol (LACP) and that LACP is configured on the switch.",
 	},
+		"atm_multiplexing_mode": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "The ATM Multiplexing Mode used for the ADSL connection.",
+		},
 		"comment": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "An optional comment for the element. This field is not required.",
@@ -136,6 +140,14 @@ func GetAdslPhysicalInterfaceSchemaAttributes(ctx context.Context) map[string]sc
 			Optional:    true, // todo optional parameters
 			Description: "The Allowed SYNs per Second value, which is the number of allowed SYN packets per second. Must be at least 1.",
 		},
+		"vci": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Virtual Channel Identifier (VCI) used in the ADSL connection.",
+		},
+		"vpi": schema.Int64Attribute{
+			Optional:    true, // todo optional parameters
+			Description: "The Virtual Path Identifier (VPI) used in the ADSL connection.",
+		},
 		"zone_ref": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
@@ -194,8 +206,8 @@ func getAdslPhysicalInterfaceSchemaBlocksInternal(ctx context.Context) map[strin
 		},
 		"interfaces": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractEngineInterfaceSchemaAttributes(ctx),
-				Blocks:     GetAbstractEngineInterfaceSchemaBlocks(ctx),
+				Attributes: GetEngineInterfaceWrapperSchemaAttributes(ctx),
+				Blocks:     GetEngineInterfaceWrapperSchemaBlocks(ctx),
 			},
 		},
 		"log_moderation": schema.ListNestedBlock{

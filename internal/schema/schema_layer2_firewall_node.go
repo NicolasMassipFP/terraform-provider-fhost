@@ -129,8 +129,8 @@ func getLayer2FirewallNodeSchemaBlocksInternal(ctx context.Context) map[string]s
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

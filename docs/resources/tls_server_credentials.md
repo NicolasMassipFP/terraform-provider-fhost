@@ -5,16 +5,15 @@ description: |-
   This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.
 ---
 
-# smc_tls_server_credentials
+# smc_tls_server_credentials (Resource)
 
 This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `certificate_state` (String) The state of the certificate, which can be 'initial', 'request', or 'certificate'. This indicates whether the element is a new TLS Server Credential, a request, or a certificate.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `key_length` (Number) The key length for the certificate, specified in bits. This is required for creating a certificate request.
@@ -28,11 +27,10 @@ This represents a TLS Server Credentials element, which is used to store the pri
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

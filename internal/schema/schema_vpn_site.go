@@ -87,7 +87,7 @@ func GetVpnSiteSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 		},
 		"site_element": schema.ListAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "The URIs of network element that are part of this VPN Site. These elements can be routers, switches, or other network devices.",
+			Description: "",
 			ElementType: types.StringType,
 		},
 		"system": schema.BoolAttribute{
@@ -129,12 +129,5 @@ func getVpnSiteSchemaBlocksInternal(ctx context.Context) map[string]schema.Block
 		}
 		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
 	}
-	return map[string]schema.Block{
-		"vpn_references": schema.ListNestedBlock{
-			NestedObject: schema.NestedBlockObject{
-				Attributes: GetSiteVpnReferenceSchemaAttributes(ctx),
-				Blocks:     GetSiteVpnReferenceSchemaBlocks(ctx),
-			},
-		},
-	}
+	return map[string]schema.Block{}
 }

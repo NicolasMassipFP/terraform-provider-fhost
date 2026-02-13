@@ -5,16 +5,15 @@ description: |-
   This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes, keep-alive options, certificate authorities, and authentication methods.
 ---
 
-# smc_vpn_profile
+# smc_vpn_profile (Resource)
 
 This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes, keep-alive options, certificate authorities, and authentication methods.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `cn_authentication_for_mobile_vpn` (Boolean) Indicates whether CN authentication is allowed or not, for a client using a certificate authentication.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `disable_anti_replay` (Boolean) Indicates whether anti-replay protection is disabled for IPsec.
@@ -32,15 +31,13 @@ This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes,
 - `tunnel_life_time_seconds` (Number) IPsec Lifetime in seconds.
 
 ## Nested Attributes
-    
-- `capabilities` (Single Block, see [here](zzattrs_capabilities.md)) 
+- `capabilities` (Single Block, see [here](attr_capabilities.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

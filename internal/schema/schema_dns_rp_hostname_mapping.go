@@ -38,10 +38,6 @@ func GetDnsRpHostnameMappingSchemaAttributes(ctx context.Context) map[string]sch
 		Optional:    true, // todo optional parameters
 		Description: "The hostname or hostnames for the DNS Relay Profile Hostname Mapping, which can be a single hostname or a comma-separated list of hostnames.",
 	},
-		"ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The IP address or network for the DNS Relay Profile Hostname Mapping, which can be a single IP address or a network range.",
-		},
 	}
 	if !useHcl2 {
 		return attrs

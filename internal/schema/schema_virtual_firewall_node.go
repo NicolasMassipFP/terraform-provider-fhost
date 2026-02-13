@@ -129,8 +129,8 @@ func getVirtualFirewallNodeSchemaBlocksInternal(ctx context.Context) map[string]
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

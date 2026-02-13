@@ -48,7 +48,7 @@ func NewEthernetServiceResource() resource.Resource {
 	tflog.Debug(context.Background(), "Initializing EthernetService resource")
 	r := &EthernetServiceResource{
 		ResourceBase: smcresource.ResourceBase[EthernetServiceResourceModel]{
-			ResourceType:  "ethernet_service",
+			ResourceType:  "service_ethernet",
 			IsSubResource: false,
 		},
 	}

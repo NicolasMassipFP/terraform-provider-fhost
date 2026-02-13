@@ -129,8 +129,8 @@ func getVssContainerNodeSchemaBlocksInternal(ctx context.Context) map[string]sch
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 		"vss_node_isc": schema.SingleNestedBlock{

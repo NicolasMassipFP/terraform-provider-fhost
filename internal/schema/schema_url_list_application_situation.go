@@ -200,8 +200,8 @@ func getUrlListApplicationSituationSchemaBlocksInternal(ctx context.Context) map
 		},
 		"pa_values": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetPaParameterValueSchemaAttributes(ctx),
-				Blocks:     GetPaParameterValueSchemaBlocks(ctx),
+				Attributes: GetAbstractPaParameterValueWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPaParameterValueWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

@@ -131,8 +131,8 @@ func getEthernetServiceSchemaBlocksInternal(ctx context.Context) map[string]sche
 	return map[string]schema.Block{
 		"pa_values": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetPaParameterValueSchemaAttributes(ctx),
-				Blocks:     GetPaParameterValueSchemaBlocks(ctx),
+				Attributes: GetAbstractPaParameterValueWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPaParameterValueWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

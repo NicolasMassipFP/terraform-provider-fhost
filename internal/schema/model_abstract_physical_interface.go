@@ -22,7 +22,7 @@ type AbstractPhysicalInterfaceResourceModel struct {
 	PhysicalInterface    *PhysicalInterfaceResourceModel            `tfsdk:"physical_interface" json:"physical_interface,optional,omitempty" `
 	PortGroupInterface   *PortGroupInterfaceResourceModel           `tfsdk:"port_group_interface" json:"port_group_interface,optional,omitempty" `
 	SsidInterface        *SsidPhysicalInterfaceResourceModel        `tfsdk:"ssid_interface" json:"ssid_interface,optional,omitempty" `
-	SwitchInterface      *SwitchInterfaceResourceModel              `tfsdk:"switch_interface" json:"switch_interface,optional,omitempty" `
+	SwitchInterfacePort  *SwitchInterfacePortResourceModel          `tfsdk:"switch_interface_port" json:"switch_interface_port,optional,omitempty" `
 	TunnelInterface      *TunnelInterfaceResourceModel              `tfsdk:"tunnel_interface" json:"tunnel_interface,optional,omitempty" `
 	VirtualVlanInterface *VirtualVlanPhysicalInterfaceResourceModel `tfsdk:"virtual_vlan_interface" json:"virtual_vlan_interface,optional,omitempty" `
 	VlanInterface        *VlanPhysicalInterfaceResourceModel        `tfsdk:"vlan_interface" json:"vlan_interface,optional,omitempty" `

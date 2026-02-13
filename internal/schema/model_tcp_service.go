@@ -30,7 +30,7 @@ type TcpServiceResourceModel struct {
 	MinDstPort       types.Int64                                        `tfsdk:"min_dst_port" json:"min_dst_port,optional,omitempty" `
 	MinSrcPort       types.Int64                                        `tfsdk:"min_src_port" json:"min_src_port,optional,omitempty" `
 	Name             types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
-	PaValues         *[]PaParameterValueResourceModel                   `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
+	PaValues         *[]AbstractPaParameterValueWrapperResourceModel    `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
 	ProtocolAgentRef types.String                                       `tfsdk:"protocol_agent_ref" json:"protocol_agent_ref,optional,omitempty" `
 	ReadOnly         types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
 	System           types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`

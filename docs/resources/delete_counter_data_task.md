@@ -5,16 +5,15 @@ description: |-
   This represents a Delete Counter Data Task, which is used to delete counter data in the system. It is a type of log task that can be scheduled and executed to ensure that counter data is deleted properly.
 ---
 
-# smc_delete_counter_data_task
+# smc_delete_counter_data_task (Resource)
 
 This represents a Delete Counter Data Task, which is used to delete counter data in the system. It is a type of log task that can be scheduled and executed to ensure that counter data is deleted properly.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `end_time` (Number) The end time in ms used when the time_limit_type is set to 'absolute_time_range'.
 - `for_application_health_counter_type` (Boolean) Flag to know if application health-type counter data need to be deleted by the task.
@@ -31,11 +30,10 @@ This represents a Delete Counter Data Task, which is used to delete counter data
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

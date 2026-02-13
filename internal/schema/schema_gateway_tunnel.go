@@ -51,14 +51,6 @@ func GetGatewayTunnelSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether this logical tunnel is enabled or not.",
 		},
-		"gateway_node_1": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
-		},
-		"gateway_node_2": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
-		},
 		"hashed_preshared_key": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "A hashed version of the pre-shared key, used for secure storage and comparison.",
@@ -84,10 +76,6 @@ func GetGatewayTunnelSchemaAttributes(ctx context.Context) map[string]schema.Att
 		"preshared_key": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "The pre-shared key used for authentication in the gateway tunnel.",
-		},
-		"vpn_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes, keep-alive options, certificate authorities, and authentication methods.",
 		},
 	}
 	if !useHcl2 {
@@ -116,5 +104,18 @@ func getGatewayTunnelSchemaBlocksInternal(ctx context.Context) map[string]schema
 		}
 		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
 	}
-	return map[string]schema.Block{}
+	return map[string]schema.Block{
+		"gateway_node_1": schema.SingleNestedBlock{
+			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
+			CustomType:  customfield.NewNestedObjectType[GatewayNodeResourceModel](ctx),
+			Attributes:  GetGatewayNodeSchemaAttributes(ctx),
+			Blocks:      GetGatewayNodeSchemaBlocks(ctx),
+		},
+		"gateway_node_2": schema.SingleNestedBlock{
+			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
+			CustomType:  customfield.NewNestedObjectType[GatewayNodeResourceModel](ctx),
+			Attributes:  GetGatewayNodeSchemaAttributes(ctx),
+			Blocks:      GetGatewayNodeSchemaBlocks(ctx),
+		},
+	}
 }

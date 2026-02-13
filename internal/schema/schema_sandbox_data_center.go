@@ -105,10 +105,6 @@ func GetSandboxDataCenterSchemaAttributes(ctx context.Context) map[string]schema
 			Computed:    true,
 			Description: "The system key of the System element. This field is not required.",
 		},
-		"tls_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
-		},
 		"trashed": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is trashed. This field is not required.",

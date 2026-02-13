@@ -51,10 +51,6 @@ func GetVpnTrafficSelectorSchemaAttributes(ctx context.Context) map[string]schem
 			Computed:    true,
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
-		"ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Host IPv4/v6 Address or IP Range. It is required for the VPN Traffic Selector.",
-		},
 		"key": schema.Int64Attribute{
 			Computed:    true,
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",

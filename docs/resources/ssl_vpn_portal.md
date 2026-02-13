@@ -5,16 +5,15 @@ description: |-
   This represents an Application Access Portal. It contains settings for hostnames, policies, server credentials, and various portal configurations.
 ---
 
-# smc_ssl_vpn_portal
+# smc_ssl_vpn_portal (Resource)
 
 This represents an Application Access Portal. It contains settings for hostnames, policies, server credentials, and various portal configurations.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `allow_empty_referrer` (Boolean) Indicates whether the Application Access Portal allows empty referrers.
 - `brand_color` (String) The brand color of the Application Access Portal. This is used for branding purposes.
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -33,15 +32,13 @@ This represents an Application Access Portal. It contains settings for hostnames
 - `title` (String) The title of the Application Access Portal.
 
 ## Nested Attributes
-    
-- `ssl_vpn_hostname` (List of Blocks, see [here](zzattrs_ssl_vpn_hostname.md)) The Application Access Hostname elements.
+- `ssl_vpn_hostname` (List of Blocks, see [here](attr_ssl_vpn_hostname.md)) The Application Access Hostname elements.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

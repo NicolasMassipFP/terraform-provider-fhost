@@ -85,18 +85,6 @@ func GetPimIpv4ProfileSchemaAttributes(ctx context.Context) map[string]schema.At
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether Smart Multicast Antispoofing is enabled. When enabled, it helps prevent multicast spoofing attacks.",
 		},
-		"spt_switch_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "The PIM-SM SPT Switch Interval in seconds. This value determines how often the SPT switch threshold is evaluated.",
-		},
-		"spt_switch_threshold": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "The PIM-SM SPT switch threshold in the specified unit. This value determines when to switch from the shared tree to the shortest path tree.",
-		},
-		"spt_switch_threshold_unit": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The PIM-SM SPT switch threshold unit. This determines the unit of measurement for the SPT switch threshold.",
-		},
 		"system": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is a System element. This field is not required.",

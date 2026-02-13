@@ -87,10 +87,6 @@ func GetLoopbackEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Optional:    true, // todo optional parameters
 			Description: "The value of the Phase-1 ID for the endpoint, which must match the specified Phase-1 ID type.",
 		},
-		"ipsec_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports IPSec VPN type.",
-		},
 		"key": schema.Int64Attribute{
 			Computed:    true,
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
@@ -116,14 +112,6 @@ func GetLoopbackEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 		"read_only": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is read-only. This field is not required.",
-		},
-		"ssl_vpn_portal": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports VPN tunnel type using Reverse Proxy.",
-		},
-		"ssl_vpn_tunnel": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports VPN tunnel type using Tunneling.",
 		},
 		"system": schema.BoolAttribute{
 			Computed:    true,

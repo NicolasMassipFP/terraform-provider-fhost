@@ -97,16 +97,12 @@ type MasterEngineResourceModel struct {
 	MulticastRoutingMode                     types.String                                       `tfsdk:"multicast_routing_mode" json:"multicast_routing_mode,optional,omitempty" `
 	Name                                     types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
 	NatDefinition                            *[]NatDefinitionResourceModel                      `tfsdk:"nat_definition" json:"nat_definition,optional,omitempty" `
-	Nodes                                    *[]AbstractEngineNodeResourceModel                 `tfsdk:"nodes" json:"nodes,optional,omitempty" `
+	Nodes                                    *[]EngineNodeWrapperResourceModel                  `tfsdk:"nodes" json:"nodes,optional,omitempty" `
 	NondecryptedCaCertificateRef             *[]types.String                                    `tfsdk:"nondecrypted_ca_certificate_ref" json:"nondecrypted_ca_certificate_ref,optional,omitempty" `
 	NondecryptedTlsServerCredentialsRef      *[]types.String                                    `tfsdk:"nondecrypted_tls_server_credentials_ref" json:"nondecrypted_tls_server_credentials_ref,optional,omitempty" `
 	NtpSettings                              *NtpSettingsResourceModel                          `tfsdk:"ntp_settings" json:"ntp_settings,optional,omitempty" `
-	OpcuaClientX509Credentials               *[]types.String                                    `tfsdk:"opcua_client_x509_credentials" json:"opcua_client_x509_credentials,optional,omitempty" `
-	OpcuaDecryptionMode                      types.String                                       `tfsdk:"opcua_decryption_mode" json:"opcua_decryption_mode,optional,omitempty" `
-	OpcuaProxyCaCredentials                  *TlsClientProtectionWrapperResourceModel           `tfsdk:"opcua_proxy_ca_credentials" json:"opcua_proxy_ca_credentials,optional,omitempty" `
-	OpcuaServerX509Credentials               *[]types.String                                    `tfsdk:"opcua_server_x509_credentials" json:"opcua_server_x509_credentials,optional,omitempty" `
 	PassiveDiscardMode                       types.Bool                                         `tfsdk:"passive_discard_mode" json:"passive_discard_mode,optional,omitempty" `
-	PhysicalInterfaces                       *[]AbstractPhysicalInterfaceResourceModel          `tfsdk:"physical_interfaces" json:"physicalInterfaces,optional,omitempty" `
+	PhysicalInterfaces                       *[]AbstractPhysicalInterfaceWrapperResourceModel   `tfsdk:"physical_interfaces" json:"physicalInterfaces,optional,omitempty" `
 	PimSettings                              *PimSettingsResourceModel                          `tfsdk:"pim_settings" json:"pim_settings,optional,omitempty" `
 	PolicyRoute                              *[]PolicyRouteResourceModel                        `tfsdk:"policy_route" json:"policy_route,optional,omitempty" `
 	QuicEnabled                              types.Bool                                         `tfsdk:"quic_enabled" json:"quic_enabled,optional,omitempty" `
@@ -142,7 +138,7 @@ type MasterEngineResourceModel struct {
 	SystemKey                                types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
 	TcpResetSensitivity                      types.String                                       `tfsdk:"tcp_reset_sensitivity" json:"tcp_reset_sensitivity,optional,omitempty" `
 	TesterParameters                         *TesterParametersResourceModel                     `tfsdk:"tester_parameters" json:"tester_parameters,optional,omitempty" `
-	Tests                                    *[]AbstractTestEntryResourceModel                  `tfsdk:"tests" json:"tests,optional,omitempty" `
+	Tests                                    *[]TestEntryWrapperResourceModel                   `tfsdk:"tests" json:"tests,optional,omitempty" `
 	Timezone                                 types.String                                       `tfsdk:"timezone" json:"timezone,optional,omitempty" `
 	TlsClientProtection                      *TlsClientProtectionWrapperResourceModel           `tfsdk:"tls_client_protection" json:"tls_client_protection,optional,omitempty" `
 	TlsCrlChecks                             types.Bool                                         `tfsdk:"tls_crl_checks" json:"tls_crl_checks,optional,omitempty" `
@@ -153,7 +149,7 @@ type MasterEngineResourceModel struct {
 	Trashed                                  types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 	TsSettings                               *ThreatSeekerSettingsResourceModel                 `tfsdk:"ts_settings" json:"ts_settings,optional,omitempty" `
 	UserIdServiceRef                         types.String                                       `tfsdk:"user_id_service_ref" json:"user_id_service_ref,optional,omitempty" `
-	VirtualResources                         *[]AbstractVirtualResourceResourceModel            `tfsdk:"virtual_resources" json:"virtualResources,optional,omitempty" `
+	VirtualResources                         *[]VirtualResourceWrapperResourceModel             `tfsdk:"virtual_resources" json:"virtualResources,optional,omitempty" `
 	WebAuthentication                        *UserAuthenticationBbaResourceModel                `tfsdk:"web_authentication" json:"web_authentication,optional,omitempty" `
 }
 

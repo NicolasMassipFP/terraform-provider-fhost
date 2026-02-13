@@ -5,16 +5,15 @@ description: |-
   This represents a group of Internal Users. It allows browsing and invalidating user entries.
 ---
 
-# smc_internal_user_group
+# smc_internal_user_group (Resource)
 
 This represents a group of Internal Users. It allows browsing and invalidating user entries.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `activation_date` (Number) The optional activation date in milliseconds since epoch.
 - `authentication_method` (List of String) URI of the authentication method.
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -28,11 +27,10 @@ This represents a group of Internal Users. It allows browsing and invalidating u
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

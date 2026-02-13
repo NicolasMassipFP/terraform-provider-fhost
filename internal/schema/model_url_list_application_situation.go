@@ -35,7 +35,7 @@ type UrlListApplicationSituationResourceModel struct {
 	Name                     types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
 	ParameterValues          *[]types.String                                    `tfsdk:"parameter_values" json:"parameter_values,optional,omitempty" `
 	ParentApplicationRef     types.String                                       `tfsdk:"parent_application_ref" json:"parent_application_ref,optional,omitempty" `
-	PaValues                 *[]PaParameterValueResourceModel                   `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
+	PaValues                 *[]AbstractPaParameterValueWrapperResourceModel    `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
 	ProtocolAgentRef         types.String                                       `tfsdk:"protocol_agent_ref" json:"protocol_agent_ref,optional,omitempty" `
 	ReadOnly                 types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
 	SanityCheck              types.Bool                                         `tfsdk:"sanity_check" json:"sanity_check,optional,omitempty" `

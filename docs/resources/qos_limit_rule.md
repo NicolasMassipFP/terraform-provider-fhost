@@ -5,16 +5,16 @@ description: |-
   This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.
 ---
 
-# limit_rule
+# limit_rule (Sub-resource)
 
 This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `background_color` (String) The background color for the comment (rule section) and insert point rules. It is represented by its hexadecimal representation ('#RRGGBB').
 - `comment` (String) An optional comment for the element. This field is not required.
 - `dscp_match_mask` (Number) Mask for matching the six-bit DSCP field in incoming packets. This is used to filter packets based on their DSCP value.
@@ -33,11 +33,10 @@ This represents a QoS Limit Rule. It can be used to set limits on network traffi
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `parent_insert_point` (String) This represents a rule in a policy, including its parent policy, parent insert point, rank, tag, background color, and insert point type.
 - `parent_policy` (String) This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.

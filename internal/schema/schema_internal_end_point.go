@@ -89,7 +89,7 @@ func GetInternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 		},
 		"ipsec_vpn": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports IPSec VPN type.",
+			Description: "",
 		},
 		"key": schema.Int64Attribute{
 			Computed:    true,
@@ -123,11 +123,11 @@ func GetInternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 		},
 		"ssl_vpn_portal": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports VPN portal type using Reverse Proxy.",
+			Description: "",
 		},
 		"ssl_vpn_tunnel": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports VPN tunnel type using Tunneling.",
+			Description: "",
 		},
 		"system": schema.BoolAttribute{
 			Computed:    true,

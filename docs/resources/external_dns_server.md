@@ -5,16 +5,15 @@ description: |-
   This represents an External DNS (Domain Name Service) Server, which is used for DDNS updates, resolving virus signature mirrors, and URL filtering categorization services.
 ---
 
-# smc_dns_server
+# smc_dns_server (Resource)
 
 This represents an External DNS (Domain Name Service) Server, which is used for DDNS updates, resolving virus signature mirrors, and URL filtering categorization services.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `address` (String) The primary IPv4 address of the server. Must be a valid IPv4 address.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `ipv6_address` (String) The primary IPv6 address of the server. Must be a valid IPv6 address.
@@ -26,15 +25,13 @@ This represents an External DNS (Domain Name Service) Server, which is used for 
 - `update_interval` (Number) The Update Interval in seconds for DNS entries. It defines how often the DNS entries can be updated to the DNS server if the link status changes constantly.
 
 ## Nested Attributes
-    
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

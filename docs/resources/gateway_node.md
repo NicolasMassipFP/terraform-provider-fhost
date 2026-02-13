@@ -5,16 +5,16 @@ description: |-
   This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
 ---
 
-# gateway_node
+# gateway_node (Sub-resource)
 
 This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `child_node` (List of String) URI of the child Gateway Node.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `gateway` (String) This is the base class for all storable elements.
@@ -25,6 +25,5 @@ This represents a gateway node, which is used to manage the VPN topology and its
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

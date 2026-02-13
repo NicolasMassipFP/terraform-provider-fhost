@@ -5,16 +5,15 @@ description: |-
   This represents a Proxy Server, which is a server that performs detailed examination of a connection's data and assists in the determination to allow or discard packets. Common examples include virus scanning or filtering of web URLs. Also known as content screening.
 ---
 
-# smc_proxy_server
+# smc_proxy_server (Resource)
 
 This represents a Proxy Server, which is a server that performs detailed examination of a connection's data and assists in the determination to allow or discard packets. Common examples include virus scanning or filtering of web URLs. Also known as content screening.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `add_x_forwarded_for` (Boolean) Indicates whether the Proxy Server adds the 'X-Forwarded-For' header in HTTP(S) requests. This is used to preserve the original client's IP address when requests are forwarded.
 - `address` (String) The primary IPv4 address of the device, which is used for network communication.
 - `balancing_mode` (String) The balancing mode for the Proxy Server. It can be one of the following: 'ha', 'src', 'dst', or 'srcdst'.
@@ -33,16 +32,14 @@ This represents a Proxy Server, which is a server that performs detailed examina
 - `trust_host_header` (Boolean) Indicates whether the Proxy Server trusts the host header in HTTP(S) requests. This is used to determine if the server should trust the host header provided by clients.
 
 ## Nested Attributes
-    
-- `inspected_service` (List of Blocks, see [here](zzattrs_inspected_service.md)) The list of Inspected Services that define how the Proxy Server inspects traffic. Each service can have its own settings and requirements.
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
+- `inspected_service` (List of Blocks, see [here](inspected_service.md)) The list of Inspected Services that define how the Proxy Server inspects traffic. Each service can have its own settings and requirements.
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

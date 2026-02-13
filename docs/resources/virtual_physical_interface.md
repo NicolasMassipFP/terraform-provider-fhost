@@ -5,16 +5,16 @@ description: |-
   This represents a virtual physical interface for the Virtual Firewall, Virtual Firewall Layer 2, and Virtual IPS.
 ---
 
-# virtual_physical_interface
+# virtual_physical_interface (Sub-resource)
 
 This represents a virtual physical interface for the Virtual Firewall, Virtual Firewall Layer 2, and Virtual IPS.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `aggregate_mode` (String) The aggregation type for the interface, which can be 'ha' for High Availability and represents two interfaces on the Firewall engine. Only the first interface in the aggregated link is actively used. The second interface becomes active only if the first interface fails. If you configure an Aggregated Link in High-Availability mode, connect the first interface to one switch and the second interface to another switch OR 'lb' for Load Balancing and Represents two interfaces on the Firewall engine. Both interfaces in the aggregated link are actively used and connections are automatically balanced between the two interfaces. Link aggregation in the load-balancing mode is implemented based on the IEEE 802.3ad Link Aggregation standard. If you configure an Aggregated Link in Load-Balancing Mode, connect both interfaces to a single switch. Make sure that the switch supports the Link Aggregation Control Protocol (LACP) and that LACP is configured on the switch.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `custom_configuration` (String) Custom configuration for the physical interface, used for specific test or configuration purposes.
@@ -44,17 +44,15 @@ This represents a virtual physical interface for the Virtual Firewall, Virtual F
 - `zone_ref` (String) This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.
 
 ## Nested Attributes
-    
-- `arp_entry` (List of Blocks, see [here](zzattrs_arp_entry.md)) the ARP entries associated with this physical interface.
-- `dhcp_relay` (Single Block, see [here](zzattrs_dhcp_relay.md)) 
-- `dhcp_server_on_interface` (Single Block, see [here](zzattrs_dhcp_server_settings.md)) 
-- `dhcpv6_relay` (Single Block, see [here](zzattrs_dhcp_relay.md)) 
-- `interfaces` (List of Blocks, see [here](zzattrs_abstract_engine_interface.md)) the interfaces associated with this physical interface.
-- `log_moderation` (List of Blocks, see [here](zzattrs_log_moderation.md)) the log moderation settings associated with this physical interface.
-- `virtual_resource_settings` (List of Blocks, see [here](zzattrs_virtual_resource_settings.md)) the virtual resource settings associated with this physical interface.
-- `vlanInterfaces` (List of Blocks, see [here](zzattrs_virtual_vlan_physical_interface.md)) The links to possible Virtual VLAN Interfaces. If there are no VLAN Interfaces, this will be an empty list.
+- `arp_entry` (List of Blocks, see [here](attr_arp_entry.md)) the ARP entries associated with this physical interface.
+- `dhcp_relay` (Single Block, see [here](attr_dhcp_relay.md)) 
+- `dhcp_server_on_interface` (Single Block, see [here](attr_dhcp_server_settings.md)) 
+- `dhcpv6_relay` (Single Block, see [here](attr_dhcp_relay.md)) 
+- `interfaces` (List of Blocks, see [here](attr_engine_interface_wrapper.md)) the interfaces associated with this physical interface.
+- `log_moderation` (List of Blocks, see [here](attr_log_moderation.md)) the log moderation settings associated with this physical interface.
+- `virtual_resource_settings` (List of Blocks, see [here](attr_virtual_resource_settings.md)) the virtual resource settings associated with this physical interface.
+- `vlan_interfaces` (List of Blocks, see [here](attr_virtual_vlan_physical_interface.md)) The links to possible Virtual VLAN Interfaces. If there are no VLAN Interfaces, this will be an empty list.
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

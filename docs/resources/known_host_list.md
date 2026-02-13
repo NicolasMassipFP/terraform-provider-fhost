@@ -5,16 +5,15 @@ description: |-
   This represents a Known Host List, which is used to manage a list of known hosts for SSH Proxy functionality in Sidewinder. It includes elements that define the known hosts and their associated SSH server keys.
 ---
 
-# smc_known_host_list
+# smc_known_host_list (Resource)
 
 This represents a Known Host List, which is used to manage a list of known hosts for SSH Proxy functionality in Sidewinder. It includes elements that define the known hosts and their associated SSH server keys.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `element` (List of String) URI of the known host element.
 - `location_ref` (String) This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.
@@ -22,11 +21,10 @@ This represents a Known Host List, which is used to manage a list of known hosts
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

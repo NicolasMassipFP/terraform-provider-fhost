@@ -309,20 +309,6 @@ func GetSingleFirewallSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "URI of the non-decrypted TLS server credentials.",
 			ElementType: types.StringType,
 		},
-		"opcua_client_x509_credentials": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "URI of the TLS Server Credentials.",
-			ElementType: types.StringType,
-		},
-		"opcua_decryption_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The OPCUA Decryption Mode. 'none' no decryption, 'transparent' transparent decryption, require to set 'opcua_client_x509_credentials' and 'opcua_server_x509_credentials', 'proxy' proxy ( man in the middle ) decryption. require to set opcua_proxy_ca_credendials",
-		},
-		"opcua_server_x509_credentials": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "URI of the OPC UA TLS Server Credentials.",
-			ElementType: types.StringType,
-		},
 		"passive_discard_mode": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether the Passive Discard Mode is enabled. If true, it does not stop matching connections but creates a special log entry Terminate (passive) for testing purposes.",
@@ -592,8 +578,8 @@ func getSingleFirewallSchemaBlocksInternal(ctx context.Context) map[string]schem
 		},
 		"nodes": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractEngineNodeSchemaAttributes(ctx),
-				Blocks:     GetAbstractEngineNodeSchemaBlocks(ctx),
+				Attributes: GetEngineNodeWrapperSchemaAttributes(ctx),
+				Blocks:     GetEngineNodeWrapperSchemaBlocks(ctx),
 			},
 		},
 		"ntp_settings": schema.SingleNestedBlock{
@@ -602,16 +588,10 @@ func getSingleFirewallSchemaBlocksInternal(ctx context.Context) map[string]schem
 			Attributes:  GetNtpSettingsSchemaAttributes(ctx),
 			Blocks:      GetNtpSettingsSchemaBlocks(ctx),
 		},
-		"opcua_proxy_ca_credentials": schema.SingleNestedBlock{
-			Description: "This represents a wrapper for TLS Client protection settings, including proxy usage and trusted certificate authorities.",
-			CustomType:  customfield.NewNestedObjectType[TlsClientProtectionWrapperResourceModel](ctx),
-			Attributes:  GetTlsClientProtectionWrapperSchemaAttributes(ctx),
-			Blocks:      GetTlsClientProtectionWrapperSchemaBlocks(ctx),
-		},
 		"physical_interfaces": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractPhysicalInterfaceSchemaAttributes(ctx),
-				Blocks:     GetAbstractPhysicalInterfaceSchemaBlocks(ctx),
+				Attributes: GetAbstractPhysicalInterfaceWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPhysicalInterfaceWrapperSchemaBlocks(ctx),
 			},
 		},
 		"pim_settings": schema.SingleNestedBlock{
@@ -676,8 +656,8 @@ func getSingleFirewallSchemaBlocksInternal(ctx context.Context) map[string]schem
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 		"tls_client_protection": schema.SingleNestedBlock{

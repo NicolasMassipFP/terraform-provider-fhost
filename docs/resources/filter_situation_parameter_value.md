@@ -5,16 +5,16 @@ description: |-
   This represents a filter parameter value within a situation, allowing for the application of specific filters to the situation's parameters.
 ---
 
-# filter_situation_parameter_value
+# filter_situation_parameter_value (Sub-resource)
 
 This represents a filter parameter value within a situation, allowing for the application of specific filters to the situation's parameters.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `name` (String) Name of the object.
 - `order` (Number) The order of this parameter value within the situation, determining its sequence.
@@ -23,6 +23,5 @@ This represents a filter parameter value within a situation, allowing for the ap
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

@@ -5,16 +5,16 @@ description: |-
   This represents the ISC Firewall Node Settings container, which includes management IP, gateway, hypervisor, and network settings.
 ---
 
-# vss_node_isc
+# vss_node_isc (Sub-resource)
 
 This represents the ISC Firewall Node Settings container, which includes management IP, gateway, hypervisor, and network settings.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `contact_ip` (String) The contact IP address for the ISC Firewall Node, used for communication with the SMC. If the contact IP is the same as the management IP, this field may be null.
 - `isc_hypervisor` (String) The hypervisor type for the ISC Firewall Node, such as 'VMware' or 'Hyper-V'.
@@ -25,6 +25,5 @@ This represents the ISC Firewall Node Settings container, which includes managem
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

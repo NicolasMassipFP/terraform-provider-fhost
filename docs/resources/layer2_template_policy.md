@@ -5,16 +5,15 @@ description: |-
   This represents a Layer 2 Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
 ---
 
-# smc_layer2_template_policy
+# smc_layer2_template_policy (Resource)
 
 This represents a Layer 2 Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `file_filtering_policy` (String) This represents a File Filtering Policy, which is used to define the action and inspection rules for File Filtering Engines.
 - `inspection_policy` (String) This represents an Inspection Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
@@ -23,11 +22,10 @@ This represents a Layer 2 Template Policy, which is used to define a set of rule
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

@@ -1,5 +1,5 @@
 ---
-page_title: "use a forward proxy"
+page_title: "Using a forward proxy"
 subcategory: ""
 description: |-
   use a forward proxy

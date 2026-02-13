@@ -5,16 +5,16 @@ description: |-
   This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
 ---
 
-# inspected_service
+# inspected_service (Sub-resource)
 
 This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `name` (String) Name of the object.
 - `port` (Number) The port number used for the inspected service.
@@ -22,6 +22,5 @@ This represents a sub part of a Proxy Server, defining the protocol to be inspec
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

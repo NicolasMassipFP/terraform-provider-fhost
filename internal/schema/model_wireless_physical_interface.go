@@ -28,7 +28,7 @@ type WirelessPhysicalInterfaceResourceModel struct {
 	DuplicateAddressDetection     types.Bool                                         `tfsdk:"duplicate_address_detection" json:"duplicate_address_detection,optional,omitempty" `
 	IncludePrefixInfoOptionFlag   types.Bool                                         `tfsdk:"include_prefix_info_option_flag" json:"include_prefix_info_option_flag,optional,omitempty" `
 	InterfaceId                   types.String                                       `tfsdk:"interface_id" json:"interface_id,optional,omitempty" `
-	Interfaces                    *[]AbstractEngineInterfaceResourceModel            `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
+	Interfaces                    *[]EngineInterfaceWrapperResourceModel             `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
 	Key                           types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
 	Link                          customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
 	Lk                            customfield.Map[types.String]                      `tfsdk:"link" json:"-" `

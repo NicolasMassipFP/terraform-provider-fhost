@@ -5,16 +5,15 @@ description: |-
   This represents a SUN-RPC service, which is used to define a service based on the Remote Procedure Call (RPC) protocol. It includes a program number, transport type, and optional RPC version for traffic identification.
 ---
 
-# smc_rpc_service
+# smc_rpc_service (Resource)
 
 This represents a SUN-RPC service, which is used to define a service based on the Remote Procedure Call (RPC) protocol. It includes a program number, transport type, and optional RPC version for traffic identification.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `name` (String) Name of the object.
 - `program_number` (String) The program number that the RPC traffic uses, which is a unique identifier for the RPC program.
@@ -23,15 +22,13 @@ This represents a SUN-RPC service, which is used to define a service based on th
 - `transport` (String) The transport type for the RPC service, which can be 'tcp', 'udp', or 'both'. If not specified, it defaults to 'both'.
 
 ## Nested Attributes
-    
-- `paValues` (List of Blocks, see [here](zzattrs_pa_parameter_value.md)) List of parameter values associated with this service. These values are used to configure the protocol agent for this service.
+- `pa_values` (List of Blocks, see [here](attr_abstract_pa_parameter_value_wrapper.md)) List of parameter values associated with this service. These values are used to configure the protocol agent for this service.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

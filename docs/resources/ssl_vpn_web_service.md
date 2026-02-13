@@ -5,16 +5,15 @@ description: |-
   This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
 ---
 
-# smc_ssl_vpn_web_service
+# smc_ssl_vpn_web_service (Resource)
 
 This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `client_trust` (String) This represents a Trusted Certificate Authority, which is used to manage trusted certificate authorities in the system.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `cookie_protection` (Boolean) Indicates whether cookie protection is enabled for the Application Access Web Service. This helps to prevent session hijacking by securing cookies.
@@ -36,16 +35,14 @@ This represents an Application Access Web Service. It contains settings for alte
 - `visible_in_portal` (Boolean) Indicates whether the Application Access Web Service is visible in the portal. If true, it will be displayed in the user portal for easy access.
 
 ## Nested Attributes
-    
-- `ssl_vpn_allowed_url` (List of Blocks, see [here](zzattrs_ssl_vpn_allowed_url.md)) List of allowed URLs for the Application Access Web Service.
-- `ssl_vpn_althost` (List of Blocks, see [here](zzattrs_ssl_vpn_hostname.md)) List of alternative hostnames for the Application Access Web Service.
+- `ssl_vpn_allowed_url` (List of Blocks, see [here](attr_ssl_vpn_allowed_url.md)) List of allowed URLs for the Application Access Web Service.
+- `ssl_vpn_althost` (List of Blocks, see [here](attr_ssl_vpn_hostname.md)) List of alternative hostnames for the Application Access Web Service.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

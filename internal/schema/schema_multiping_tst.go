@@ -72,10 +72,6 @@ func GetMultipingTestSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Optional:    true, // todo optional parameters
 			Description: "The number of times the Multiping test will retry if it fails. Note! We recommend always setting the retry count to more than 1 to avoid creating overly sensitive tests that burden the system unnecessarily.",
 		},
-		"snmp_notification": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Indicates whether an SNMP notification is sent if the test fails.",
-		},
 		"standby_state": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether the test is executed when the engine is in standby state or not.",

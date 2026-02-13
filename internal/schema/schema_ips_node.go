@@ -129,8 +129,8 @@ func getIpsNodeSchemaBlocksInternal(ctx context.Context) map[string]schema.Block
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

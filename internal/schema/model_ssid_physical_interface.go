@@ -30,7 +30,7 @@ type SsidPhysicalInterfaceResourceModel struct {
 	DuplicateAddressDetection     types.Bool                                         `tfsdk:"duplicate_address_detection" json:"duplicate_address_detection,optional,omitempty" `
 	IncludePrefixInfoOptionFlag   types.Bool                                         `tfsdk:"include_prefix_info_option_flag" json:"include_prefix_info_option_flag,optional,omitempty" `
 	InterfaceId                   types.String                                       `tfsdk:"interface_id" json:"interface_id,optional,omitempty" `
-	Interfaces                    *[]AbstractEngineInterfaceResourceModel            `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
+	Interfaces                    *[]EngineInterfaceWrapperResourceModel             `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
 	Key                           types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
 	Key1                          types.String                                       `tfsdk:"key_1" json:"key_1,optional,omitempty" `
 	Key2                          types.String                                       `tfsdk:"key_2" json:"key_2,optional,omitempty" `

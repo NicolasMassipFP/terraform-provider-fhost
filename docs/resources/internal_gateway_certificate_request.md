@@ -5,16 +5,16 @@ description: |-
   This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
 ---
 
-# gateway_certificate_request
+# gateway_certificate_request (Sub-resource)
 
 This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `key_length` (Number) The length of the key used in the certificate request, typically measured in bits.
 - `name` (String) Name of the object.
@@ -24,6 +24,5 @@ This represents a certificate request for an internal gateway, allowing for the 
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

@@ -34,14 +34,10 @@ var _ = listdefault.StaticValue
 func GetIntegratedUisIgnoreValueSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
 	useHcl2 := common.UseHCL2(ctx)
 
-	attrs := map[string]schema.Attribute{"iuis_ignore_ip": schema.StringAttribute{
+	attrs := map[string]schema.Attribute{"iuis_ignore_user": schema.StringAttribute{
 		Optional:    true, // todo optional parameters
-		Description: "The IP address, subnet, or range to ignore in the Integrated User ID service. Omit for 'Any'. Not allowed with ne_ref.",
+		Description: "The username to ignore in the Integrated User ID service. Omit for 'Any'.",
 	},
-		"iuis_ignore_user": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The username to ignore in the Integrated User ID service. Omit for 'Any'.",
-		},
 		"ne_ref": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",

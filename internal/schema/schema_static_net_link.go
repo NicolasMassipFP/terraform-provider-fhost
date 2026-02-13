@@ -106,10 +106,6 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "URI of the Network to define the address space.",
 			ElementType: types.StringType,
 		},
-		"nsp_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The NSP Name for the NetLink, which is the provider name of your ISP.",
-		},
 		"output_speed": schema.Int64Attribute{
 			Optional:    true, // todo optional parameters
 			Description: "The Output Speed in bits per second for the NetLink, which defines the real-life bandwidth this network connection provides. It is used to calculate how much traffic each link receives in relation to the other links.",
@@ -170,12 +166,5 @@ func getStaticNetlinkSchemaBlocksInternal(ctx context.Context) map[string]schema
 		}
 		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
 	}
-	return map[string]schema.Block{
-		"domain_server_address": schema.ListNestedBlock{
-			NestedObject: schema.NestedBlockObject{
-				Attributes: GetDnsElementSchemaAttributes(ctx),
-				Blocks:     GetDnsElementSchemaBlocks(ctx),
-			},
-		},
-	}
+	return map[string]schema.Block{}
 }

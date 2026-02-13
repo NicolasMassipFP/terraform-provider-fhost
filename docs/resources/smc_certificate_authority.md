@@ -5,16 +5,15 @@ description: |-
   This represents the SMC Certificate Authority. It contains information about the state of the certificate authority and whether it is the default CA.
 ---
 
-# smc_certificate_authority
+# smc_certificate_authority (Resource)
 
 This represents the SMC Certificate Authority. It contains information about the state of the certificate authority and whether it is the default CA.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `certificate_state` (String) The state of the Certificate Authority, e.g., active, untrusted.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `isdefault` (Boolean) Indicates if this is the default Certificate Authority.
@@ -22,11 +21,10 @@ This represents the SMC Certificate Authority. It contains information about the
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

@@ -20,7 +20,7 @@ type IpAccessListResourceModel struct {
 	ID          types.String                                       `tfsdk:"id"`
 	AdminDomain types.String                                       `tfsdk:"admin_domain" json:"admin_domain,optional,omitempty" fpro:"admin_domain"`
 	Comment     types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
-	Entries     *[]AbstractAccessListEntryResourceModel            `tfsdk:"entries" json:"entries,optional,omitempty" `
+	Entries     *[]AbstractAccessListEntryWrapperResourceModel     `tfsdk:"entries" json:"entries,optional,omitempty" `
 	Etag        types.String                                       `tfsdk:"etag" json:"etag,optional,omitempty" fpro:"etag"`
 	Key         types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
 	Link        customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`

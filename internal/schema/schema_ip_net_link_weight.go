@@ -38,10 +38,6 @@ func GetIpNetlinkWeightSchemaAttributes(ctx context.Context) map[string]schema.A
 		Optional:    true, // todo optional parameters
 		Description: "Automatically generate a proxy ARP for the NATed address in the selected Network.",
 	},
-		"ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The external NATed destination IP Address for the Server Pool.",
-		},
 		"netlink_ref": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "This represents a Static NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for gateway, networks, DNS elements, and outbound IP addresses.",

@@ -5,16 +5,15 @@ description: |-
   This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.
 ---
 
-# smc_firewall_layer2_cluster
+# smc_firewall_layer2_cluster (Resource)
 
 This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `active_server_certificate_probing` (Boolean) Flag for enabling/disabling TLS probe connections.
 - `active_wait_time` (String) The Active Wait Time. 'short' Short, 'medium' Medium, 'long' Long.
 - `antispoofing_node_ref` (String) This represents an Antispoofing Node in the Security Management Client, which is used to protect against malicious packages with altered IP header information.
@@ -51,9 +50,6 @@ This represents a group of two or more layer 2 firewall devices in the Stonesoft
 - `name` (String) Name of the object.
 - `nondecrypted_ca_certificate_ref` (List of String) URI of the non-decrypted CA certificates.
 - `nondecrypted_tls_server_credentials_ref` (List of String) URI of the non-decrypted TLS server credentials.
-- `opcua_client_x509_credentials` (List of String) URI of the TLS Server Credentials.
-- `opcua_decryption_mode` (String) The OPCUA Decryption Mode. 'none' no decryption, 'transparent' transparent decryption, require to set 'opcua_client_x509_credentials' and 'opcua_server_x509_credentials', 'proxy' proxy ( man in the middle ) decryption. require to set opcua_proxy_ca_credendials
-- `opcua_server_x509_credentials` (List of String) URI of the OPC UA TLS Server Credentials.
 - `passive_discard_access_mode` (Boolean) Indicates whether passive discard mode is enabled for connections that match rules with the Terminate action in the Access Rules. When enabled, it does not stop matching connections but creates a special log entry for testing purposes.
 - `passive_discard_mode` (Boolean) Indicates whether the Passive Discard Mode is enabled. If true, it does not stop matching connections but creates a special log entry Terminate (passive) for testing purposes.
 - `reporting_email_addresses` (String) The contact email address for reporting per sender.
@@ -81,36 +77,33 @@ This represents a group of two or more layer 2 firewall devices in the Stonesoft
 - `user_id_service_ref` (String) This represents a User ID Service element, which is used to manage user identification services. It includes attributes for port, IP addresses, monitored user domains, cache expiration, connect timeout, TLS profile, and TLS identity.
 
 ## Nested Attributes
-    
-- `advanced_multilink_settings` (Single Block, see [here](zzattrs_advanced_multi_link_settings.md)) 
-- `alias_value` (List of Blocks, see [here](zzattrs_alias_value.md)) The alias values for the engine.
-- `antivirus` (Single Block, see [here](zzattrs_antivirus_settings.md)) 
-- `automatic_rules_settings` (Single Block, see [here](zzattrs_automatic_rules_settings.md)) 
-- `certificate_validation_settings` (Single Block, see [here](zzattrs_certificate_validation_settings.md)) 
-- `connection_timeout` (List of Blocks, see [here](zzattrs_idle_timeout.md)) The definitions of timeout by protocol or by TCP connection state.
-- `domain_server_address` (List of Blocks, see [here](zzattrs_dns_element.md)) List of DNS IP Addresses used by the IPS to resolve virus signature mirrors, domain names, and web filtering categorization services.
-- `eca_settings` (Single Block, see [here](zzattrs_eca_settings.md)) 
-- `file_reputation_settings` (Single Block, see [here](zzattrs_file_reputation_settings.md)) 
-- `local_log_storage` (Single Block, see [here](zzattrs_local_log_storage_settings.md)) 
-- `log_moderation` (List of Blocks, see [here](zzattrs_log_moderation.md)) List of Log Moderation settings, which define how log entries are moderated based on specific criteria.
-- `nodes` (List of Blocks, see [here](zzattrs_abstract_engine_node.md)) The nodes that are part of this cluster. Each node represents a device that shares the workload.
-- `ntp_settings` (Single Block, see [here](zzattrs_ntp_settings.md)) 
-- `opcua_proxy_ca_credentials` (Single Block, see [here](zzattrs_tls_client_protection_wrapper.md)) 
-- `physicalInterfaces` (List of Blocks, see [here](zzattrs_abstract_physical_interface.md)) The specific physical interfaces for the engine.
-- `sandbox_settings` (Single Block, see [here](zzattrs_sandbox_settings.md)) 
-- `scan_detection` (Single Block, see [here](zzattrs_scan_detection_settings.md)) 
-- `snmp_interface` (List of Blocks, see [here](zzattrs_snmp_interface_entry.md)) The SNMP listening interfaces for the engine.
-- `tester_parameters` (Single Block, see [here](zzattrs_tester_parameters.md)) 
-- `tests` (List of Blocks, see [here](zzattrs_abstract_test_entry.md)) The test entries for the engine.
-- `tls_client_protection` (Single Block, see [here](zzattrs_tls_client_protection_wrapper.md)) 
-- `ts_settings` (Single Block, see [here](zzattrs_threat_seeker_settings.md)) 
+- `advanced_multilink_settings` (Single Block, see [here](attr_advanced_multi_link_settings.md)) 
+- `alias_value` (List of Blocks, see [here](attr_alias_value.md)) The alias values for the engine.
+- `antivirus` (Single Block, see [here](attr_antivirus_settings.md)) 
+- `automatic_rules_settings` (Single Block, see [here](attr_automatic_rules_settings.md)) 
+- `certificate_validation_settings` (Single Block, see [here](attr_certificate_validation_settings.md)) 
+- `connection_timeout` (List of Blocks, see [here](attr_idle_timeout.md)) The definitions of timeout by protocol or by TCP connection state.
+- `domain_server_address` (List of Blocks, see [here](attr_dns_element.md)) List of DNS IP Addresses used by the IPS to resolve virus signature mirrors, domain names, and web filtering categorization services.
+- `eca_settings` (Single Block, see [here](attr_eca_settings.md)) 
+- `file_reputation_settings` (Single Block, see [here](attr_file_reputation_settings.md)) 
+- `local_log_storage` (Single Block, see [here](attr_local_log_storage_settings.md)) 
+- `log_moderation` (List of Blocks, see [here](attr_log_moderation.md)) List of Log Moderation settings, which define how log entries are moderated based on specific criteria.
+- `nodes` (List of Blocks, see [here](attr_engine_node_wrapper.md)) The nodes that are part of this cluster. Each node represents a device that shares the workload.
+- `ntp_settings` (Single Block, see [here](attr_ntp_settings.md)) 
+- `physical_interfaces` (List of Blocks, see [here](attr_abstract_physical_interface_wrapper.md)) The specific physical interfaces for the engine.
+- `sandbox_settings` (Single Block, see [here](attr_sandbox_settings.md)) 
+- `scan_detection` (Single Block, see [here](attr_scan_detection_settings.md)) 
+- `snmp_interface` (List of Blocks, see [here](attr_snmp_interface_entry.md)) The SNMP listening interfaces for the engine.
+- `tester_parameters` (Single Block, see [here](attr_tester_parameters.md)) 
+- `tests` (List of Blocks, see [here](attr_test_entry_wrapper.md)) The test entries for the engine.
+- `tls_client_protection` (Single Block, see [here](attr_tls_client_protection_wrapper.md)) 
+- `ts_settings` (Single Block, see [here](attr_threat_seeker_settings.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

@@ -92,11 +92,11 @@ func getAbstractPhysicalInterfaceSchemaBlocksInternal(ctx context.Context) map[s
 			Attributes:  GetSsidPhysicalInterfaceSchemaAttributes(ctx),
 			Blocks:      GetSsidPhysicalInterfaceSchemaBlocks(ctx),
 		},
-		"switch_interface": schema.SingleNestedBlock{
-			Description: "This represents a Switch Interface, which is used for managing switch functionalities on specific appliances. It includes references to the switch module and port group interfaces.",
-			CustomType:  customfield.NewNestedObjectType[SwitchInterfaceResourceModel](ctx),
-			Attributes:  GetSwitchInterfaceSchemaAttributes(ctx),
-			Blocks:      GetSwitchInterfaceSchemaBlocks(ctx),
+		"switch_interface_port": schema.SingleNestedBlock{
+			Description: "This represents a port on an engine that supports Switch Interfaces, including the port number, interface reference, and comment.",
+			CustomType:  customfield.NewNestedObjectType[SwitchInterfacePortResourceModel](ctx),
+			Attributes:  GetSwitchInterfacePortSchemaAttributes(ctx),
+			Blocks:      GetSwitchInterfacePortSchemaBlocks(ctx),
 		},
 		"tunnel_interface": schema.SingleNestedBlock{
 			Description: "This represents a Tunnel Interface, which is used for defining endpoints for tunnels in the Route-Based VPN. It allows traffic to be routed into the tunnel based on Firewall Access rules.",

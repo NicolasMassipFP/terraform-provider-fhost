@@ -178,20 +178,6 @@ func GetVirtualIpsSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "URI of the non-decrypted TLS server credentials.",
 			ElementType: types.StringType,
 		},
-		"opcua_client_x509_credentials": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "URI of the TLS Server Credentials.",
-			ElementType: types.StringType,
-		},
-		"opcua_decryption_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The OPCUA Decryption Mode. 'none' no decryption, 'transparent' transparent decryption, require to set 'opcua_client_x509_credentials' and 'opcua_server_x509_credentials', 'proxy' proxy ( man in the middle ) decryption. require to set opcua_proxy_ca_credendials",
-		},
-		"opcua_server_x509_credentials": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "URI of the OPC UA TLS Server Credentials.",
-			ElementType: types.StringType,
-		},
 		"passive_discard_access_mode": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether passive discard mode for access is enabled. When enabled, it allows connections that match rules with the Terminate action in Access Rules to be logged without stopping traffic, useful for testing purposes.",
@@ -397,16 +383,10 @@ func getVirtualIpsSchemaBlocksInternal(ctx context.Context) map[string]schema.Bl
 			Attributes:  GetLocalLogStorageSettingsSchemaAttributes(ctx),
 			Blocks:      GetLocalLogStorageSettingsSchemaBlocks(ctx),
 		},
-		"opcua_proxy_ca_credentials": schema.SingleNestedBlock{
-			Description: "This represents a wrapper for TLS Client protection settings, including proxy usage and trusted certificate authorities.",
-			CustomType:  customfield.NewNestedObjectType[TlsClientProtectionWrapperResourceModel](ctx),
-			Attributes:  GetTlsClientProtectionWrapperSchemaAttributes(ctx),
-			Blocks:      GetTlsClientProtectionWrapperSchemaBlocks(ctx),
-		},
 		"physical_interfaces": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractPhysicalInterfaceSchemaAttributes(ctx),
-				Blocks:     GetAbstractPhysicalInterfaceSchemaBlocks(ctx),
+				Attributes: GetAbstractPhysicalInterfaceWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPhysicalInterfaceWrapperSchemaBlocks(ctx),
 			},
 		},
 		"sandbox_settings": schema.SingleNestedBlock{
@@ -435,8 +415,8 @@ func getVirtualIpsSchemaBlocksInternal(ctx context.Context) map[string]schema.Bl
 		},
 		"tests": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractTestEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractTestEntrySchemaBlocks(ctx),
+				Attributes: GetTestEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetTestEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 		"tls_client_protection": schema.SingleNestedBlock{

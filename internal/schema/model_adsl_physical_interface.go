@@ -19,6 +19,7 @@ var _ = context.Background()
 type AdslPhysicalInterfaceResourceModel struct {
 	AggregateMode                 types.String                                       `tfsdk:"aggregate_mode" json:"aggregate_mode,optional,omitempty" `
 	ArpEntry                      *[]ArpEntryResourceModel                           `tfsdk:"arp_entry" json:"arp_entry,optional,omitempty" `
+	AtmMultiplexingMode           types.String                                       `tfsdk:"atm_multiplexing_mode" json:"atm_multiplexing_mode,optional,omitempty" `
 	Comment                       types.String                                       `tfsdk:"comment" json:"comment,optional,omitempty" `
 	CustomConfiguration           types.String                                       `tfsdk:"custom_configuration" json:"custom_configuration,optional,omitempty" `
 	DhcpRelay                     *DhcpRelayResourceModel                            `tfsdk:"dhcp_relay" json:"dhcp_relay,optional,omitempty" `
@@ -27,7 +28,7 @@ type AdslPhysicalInterfaceResourceModel struct {
 	DuplicateAddressDetection     types.Bool                                         `tfsdk:"duplicate_address_detection" json:"duplicate_address_detection,optional,omitempty" `
 	IncludePrefixInfoOptionFlag   types.Bool                                         `tfsdk:"include_prefix_info_option_flag" json:"include_prefix_info_option_flag,optional,omitempty" `
 	InterfaceId                   types.String                                       `tfsdk:"interface_id" json:"interface_id,optional,omitempty" `
-	Interfaces                    *[]AbstractEngineInterfaceResourceModel            `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
+	Interfaces                    *[]EngineInterfaceWrapperResourceModel             `tfsdk:"interfaces" json:"interfaces,optional,omitempty" `
 	Key                           types.Int64                                        `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
 	Link                          customfield.NestedObjectList[ApiLinkResourceModel] `tfsdk:"-" json:"link,optional,omitempty" fpro:"link"`
 	Lk                            customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
@@ -49,7 +50,9 @@ type AdslPhysicalInterfaceResourceModel struct {
 	SynMaxBursts                  types.Int64                                        `tfsdk:"syn_max_bursts" json:"syn_max_bursts,optional,omitempty" `
 	SynMode                       types.String                                       `tfsdk:"syn_mode" json:"syn_mode,optional,omitempty" `
 	SynPerSecond                  types.Int64                                        `tfsdk:"syn_per_second" json:"syn_per_second,optional,omitempty" `
+	Vci                           types.Int64                                        `tfsdk:"vci" json:"vci,optional,omitempty" `
 	VirtualResourceSettings       *[]VirtualResourceSettingsResourceModel            `tfsdk:"virtual_resource_settings" json:"virtual_resource_settings,optional,omitempty" `
+	Vpi                           types.Int64                                        `tfsdk:"vpi" json:"vpi,optional,omitempty" `
 	ZoneRef                       types.String                                       `tfsdk:"zone_ref" json:"zone_ref,optional,omitempty" `
 }
 

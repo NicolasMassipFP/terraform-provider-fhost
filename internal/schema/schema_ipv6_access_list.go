@@ -115,8 +115,8 @@ func getIpv6AccessListSchemaBlocksInternal(ctx context.Context) map[string]schem
 	return map[string]schema.Block{
 		"entries": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractAccessListEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractAccessListEntrySchemaBlocks(ctx),
+				Attributes: GetAbstractAccessListEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractAccessListEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

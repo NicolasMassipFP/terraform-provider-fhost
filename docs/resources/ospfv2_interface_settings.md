@@ -5,16 +5,15 @@ description: |-
   This represents the OSPFv2 Interface Settings, which are used to configure OSPFv2 interfaces in the Dynamic Routing Firewall functionality.
 ---
 
-# smc_ospfv2_interface_settings
+# smc_ospfv2_interface_settings (Resource)
 
 This represents the OSPFv2 Interface Settings, which are used to configure OSPFv2 interfaces in the Dynamic Routing Firewall functionality.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `authentication_type` (String) The type of OSPF authentication used on the interface.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `dead_interval` (Number) The Dead interval in seconds for OSPF, which is the time after which a neighbor is considered down if no Hello packets are received.
@@ -32,11 +31,10 @@ This represents the OSPFv2 Interface Settings, which are used to configure OSPFv
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

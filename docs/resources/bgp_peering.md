@@ -5,16 +5,15 @@ description: |-
   This represents the BGP Peering for Dynamic Routing Firewall functionality.
 ---
 
-# smc_bgp_peering
+# smc_bgp_peering (Resource)
 
 This represents the BGP Peering for Dynamic Routing Firewall functionality.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `bfd_enabled` (Boolean) Indicates whether Bidirectional Forwarding Detection (BFD) is enabled for the BGP Peering. If true, BFD will be used to monitor the BGP peering.
 - `bfd_interval` (Number) The Bidirectional Forwarding Detection (BFD) interval in milliseconds for the BGP Peering. This is used to set the interval for BFD control packets.
 - `bfd_min_rx` (Number) The Bidirectional Forwarding Detection (BFD) minimum receive interval in milliseconds for the BGP Peering. This is used to set the minimum interval for receiving BFD control packets.
@@ -55,11 +54,10 @@ This represents the BGP Peering for Dynamic Routing Firewall functionality.
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

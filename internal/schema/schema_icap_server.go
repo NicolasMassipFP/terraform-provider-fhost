@@ -71,18 +71,6 @@ func GetIcapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Optional:    true, // todo optional parameters
 			Description: "Flag indicating if secure ICAP is enabled. Defaults to false.",
 		},
-		"icap_xhdr_clientip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The X-Header for the client IP address in ICAP requests.",
-		},
-		"icap_xhdr_serverip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The X-Header for the server IP address in ICAP requests.",
-		},
-		"icap_xhdr_username": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The X-Header for the username in ICAP requests.",
-		},
 		"ipv6_address": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "The primary IPv6 address of the device, which is used for network communication.",

@@ -5,16 +5,15 @@ description: |-
   This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
 ---
 
-# smc_administrator
+# smc_administrator (Resource)
 
 This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `allow_sudo` (Boolean) Indicates whether the administrator has sudo rights on the engine. If true, the administrator can execute commands with elevated privileges on the engine.
 - `allowed_to_login_in_shared` (Boolean) Indicates whether the administrator is allowed to log in to the Shared Domain. If true, the administrator can access shared resources and settings.
 - `auth_method` (String) This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.
@@ -30,18 +29,16 @@ This represents an administrator user. It contains the user's credentials, authe
 - `superuser` (Boolean) Indicates whether the administrator user is a superuser. A superuser has full access to all system functions and settings.
 
 ## Nested Attributes
-    
-- `client_identity` (Single Block, see [here](zzattrs_tls_identity.md)) 
-- `permissions` (Single Block, see [here](zzattrs_admin_permissions.md)) 
+- `client_identity` (Single Block, see [here](attr_tls_identity.md)) 
+- `permissions` (Single Block, see [here](attr_admin_permissions.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `enabled` (Boolean) The status of the administrator user. It indicates whether the user is enabled or disabled.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `is_user_locked` (Boolean) Indicates whether the administrator user is locked. A locked user cannot log in until it is unlocked by an administrator.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

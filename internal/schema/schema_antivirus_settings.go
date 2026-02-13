@@ -38,10 +38,6 @@ func GetAntivirusSettingsSchemaAttributes(ctx context.Context) map[string]schema
 		Optional:    true, // todo optional parameters
 		Description: "Indicates whether the antivirus feature is enabled on the firewall element.",
 	},
-		"antivirus_http_proxy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The HTTP Proxy address used for antivirus updates.",
-		},
 		"antivirus_http_proxy_enabled": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether the HTTP Proxy is enabled for antivirus updates. By default, it is not enabled.",

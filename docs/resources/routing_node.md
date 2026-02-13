@@ -5,16 +5,16 @@ description: |-
   This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
 ---
 
-# routing_node
+# routing_node (Sub-resource)
 
 This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `communication_mode` (String) The type of communication mode used for this interface in case of OSPF dynamic routing configuration, such as 'not_forced', 'point_to_point', 'passive', or 'unicast'.
 - `custom_configuration` (String) Custom configuration for the routing node, which can be used to specify additional settings or parameters.
@@ -39,12 +39,10 @@ This represents a Routing Node in the Security Management Client, which is used 
 - `to_delete` (Boolean) Indicates whether the Routing element should be deleted or not.
 
 ## Nested Attributes
-    
-- `routing_node` (List of Blocks, see [here](zzattrs_routing_node.md)) A list of Routing child nodes, which represent individual routing configurations for interfaces.
+- `routing_node` (List of Blocks, see [here](routing_node.md)) A list of Routing child nodes, which represent individual routing configurations for interfaces.
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `read_only` (Boolean) Indicates whether the view node is read-only or not.
 - `system` (Boolean) Indicates whether the view node is a system node or not.
