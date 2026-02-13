@@ -85,7 +85,7 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 		},
 		"ipsec_vpn": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Indicates whether the endpoint supports IPSec VPN type.",
+			Description: "",
 		},
 		"key": schema.Int64Attribute{
 			Computed:    true,
@@ -112,6 +112,14 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 		"read_only": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is read-only. This field is not required.",
+		},
+		"ssl_vpn_portal": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "",
+		},
+		"ssl_vpn_tunnel": schema.BoolAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "",
 		},
 		"system": schema.BoolAttribute{
 			Computed:    true,

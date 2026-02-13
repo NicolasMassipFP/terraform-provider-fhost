@@ -5,16 +5,15 @@ description: |-
   This represents a Web Access Server, which is used to provide web-based access to the management interface. It includes attributes for log target server, web application parameters, certificate settings, TLS profile, and UIID.
 ---
 
-# smc_web_access_server
+# smc_web_access_server (Resource)
 
 This represents a Web Access Server, which is used to provide web-based access to the management interface. It includes attributes for log target server, web application parameters, certificate settings, TLS profile, and UIID.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `address` (String) The primary IPv4 address of the server. Must be a valid IPv4 address.
 - `alert_server` (String) This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -27,17 +26,15 @@ This represents a Web Access Server, which is used to provide web-based access t
 - `uiid` (String) The UIID (Unique Installation ID) for the Web Access Server, which uniquely identifies the installation.
 
 ## Nested Attributes
-    
-- `external_pki_certificate_settings` (Single Block, see [here](zzattrs_certificate_settings.md)) 
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
-- `web_app` (List of Blocks, see [here](zzattrs_web_application_parameters.md)) The list of Web Application parameters for the Web Access Server. Each application can have its own settings and requirements.
+- `external_pki_certificate_settings` (Single Block, see [here](attr_certificate_settings.md)) 
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
+- `web_app` (List of Blocks, see [here](attr_web_application_parameters.md)) The list of Web Application parameters for the Web Access Server. Each application can have its own settings and requirements.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

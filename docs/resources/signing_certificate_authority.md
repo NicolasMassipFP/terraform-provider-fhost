@@ -5,16 +5,15 @@ description: |-
   This represents a Signing Certificate Authority, which is used to manage signing certificate authorities in the system.
 ---
 
-# smc_tls_signing_certificate_authority
+# smc_tls_signing_certificate_authority (Resource)
 
 This represents a Signing Certificate Authority, which is used to manage signing certificate authorities in the system.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `certificate` (String) The certificate of the Certificate Authority in string format.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `crl_checking_enabled` (Boolean) Indicates whether CRL checking is enabled for this Certificate Authority.
@@ -25,11 +24,10 @@ This represents a Signing Certificate Authority, which is used to manage signing
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

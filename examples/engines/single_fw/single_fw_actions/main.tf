@@ -64,7 +64,6 @@ resource "smc_single_fw" "tf_single_fw" {
     action_trigger {
       events = [after_create]
       actions = [
-        action.smc_command.add_route.id,
         action.smc_command.bind_license.id,
         action.smc_initial_contact.tf_single_fw_contact.id,
         action.smc_command.upload.id
@@ -161,20 +160,6 @@ action "smc_command" "change_state" {
   }
 }
 
-# better to use smc_routing_node but this is an example of
-# action with parameters
-action "smc_command" "add_route" {
-  config {
-    command_href = smc_single_fw.tf_single_fw.link.add_route
-    parameters = {
-      gateway_ip = "192.168.100.1"
-      network_ip = "0.0.0.0/0"
-    }
-    output_file = "/tmp/tf_single_fw_add_route.txt"
-  }
-}
-
-
 resource "smc_backup_task" "tf_backup_task" {
   name = "tf_backup_task_test"
   resources = [
@@ -185,15 +170,6 @@ resource "smc_backup_task" "tf_backup_task" {
   depends_on = [smc_single_fw.tf_single_fw]
 }
 
-# restart webswing server
-# terraform apply -invoke action.smc_command.restart_web_access -auto-approve
-action "smc_command" "restart_web_access" {
-  config {
-    command_href = "${data.smc_href.mgt_server.id}/restart_web_access"
-    method       = "put"
-  }
-}
-
 # to create extra backup at any time, use:
 # terraform apply -invoke action.smc_command.backup_now -auto-approve
 action "smc_command" "backup_now" {
@@ -202,6 +178,14 @@ action "smc_command" "backup_now" {
   }
 }
 
+# restart webswing server
+# terraform apply -invoke action.smc_command.restart_web_access -auto-approve
+action "smc_command" "restart_web_access" {
+  config {
+    command_href = "${data.smc_href.mgt_server.id}/restart_web_access"
+    method       = "put"
+  }
+}
 
 data "smc_href" "shared_domain" {
   type = "admin_domain"

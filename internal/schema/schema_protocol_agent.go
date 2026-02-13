@@ -174,14 +174,14 @@ func getProtocolAgentSchemaBlocksInternal(ctx context.Context) map[string]schema
 		},
 		"pa_parameters": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractProtocolAgentParameterSchemaAttributes(ctx),
-				Blocks:     GetAbstractProtocolAgentParameterSchemaBlocks(ctx),
+				Attributes: GetAbstractPaParameterWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPaParameterWrapperSchemaBlocks(ctx),
 			},
 		},
 		"pa_values": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetPaParameterValueSchemaAttributes(ctx),
-				Blocks:     GetPaParameterValueSchemaBlocks(ctx),
+				Attributes: GetAbstractPaParameterValueWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractPaParameterValueWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

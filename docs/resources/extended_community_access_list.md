@@ -5,26 +5,21 @@ description: |-
   This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.
 ---
 
-# smc_extended_community_access_list
+# smc_extended_community_access_list (Resource)
 
 This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `name` (String) Name of the object.
 - `type` (String) The type of the extended community access list.
 
-## Nested Attributes
-    
-- `entries` (List of Blocks, see [here](zzattrs_abstract_access_list_entry.md)) The access list entries that define the rules for routing decisions.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.

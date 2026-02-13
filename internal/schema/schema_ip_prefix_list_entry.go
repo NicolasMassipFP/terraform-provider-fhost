@@ -54,13 +54,13 @@ func GetIpPrefixListEntrySchemaAttributes(ctx context.Context) map[string]schema
 			Optional:    true, // todo optional parameters
 			Description: "The minimum prefix length for the IP prefix list entry, used to filter routes.",
 		},
+		"name": schema.StringAttribute{
+			Optional:    true, // todo optional parameters
+			Description: "Name of the object.",
+		},
 		"ne_ref": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
-		},
-		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "The rank of the access list entry.",
 		},
 		"subnet": schema.StringAttribute{
 			Optional:    true, // todo optional parameters

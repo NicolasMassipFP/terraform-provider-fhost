@@ -5,16 +5,16 @@ description: |-
   This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.
 ---
 
-# alert_chain_rule
+# alert_chain_rule (Sub-resource)
 
 This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `admin_name` (List of String) URI of the administrator in case of user notification channel.
 - `alert_channel` (String) The alert channel.
 - `amount` (Number) The maximum number of notifications to be sent before activating moderation. This is used to control the frequency of notifications.
@@ -31,11 +31,10 @@ This represents a Alert Chain Rule for Alert Chain Policy. It contains informati
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `parent_insert_point` (String) This represents a rule in a policy, including its parent policy, parent insert point, rank, tag, background color, and insert point type.
 - `parent_policy` (String) This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.

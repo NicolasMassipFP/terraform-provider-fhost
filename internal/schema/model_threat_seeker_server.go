@@ -34,9 +34,7 @@ type ThreatSeekerServerResourceModel struct {
 	SystemKey     types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
 	Trashed       types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 	TsCertificate types.String                                       `tfsdk:"ts_certificate" json:"ts_certificate,optional,omitempty" `
-	Tskey         types.String                                       `tfsdk:"tskey" json:"tskey,optional,omitempty" `
 	TskeyExp      types.String                                       `tfsdk:"tskey_exp" json:"tskey_exp,optional,omitempty" `
-	Tstoken       types.String                                       `tfsdk:"tstoken" json:"tstoken,optional,omitempty" `
 	Url           types.String                                       `tfsdk:"url" json:"url,optional,omitempty" `
 }
 

@@ -5,16 +5,15 @@ description: |-
   This represents an Expression, which is used to define complex sets of network elements by including and excluding elements using logical expressions. It supports operators such as union, intersection, and exclusion.
 ---
 
-# smc_expression
+# smc_expression (Resource)
 
 This represents an Expression, which is used to define complex sets of network elements by including and excluding elements using logical expressions. It supports operators such as union, intersection, and exclusion.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `location_ref` (String) This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.
 - `name` (String) Name of the object.
@@ -22,15 +21,13 @@ This represents an Expression, which is used to define complex sets of network e
 - `operator` (String) The Expression operator, which can be 'none', 'union', 'intersection', or 'exclusion'. This defines how the sub-expressions are combined.
 
 ## Nested Attributes
-    
-- `sub_expression` (List of Blocks, see [here](zzattrs_expression.md)) A list of inner expressions that are part of the overall expression. These expressions can be combined using the specified operator.
+- `sub_expression` (List of Blocks, see [here](expression.md)) A list of inner expressions that are part of the overall expression. These expressions can be combined using the specified operator.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

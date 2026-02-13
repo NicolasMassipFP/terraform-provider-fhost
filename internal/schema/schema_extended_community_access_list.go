@@ -110,12 +110,5 @@ func getExtendedCommunityAccessListSchemaBlocksInternal(ctx context.Context) map
 		}
 		ctx = context.WithValue(ctx, "max_recursion", max_recursion-1)
 	}
-	return map[string]schema.Block{
-		"entries": schema.ListNestedBlock{
-			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractAccessListEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractAccessListEntrySchemaBlocks(ctx),
-			},
-		},
-	}
+	return map[string]schema.Block{}
 }

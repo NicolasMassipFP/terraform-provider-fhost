@@ -68,10 +68,6 @@ func GetSwapFreeSpaceTestSchemaAttributes(ctx context.Context) map[string]schema
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether the test is executed when the engine is online or not.",
 		},
-		"snmp_notification": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Indicates whether an SNMP notification is sent if the test fails.",
-		},
 		"standby_state": schema.BoolAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Indicates whether the test is executed when the engine is in standby state or not.",

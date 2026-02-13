@@ -5,27 +5,25 @@ description: |-
   This represents the Internal User Domain. It is used for managing internal user domains in the SMC.
 ---
 
-# smc_internal_user_domain
+# smc_internal_user_domain (Resource)
 
 This represents the Internal User Domain. It is used for managing internal user domains in the SMC.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `isdefault` (Boolean) Indicates whether this User Domain is the default one for authentication. Only one User Domain can be set as default.
 - `name` (String) Name of the object.
 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

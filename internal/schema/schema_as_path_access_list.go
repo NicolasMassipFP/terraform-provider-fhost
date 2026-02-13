@@ -115,8 +115,8 @@ func getAsPathAccessListSchemaBlocksInternal(ctx context.Context) map[string]sch
 	return map[string]schema.Block{
 		"entries": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractAccessListEntrySchemaAttributes(ctx),
-				Blocks:     GetAbstractAccessListEntrySchemaBlocks(ctx),
+				Attributes: GetAbstractAccessListEntryWrapperSchemaAttributes(ctx),
+				Blocks:     GetAbstractAccessListEntryWrapperSchemaBlocks(ctx),
 			},
 		},
 	}

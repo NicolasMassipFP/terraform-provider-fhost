@@ -143,7 +143,7 @@ func GetRouteBasedVpnTunnelSchemaAttributes(ctx context.Context) map[string]sche
 		},
 		"vpn_profile_ref": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes, keep-alive options, certificate authorities, and authentication methods.",
+			Description: "",
 		},
 	}
 	if !useHcl2 {

@@ -34,18 +34,10 @@ var _ = listdefault.StaticValue
 func GetVssContextIscSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
 	useHcl2 := common.UseHCL2(ctx)
 
-	attrs := map[string]schema.Attribute{"isc_name": schema.StringAttribute{
+	attrs := map[string]schema.Attribute{"isc_policy_id": schema.Int64Attribute{
 		Optional:    true, // todo optional parameters
-		Description: "The name of the ISC VSS Context, which is required for the configuration.",
+		Description: "The policy ID associated with the VSS Context ISC Settings, which is required for the configuration.",
 	},
-		"isc_policy_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "The policy ID associated with the VSS Context ISC Settings, which is required for the configuration.",
-		},
-		"isc_traffic_tag": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The traffic tag used to identify which virtual engine should secure traffic, which is required for the VSS Context ISC Settings.",
-		},
 	}
 	if !useHcl2 {
 		return attrs

@@ -26,7 +26,7 @@ type RpcServiceResourceModel struct {
 	Lk               customfield.Map[types.String]                      `tfsdk:"link" json:"-" `
 	Locked           types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
 	Name             types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
-	PaValues         *[]PaParameterValueResourceModel                   `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
+	PaValues         *[]AbstractPaParameterValueWrapperResourceModel    `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
 	ProgramNumber    types.String                                       `tfsdk:"program_number" json:"program_number,optional,omitempty" `
 	ProtocolAgentRef types.String                                       `tfsdk:"protocol_agent_ref" json:"protocol_agent_ref,optional,omitempty" `
 	ReadOnly         types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`

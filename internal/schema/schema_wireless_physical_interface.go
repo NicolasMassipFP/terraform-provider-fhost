@@ -218,8 +218,8 @@ func getWirelessPhysicalInterfaceSchemaBlocksInternal(ctx context.Context) map[s
 		},
 		"interfaces": schema.ListNestedBlock{
 			NestedObject: schema.NestedBlockObject{
-				Attributes: GetAbstractEngineInterfaceSchemaAttributes(ctx),
-				Blocks:     GetAbstractEngineInterfaceSchemaBlocks(ctx),
+				Attributes: GetEngineInterfaceWrapperSchemaAttributes(ctx),
+				Blocks:     GetEngineInterfaceWrapperSchemaBlocks(ctx),
 			},
 		},
 		"log_moderation": schema.ListNestedBlock{

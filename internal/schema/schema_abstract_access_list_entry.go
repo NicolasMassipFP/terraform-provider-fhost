@@ -74,11 +74,11 @@ func getAbstractAccessListEntrySchemaBlocksInternal(ctx context.Context) map[str
 			Attributes:  GetCommunityAccessListEntrySchemaAttributes(ctx),
 			Blocks:      GetCommunityAccessListEntrySchemaBlocks(ctx),
 		},
-		"extended_community_access_list_entry": schema.SingleNestedBlock{
-			Description: "This represents an entry in an Extended Community Access List, which is used to filter BGP routes based on extended communities.",
-			CustomType:  customfield.NewNestedObjectType[ExtendedCommunityAccessListEntryResourceModel](ctx),
-			Attributes:  GetExtendedCommunityAccessListEntrySchemaAttributes(ctx),
-			Blocks:      GetExtendedCommunityAccessListEntrySchemaBlocks(ctx),
+		"extended_community_access_list": schema.SingleNestedBlock{
+			Description: "This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.",
+			CustomType:  customfield.NewNestedObjectType[ExtendedCommunityAccessListResourceModel](ctx),
+			Attributes:  GetExtendedCommunityAccessListSchemaAttributes(ctx),
+			Blocks:      GetExtendedCommunityAccessListSchemaBlocks(ctx),
 		},
 		"ip_access_list_entry": schema.SingleNestedBlock{
 			Description: "This represents an entry in an IP Access List, which is used to filter BGP routes based on IP addresses or networks.",

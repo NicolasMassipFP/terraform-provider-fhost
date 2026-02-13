@@ -17,12 +17,12 @@ var _ = fmt.Sprintf
 var _ = context.Background()
 
 type Ipv6AccessListEntryResourceModel struct {
-	Action  types.String  `tfsdk:"action" json:"action,optional,omitempty" `
-	Comment types.String  `tfsdk:"comment" json:"comment,optional,omitempty" `
-	Key     types.Int64   `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
-	NeRef   types.String  `tfsdk:"ne_ref" json:"ne_ref,optional,omitempty" `
-	Rank    types.Float64 `tfsdk:"rank" json:"rank,optional,omitempty" `
-	Subnet  types.String  `tfsdk:"subnet" json:"subnet,optional,omitempty" `
+	Action  types.String `tfsdk:"action" json:"action,optional,omitempty" `
+	Comment types.String `tfsdk:"comment" json:"comment,optional,omitempty" `
+	Key     types.Int64  `tfsdk:"key" json:"key,optional,omitempty" fpro:"key"`
+	Name    types.String `tfsdk:"name" json:"name,optional,omitempty" `
+	NeRef   types.String `tfsdk:"ne_ref" json:"ne_ref,optional,omitempty" `
+	Subnet  types.String `tfsdk:"subnet" json:"subnet,optional,omitempty" `
 }
 
 func (r *Ipv6AccessListEntryResourceModel) GetSliceIds(ctx context.Context) []string {

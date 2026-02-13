@@ -5,16 +5,15 @@ description: |-
   This represents a URL List Application Situation, which is used for URL list filtering in URL filtering.
 ---
 
-# smc_url_list_application
+# smc_url_list_application (Resource)
 
 This represents a URL List Application Situation, which is used for URL list filtering in URL filtering.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `attacker` (String) The attacker involved in the situation, which can be 'none', 'packet_destination', 'connection_source', or 'connection_destination'. By default, it is set to 'none'.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `description` (String) A long description of the situation, providing detailed information about its nature and implications.
@@ -38,16 +37,14 @@ This represents a URL List Application Situation, which is used for URL list fil
 - `vulnerability_references` (List of String) A set of references to vulnerabilities associated with the situation, providing additional context and information about potential security issues.
 
 ## Nested Attributes
-    
-- `application_port` (List of Blocks, see [here](zzattrs_application_port.md)) A list of application ports associated with this application situation.
-- `paValues` (List of Blocks, see [here](zzattrs_pa_parameter_value.md)) A list of parameter values associated with this application situation, allowing for dynamic configuration of inspection settings.
+- `application_port` (List of Blocks, see [here](attr_application_port.md)) A list of application ports associated with this application situation.
+- `pa_values` (List of Blocks, see [here](attr_abstract_pa_parameter_value_wrapper.md)) A list of parameter values associated with this application situation, allowing for dynamic configuration of inspection settings.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

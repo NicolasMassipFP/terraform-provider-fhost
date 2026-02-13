@@ -5,16 +5,15 @@ description: |-
   This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
 ---
 
-# smc_situation_parameter
+# smc_situation_parameter (Resource)
 
 This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `bounds` (String) Hints about the minimum and maximum size for integers, floats, etc., and string lengths for string parameters. For example, '0|100' means the minimum is 0 and the maximum is 100, '|100' means the minimum is not set, and '0|' means that the maximum is not set.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `conn_info_type` (String) The type of connection information associated with this parameter, such as 'none', 'logserver', 'alertserver', 'block_list', or 'sendanalyzator'.
@@ -30,6 +29,5 @@ This represents a parameter within a situation, allowing for the configuration o
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

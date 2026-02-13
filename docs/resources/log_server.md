@@ -5,16 +5,15 @@ description: |-
   This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 ---
 
-# smc_log_server
+# smc_log_server (Resource)
 
 This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `address` (String) The primary IPv4 address of the device, which is used for network communication.
 - `channel_port` (Number) The TCP port number for the Log Server. We recommend using default port 3020 if possible. To use a non-standard port, manually add Access rules to allow communications using the new port from the NGFW Engines to the Log Server.
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -29,20 +28,18 @@ This represents a Log Server, which is a component of the Management Center resp
 - `uiid` (String) The unique installation ID (UIID) of the Log Server, used to identify the server in the system.
 
 ## Nested Attributes
-    
-- `backup_log_server` (List of Blocks, see [here](zzattrs_secondary_log_server_container_for_storage.md)) The backup Log Server for this Log Server. You can specify several backup Log Servers, and the same Log Server can simultaneously be the main Log Server for some components and a backup Log Server for others.
-- `elasticsearch_authentication_settings` (Single Block, see [here](zzattrs_elasticsearch_authentication_settings.md)) 
-- `external_pki_certificate_settings` (Single Block, see [here](zzattrs_certificate_settings.md)) 
-- `forwarding_tls_settings` (Single Block, see [here](zzattrs_tls_settings.md)) 
-- `netflow_collector` (List of Blocks, see [here](zzattrs_netflow_collector.md)) The Netflow Collector associated with the Log Server. Log Servers can be configured to forward log data to external hosts, and you can define which type of log data you want to forward and in which format.
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
+- `backup_log_server` (List of Blocks, see [here](attr_secondary_log_server_container_for_storage.md)) The backup Log Server for this Log Server. You can specify several backup Log Servers, and the same Log Server can simultaneously be the main Log Server for some components and a backup Log Server for others.
+- `elasticsearch_authentication_settings` (Single Block, see [here](attr_elasticsearch_authentication_settings.md)) 
+- `external_pki_certificate_settings` (Single Block, see [here](attr_certificate_settings.md)) 
+- `forwarding_tls_settings` (Single Block, see [here](attr_tls_settings.md)) 
+- `netflow_collector` (List of Blocks, see [here](attr_netflow_collector.md)) The Netflow Collector associated with the Log Server. Log Servers can be configured to forward log data to external hosts, and you can define which type of log data you want to forward and in which format.
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

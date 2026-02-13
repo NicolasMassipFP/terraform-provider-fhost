@@ -42,14 +42,6 @@ func GetSiitMappingSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Optional:    true, // todo optional parameters
 			Description: "The rank for ordering mappings, where a lower value indicates a higher priority.",
 		},
-		"siit_eam_mapping_ipv4_network": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The IPv4 network address for the mapping.",
-		},
-		"siit_eam_mapping_ipv6_prefix": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The IPv6 prefix for the mapping.",
-		},
 	}
 	if !useHcl2 {
 		return attrs

@@ -27,7 +27,6 @@ type SslVpnSsoDomainResourceModel struct {
 	Locked      types.Bool                                         `tfsdk:"locked" json:"locked,optional,omitempty" fpro:"locked"`
 	Name        types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
 	ReadOnly    types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
-	SsoMode     types.String                                       `tfsdk:"sso_mode" json:"sso_mode,optional,omitempty" `
 	System      types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
 	SystemKey   types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
 	Timeout     types.Int64                                        `tfsdk:"timeout" json:"timeout,optional,omitempty" `

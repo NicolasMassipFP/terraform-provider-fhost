@@ -89,10 +89,6 @@ func GetUpdateServerProfileSchemaAttributes(ctx context.Context) map[string]sche
 			Optional:    true, // todo optional parameters
 			Description: "The connection timeout in seconds.",
 		},
-		"tls_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
-		},
 		"trashed": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is trashed. This field is not required.",
@@ -130,12 +126,6 @@ func getUpdateServerProfileSchemaBlocksInternal(ctx context.Context) map[string]
 				Attributes: GetRankedUrlSchemaAttributes(ctx),
 				Blocks:     GetRankedUrlSchemaBlocks(ctx),
 			},
-		},
-		"tlsidentity": schema.SingleNestedBlock{
-			Description: "This represents a TLS Identity, which contains data to check server identity when establishing a TLS connection. It includes fields such as DNS name, IP address, common name, distinguished name, and various hash values.",
-			CustomType:  customfield.NewNestedObjectType[TlsIdentityResourceModel](ctx),
-			Attributes:  GetTlsIdentitySchemaAttributes(ctx),
-			Blocks:      GetTlsIdentitySchemaBlocks(ctx),
 		},
 	}
 }

@@ -35,7 +35,6 @@ type SandboxDataCenterResourceModel struct {
 	ServerUrl   types.String                                       `tfsdk:"server_url" json:"server_url,optional,omitempty" `
 	System      types.Bool                                         `tfsdk:"system" json:"system,optional,omitempty" fpro:"system"`
 	SystemKey   types.Int64                                        `tfsdk:"system_key" json:"system_key,optional,omitempty" fpro:"system_key"`
-	TlsProfile  types.String                                       `tfsdk:"tls_profile" json:"tls_profile,optional,omitempty" `
 	Trashed     types.Bool                                         `tfsdk:"trashed" json:"trashed,optional,omitempty" fpro:"trashed"`
 }
 

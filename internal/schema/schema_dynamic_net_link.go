@@ -93,10 +93,6 @@ func GetDynamicNetlinkSchemaAttributes(ctx context.Context) map[string]schema.At
 			Optional:    true, // todo optional parameters
 			Description: "Name of the object.",
 		},
-		"nsp_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The NSP Name for the NetLink, which is the provider name of your ISP.",
-		},
 		"output_speed": schema.Int64Attribute{
 			Optional:    true, // todo optional parameters
 			Description: "The Output Speed in bits per second for the NetLink, which defines the real-life bandwidth this network connection provides. It is used to calculate how much traffic each link receives in relation to the other links.",

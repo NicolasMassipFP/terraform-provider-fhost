@@ -5,16 +5,16 @@ description: |-
   This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
 ---
 
-# gateway_certificate
+# gateway_certificate (Sub-resource)
 
 This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `certificate_authority` (String) This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.
 - `certificate_base64` (String) The PEM-encoded certificate for the internal gateway, which contains the public key and other metadata.
 - `comment` (String) An optional comment for the element. This field is not required.
@@ -27,6 +27,5 @@ This represents a certificate for an internal gateway, which includes details ab
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

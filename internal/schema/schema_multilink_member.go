@@ -34,14 +34,10 @@ var _ = listdefault.StaticValue
 func GetMultilinkMemberSchemaAttributes(ctx context.Context) map[string]schema.Attribute {
 	useHcl2 := common.UseHCL2(ctx)
 
-	attrs := map[string]schema.Attribute{"ip_range": schema.StringAttribute{
+	attrs := map[string]schema.Attribute{"netlink_ref": schema.StringAttribute{
 		Optional:    true, // todo optional parameters
-		Description: "The IP address range for dynamic source address translation (NAT) for the internal source IP addresses on this NetLink. Required when static NetLink is used.",
+		Description: "This represents a NetLink, which is used for implementing routing of Multi-Link features. NetLinks can represent any IP-based network links (such as ISP routers, xDSL, leased lines, dial-up modems). NetLinks are combined together into an Outbound Multi-link.",
 	},
-		"netlink_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents a NetLink, which is used for implementing routing of Multi-Link features. NetLinks can represent any IP-based network links (such as ISP routers, xDSL, leased lines, dial-up modems). NetLinks are combined together into an Outbound Multi-link.",
-		},
 		"netlink_role": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "The role of the NetLink in the Outbound Multi-Link configuration, either 'active' or 'standby'.",

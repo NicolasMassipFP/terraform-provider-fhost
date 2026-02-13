@@ -55,17 +55,9 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Optional:    true, // todo optional parameters
 			Description: "An optional comment for the element. This field is not required.",
 		},
-		"crl_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "Delay time (hours) for fetching CRL. This is the time to wait before checking the Certificate Revocation List.",
-		},
 		"etag": schema.StringAttribute{
 			Computed:    true,
 			Description: "The ETag of the element, used for versioning. This field is not required.",
-		},
-		"ignore_network_issues": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Ignore revocation check failures due to network issues. If true, the system will not fail the TLS connection if there are network issues during the revocation check.",
 		},
 		"key": schema.Int64Attribute{
 			Computed:    true,
@@ -84,10 +76,6 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 		"name": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "Name of the object.",
-		},
-		"ocsp_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
-			Description: "Ignore OCSP failure for (hours). This is the time to wait before checking the Online Certificate Status Protocol (OCSP) response.",
 		},
 		"read_only": schema.BoolAttribute{
 			Computed:    true,
@@ -109,10 +97,6 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Optional:    true, // todo optional parameters
 			Description: "URI of the trusted CA.",
 			ElementType: types.StringType,
-		},
-		"tls_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "Version of TLS. Valid values are: tls_1_1, tls_1_2, tls_1_3.",
 		},
 		"trashed": schema.BoolAttribute{
 			Computed:    true,

@@ -5,16 +5,15 @@ description: |-
   This represents a Management Server, which is the central component that stores all configurations and monitors the state of all NGFW Engines and other components in the Stonesoft Management Center. It provides access for Management Clients to change configurations or command the engines.
 ---
 
-# smc_mgt_server
+# smc_mgt_server (Resource)
 
 This represents a Management Server, which is the central component that stores all configurations and monitors the state of all NGFW Engines and other components in the Stonesoft Management Center. It provides access for Management Clients to change configurations or command the engines.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `address` (String) The primary IPv4 address of the device, which is used for network communication.
 - `alert_server_ref` (String) This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 - `announcement_enabled` (Boolean) Indicates whether announcements are enabled for the Management Server. If enabled, announcements are shown to all users.
@@ -48,24 +47,22 @@ This represents a Management Server, which is the central component that stores 
 - `updates_proxy_username` (String) The username for authentication to the proxy server used by the Management Server for HTTPS connections to the Internet servers.
 
 ## Nested Attributes
-    
-- `elasticsearch_authentication_settings` (Single Block, see [here](zzattrs_elasticsearch_authentication_settings.md)) 
-- `external_pki_certificate_settings` (Single Block, see [here](zzattrs_certificate_settings.md)) 
-- `forwarding_tls_settings` (Single Block, see [here](zzattrs_tls_settings.md)) 
-- `mgt_integration_container` (List of Blocks, see [here](zzattrs_management_integration_container.md)) The Management Integration Containers for the Management Server, which define the settings for different management integrations.
-- `netflow_collector` (List of Blocks, see [here](zzattrs_netflow_collector.md)) The Netflow Collector to which the Management Server forwards audit data. You can define which type of audit data you want to forward and in which format, and use Filters to specify in detail which log data is forwarded.
-- `sms_http_channel` (List of Blocks, see [here](zzattrs_sms_http_channel.md)) The HTTP channel for the Management Server, which defines the settings for HTTP-based communication.
-- `sms_script_channel` (List of Blocks, see [here](zzattrs_sms_script_channel.md)) The Script channel for the Management Server, which defines the settings for script-based communication.
-- `sms_smtp_channel` (List of Blocks, see [here](zzattrs_sms_smtp_channel.md)) The SMTP channel for the Management Server, which defines the settings for SMTP-based communication.
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
-- `web_app` (List of Blocks, see [here](zzattrs_web_application_parameters.md)) The Web Application parameters for the Management Server, which define the settings for different web applications.
+- `elasticsearch_authentication_settings` (Single Block, see [here](attr_elasticsearch_authentication_settings.md)) 
+- `external_pki_certificate_settings` (Single Block, see [here](attr_certificate_settings.md)) 
+- `forwarding_tls_settings` (Single Block, see [here](attr_tls_settings.md)) 
+- `mgt_integration_container` (List of Blocks, see [here](attr_management_integration_container.md)) The Management Integration Containers for the Management Server, which define the settings for different management integrations.
+- `netflow_collector` (List of Blocks, see [here](attr_netflow_collector.md)) The Netflow Collector to which the Management Server forwards audit data. You can define which type of audit data you want to forward and in which format, and use Filters to specify in detail which log data is forwarded.
+- `sms_http_channel` (List of Blocks, see [here](attr_sms_http_channel.md)) The HTTP channel for the Management Server, which defines the settings for HTTP-based communication.
+- `sms_script_channel` (List of Blocks, see [here](attr_sms_script_channel.md)) The Script channel for the Management Server, which defines the settings for script-based communication.
+- `sms_smtp_channel` (List of Blocks, see [here](attr_sms_smtp_channel.md)) The SMTP channel for the Management Server, which defines the settings for SMTP-based communication.
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
+- `web_app` (List of Blocks, see [here](attr_web_application_parameters.md)) The Web Application parameters for the Management Server, which define the settings for different web applications.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

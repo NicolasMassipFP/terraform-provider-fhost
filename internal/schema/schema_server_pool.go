@@ -47,10 +47,6 @@ func GetServerPoolSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Optional:    true, // todo optional parameters
 			Description: "An optional comment for the element. This field is not required.",
 		},
-		"dns_server": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "This represents an External DNS (Domain Name Service) Server, which is used for DDNS updates, resolving virus signature mirrors, and URL filtering categorization services.",
-		},
 		"domain_name": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "The DNS name of the Server Pool, which is used to route traffic to the pool.",

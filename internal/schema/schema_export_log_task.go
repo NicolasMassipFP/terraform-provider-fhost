@@ -61,7 +61,7 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 		},
 		"file_format": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "The file format for the export/archive mode: 'csv' for CSV format, 'xml' for XML format, 'zip' for ZIP format, 'cef' for CEF format, 'leef' for LEEF format, 'esm' for ESM format, 'snoop' for IPS recordings as SNOOP, 'pcap' for IPS recordings as PCAP, 'ips_raw_recordings' for IPS recordings as RAW.",
+			Description: "The file format for the export/archive mode: 'csv' for CSV format, 'xml' for XML format, 'zip' for ZIP format, 'cef' for CEF format, 'leef' for LEEF format, 'esm' for ESM format, 'snoop' for IPS recordings as SNOOP, 'pcap' for IPS recordings as PCAP.",
 		},
 		"file_name": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
@@ -109,7 +109,7 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 		},
 		"ips_recordings": schema.ListAttribute{
 			Optional:    true, // todo optional parameters
-			Description: "Optional IPS record IDs for PCAP/SNOOP/RAW IPS recording export logs.",
+			Description: "Optional IPS record IDs for PCAP/SNOOP IPS recording export logs.",
 			ElementType: types.Int64Type,
 		},
 		"is_local_location": schema.BoolAttribute{

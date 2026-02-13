@@ -73,10 +73,6 @@ func GetSslVpnSsoDomainSchemaAttributes(ctx context.Context) map[string]schema.A
 			Computed:    true,
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
-		"sso_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The Single Sign On mode for the SSL VPN domain, indicating how SSO is handled.",
-		},
 		"system": schema.BoolAttribute{
 			Computed:    true,
 			Description: "Indicates if the element is a System element. This field is not required.",

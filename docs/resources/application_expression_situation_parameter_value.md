@@ -5,16 +5,16 @@ description: |-
   This represents an application expression parameter value within a situation, allowing for the application of specific expressions to the situation's parameters.
 ---
 
-# application_expression_situation_parameter_value
+# application_expression_situation_parameter_value (Sub-resource)
 
 This represents an application expression parameter value within a situation, allowing for the application of specific expressions to the situation's parameters.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
+- `from_ref` (String) parent href of this sub-resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `name` (String) Name of the object.
 - `operator` (String) The type of logical operator used in this parameter value, such as 'or', 'not', 'and', or 'ordered_and'.
@@ -24,6 +24,5 @@ This represents an application expression parameter value within a situation, al
 
 
 ## Readonly Attributes
-    
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.

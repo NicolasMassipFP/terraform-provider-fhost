@@ -36,8 +36,8 @@ type ProtocolAgentResourceModel struct {
 	ModuleUploadAlways               types.Bool                                         `tfsdk:"module_upload_always" json:"module_upload_always,optional,omitempty" `
 	Name                             types.String                                       `tfsdk:"name" json:"name,optional,omitempty" `
 	OverrideModuleId                 types.Int64                                        `tfsdk:"override_module_id" json:"override_module_id,optional,omitempty" `
-	PaParameters                     *[]AbstractProtocolAgentParameterResourceModel     `tfsdk:"pa_parameters" json:"paParameters,optional,omitempty" `
-	PaValues                         *[]PaParameterValueResourceModel                   `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
+	PaParameters                     *[]AbstractPaParameterWrapperResourceModel         `tfsdk:"pa_parameters" json:"paParameters,optional,omitempty" `
+	PaValues                         *[]AbstractPaParameterValueWrapperResourceModel    `tfsdk:"pa_values" json:"paValues,optional,omitempty" `
 	ProtocolMatchingInInspection     types.Bool                                         `tfsdk:"protocol_matching_in_inspection" json:"protocol_matching_in_inspection,optional,omitempty" `
 	ReadOnly                         types.Bool                                         `tfsdk:"read_only" json:"read_only,optional,omitempty" fpro:"read_only"`
 	RegistrationNumber               types.Int64                                        `tfsdk:"registration_number" json:"registration_number,optional,omitempty" `

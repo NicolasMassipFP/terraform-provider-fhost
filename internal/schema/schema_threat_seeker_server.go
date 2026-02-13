@@ -101,17 +101,9 @@ func GetThreatSeekerServerSchemaAttributes(ctx context.Context) map[string]schem
 			Optional:    true, // todo optional parameters
 			Description: "The CA certificate for the Threat Seeker Server, which is used to establish a secure connection.",
 		},
-		"tskey": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The Threat Seeker License Key, which is required to access the Threat Seeker Server.",
-		},
 		"tskey_exp": schema.StringAttribute{
 			Optional:    true, // todo optional parameters
 			Description: "The expiration date of the Threat Seeker License Key",
-		},
-		"tstoken": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
-			Description: "The encrypted Threat Seeker License Key, used for secure communication with the Threat Seeker Server.",
 		},
 		"url": schema.StringAttribute{
 			Optional:    true, // todo optional parameters

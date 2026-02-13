@@ -5,31 +5,28 @@ description: |-
   This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.
 ---
 
-# smc_dynamic_interface_alias
+# smc_dynamic_interface_alias (Resource)
 
 This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `comment` (String) An optional comment for the element. This field is not required.
 - `default_alias_value` (List of String) URI of the default value Storable.
 - `location_ref` (String) This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.
 - `name` (String) Name of the object.
 
 ## Nested Attributes
-    
-- `alias_value` (List of Blocks, see [here](zzattrs_alias_value.md)) A list of alias values that define specific configurations for the Alias. Each alias value can specify different configurations for the Alias in policies.
+- `alias_value` (List of Blocks, see [here](attr_alias_value.md)) A list of alias values that define specific configurations for the Alias. Each alias value can specify different configurations for the Alias in policies.
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.

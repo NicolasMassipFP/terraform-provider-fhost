@@ -32,7 +32,7 @@ type VirtualFirewallLayer2NodeResourceModel struct {
 	Nodeid                         types.Int64                                        `tfsdk:"nodeid" json:"nodeid,optional,omitempty" `
 	SnmpEngineId                   types.String                                       `tfsdk:"snmp_engine_id" json:"snmp_engine_id,optional,omitempty" `
 	SnmpLocation                   types.String                                       `tfsdk:"snmp_location" json:"snmp_location,optional,omitempty" `
-	Tests                          *[]AbstractTestEntryResourceModel                  `tfsdk:"tests" json:"tests,optional,omitempty" `
+	Tests                          *[]TestEntryWrapperResourceModel                   `tfsdk:"tests" json:"tests,optional,omitempty" `
 }
 
 func (r *VirtualFirewallLayer2NodeResourceModel) GetSliceIds(ctx context.Context) []string {

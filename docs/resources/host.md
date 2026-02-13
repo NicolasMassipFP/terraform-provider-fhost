@@ -5,16 +5,15 @@ description: |-
   This represents a Host, which is a Network Element that represents any single device that has an IP address. Any device connected to a TCP/IP network, including the Internet, with one or more IP addresses. Hosts are distinguishable from gateways or routers, in that they do not forward, or route, packets to other networks.
 ---
 
-# smc_host
+# smc_host (Resource)
 
 This represents a Host, which is a Network Element that represents any single device that has an IP address. Any device connected to a TCP/IP network, including the Internet, with one or more IP addresses. Hosts are distinguishable from gateways or routers, in that they do not forward, or route, packets to other networks.
 
 
 
 
-
 ## Simple Attributes
-    
+- `id` (String) this attribute is the identifier of terraform resource
 - `address` (String) The primary IPv4 address of the device, which is used for network communication.
 - `comment` (String) An optional comment for the element. This field is not required.
 - `ipv6_address` (String) The primary IPv6 address of the device, which is used for network communication.
@@ -24,15 +23,13 @@ This represents a Host, which is a Network Element that represents any single de
 - `tools_profile_ref` (String) This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.
 
 ## Nested Attributes
-    
-- `third_party_monitoring` (Single Block, see [here](zzattrs_third_party_monitoring.md)) 
+- `third_party_monitoring` (Single Block, see [here](attr_third_party_monitoring.md)) 
 
 ## Readonly Attributes
-    
 - `admin_domain` (String) This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 - `etag` (String) The ETag of the element, used for versioning. This field is not required.
 - `key` (Number) The unique identifier for the element. This field is required for updates but not for creation.
-- `link` (List of Blocks, see [here](zzattrs_api_link.md)) The API's links of the element, providing additional actions or resources.
+- `link` (List of Blocks, see [here](attr_api_link.md)) The API's links of the element, providing additional actions or resources.
 - `locked` (Boolean) Indicates if the element is locked. This field is not required.
 - `read_only` (Boolean) Indicates if the element is read-only. This field is not required.
 - `system` (Boolean) Indicates if the element is a System element. This field is not required.
