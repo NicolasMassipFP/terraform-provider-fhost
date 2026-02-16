@@ -28,6 +28,7 @@ Please refer to the provider documentation to verify which resources are current
 
 - [Terraform](https://www.terraform.io/downloads.html) 0.14.x +
 - [Go](https://golang.org/doc/install) 1.25.x
+- [Go releaser](https://goreleaser.com/install/) 2.13.x
 
 ## Building the Provider
 
@@ -36,8 +37,6 @@ Please refer to the provider documentation to verify which resources are current
 1. Build the provider using "make":
 
 ## Using the Provider
-
-Internal version for testing purposes only. Please use the official version published on terraform.io.
 
 ## Provider management and versioning
 This provider is internally maintained by Forcepoint R&D.

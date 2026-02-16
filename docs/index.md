@@ -51,7 +51,6 @@ However, using the provider version that matches the target SMC version is recom
 ## Recommended reading
 
 The **guides folder** provides documentation to help you use the SMC Terraform provider.
-Documentation also available on github: https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/docs/index.md
 
 # Schema
 
