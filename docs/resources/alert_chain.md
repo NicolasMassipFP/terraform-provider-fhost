@@ -9,7 +9,6 @@ description: |-
 
 This represents an Alert Chain, which is used to define a sequence of actions to be taken when an alert is triggered.
 
-https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/README.md
 
 
 
