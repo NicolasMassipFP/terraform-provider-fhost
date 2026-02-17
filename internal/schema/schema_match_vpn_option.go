@@ -35,11 +35,11 @@ func GetMatchVpnOptionSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"match_type": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The type of match for the VPN. 'normal': the rule only matches traffic from the specified VPNs. 'no vpn': the rule only matches non-VPN traffic. 'mobile vpn': the rule only matches traffic from IPsec VPN client.",
 	},
 		"match_vpns": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Policy Based VPN.",
 			ElementType: types.StringType,
 		},

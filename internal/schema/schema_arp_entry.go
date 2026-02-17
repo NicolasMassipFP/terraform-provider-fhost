@@ -35,19 +35,19 @@ func GetArpEntrySchemaAttributes(ctx context.Context) map[string]schema.Attribut
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"ipaddress": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IP address associated with the ARP entry, which can be either IPv4 or IPv6.",
 	},
 		"macaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The MAC address associated with the ARP entry. It is not required but can be provided for static entries.",
 		},
 		"netmask": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The netmask for the ARP entry, which defines the network portion of the IP address. It can be a value between 0 and 128 for IPv6.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of ARP entry, which can be 'static' for permanent references or 'dynamic' for proxy ARP. 'static': it gives the engine a permanent reference to an IP address/MAC address pair. All entries are of this type on IPS engines, Layer 2 Firewalls, Master Engines, and Virtual NGFW Engines. 'dynamic': it gives a Firewall engine a reference to an IP address/MAC address pair that the Firewall should perform proxy ARP for. Proxy ARP is possible only for hosts located in networks directly connected to the Firewall.",
 		},
 	}

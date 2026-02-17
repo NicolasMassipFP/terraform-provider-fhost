@@ -35,15 +35,15 @@ func GetZtnaConnectorSettingsSchemaAttributes(ctx context.Context) map[string]sc
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"auto_update": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "If true, the ZTNA connector version will be checked upon the next policy push, and the latest ZTNA connector image will be downloaded if needed.",
 	},
 		"bgkey": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The installer key for the ZTNA connector, which can be found in the admin portal under protect/ZTNA/Installer Key.",
 		},
 		"datacenter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the data center accessed by this ZTNA connector, which can be found in the admin portal under protect/ZTNA/DATA CENTERS.",
 		},
 	}

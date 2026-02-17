@@ -44,15 +44,15 @@ func GetVirtualResourceSchemaAttributes(ctx context.Context) map[string]schema.A
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "allocated_domain_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connection_limit": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The limit on concurrent connections from a single source and/or destination IP address. When the limit is reached, further connection attempts are blocked until existing connections are closed.",
 		},
 		"key": schema.Int64Attribute{
@@ -66,23 +66,23 @@ func GetVirtualResourceSchemaAttributes(ctx context.Context) map[string]schema.A
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"rate_limit": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rate limit for the Virtual Resource in kbps. By default (0), it is considered as unlimited.",
 		},
 		"show_master_nic": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Master NGFW Engine's Physical Interface IDs are shown in the Virtual NGFW Engine's Interface properties.",
 		},
 		"throughput_limit": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The throughput limit for the Virtual Resource in kbps. By default (0), it is considered as unlimited.",
 		},
 		"vfw_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the Virtual Resource, starting from 1.",
 		},
 	}

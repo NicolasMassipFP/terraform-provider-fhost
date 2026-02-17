@@ -35,11 +35,11 @@ func GetDiagnosticSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"enabled": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether the diagnostic is enabled or not.",
 	},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

@@ -35,15 +35,15 @@ func GetSidewinderProxyAdvancedSettingsSchemaAttributes(ctx context.Context) map
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"attribute": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The attribute or name of the setting for the Sidewinder Proxy.",
 	},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of Sidewinder Proxy. Allowed values are 'shared', 'ftp', 'http', 'smtp', 'ssh', 'tcp', and 'udp'.",
 		},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The value of the setting for the Sidewinder Proxy.",
 		},
 	}

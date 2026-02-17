@@ -44,7 +44,7 @@ func GetCertificateInfoStoreCheckerTaskSchemaAttributes(ctx context.Context) map
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,7 +66,7 @@ func GetCertificateInfoStoreCheckerTaskSchemaAttributes(ctx context.Context) map
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -74,7 +74,7 @@ func GetCertificateInfoStoreCheckerTaskSchemaAttributes(ctx context.Context) map
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},

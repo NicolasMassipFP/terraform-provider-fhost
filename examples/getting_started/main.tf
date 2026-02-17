@@ -8,12 +8,12 @@ variable "resource_comment" {
 }
 
 locals {
-  tf_single_fw_name    = "tf_single_fw_hcl2"
+  tf_single_fw_name    = "tf_sample_fw"
   tf_single_fw_address = "192.168.1.1"
   tf_router            = "192.168.1.254"
   tf_network           = "192.168.1.0/24"
   tf_dns               = "8.8.8.8"
-  tf_fw_ref            = smc_single_fw.tf_single_fw_hcl2
+  tf_fw_ref            = smc_single_fw.tf_sample_fw
   tf_node_ref          = local.tf_fw_ref.nodes[0].firewall_node
 }
 
@@ -61,15 +61,15 @@ resource "smc_router" "tf_sample_router" {
   comment = var.resource_comment
 }
 
-module "tf_single_fw_hcl2_node1" {
-  source = "./modules/firewall_node"
+module "tf_sample_fw_node1" {
+  source = "./modules/simple_firewall_node"
   name   = "${local.tf_single_fw_name}_node1"
   nodeid = 1
 }
 
 module "intf0" {
-  source       = "./modules/physical_interface"
-  nodeid       = module.tf_single_fw_hcl2_node1.nodeid
+  source       = "./modules/simple_physical_interface"
+  nodeid       = module.tf_sample_fw_node1.nodeid
   interface_id = 0
   nicid        = 0
   address      = local.tf_single_fw_address
@@ -78,18 +78,18 @@ module "intf0" {
 }
 
 module "route_intf0" {
-  source      = "./modules/route"
+  source      = "./modules/simple_route"
   interface   = "Interface 0"
   network     = smc_network.tf_sample_network.id
   gateway     = smc_router.tf_sample_router.id
   destination = data.smc_href.any_network.id
 }
 
-resource "smc_single_fw" "tf_single_fw_hcl2" {
+resource "smc_single_fw" "tf_sample_fw" {
   name                  = local.tf_single_fw_name
   comment               = var.resource_comment
   log_server_ref        = data.smc_href.log_server.href
-  nodes                 = [module.tf_single_fw_hcl2_node1.value]
+  nodes                 = [module.tf_sample_fw_node1.value]
   physical_interfaces   = [module.intf0.value]
   domain_server_address = [{ value = local.tf_dns, rank = 1.0 }]
 
@@ -112,7 +112,7 @@ resource "smc_single_fw" "tf_single_fw_hcl2" {
 }
 
 resource "smc_routing_node" "tf_single_fw" {
-  id           = smc_single_fw.tf_single_fw_hcl2.link.routing
+  id           = smc_single_fw.tf_sample_fw.link.routing
   level        = "engine_cluster"
   routing_node = [module.route_intf0.value]
 }

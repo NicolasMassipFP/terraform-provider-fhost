@@ -44,19 +44,19 @@ func GetVpnProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"cn_authentication_for_mobile_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether CN authentication is allowed or not, for a client using a certificate authentication.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"disable_anti_replay": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether anti-replay protection is disabled for IPsec.",
 		},
 		"disable_path_discovery": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Path MTU Discovery is disabled for IPsec.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,15 +64,15 @@ func GetVpnProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"hybrid_authentication_for_mobile_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Hybrid authentication is allowed or not, for a client using a certificate authentication.",
 		},
 		"ike_v2_ppk": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "IKEv2 Post-quantum Preshared Key option for encryption. Possible values: not_in_use | enabled | mandatory.",
 		},
 		"keep_alive": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Whether to enable keep-alive for the VPN profile.",
 		},
 		"key": schema.Int64Attribute{
@@ -90,11 +90,11 @@ func GetVpnProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"preshared_key_authentication_for_mobile_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether preshared key authentication is allowed or not, together with a client certificate authentication.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -102,11 +102,11 @@ func GetVpnProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"sa_life_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "IKE Lifetime in seconds.",
 		},
 		"sa_to_any_network_allowed": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether IPsec Security Associations (SAs) to any network are allowed.",
 		},
 		"system": schema.BoolAttribute{
@@ -122,20 +122,20 @@ func GetVpnProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"trust_all_cas": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to trust all certificate authorities (CAs) or not. If set to true, all CAs are trusted without validation.",
 		},
 		"trusted_certificate_authority": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the VPN Certificate Authority.",
 			ElementType: types.StringType,
 		},
 		"tunnel_life_time_kbytes": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "IPsec Lifetime in KBytes. This is the maximum amount of data that can be sent before the IPsec SA is rekeyed.",
 		},
 		"tunnel_life_time_seconds": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "IPsec Lifetime in seconds.",
 		},
 	}

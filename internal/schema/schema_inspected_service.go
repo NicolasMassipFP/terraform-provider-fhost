@@ -44,7 +44,7 @@ func GetInspectedServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -58,15 +58,15 @@ func GetInspectedServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number used for the inspected service.",
 		},
 		"service_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of service being inspected, which can be 'FTP', 'HTTP', 'HTTPS', or 'SMTP'.",
 		},
 	}

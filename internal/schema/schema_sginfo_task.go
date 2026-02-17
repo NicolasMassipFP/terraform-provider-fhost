@@ -44,11 +44,11 @@ func GetSginfoTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"destination_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The destination path where the sginfo result will be stored.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,11 +56,11 @@ func GetSginfoTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"include_core_files": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if the sginfo should include core files.",
 		},
 		"include_slapcat_output": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if the sginfo should include slapcat output.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetSginfoTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,12 +86,12 @@ func GetSginfoTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},
 		"stored_on_server": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if the sginfo should be stored on the management server.",
 		},
 		"system": schema.BoolAttribute{

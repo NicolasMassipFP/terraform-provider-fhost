@@ -40,7 +40,7 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,15 +48,15 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"cache_expiration": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time in seconds for the cache expiration on the engine. If not specified, it defaults to 300.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connect_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time in seconds for the connection from the engine to time out. If not specified, it defaults to 10.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,7 +64,7 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"key": schema.Int64Attribute{
@@ -72,7 +72,7 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"list": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "List of additional IP addresses to contact the User ID Service.",
 			ElementType: types.StringType,
 		},
@@ -83,7 +83,7 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -91,16 +91,16 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"monitored_user_domains": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The specific user domains to check. If not defined, it uses all known user domains by User ID service.",
 			ElementType: types.StringType,
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port on which the User ID Service communicates with the Firewall. If you change the port from the default, you must configure the same port in the User ID Service Properties on the Windows system. You must also change the rule that allows communication between the Firewall and the User ID Service.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -108,7 +108,7 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -121,11 +121,11 @@ func GetUserIdServiceSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tls_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{

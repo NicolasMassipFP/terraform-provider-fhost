@@ -44,15 +44,15 @@ func GetVpnCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"certificate": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The certificate of the Certificate Authority in string format.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"crl_checking_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether CRL checking is enabled for this Certificate Authority.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetVpnCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"internal_ca": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this Certificate Authority is an internal CA (used for IPSec).",
 		},
 		"key": schema.Int64Attribute{
@@ -78,11 +78,11 @@ func GetVpnCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"ocsp_checking_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether OCSP checking is enabled for this Certificate Authority.",
 		},
 		"read_only": schema.BoolAttribute{

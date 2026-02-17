@@ -52,7 +52,7 @@ func GetPolicySnapshotSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The alternative slot number if the policy was uploaded as an alternative policy, indicating which slot it occupies.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"config_id": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetPolicySnapshotSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"package_id": schema.Int64Attribute{

@@ -35,11 +35,11 @@ func GetBsrCandidateInterfaceEntrySchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"address": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IP address associated with the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.",
 	},
 		"nicid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interface ID of the single Physical Interface, VLAN Interface, Modem Interface, ADSL Interface, or SSID Interface.",
 		},
 	}

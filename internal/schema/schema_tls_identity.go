@@ -35,11 +35,11 @@ func GetTlsIdentitySchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"tls_field": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The field used to check the identity, which can be one of the following: DNS_NAME, IP_ADDRESS, COMMON_NAME, DISTINGUISHED_NAME, SHA_1, SHA_256, SHA_512, MD5, EMAIL_ADDRESS.",
 	},
 		"tls_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The value to check the selected field with, such as a DNS name, IP address, or hash value.",
 		},
 	}

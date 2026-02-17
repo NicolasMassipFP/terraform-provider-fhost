@@ -35,43 +35,43 @@ func GetSmsScriptChannelSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"account": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The SMS account associated with the Mgt Server channel, used for authentication.",
 	},
 		"conn_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The connection timeout for the SMS messaging channel, in milliseconds. This defines how long the system will wait for a connection to be established before timing out.",
 		},
 		"debug": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether debugging is enabled for the SMS messaging channel. If true, additional debug information will be logged.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SMS password associated with the Mgt Server channel, used for authentication.",
 		},
 		"proxy_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port of the HTTP proxy used by the SMS Script Channel, if applicable. This is used to route HTTP requests through a proxy server.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the SMS messaging channel, used to determine the priority of the channel.",
 		},
 		"script_execution_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The execution path for the SMS script, which defines where the script will be executed on the server.",
 		},
 		"script_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The path to the SMS script that will be executed by the Mgt Server.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout for the SMS messaging channel, in milliseconds. This defines how long the system will wait for a response before timing out.",
 		},
 	}

@@ -44,11 +44,11 @@ func GetBgpConnectionProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connect": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The connect retry timer, in seconds. It is not required and defaults to 60 seconds.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,11 +70,11 @@ func GetBgpConnectionProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"md5_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The MD5 password for the BGP connection. It is not required but can be used for authentication.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,11 +82,11 @@ func GetBgpConnectionProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"session_hold_timer": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The session hold timer, in seconds. It is not required and defaults to 180 seconds.",
 		},
 		"session_keep_alive": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The session keep alive timer, in seconds. It is not required and defaults to 60 seconds.",
 		},
 		"system": schema.BoolAttribute{

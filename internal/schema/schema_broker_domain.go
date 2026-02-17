@@ -44,7 +44,7 @@ func GetBrokerDomainSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetBrokerDomainSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"file_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a configuration file for the VPN Broker Domain. It contains settings and configurations specific to the broker domain, used for managing VPN connections and policies.",
 		},
 		"key": schema.Int64Attribute{
@@ -60,7 +60,7 @@ func GetBrokerDomainSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"link_usage_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Link Usage Profile, which is used to manage link usage settings in a multi-link environment. It includes configurations for link balancing, packet duplication, and forward erasure correction.",
 		},
 		"link": schema.MapAttribute{
@@ -74,11 +74,11 @@ func GetBrokerDomainSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mac_address_prefix": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "First 3 octets of the Broker domain Mac Address.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

@@ -48,11 +48,11 @@ func GetVpnSiteSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"automatic": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this site is automatically created or manually added. If true, the site is automatically created and cannot have VPN references set.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetVpnSiteSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"gateway": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a VPN Gateway. A VPN Gateway is a network element that can be used to establish a VPN connection with other gateways.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetVpnSiteSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetVpnSiteSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"site_element": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.StringType,
 		},

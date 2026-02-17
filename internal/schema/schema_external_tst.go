@@ -35,15 +35,15 @@ func GetExternalTestSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"alert_notification": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether an alert notification is sent if the test fails.",
 	},
 		"command_line": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The command line to execute the external test script. The script must return an exit code of 0 (zero) if it succeeds. Any non-zero return value is considered a failure. Caution: This test allows administrators who have permissions to edit the properties of Engines to run arbitrary commands in the Engine operating system.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -57,39 +57,39 @@ func GetExternalTestSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"offline_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is offline or not.",
 		},
 		"online_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is online or not.",
 		},
 		"retry_count": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of times the test will be retried if it fails. Note! We recommend always setting the retry count to more than 1 to avoid creating overly sensitive tests that burden the system unnecessarily.",
 		},
 		"standby_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is in standby state or not.",
 		},
 		"test_action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to be taken if the test fails. Options include 'none', 'offline', 'forceoffline', and 'forcespeed'.",
 		},
 		"test_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is active or not.",
 		},
 		"test_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds at which the test is executed. Note! Running a test too frequently can increase overhead.",
 		},
 		"test_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout in milliseconds for the external test. If the test does not return a response within this time, it is considered to have failed. To avoid overly short timeout values. We recommend a timeout of 500 - 1000 ms depending on the external test script",
 		},
 	}

@@ -35,19 +35,19 @@ func GetTranslationValueSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"element": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 	},
 		"ip_descriptor": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address pool of IP address(es) used for translation. The minimum size is one IP address. The number of IP addresses required depends on the allowed port range and peak concurrent connections.",
 		},
 		"max_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end of the port range for source IP address translation. The default is the highest possible port, 65535.",
 		},
 		"min_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start of the port range for source IP address translation. The default is the beginning of the 'free' high port range, 1024.",
 		},
 	}

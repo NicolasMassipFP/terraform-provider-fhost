@@ -44,15 +44,15 @@ func GetVssContainerNodeIscSettingsSchemaAttributes(ctx context.Context) map[str
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"contact_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The contact IP address for the ISC Firewall Node, used for communication with the SMC. If the contact IP is the same as the management IP, this field may be null.",
 		},
 		"isc_hypervisor": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The hypervisor type for the ISC Firewall Node, such as 'VMware' or 'Hyper-V'.",
 		},
 		"key": schema.Int64Attribute{
@@ -66,19 +66,19 @@ func GetVssContainerNodeIscSettingsSchemaAttributes(ctx context.Context) map[str
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"management_gateway": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The management gateway IP address for the ISC Firewall Node.",
 		},
 		"management_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The management IP address of the ISC Firewall Node.",
 		},
 		"management_netmask": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The netmask for the management network of the ISC Firewall Node.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

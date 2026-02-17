@@ -35,11 +35,11 @@ func GetDhcpRangeNodeSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"dhcp_address_range": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IPv4 address range for the DHCP server, specified in the format X.X.X.X-Y.Y.Y.Y or as a single IPv4 address X.X.X.X.",
 	},
 		"node_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The ID of the DHCP node. This ID is used to identify the node in the cluster.",
 		},
 	}

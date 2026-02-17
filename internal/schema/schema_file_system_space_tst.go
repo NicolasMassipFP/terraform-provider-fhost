@@ -35,15 +35,15 @@ func GetFileSystemSpaceTestSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"alert_notification": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether an alert notification is sent if the test fails.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"free_space": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum amount of free space in kilobytes required on the partition.",
 		},
 		"key": schema.Int64Attribute{
@@ -57,35 +57,35 @@ func GetFileSystemSpaceTestSchemaAttributes(ctx context.Context) map[string]sche
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"offline_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is offline or not.",
 		},
 		"on_partition": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The partition name or directory to be monitored for free space.",
 		},
 		"online_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is online or not.",
 		},
 		"standby_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is in standby state or not.",
 		},
 		"test_action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to be taken if the test fails. Options include 'none', 'offline', 'forceoffline', and 'forcespeed'.",
 		},
 		"test_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is active or not.",
 		},
 		"test_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds at which the test is executed. Note! Running a test too frequently can increase overhead.",
 		},
 	}

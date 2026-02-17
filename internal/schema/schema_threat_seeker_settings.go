@@ -35,16 +35,16 @@ func GetThreatSeekerSettingsSchemaAttributes(ctx context.Context) map[string]sch
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"http_proxy": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the HTTP Proxy.",
 		ElementType: types.StringType,
 	},
 		"local_url_categorization_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether local URL categorization is enabled.",
 		},
 		"ts_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Threat Seeker is enabled.",
 		},
 	}

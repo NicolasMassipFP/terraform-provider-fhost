@@ -35,7 +35,7 @@ func GetLinkUsageEntrySchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"link_type": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents the Link Type, which defines the characteristics and behavior of a link in the VPN configuration.",
 	},
 	}

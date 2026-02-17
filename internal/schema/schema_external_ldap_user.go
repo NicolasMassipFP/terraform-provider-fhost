@@ -40,7 +40,7 @@ func GetExternalLdapUserSchemaAttributes(ctx context.Context) map[string]schema.
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "activation_date": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The activation date of the user in milliseconds since epoch.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,19 +48,19 @@ func GetExternalLdapUserSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"days_left": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of days left until the user expires. -1 means that it is impossible to know, e.g., if the user has no expiration date.",
 		},
 		"display_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The display name of the user.",
 		},
 		"email": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The email address of the user.",
 		},
 		"etag": schema.StringAttribute{
@@ -68,15 +68,15 @@ func GetExternalLdapUserSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"expiration_date": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The expiration date of the user in milliseconds since epoch. If the user is not set to expire, this value may be null.",
 		},
 		"frame_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The frame IP address of the user.",
 		},
 		"job_title": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The job title of the user.",
 		},
 		"key": schema.Int64Attribute{
@@ -94,15 +94,15 @@ func GetExternalLdapUserSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"office_location": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The office location of the user.",
 		},
 		"phone_number": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The phone number of the user.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -122,11 +122,11 @@ func GetExternalLdapUserSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"unique_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique id of the User/User Group element.",
 		},
 		"user_domain": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a User Domain, which is used to define the authentication domain for users. It can be either an authentication domain or the internal domain.",
 		},
 	}

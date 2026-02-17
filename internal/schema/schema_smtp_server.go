@@ -40,7 +40,7 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,15 +48,15 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"email_sender_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default sender email address used in the From field of the e-mail. This default value can be overridden in the properties of the element where the SMTP Server is used.",
 		},
 		"email_sender_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default sender name used in the From field of the e-mail. This default value can be overridden in the properties of the element where the SMTP Server is used.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,7 +64,7 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -86,11 +86,11 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the SMTP server.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,7 +98,7 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -111,7 +111,7 @@ func GetSmtpServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{

@@ -40,27 +40,27 @@ func GetUserResponseEntrySchemaAttributes(ctx context.Context) map[string]schema
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "reason": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The reason for sending this response, which can be used to provide context or explanation for the response.",
 		},
 		"redirect": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of redirect for the response, which can be 'automatic' or 'manual'.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of response being sent, which can be one of the predefined response types such as 'tcp_close', 'url_redirect', or 'html_page'.",
 		},
 		"user_response_message": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The message content of the response, which is applicable for HTML advanced responses.",
 		},
 		"user_response_text": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The text content of the response, which can be a URL for URL redirects or HTML content for HTML responses.",
 		},
 		"user_response_title": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The title of the response message, which is applicable for HTML advanced responses.",
 		},
 	}

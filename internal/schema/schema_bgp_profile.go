@@ -44,7 +44,7 @@ func GetBgpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,11 +52,11 @@ func GetBgpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"external": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The External distance value, which should be between 1 and 255.",
 		},
 		"internal": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Internal distance value, which should be between 1 and 255.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,7 +70,7 @@ func GetBgpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"local": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Local distance value, which should be between 1 and 255.",
 		},
 		"locked": schema.BoolAttribute{
@@ -78,11 +78,11 @@ func GetBgpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The BGP port value.",
 		},
 		"read_only": schema.BoolAttribute{

@@ -39,27 +39,27 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 		Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 	},
 		"background_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The background color for the comment (rule section) and insert point rules. It is represented by its hexadecimal representation ('#RRGGBB').",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dscp_match_mask": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Mask for matching the six-bit DSCP field in incoming packets. This is used to filter packets based on their DSCP value.",
 		},
 		"dscp_match_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Match value for the six-bit DSCP field. This is used to match packets based on their DSCP value.",
 		},
 		"dscp_set_mask": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Mask for setting the six-bit DSCP field in outgoing packets. This is used to control which bits of the DSCP value are modified.",
 		},
 		"dscp_set_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Value to set for outgoing packets for the six-bit DSCP field. This is used to modify the DSCP value of packets being sent out.",
 		},
 		"etag": schema.StringAttribute{
@@ -67,7 +67,7 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"guarantee": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The bandwidth guarantee for this QoS rule in kbit/s. Negative values indicate percents of the interface capacity.",
 		},
 		"key": schema.Int64Attribute{
@@ -75,11 +75,11 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"latency": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The optional latency for configuring active queue management scheduling algorithm. This value helps in managing the delay in packet processing.",
 		},
 		"limit": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The bandwidth limit for this QoS rule in kbit/s. Negative values indicate percents of the interface capacity.",
 		},
 		"link": schema.MapAttribute{
@@ -93,7 +93,7 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"parent_insert_point": schema.StringAttribute{
@@ -105,15 +105,15 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"priority": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The traffic priority for this QoS rule. This value determines the priority of the traffic handled by this rule.",
 		},
 		"qos_class_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a QoS Class, which is an element that links a rule in a QoS Policy to one or more Firewall Actions. The traffic allowed in the access rule is assigned the QoS Class defined for the rule, and the QoS class is used as the matching criteria for applying QoS Policy rules.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the Rule within the Policy. If not specified, the Rule will be the first one in the Policy.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -137,11 +137,11 @@ func GetQosDscpRuleSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of insert point for the rule. It can be 'normal' for a standard insert point or 'automatic' for an automatic rule insert point.",
 		},
 		"weight": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The optional weight in percents used for assigning to priority queues when the class guarantee is reached. This helps in managing traffic prioritization effectively.",
 		},
 	}

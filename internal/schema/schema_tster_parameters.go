@@ -35,27 +35,27 @@ func GetTesterParametersSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"alert_interval": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The interval in seconds before sending a new alert when the same test keeps failing repeatedly. The default value is 3600 seconds (60 minutes).",
 	},
 		"auto_recovery": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the engine should automatically go back online after a reboot if all offline tests report success.",
 		},
 		"boot_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The boot delay in seconds that the engine waits before resuming tests after listed events. The default value is 30 seconds (maximum: 1800 seconds).",
 		},
 		"boot_recovery": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the engine should automatically go back online after a reboot if all offline tests report success.",
 		},
 		"restart_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The restart delay in seconds that the engine waits before resuming tests after listed events. The default value is 5 seconds (maximum: 1800 seconds).",
 		},
 		"status_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The status delay in seconds that the engine waits before resuming tests after listed events. The default value is 5 seconds (maximum: 1800 seconds).",
 		},
 	}

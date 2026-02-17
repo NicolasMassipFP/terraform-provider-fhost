@@ -35,20 +35,20 @@ func GetAliasValueSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"alias_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 	},
 		"cluster_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a group of devices, or nodes, that share a given work load. You can cluster Firewalls, IPS engines, and Layer 2 Firewalls to share the load and provide redundancy, allowing, for example, scheduled maintenance that takes one node out of service without interrupting services to the users.",
 		},
 		"resolved_value": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The resolved values for the Alias, which are the actual values used in the policies.",
 			ElementType: types.StringType,
 		},
 		"translated_element": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Network Element used as translated element.",
 			ElementType: types.StringType,
 		},

@@ -35,15 +35,15 @@ func GetSwitchInterfacePortSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"physical_switch_port_number": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The port number for a Physical-Switch, which is numbered from 0 to (N - 1), where N is the number of ports available on the Physical-Switch appliance.",
 	},
 		"soft_switch_pint_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the abstract physical interface used in the engine cluster, which includes various settings and configurations for network interfaces.",
 		},
 		"switch_interface_port_comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A comment describing the port, which can be used for additional information.",
 		},
 	}

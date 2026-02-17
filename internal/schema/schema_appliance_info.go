@@ -35,43 +35,43 @@ func GetApplianceInfoSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"cloud_id": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The unique identifier for the appliance in the cloud service, such as an AWS instance ID.",
 	},
 		"cloud_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of cloud service associated with the appliance, such as AWS or Azure.",
 		},
 		"first_upload_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The first upload time of the appliance in milliseconds since epoch.",
 		},
 		"hardware_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The hardware version of the appliance.",
 		},
 		"initial_contact_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The initial contact time of the appliance in milliseconds since epoch.",
 		},
 		"initial_license_remaining_days": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of remaining days before the initial license expires.",
 		},
 		"product_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the product associated with the appliance.",
 		},
 		"proof_of_serial": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The proof of serial number for the appliance, used for validation purposes.",
 		},
 		"software_features": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The features available in the software running on the appliance.",
 		},
 		"software_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The version of the software running on the appliance.",
 		},
 	}

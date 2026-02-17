@@ -35,11 +35,11 @@ func GetCommunityExpressionSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"expression": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The expression value used in the Route Entry Settings.",
 	},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of this expression, determining its order of evaluation.",
 		},
 	}

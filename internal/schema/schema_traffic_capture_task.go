@@ -44,23 +44,23 @@ func GetTrafficCaptureTaskSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"capture_headers_only": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether to capture only headers in the traffic capture task. If true, only the headers of the traffic will be captured, excluding the payload.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"description": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Description of the traffic capture task, providing details about its purpose or configuration.",
 		},
 		"destination_file": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The destination file path where the captured traffic data will be stored. This is the file location on the server or client where the traffic capture results will be saved.",
 		},
 		"duration": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The duration in seconds for which the traffic capture task will run. This defines how long the task will capture network traffic data.",
 		},
 		"etag": schema.StringAttribute{
@@ -82,11 +82,11 @@ func GetTrafficCaptureTaskSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"max_file_size": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum size of the file for the traffic capture task, in bytes.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -94,12 +94,12 @@ func GetTrafficCaptureTaskSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},
 		"sg_info_option": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether to include SGInfo in the traffic capture task. If true, SGInfo data will be included in the captured traffic information.",
 		},
 		"system": schema.BoolAttribute{
@@ -111,7 +111,7 @@ func GetTrafficCaptureTaskSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"traffic_capture_comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Comment for the traffic capture task, describing its purpose or details.",
 		},
 		"trashed": schema.BoolAttribute{

@@ -44,15 +44,15 @@ func GetSandboxDataCenterSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"api_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The API key for the Sandbox Data Center. This is required for authentication when accessing the sandbox service.",
 		},
 		"api_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The API URL of the Sandbox Data Center. This is used for API interactions with the sandbox service.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetSandboxDataCenterSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"hostname": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The hostname of the Sandbox Data Center. This is required for the sandbox service to connect.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,11 +78,11 @@ func GetSandboxDataCenterSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"portal_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The portal URL of the Sandbox Data Center. This is used for accessing the sandbox portal.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,11 +90,11 @@ func GetSandboxDataCenterSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"sandbox_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the Sandbox Data Center. Valid values are 'forcepoint_sandbox', 'local_shm_sandbox', 'cloud_sandbox', and 'local_sandbox'.",
 		},
 		"server_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The server URL of the Sandbox Data Center. This is required for the sandbox service to connect.",
 		},
 		"system": schema.BoolAttribute{

@@ -35,7 +35,7 @@ func GetSnmpTrapDestinationSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"address": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IP address of the SNMP trap destination.",
 	},
 		"admin_domain": schema.StringAttribute{
@@ -43,11 +43,11 @@ func GetSnmpTrapDestinationSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"destination_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number of the SNMP trap destination.",
 		},
 		"etag": schema.StringAttribute{
@@ -69,7 +69,7 @@ func GetSnmpTrapDestinationSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

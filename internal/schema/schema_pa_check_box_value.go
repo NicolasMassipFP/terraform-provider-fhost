@@ -35,11 +35,11 @@ func GetPaCheckBoxValueSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"parameter_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
 	},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The check-box value, where '0' represents unselected and '1' represents selected.",
 		},
 	}

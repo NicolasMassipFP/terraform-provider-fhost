@@ -44,11 +44,11 @@ func GetDeleteCounterDataTaskSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"end_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end time in ms used when the time_limit_type is set to 'absolute_time_range'.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,23 +56,23 @@ func GetDeleteCounterDataTaskSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"for_application_health_counter_type": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if application health-type counter data need to be deleted by the task.",
 		},
 		"for_default_counter_type": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if default-type counter data need to be deleted by the task.",
 		},
 		"for_elasticsearch_counter_type": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if Elasticsearch-type counter data need to be deleted by the task.",
 		},
 		"for_netlink_status_counter_type": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if NetLink status-type counter data need to be deleted by the task.",
 		},
 		"for_status_counter_type": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if status-type counter data need to be deleted by the task.",
 		},
 		"key": schema.Int64Attribute{
@@ -90,7 +90,7 @@ func GetDeleteCounterDataTaskSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,20 +98,20 @@ func GetDeleteCounterDataTaskSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"relative_time_begin": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The begin number of days when the time_limit_type is set to 'relative_time_range' or 'before'.",
 		},
 		"relative_time_end": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end number of days when the time_limit_type is set to 'relative_time_range' or 'before'.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},
 		"start_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start time in ms used when the time_limit_type is set to 'absolute_time_range' or 'after'.",
 		},
 		"system": schema.BoolAttribute{
@@ -123,7 +123,7 @@ func GetDeleteCounterDataTaskSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"time_limit_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Log task time limit type: Time range type. 'before' for 'relative_time_end' number of days, 'relative_time_range' for between 'relative_time_begin' number of days and 'relative_time_end' number of days, 'absolute_time_range' for between 'start_time' time in ms and 'end_time' time in ms. 'today' for today. 'yesterday' for yesterday. 'last_full_week_sun_sat' for last full week (sunday-saturday). 'last_full_week_mon_sun' for last full week (monday-sunday). 'last_full_month' for last full month. 'after' for after 'start_time' time in ms.",
 		},
 		"trashed": schema.BoolAttribute{

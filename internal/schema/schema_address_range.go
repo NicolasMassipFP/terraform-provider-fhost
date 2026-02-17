@@ -44,7 +44,7 @@ func GetAddressRangeSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetAddressRangeSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ip_range": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The range of IP addresses for the Address Range. Must be a valid IPv4 or IPv6 address range.",
 		},
 		"key": schema.Int64Attribute{
@@ -66,7 +66,7 @@ func GetAddressRangeSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -74,7 +74,7 @@ func GetAddressRangeSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

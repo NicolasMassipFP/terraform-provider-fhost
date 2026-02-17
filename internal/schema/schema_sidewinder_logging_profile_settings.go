@@ -40,19 +40,19 @@ func GetSidewinderLoggingProfileSettingsSchemaAttributes(ctx context.Context) ma
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "element": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is the base class for all storable elements.",
 		},
 		"enable": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the logging profile settings are: '0' not enabled; '1' always enabled; '2' limited.",
 		},
 		"interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval value in seconds for the logging profile settings, which is applicable when the activation is limited.",
 		},
 		"threshold": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The threshold value for the logging profile settings, which is applicable when the activation is limited.",
 		},
 	}

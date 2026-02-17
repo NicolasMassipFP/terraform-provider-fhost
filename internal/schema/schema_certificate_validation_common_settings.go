@@ -35,7 +35,7 @@ func GetCertificateValidationCommonSettingsSchemaAttributes(ctx context.Context)
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"crl_distribution_point_list": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "A list of URLs representing the distribution points to use for CRL (Certificate Revocation List) cache on the engine.",
 		ElementType: types.StringType,
 	},

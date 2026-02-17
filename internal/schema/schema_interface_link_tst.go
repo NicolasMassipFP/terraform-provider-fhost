@@ -35,15 +35,15 @@ func GetInterfaceLinkTestSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"alert_notification": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether an alert notification is sent if the test fails.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"down_ratio": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The ratio used to determine if an aggregated link in Load Balancing mode is down. It is ignored for non-aggregated links or links not configured in Load Balancing mode. Accepted values are: 0 (not set), or any of the values in 15, 20, 25, 30, 35, 40, 45, 50.",
 		},
 		"key": schema.Int64Attribute{
@@ -57,35 +57,35 @@ func GetInterfaceLinkTestSchemaAttributes(ctx context.Context) map[string]schema
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nicid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Interface ID on which the test is run. It can be 'all', 'all_with_cvi', or a specific interface ID. Note! (Firewalls only) Only the first interface that belongs to an Aggregated Link is shown in the list of interfaces. However, the Link Status test checks the status of both interfaces in the Aggregated Link.",
 		},
 		"offline_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is offline or not.",
 		},
 		"online_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is online or not.",
 		},
 		"standby_state": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is executed when the engine is in standby state or not.",
 		},
 		"test_action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to be taken if the test fails. Options include 'none', 'offline', 'forceoffline', and 'forcespeed'.",
 		},
 		"test_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the test is active or not.",
 		},
 		"test_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds at which the test is executed. Note! Running a test too frequently can increase overhead.",
 		},
 	}

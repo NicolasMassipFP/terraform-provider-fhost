@@ -35,19 +35,19 @@ func GetInlineL2fwInterfaceSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"address": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IP Address (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"inspect_qinq": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether QinQ is inspected or not. This option allows the IPS engine to inspect traffic that uses QinQ encapsulation.",
 		},
 		"inspect_unspecified_vlans": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether unspecified VLANs are inspected or not. Deselect this option to make the IPS engine ignore traffic from VLANs that are not included in the IPS engine's interface configuration. We recommend that you keep this option selected if you do not have a specific reason to deselect it.",
 		},
 		"key": schema.Int64Attribute{
@@ -61,27 +61,27 @@ func GetInlineL2fwInterfaceSchemaAttributes(ctx context.Context) map[string]sche
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"logical_interface_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Logical Interface. It is an IPS Element used in the IPS policies to represent one or more physical network interfaces as defined in the IPS engine properties.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"network_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP Network (IPv4 or IPv6) of the interface. For dynamic interfaces, this will be null.",
 		},
 		"nicid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Interface ID of the interface.",
 		},
 		"virtual_second_mapping": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Second Virtual Mapping.",
 		},
 		"zone_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.",
 		},
 	}

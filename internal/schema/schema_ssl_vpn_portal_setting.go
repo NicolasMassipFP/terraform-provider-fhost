@@ -35,11 +35,11 @@ func GetSslVpnPortalSettingSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"port": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The SSL VPN Portal service port, which defines the port used for the SSL VPN Portal.",
 	},
 		"ssl_vpn_portal": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an Application Access Portal. It contains settings for hostnames, policies, server credentials, and various portal configurations.",
 		},
 	}

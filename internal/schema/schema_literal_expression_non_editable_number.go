@@ -35,7 +35,7 @@ func GetLiteralExpressionNonEditableNumberSchemaAttributes(ctx context.Context) 
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"key": schema.Int64Attribute{
@@ -49,11 +49,11 @@ func GetLiteralExpressionNonEditableNumberSchemaAttributes(ctx context.Context) 
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"long_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The long value representing the non-editable number used in filtering logic.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

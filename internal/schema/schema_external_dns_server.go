@@ -40,7 +40,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the server. Must be a valid IPv4 address.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,7 +48,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,7 +56,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the server. Must be a valid IPv6 address.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,7 +70,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -78,7 +78,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -99,11 +99,11 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"time_to_live": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Time to Live (TTL) value for DNS entries in seconds. It defines how long a DNS entry can be cached before querying the DNS server again.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -111,7 +111,7 @@ func GetExternalDnsServerSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"update_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Update Interval in seconds for DNS entries. It defines how often the DNS entries can be updated to the DNS server if the link status changes constantly.",
 		},
 	}

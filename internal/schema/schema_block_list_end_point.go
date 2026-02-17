@@ -35,23 +35,23 @@ func GetBlockListEndPointSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"address_mode": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The type of address mode for the block list endpoint. 'any': Matches any IP address. 'attacker': Matches the IP address identified as the originator of an attack by the Situation element that is triggered. 'victim': Matches the IP address identified as the target of an attack by the Situation element that is triggered. 'ip_source': Matches the IP address that is the source of the packet(s) that trigger the detected situation. 'ip_destination': Matches the IP address that is the destination of the packet(s) that trigger the detected situation. 'tcp_client': Matches the IP address that is the source of the TCP connection that triggers the detected situation. 'tcp_server': Matches the IP address that is the destination of the TCP connection that triggers the detected situation. 'address': Matches only the fixed IP address.",
 	},
 		"ip_network": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP network range for the block list endpoint.",
 		},
 		"port1": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The first port value for the block list endpoint.",
 		},
 		"port2": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The second port value for the block list endpoint.",
 		},
 		"port_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of port mode for the block list endpoint. 'not_used': Matches any IP traffic regardless of the protocol or port. 'from_traffic': Matches the IP protocol and the port number in the traffic that triggered the block list entry. 'predefined_tcp': Matches only TCP traffic through the TCP port or the range of TCP ports. 'predefined_udp': Matches only UDP traffic through the UDP port or the range of UDP ports.",
 		},
 	}

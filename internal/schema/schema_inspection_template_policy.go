@@ -44,7 +44,7 @@ func GetInspectionTemplatePolicySchemaAttributes(ctx context.Context) map[string
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,11 +52,11 @@ func GetInspectionTemplatePolicySchemaAttributes(ctx context.Context) map[string
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"file_filtering_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a File Filtering Policy, which is used to define the action and inspection rules for File Filtering Engines.",
 		},
 		"inspection_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an Inspection Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,7 +74,7 @@ func GetInspectionTemplatePolicySchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,7 +90,7 @@ func GetInspectionTemplatePolicySchemaAttributes(ctx context.Context) map[string
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"template": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a normal policy that can be applied to a Firewall, IPS, or Layer 2 device. It includes references to template policies for access control and inspection, as well as file filtering policies.",
 		},
 		"trashed": schema.BoolAttribute{

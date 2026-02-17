@@ -44,7 +44,7 @@ func GetInternalGatewayCertificateRequestSchemaAttributes(ctx context.Context) m
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -52,7 +52,7 @@ func GetInternalGatewayCertificateRequestSchemaAttributes(ctx context.Context) m
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"key_length": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The length of the key used in the certificate request, typically measured in bits.",
 		},
 		"link": schema.MapAttribute{
@@ -62,19 +62,19 @@ func GetInternalGatewayCertificateRequestSchemaAttributes(ctx context.Context) m
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"public_key_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The algorithm used for the public key in the certificate request, such as RSA or ECDSA.",
 		},
 		"request": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The certificate request in PEM format, which is used to request a certificate from a Certificate Authority.",
 		},
 		"signature_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The algorithm used to sign the certificate request, which ensures the integrity and authenticity of the request.",
 		},
 	}

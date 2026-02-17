@@ -35,11 +35,11 @@ func GetIdleTimeoutSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"protocol": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The protocol for which the idle timeout is defined. Default values are 'udp', 'tcp', 'icmp', and 'other'.",
 	},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout duration in seconds for idle connections.",
 		},
 	}

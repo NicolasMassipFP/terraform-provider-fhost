@@ -44,15 +44,15 @@ func GetSslVpnPortalSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"allow_empty_referrer": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Application Access Portal allows empty referrers.",
 		},
 		"brand_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The brand color of the Application Access Portal. This is used for branding purposes.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -74,31 +74,31 @@ func GetSslVpnPortalSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"log_access": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether access logs are enabled for the Application Access Portal.",
 		},
 		"look_and_feel": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The look and feel of the Application Access Portal.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"persistent_session": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Application Access Portal supports persistent sessions.",
 		},
 		"portal_session_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The session timeout for the Application Access Portal in seconds.",
 		},
 		"portal_theme": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The theme of the Application Access Portal.",
 		},
 		"portal_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout for the Application Access Portal in seconds.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -106,20 +106,20 @@ func GetSslVpnPortalSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"self_signed_certificate": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Application Access Portal uses a self-signed certificate.",
 		},
 		"server_credential": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the TLS Server Credential.",
 			ElementType: types.StringType,
 		},
 		"session_timeout_unit": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unit of time for the session timeout.",
 		},
 		"ssl_vpn_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an Application Access Portal Policy, which is used to define portal access rules for the connections. It includes properties such as portal rules and access control.",
 		},
 		"system": schema.BoolAttribute{
@@ -131,11 +131,11 @@ func GetSslVpnPortalSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout_unit": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unit of time for the portal timeout.",
 		},
 		"title": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The title of the Application Access Portal.",
 		},
 		"trashed": schema.BoolAttribute{

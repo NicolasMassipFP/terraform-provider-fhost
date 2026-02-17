@@ -44,15 +44,15 @@ func GetUserAlertCheckSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"alert_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
 		},
 		"check_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of check. It can be one of the following: bandwidth_check, web_content_check, access_check, file_transfers_check, attack_check, endpoint_check.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetUserAlertCheckSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Query Data Filter, which is a local filter that contains filter expression nodes and is specific to the element or view in which it was created.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetUserAlertCheckSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetUserAlertCheckSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"severity": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The severity of the alert. It is a value between 1 (low) and 10 (critical). By default, it is set to 10 for high severity.",
 		},
 		"system": schema.BoolAttribute{
@@ -98,23 +98,23 @@ func GetUserAlertCheckSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"threshold_duration_unit": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unit of time for the threshold duration. It can be one of the following: minutes, hours.",
 		},
 		"threshold_duration_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The duration value for the threshold. It is used to specify how long the threshold should be monitored before triggering an alert.",
 		},
 		"threshold_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of threshold. It can be one of the following: single_occurrence, event_count, bandwidth_count.",
 		},
 		"threshold_unit": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unit of measurement for the threshold value. It can be one of the following: events, kb, mb, gb, tb.",
 		},
 		"threshold_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The threshold value. It can be the number of events or the amount of traffic in KB/MB/GB/TB, depending on the threshold type. The events quantity is only for bandwidth_check and web_content_check checks.",
 		},
 		"trashed": schema.BoolAttribute{

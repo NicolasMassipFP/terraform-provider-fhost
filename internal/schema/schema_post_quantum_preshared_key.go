@@ -44,7 +44,7 @@ func GetPostQuantumPresharedKeySchemaAttributes(ctx context.Context) map[string]
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,15 +66,15 @@ func GetPostQuantumPresharedKeySchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"primary_ppk_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Primary ID of the Preshared Key. This field is required. ID must only contain ASCII characters having decimal code from 32 to 255 included but excluding ' \" '(double quote). Read-Only if PPK has been auto-generated (internal ones).",
 		},
 		"primary_ppk_secret": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Primary Secret of the Preshared Key. This field is required. ID must only contain ASCII characters having decimal code from 32 to 255 included but excluding ' \" '(double quote). Read-Only if PPK has been auto-generated (internal ones).",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,11 +82,11 @@ func GetPostQuantumPresharedKeySchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary_ppk_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Secondary ID of the Preshared Key. Optional. ID must only contain ASCII characters having decimal code from 32 to 255 included but excluding ' \" '(double quote). Read-Only if PPK has been auto-generated (internal ones).",
 		},
 		"secondary_ppk_secret": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Secondary Secret of the Preshared Key. Required if secondary ID is filled. ID must only contain ASCII characters having decimal code from 32 to 255 included but excluding ' \" '(double quote). Read-Only if PPK has been auto-generated (internal ones).",
 		},
 		"system": schema.BoolAttribute{

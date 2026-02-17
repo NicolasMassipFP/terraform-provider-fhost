@@ -35,19 +35,19 @@ func GetIpNetlinkWeightSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"arp_generate": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Automatically generate a proxy ARP for the NATed address in the selected Network.",
 	},
 		"netlink_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Static NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for gateway, networks, DNS elements, and outbound IP addresses.",
 		},
 		"network_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 		"weight": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The weight of this Net Link in the pool.",
 		},
 	}

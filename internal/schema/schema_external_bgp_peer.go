@@ -44,7 +44,7 @@ func GetExternalBgpPeerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,19 +66,19 @@ func GetExternalBgpPeerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"neighbor_as": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the Autonomous System for Dynamic Routing Firewall functionality. The BGP Version is 4/4+. It includes the AS Number in decimal notation, which is used to identify the autonomous system in BGP routing.",
 		},
 		"neighbor_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address of the external BGP peer.",
 		},
 		"neighbor_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the external BGP peer. Default is 179.",
 		},
 		"read_only": schema.BoolAttribute{

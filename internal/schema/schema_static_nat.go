@@ -35,7 +35,7 @@ func GetStaticNatSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"automatic_proxy": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether Automatic Proxy ARP is enabled. This allows the engine to answer address queries regarding the translated address(es).",
 	},
 	}

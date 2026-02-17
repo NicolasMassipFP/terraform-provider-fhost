@@ -35,11 +35,11 @@ func GetBgpDistanceEntrySchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"distance": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The distance value.",
 	},
 		"subnet": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 	}

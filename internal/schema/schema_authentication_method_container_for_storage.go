@@ -35,11 +35,11 @@ func GetAuthenticationMethodContainerForStorageSchemaAttributes(ctx context.Cont
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"auth_server_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 	},
 		"rank": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the authentication server in the current authentication method.",
 		},
 	}

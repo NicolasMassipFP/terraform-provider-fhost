@@ -44,11 +44,11 @@ func GetLinkSelectionValueSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"bandwidth": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The bandwidth value for the link selection, ranging from 0 to 4.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,7 +56,7 @@ func GetLinkSelectionValueSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"jitter": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The jitter value for the link selection, ranging from 0 to 4.",
 		},
 		"key": schema.Int64Attribute{
@@ -64,7 +64,7 @@ func GetLinkSelectionValueSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"latency": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The latency value for the link selection, ranging from 0 to 4.",
 		},
 		"link": schema.MapAttribute{
@@ -78,11 +78,11 @@ func GetLinkSelectionValueSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"packet_loss": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The packet loss value for the link selection, ranging from 0 to 4.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,7 +90,7 @@ func GetLinkSelectionValueSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"stability": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The stability value for the link selection, ranging from 0 to 4.",
 		},
 		"system": schema.BoolAttribute{

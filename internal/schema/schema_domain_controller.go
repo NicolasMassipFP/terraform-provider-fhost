@@ -39,7 +39,7 @@ func GetDomainControllerSchemaAttributes(ctx context.Context) map[string]schema.
 		Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -47,11 +47,11 @@ func GetDomainControllerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"expiration_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time in seconds to keep user ID data, ranging from 60 seconds (1 minute) to 604800 seconds (7 days). By default, it is set to 28800 seconds (8 hours).",
 		},
 		"ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address of the domain controller, supporting both IPv4 and IPv6 formats.",
 		},
 		"key": schema.Int64Attribute{
@@ -69,11 +69,11 @@ func GetDomainControllerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password for the user account with Domain Admin credentials, which is stored in a ciphered format.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -81,7 +81,7 @@ func GetDomainControllerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"server_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of server to query for user ID data, such as 'ActiveDirectory'. 'dc' for Domain Controller and 'exchange' for Exchange Server.",
 		},
 		"system": schema.BoolAttribute{
@@ -97,7 +97,7 @@ func GetDomainControllerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"user": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The user name of a user in the domain with permission to execute WMI queries from a remote computer.",
 		},
 	}

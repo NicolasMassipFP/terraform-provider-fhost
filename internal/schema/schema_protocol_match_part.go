@@ -35,11 +35,11 @@ func GetProtocolMatchPartSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if any inspection protocol matches the criteria. If true, no elements are specified.",
 	},
 		"protocol": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the protocol or match expression.",
 			ElementType: types.StringType,
 		},

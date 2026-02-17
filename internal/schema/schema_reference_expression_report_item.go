@@ -35,11 +35,11 @@ func GetReferenceExpressionReportItemSchemaAttributes(ctx context.Context) map[s
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"item_specifier": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The item specifier used to identify the specific item within the report, which is used for filtering log entries based on item characteristics.",
 		},
 		"key": schema.Int64Attribute{
@@ -53,11 +53,11 @@ func GetReferenceExpressionReportItemSchemaAttributes(ctx context.Context) map[s
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"report_file_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Report File, which contains the generated report data. It includes metadata such as creation time, period begin, and period end, along with sections of the report.",
 		},
 	}

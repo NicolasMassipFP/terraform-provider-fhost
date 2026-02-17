@@ -44,7 +44,7 @@ func GetExternalAuthenticationMethodSchemaAttributes(ctx context.Context) map[st
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,27 +66,27 @@ func GetExternalAuthenticationMethodSchemaAttributes(ctx context.Context) map[st
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"open_id_client_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Open ID Client ID or API Key, which is used to authenticate the client with the Open ID server.",
 		},
 		"open_id_secret": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Open ID shared secret, which is used to authenticate the client with the Open ID server. This value is ciphered and should be stored securely.",
 		},
 		"open_id_trusted_cert_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Trusted Certificate Authority, which is used to manage trusted certificate authorities in the system.",
 		},
 		"open_id_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Open ID Connect Discovery URL, which is used to discover the Open ID server configuration.",
 		},
 		"open_id_user_attribute": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Open ID User Attribute, which is used to identify the user in the Open ID server response. If empty, the default user identifier will be used.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -94,16 +94,16 @@ func GetExternalAuthenticationMethodSchemaAttributes(ctx context.Context) map[st
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"saml_group_attr_name": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The list of group attribute names used in SAML authentication.",
 			ElementType: types.StringType,
 		},
 		"saml_metadata_file": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SAML Identity Provider Metadata XML File, which contains the metadata of the SAML Identity Provider. This can be a local file path or a remote URI.",
 		},
 		"saml_tls_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"system": schema.BoolAttribute{
@@ -119,7 +119,7 @@ func GetExternalAuthenticationMethodSchemaAttributes(ctx context.Context) map[st
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Type of the authentication method, which can be one of the following: user_password, ias, ipsec, preshared_key, radius, tacacs, ldap.",
 		},
 	}

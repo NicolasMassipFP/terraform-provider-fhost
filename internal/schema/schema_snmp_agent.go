@@ -44,7 +44,7 @@ func GetSnmpAgentSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,7 +66,7 @@ func GetSnmpAgentSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -74,24 +74,24 @@ func GetSnmpAgentSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"snmp_monitoring_contact": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The contact information of the person responsible for the engine. This is used for SNMP monitoring purposes.",
 		},
 		"snmp_monitoring_listening_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The UDP listening port number that the SNMP agent listens to. Default is 161.",
 		},
 		"snmp_monitoring_user_name": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP monitoring user names. This is used for SNMP monitoring purposes.",
 			ElementType: types.StringType,
 		},
 		"snmp_trap_user_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP trap user name. This is used for SNMP trap notifications.",
 		},
 		"snmp_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The version of the SNMP agent.",
 		},
 		"system": schema.BoolAttribute{

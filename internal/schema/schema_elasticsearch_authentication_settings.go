@@ -35,23 +35,23 @@ func GetElasticsearchAuthenticationSettingsSchemaAttributes(ctx context.Context)
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"api_key": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The API key for authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'api_key' authentication method is used.",
 	},
 		"login": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The login for basic authentication to connect to the Elasticsearch cluster. This must be set when the 'basic' authentication method is used.",
 		},
 		"method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The authentication method used for connecting to the Elasticsearch cluster.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password for basic authentication to connect to the Elasticsearch cluster. This must be set in clear text when the 'basic' authentication method is used.",
 		},
 		"tls_credentials": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
 		},
 	}

@@ -35,11 +35,11 @@ func GetRbvpnGeneveSettingsSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"geneve_destination_port": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Destination Port value between 1 and 65 535. When left empty, the default value (6081) is used.",
 	},
 		"geneve_vni": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Virtual Network Identifier (VNI) value between 0 and 16 777 215. When left empty, the default value (0) is used.",
 		},
 	}

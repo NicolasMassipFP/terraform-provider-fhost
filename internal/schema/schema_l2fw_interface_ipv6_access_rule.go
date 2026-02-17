@@ -48,11 +48,11 @@ func GetL2fwInterfaceIpv6AccessRuleSchemaAttributes(ctx context.Context) map[str
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"background_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The background color for the comment (rule section) and insert point rules. It is represented by its hexadecimal representation ('#RRGGBB').",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -74,7 +74,7 @@ func GetL2fwInterfaceIpv6AccessRuleSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"parent_insert_point": schema.StringAttribute{
@@ -86,7 +86,7 @@ func GetL2fwInterfaceIpv6AccessRuleSchemaAttributes(ctx context.Context) map[str
 			Description: "This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the Rule within the Policy. If not specified, the Rule will be the first one in the Policy.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -94,7 +94,7 @@ func GetL2fwInterfaceIpv6AccessRuleSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"rule_validity_times": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Rule Validity Time.",
 			ElementType: types.StringType,
 		},
@@ -115,7 +115,7 @@ func GetL2fwInterfaceIpv6AccessRuleSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of insert point for the rule. It can be 'normal' for a standard insert point or 'automatic' for an automatic rule insert point.",
 		},
 	}

@@ -39,7 +39,7 @@ func GetSnmpUserSchemaAttributes(ctx context.Context) map[string]schema.Attribut
 		Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -61,7 +61,7 @@ func GetSnmpUserSchemaAttributes(ctx context.Context) map[string]schema.Attribut
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -69,19 +69,19 @@ func GetSnmpUserSchemaAttributes(ctx context.Context) map[string]schema.Attribut
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"snmp_authentication_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password used for authentication by the SNMP user.",
 		},
 		"snmp_authentication_protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The authentication protocol used by the SNMP user. It can be one of the following: MD5, SHA, SHA-224, SHA-256, SHA-384, or SHA-512.",
 		},
 		"snmp_privacy_protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The privacy protocol used by the SNMP user. It can be one of the following: DES, AES-128, AES-192, or AES-256.",
 		},
 		"snmp_private_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password used for privacy by the SNMP user.",
 		},
 		"system": schema.BoolAttribute{

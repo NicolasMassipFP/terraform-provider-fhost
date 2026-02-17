@@ -35,12 +35,12 @@ func GetDynamicRoutingSettingsSchemaAttributes(ctx context.Context) map[string]s
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"antispoofing_ne_ref": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the Network Element used for antispoofing.",
 		ElementType: types.StringType,
 	},
 		"path_count": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The path count for equal cost multi-path routing, which determines the number of paths used for routing decisions.",
 		},
 	}

@@ -25,6 +25,7 @@ const SLEEP_BETWEEN_RETRIES_SEC = 5 * time.Second
 type ResourceBaseCustomOperations[T any] interface {
 	GetCreateRequestParams(ctx context.Context, data *T) (map[string]string, error)
 	BeforeDelete(ctx context.Context, data *T, id string) error
+	ModelToJson(data *T) ([]byte, error)
 }
 
 type ResourceBase[T any] struct {
@@ -131,7 +132,7 @@ func (r *ResourceBase[T]) BeforeDelete(ctx context.Context, data *T, id string) 
 	return nil
 }
 
-func (r *ResourceBase[T]) modelToJson(data *T) ([]byte, error) {
+func (r *ResourceBase[T]) ModelToJson(data *T) ([]byte, error) {
 	return apijson.MarshalRoot(*data)
 }
 
@@ -201,7 +202,7 @@ func (r *ResourceBase[T]) smcUpdateResource(
 			return nil, fmt.Errorf("failed to merge resource models for update: %w", err)
 		}
 
-		apiData, err := r.modelToJson(data)
+		apiData, err := r.Dispatch.ModelToJson(data)
 		if err != nil {
 			diag.AddError(
 				"Error marshalling resource data",
@@ -245,7 +246,7 @@ func (r *ResourceBase[T]) smcUpdateResource(
 func (r *ResourceBase[T]) smcCreateResource(
 	ctx context.Context, data *T, diag *diag.Diagnostics) (*smc.ResponseData, error) {
 
-	apiData, err := r.modelToJson(data)
+	apiData, err := r.Dispatch.ModelToJson(data)
 	if err != nil {
 		diag.AddError(
 			"Error marshalling resource data",
@@ -288,7 +289,7 @@ func (r *ResourceBase[T]) smcCreateSubResource(
 		return nil, err
 	}
 
-	apiData, err := r.modelToJson(data)
+	apiData, err := r.Dispatch.ModelToJson(data)
 	if err != nil {
 		diag.AddError(
 			"Error marshalling resource data",

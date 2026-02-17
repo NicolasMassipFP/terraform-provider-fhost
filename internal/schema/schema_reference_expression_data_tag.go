@@ -35,11 +35,11 @@ func GetReferenceExpressionDataTagSchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"data_tag_values": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A comma-delimited list of data tag values used in the reference expression for filtering log fields.",
 		},
 		"key": schema.Int64Attribute{
@@ -53,7 +53,7 @@ func GetReferenceExpressionDataTagSchemaAttributes(ctx context.Context) map[stri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

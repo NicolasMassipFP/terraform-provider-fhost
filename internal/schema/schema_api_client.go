@@ -44,15 +44,15 @@ func GetApiClientSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"allowed_to_login_in_shared": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the API Client is allowed to log in to the Shared Domain. If true, the API Client can access shared resources and settings.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"console_superuser": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator user is a console superuser. This applies only to an Appliance and grants additional privileges for console access.",
 		},
 		"enabled": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetApiClientSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,7 +90,7 @@ func GetApiClientSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"superuser": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator user is a superuser. A superuser has full access to all system functions and settings.",
 		},
 		"system": schema.BoolAttribute{

@@ -44,11 +44,11 @@ func GetGatewaySettingsSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"certificate_cache_crl_validity": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Time in seconds for which the certificate cache is valid.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,35 +70,35 @@ func GetGatewaySettingsSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mobike_after_sa_update": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Whether the After SA flag is set for Mobike Policy.",
 		},
 		"mobike_before_sa_update": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Whether the Before SA flag is set for Mobike Policy.",
 		},
 		"mobike_no_rrc": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Whether the No RRC flag is set for Mobike Policy.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"negotiation_expiration": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Time in seconds after which the negotiation of VPN connections expires.",
 		},
 		"negotiation_retry_max_number": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Maximum number of retries for the negotiation of VPN connections.",
 		},
 		"negotiation_retry_timer": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Time in seconds to wait before retrying the negotiation of VPN connections.",
 		},
 		"negotiation_retry_timer_max": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Maximum time in seconds to wait before retrying the negotiation of VPN connections.",
 		},
 		"read_only": schema.BoolAttribute{

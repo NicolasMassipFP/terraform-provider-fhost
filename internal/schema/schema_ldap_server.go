@@ -40,7 +40,7 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,31 +48,31 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"base_dn": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The base distinguished name (DN) for the LDAP server, which defines the starting point for user searches.",
 		},
 		"bind_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password for the user ID used for binding to the LDAP server.",
 		},
 		"bind_user_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The distinguished name (DN) of the user ID used for binding to the LDAP server.",
 		},
 		"client_cert_based_user_search": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The LDAP query filter used to find user entries based on client certificate subject distinguished name.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"display_name_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the display name in the LDAP directory.",
 		},
 		"email": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's email address in the LDAP directory.",
 		},
 		"etag": schema.StringAttribute{
@@ -80,28 +80,28 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"frame_ip_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the framed IP address in the LDAP directory.",
 		},
 		"group_member_attr": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for group membership in the LDAP directory.",
 		},
 		"group_object_class": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The LDAP object classes used for group entries in the LDAP directory.",
 			ElementType: types.StringType,
 		},
 		"group_object_id_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the unique identifier of the LDAP group object in the LDAP directory.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"job_title_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's job title in the LDAP directory.",
 		},
 		"key": schema.Int64Attribute{
@@ -115,7 +115,7 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -123,39 +123,39 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"long_user_id_attr": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's UPN in the LDAP directory.",
 		},
 		"max_search_result": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum number of LDAP entries that can be returned in a search result.",
 		},
 		"mobile_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's mobile phone number in the LDAP directory.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"office_location_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's office location in the LDAP directory.",
 		},
 		"page_size": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum number of LDAP entries returned on each page of the LDAP response.",
 		},
 		"photo_attr_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user's photo in the LDAP directory.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the LDAP server, which is used for communication.",
 		},
 		"protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The protocol used for LDAP communication, such as ldap, ldaps, or ldap_tls.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -163,16 +163,16 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
 		"short_user_id_attr": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute name used for the user ID in the LDAP directory.",
 		},
 		"supported_method": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Authentication Method.",
 			ElementType: types.StringType,
 		},
@@ -185,19 +185,19 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout value in seconds for the LDAP server connection.",
 		},
 		"tls_identity": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Identity, which contains data to check server identity when establishing a TLS connection. It includes fields such as DNS name, IP address, common name, distinguished name, and various hash values.",
 		},
 		"tls_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -205,7 +205,7 @@ func GetLdapServerSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"user_object_class": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The LDAP object classes used for user entries in the LDAP directory.",
 			ElementType: types.StringType,
 		},

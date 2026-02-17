@@ -35,20 +35,20 @@ func GetStaticMulticastRouteSchemaAttributes(ctx context.Context) map[string]sch
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"dest_interface": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The destination interfaces for the multicast route specified by their interface IDs. This is a collection of interface IDs that the multicast traffic will be routed to.",
 		ElementType: types.StringType,
 	},
 		"dest_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The destination IP address for the multicast route.",
 		},
 		"source_interface": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The source interface ID for the multicast route.",
 		},
 		"source_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The source IP address for the multicast route.",
 		},
 	}

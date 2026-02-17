@@ -44,12 +44,12 @@ func GetIpAddressListSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "ip": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The list of IP addresses, networks, or ranges.",
 			ElementType: types.StringType,
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

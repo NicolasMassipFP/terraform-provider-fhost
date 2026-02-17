@@ -44,11 +44,11 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"email": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The email address to which the report will be sent as an attachment. If not provided, no email will be sent.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,19 +56,19 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"export_in_html": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report will be generated in HTML format. Optional, if true, the report will be exported in HTML format.",
 		},
 		"export_in_pdf": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report will be generated in PDF format. Default choice if no other export formats are specified.",
 		},
 		"export_in_txt": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report will be generated in TXT format. Optional, if true, the report will be exported in TXT format.",
 		},
 		"filter_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a container for filter expressions, which can be used to define complex filtering rules. It contains a root node that holds the main filter expression.",
 		},
 		"key": schema.Int64Attribute{
@@ -76,7 +76,7 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"launch_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end time of the report operation, specified in UTC milliseconds from 1970-01-01. If not provided, the current time will be used.",
 		},
 		"link": schema.MapAttribute{
@@ -90,15 +90,15 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"overriding_duration": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The overriding duration of the report operation in seconds. If not provided, the report design's period duration will be used. Caution: This option is not compatible with the repeat option for recurrent tasks.",
 		},
 		"post_processed": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report will be post-processed after generation. If true, additional processing will be applied to the report.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -106,19 +106,19 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"repeat": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report operation should be repeated according to the period defined in the report design. If true, the report will be generated repeatedly.",
 		},
 		"report_design_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Report Design, which defines the structure and content of reports generated within the system. It includes sections and configurations for report generation.",
 		},
 		"report_per_sender": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether to generate one report per sender. If true, a separate report will be generated for each sender included in the filter.",
 		},
 		"stored": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether the report will be stored. If true, the report will be stored for later retrieval. Default is false.",
 		},
 		"system": schema.BoolAttribute{
@@ -134,7 +134,7 @@ func GetReportOperationSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"use_elasticsearch": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating whether to use Elasticsearch for report generation. If true, Elasticsearch will be used; otherwise, local storage will be used.",
 		},
 	}

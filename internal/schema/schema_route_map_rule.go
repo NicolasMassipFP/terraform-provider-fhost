@@ -44,7 +44,7 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to be taken by the rule.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -52,15 +52,15 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"background_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The background color for the comment (rule section) and insert point rules. It is represented by its hexadecimal representation ('#RRGGBB').",
 		},
 		"call_route_map_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -68,15 +68,15 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"finish": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this is the last rule in the Route Map.",
 		},
 		"goto": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Route Map Rule for Route Map Policy. It can be used to define routing policies based on various conditions.",
 		},
 		"is_disabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the rule is disabled.",
 		},
 		"key": schema.Int64Attribute{
@@ -94,7 +94,7 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"parent_insert_point": schema.StringAttribute{
@@ -106,7 +106,7 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the Rule within the Policy. If not specified, the Rule will be the first one in the Policy.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -130,7 +130,7 @@ func GetRouteMapRuleSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of insert point for the rule. It can be 'normal' for a standard insert point or 'automatic' for an automatic rule insert point.",
 		},
 	}

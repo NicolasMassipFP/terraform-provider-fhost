@@ -44,7 +44,7 @@ func GetRuleValidityTimeSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,12 +66,12 @@ func GetRuleValidityTimeSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"month_day": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.Int64Type,
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -79,27 +79,27 @@ func GetRuleValidityTimeSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"rule_time_active": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The repeat mode for the rule validity time. Possible values are 'always' (default), 'time_of_day', 'day_of_week', 'day_of_month', and 'date_of_year'.",
 		},
 		"rule_time_end": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end time of the rule validity period, in the format 'yyyy-MM-dd HH:mm'.",
 		},
 		"rule_time_repeat_end": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end time of the day for the repeat mode, in the format 'HH:mm'.",
 		},
 		"rule_time_repeat_start": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start time of the day for the repeat mode, in the format 'HH:mm'.",
 		},
 		"rule_time_start": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start time of the rule validity period, in the format 'yyyy-MM-dd HH:mm'.",
 		},
 		"rule_time_zone": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time zone mode for the rule validity time. Possible values are 'utc' (default) and 'engine_time'.",
 		},
 		"system": schema.BoolAttribute{
@@ -115,24 +115,24 @@ func GetRuleValidityTimeSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"week_day": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.StringType,
 		},
 		"yearly_day_end": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end day of the month for the yearly repeat mode. This should be an integer between 1 and 31, representing the day of the month.",
 		},
 		"yearly_day_start": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start day of the month for the yearly repeat mode. This should be an integer between 1 and 31, representing the day of the month.",
 		},
 		"yearly_month_end": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end month for the yearly repeat mode. This should be a valid month abbreviation (e.g., 'jan', 'feb', etc.).",
 		},
 		"yearly_month_start": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start month for the yearly repeat mode. This should be a valid month abbreviation (e.g., 'jan', 'feb', etc.).",
 		},
 	}

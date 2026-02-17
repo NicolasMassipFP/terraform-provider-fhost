@@ -35,15 +35,15 @@ func GetNat64MappingSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the NAT64 mapping.",
 	},
 		"nat64_mapping_protocol_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an IP-proto service, which is used to define a service based on the IP protocol number. It includes a protocol number that specifies the protocol used by the traffic.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank for ordering NAT64 mappings, where lower values indicate higher priority.",
 		},
 	}

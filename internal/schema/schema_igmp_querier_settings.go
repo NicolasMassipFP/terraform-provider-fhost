@@ -44,7 +44,7 @@ func GetIgmpQuerierSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetIgmpQuerierSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"igmp_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IGMP Version.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,11 +70,11 @@ func GetIgmpQuerierSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"query_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Query Interval (QDI) in seconds.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetIgmpQuerierSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"robustness": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Robustness value.",
 		},
 		"system": schema.BoolAttribute{

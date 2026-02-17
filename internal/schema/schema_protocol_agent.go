@@ -44,11 +44,11 @@ func GetProtocolAgentSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"deep_inspection_registration_number": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Internal use: it generates specific registration number when deep inspection is used. This concerns only for fw version <= 5.2.x.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,11 +56,11 @@ func GetProtocolAgentSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"fallback_agent_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Internal use: Id of the agent that should be used as a fallback.",
 		},
 		"identifier_situation": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Internal use: Id of the situation (application) which can be used for identifying this protocol.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,35 +78,35 @@ func GetProtocolAgentSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"module_build": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Dummy module info: build of the sensor module.",
 		},
 		"module_max_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Dummy module info: Max Version (concatenation between ips and fw max version).",
 		},
 		"module_min_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Dummy module info: Min Version (concatenation between ips and fw min version).",
 		},
 		"module_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Dummy module info: name of the sensor module *.so binary file name.",
 		},
 		"module_upload_always": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Dummy module info: upload always flag of the sensor module.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"override_module_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Overrides the registration number or system key as the module id, if set. Used for inspection module and sidewinder proxy stacked services.",
 		},
 		"protocol_matching_in_inspection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if a protocol can be used in inspection policy, for column Protocol. Default value = true",
 		},
 		"read_only": schema.BoolAttribute{
@@ -114,11 +114,11 @@ func GetProtocolAgentSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"registration_number": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Internal use: used by the firewall to reference a protocol agent.",
 		},
 		"supported_protocol": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "List of supported protocols: ethernet, ip-proto, tcp, udp, icmp, physical.",
 			ElementType: types.StringType,
 		},
@@ -135,7 +135,7 @@ func GetProtocolAgentSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Protocol Agent type.",
 		},
 	}

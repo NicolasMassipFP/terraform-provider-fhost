@@ -44,15 +44,15 @@ func GetGatewayTunnelSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this logical tunnel is enabled or not.",
 		},
 		"hashed_preshared_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A hashed version of the pre-shared key, used for secure storage and comparison.",
 		},
 		"key": schema.Int64Attribute{
@@ -66,15 +66,15 @@ func GetGatewayTunnelSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"ppk_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Base class for Post-Quantum Preshared Key (PPK) elements.",
 		},
 		"preshared_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The pre-shared key used for authentication in the gateway tunnel.",
 		},
 	}

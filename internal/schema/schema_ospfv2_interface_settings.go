@@ -44,19 +44,19 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"authentication_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of OSPF authentication used on the interface.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dead_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Dead interval in seconds for OSPF, which is the time after which a neighbor is considered down if no Hello packets are received.",
 		},
 		"dead_multiplier": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The multiplier for the Hello interval used to calculate the Dead interval when using 'minimal' Hello interval type.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,15 +64,15 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"hello_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Hello interval in seconds for OSPF, which is the time between Hello packets sent on the interface.",
 		},
 		"hello_interval_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of Hello interval used in OSPF, which can be 'normal', 'minimal', or 'fast_hello'.",
 		},
 		"interface_cost": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The cost of the OSPF interface, which affects the routing decisions made by OSPF.",
 		},
 		"key": schema.Int64Attribute{
@@ -80,7 +80,7 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"key_chain_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract OSPF Key Chain used as a Dynamic Routing element. It contains settings related to OSPF key chains.",
 		},
 		"link": schema.MapAttribute{
@@ -94,15 +94,15 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mtu_mismatch_detection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether MTU mismatch detection is enabled on the OSPF interface.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password used for OSPF authentication, required if the authentication type is 'password'.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -110,11 +110,11 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"retransmit_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds between retransmissions of OSPF packets.",
 		},
 		"router_priority": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The router priority for OSPF, which is used to determine the designated router on a multi-access network.",
 		},
 		"system": schema.BoolAttribute{
@@ -126,7 +126,7 @@ func GetOspfv2InterfaceSettingsSchemaAttributes(ctx context.Context) map[string]
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"transmit_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The delay in seconds before transmitting OSPF packets on the interface.",
 		},
 		"trashed": schema.BoolAttribute{

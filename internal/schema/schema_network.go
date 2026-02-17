@@ -44,11 +44,11 @@ func GetNetworkSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"broadcast": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the broadcast address and network address are included in the definition.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,11 +56,11 @@ func GetNetworkSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv4_network": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A valid IPv4 address and netmask in CIDR notation.",
 		},
 		"ipv6_network": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A valid IPv6 address and prefix length in CIDR notation.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,7 +74,7 @@ func GetNetworkSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetNetworkSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

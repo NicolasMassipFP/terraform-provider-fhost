@@ -35,7 +35,7 @@ func GetNatDefinitionSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"key": schema.Int64Attribute{
@@ -49,27 +49,27 @@ func GetNatDefinitionSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nat_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of NAT translation, which can be 'static' or 'dynamic'. 'Static' means a fixed mapping between private and public IP addresses, while 'dynamic' allows for multiple mappings based on available public IPs.",
 		},
 		"private_ne_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"public_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Public IP Address to be used for NAT, which can be either IPv4 or IPv6.",
 		},
 		"public_ne_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"service_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Service Entry.",
 			ElementType: types.StringType,
 		},

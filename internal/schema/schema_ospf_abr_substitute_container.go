@@ -35,15 +35,15 @@ func GetOspfAbrSubstituteContainerSchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"subnet_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 	},
 		"substitute_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"substitute_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of OSPF ABR substitute. Required for the OSPF ABR substitute container.",
 		},
 	}

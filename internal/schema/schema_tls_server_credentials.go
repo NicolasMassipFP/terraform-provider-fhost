@@ -44,11 +44,11 @@ func GetTlsServerCredentialsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"certificate_state": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The state of the certificate, which can be 'initial', 'request', or 'certificate'. This indicates whether the element is a new TLS Server Credential, a request, or a certificate.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetTlsServerCredentialsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"key_length": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The key length for the certificate, specified in bits. This is required for creating a certificate request.",
 		},
 		"link": schema.MapAttribute{
@@ -74,11 +74,11 @@ func GetTlsServerCredentialsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"public_key_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The public key algorithm used for the certificate, which can be 'dsa', 'rsa', or 'ecdsa'. This is required for creating a certificate request.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,15 +86,15 @@ func GetTlsServerCredentialsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"signature_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The signature algorithm used for the certificate, which can be one of the following: 'dsa_sha_1', 'dsa_sha_224', 'dsa_rsa_256', 'rsa_md5', 'rsa_sha_1', 'rsa_sha_256', 'rsa_sha_384', 'rsa_sha_512', 'ecdsa_sha_1', 'ecdsa_sha_256', 'ecdsa_sha_384', 'ecdsa_sha_512'. This is required for creating a certificate request.",
 		},
 		"subject_alt_names": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A formatted representation of subject alternative names (SANs) for the certificate. This is used to specify additional domain names or IP addresses that the certificate should be valid for.",
 		},
 		"subject_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Distinguished Name (DN) of the certificate subject, following the syntax: CN=CommonName,O=Organization,OU=Unit,C=Country,ST=State,L=City. This is required for creating a certificate request.",
 		},
 		"system": schema.BoolAttribute{
@@ -110,11 +110,11 @@ func GetTlsServerCredentialsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"valid_from": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The possible valid from date for the associated certificate, specified in milliseconds since epoch. This indicates when the certificate becomes valid.",
 		},
 		"valid_to": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The possible valid to date for the associated certificate, specified in milliseconds since epoch. This indicates when the certificate expires.",
 		},
 	}

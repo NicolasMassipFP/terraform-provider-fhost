@@ -44,11 +44,11 @@ func GetExternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"end_point": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the external end-point.",
 			ElementType: types.StringType,
 		},
@@ -57,7 +57,7 @@ func GetExternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"gateway_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Gateway Profiles describe the capabilities of a Gateway, i.e. supported cipher, hash, etc. Gateway Profiles of Internal Gateways are read-only and computed from Firewall version and FIPS mode. Gateway Profiles of External Gateways are user-defined.",
 		},
 		"key": schema.Int64Attribute{
@@ -75,7 +75,7 @@ func GetExternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -83,7 +83,7 @@ func GetExternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"site": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the site.",
 			ElementType: types.StringType,
 		},
@@ -100,11 +100,11 @@ func GetExternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"trust_all_cas": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the External Gateway trusts all VPN Certificate Authorities. If true, it does not require specific trusted CAs.",
 		},
 		"trusted_certificate_authorities": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted VPN Certificate Authority.",
 			ElementType: types.StringType,
 		},

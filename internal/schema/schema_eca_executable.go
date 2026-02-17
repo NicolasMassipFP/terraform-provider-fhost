@@ -35,23 +35,23 @@ func GetEcaExecutableSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"file_name": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The name of the executable file.",
 	},
 		"md5_hash": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The MD5 hash of the executable file, used for integrity verification.",
 		},
 		"product_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the product associated with the executable.",
 		},
 		"sha256_hash": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SHA256 hash of the executable file, used for integrity verification.",
 		},
 		"version_number": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The version number of the executable file.",
 		},
 	}

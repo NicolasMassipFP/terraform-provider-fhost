@@ -44,15 +44,15 @@ func GetEcaClientConfigurationSchemaAttributes(ctx context.Context) map[string]s
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"auto_discovery": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether auto-discovery is enabled for the ECA client configuration.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"eca_ca_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted CA.",
 			ElementType: types.StringType,
 		},
@@ -75,7 +75,7 @@ func GetEcaClientConfigurationSchemaAttributes(ctx context.Context) map[string]s
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

@@ -44,15 +44,15 @@ func GetSslVpnServiceProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"authentication_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of authentication used in the Application Access service profile.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"cookie_hiding": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode for hiding cookies in the Application Access service profile.",
 		},
 		"etag": schema.StringAttribute{
@@ -74,23 +74,23 @@ func GetSslVpnServiceProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"login_page_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL of the login page for the Application Access service profile.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"ntlm_support": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether NTLM support is enabled in the Application Access service profile.",
 		},
 		"password_input_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the password input field in the Application Access service profile.",
 		},
 		"post_request_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL to which the post request is sent in the Application Access service profile.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -110,15 +110,15 @@ func GetSslVpnServiceProfileSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"user_input_custom_format": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The custom format for user input in the Application Access service profile.",
 		},
 		"user_input_format": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The format of user input in the Application Access service profile.",
 		},
 		"user_input_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the user input field in the Application Access service profile.",
 		},
 	}

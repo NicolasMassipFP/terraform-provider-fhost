@@ -35,16 +35,16 @@ func GetAdminPermissionSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"granted_domain_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This is the base class for all storable elements.",
 	},
 		"granted_elements": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the granted element.",
 			ElementType: types.StringType,
 		},
 		"role_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an Administration Role. Roles are administrative privileges that allow you to limit rights of administrators.",
 		},
 	}

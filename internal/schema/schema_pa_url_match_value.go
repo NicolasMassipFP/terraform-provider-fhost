@@ -35,15 +35,15 @@ func GetPaUrlMatchValueSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"match_paramter": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The Match parameter, which can be 'host', 'path', or 'all', defining the specific part of the URL to match.",
 	},
 		"match_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Match type, which can be 'contains', 'begins_with', or 'ends_with', defining how the URL is matched.",
 		},
 		"url_string": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL path to match against, specified as a string.",
 		},
 	}

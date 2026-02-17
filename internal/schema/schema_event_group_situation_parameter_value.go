@@ -35,15 +35,15 @@ func GetEventGroupSituationParameterValueSchemaAttributes(ctx context.Context) m
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"binding_set_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a binding set, which is used to manage bindings in the system.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"counts": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of counts associated with this parameter value.",
 			ElementType: types.Int64Type,
 		},
@@ -58,24 +58,24 @@ func GetEventGroupSituationParameterValueSchemaAttributes(ctx context.Context) m
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"order": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The order of this parameter value within the situation, determining its sequence.",
 		},
 		"parameter_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.",
 		},
 		"primary_filters": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the associated primary filter.",
 			ElementType: types.StringType,
 		},
 		"secondary_context_members": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A secondary context member associated with this parameter value.",
 			ElementType: types.Int64Type,
 		},

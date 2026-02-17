@@ -11,7 +11,7 @@ This represents a Tunnel Interface, which is used for defining endpoints for tun
 
 ## Examples
 
-- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/tree/main//examples/engines/single_fw/single_fw_tunnel_interfaces) for a full example
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/single_fw/single_fw_tunnel_interfaces) for a full example
 
 ```hcl
     tunnel_interface {

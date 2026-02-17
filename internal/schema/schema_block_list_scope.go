@@ -35,23 +35,23 @@ func GetBlockListScopeSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"block_traffic": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether to block traffic between endpoints. If true, the block list entry will block traffic between the specified endpoints.",
 	},
 		"drop_connection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to terminate the single connection. If true, the block list entry will only cut the current connection.",
 		},
 		"duration": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The duration in seconds for which the block list entry will be kept. If set to 0, the entry only cuts the current connections.",
 		},
 		"include_observer": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to include the original observer in the block list entry. If true, the engine that detects the situation will be included in the block list executors.",
 		},
 		"service_ip_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an IP-proto service, which is used to define a service based on the IP protocol number. It includes a protocol number that specifies the protocol used by the traffic.",
 		},
 	}

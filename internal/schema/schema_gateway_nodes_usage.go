@@ -35,15 +35,15 @@ func GetGatewayNodesUsageSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"central_gateway_node_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
 	},
 		"mobile_gateway_node_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
 		},
 		"satellite_gateway_node_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
 		},
 	}

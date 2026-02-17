@@ -35,16 +35,16 @@ func GetCertificateValidationSettingsSchemaAttributes(ctx context.Context) map[s
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"crl_distribution_point_list": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "A list of URLs representing the distribution points to use for CRL (Certificate Revocation List) cache on the engine.",
 		ElementType: types.StringType,
 	},
 		"http_proxy_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an HTTP Proxy, which is used to route HTTP traffic through a proxy server. It includes attributes for IP address, port, username, and password.",
 		},
 		"ocsp_crl_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout in seconds for OCSP and CRL lookups. This setting determines how long the engine will wait for a response before timing out.",
 		},
 	}

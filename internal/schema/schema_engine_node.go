@@ -35,15 +35,15 @@ func GetEngineNodeSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"activate_test": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether test entries are activated on this engine node or not.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"engine_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The version of the software running on the engine node.",
 		},
 		"key": schema.Int64Attribute{
@@ -57,19 +57,19 @@ func GetEngineNodeSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nodeid": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier of the engine node in the cluster, which is a value between 1 and 16.",
 		},
 		"snmp_engine_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP Engine ID for the engine node, which is used for SNMP communication. If not specified, it will be automatically generated.",
 		},
 		"snmp_location": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP location for the engine node, which provides information about the physical location of the node.",
 		},
 	}

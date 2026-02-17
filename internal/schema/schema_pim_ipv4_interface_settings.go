@@ -44,11 +44,11 @@ func GetPimIpv4InterfaceSettingsSchemaAttributes(ctx context.Context) map[string
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dr_priority": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Designated Router (DR) priority for the PIM Interface. This value determines the priority of the router in the PIM network.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,7 +56,7 @@ func GetPimIpv4InterfaceSettingsSchemaAttributes(ctx context.Context) map[string
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"igmp_querier_settings_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the IGMP Querier Settings for Multicast Routing and especially the PIM dynamic routing feature.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,11 +74,11 @@ func GetPimIpv4InterfaceSettingsSchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"random_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Random Delay in seconds for the PIM Interface. This value is used to introduce a random delay in the PIM operations.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,7 +98,7 @@ func GetPimIpv4InterfaceSettingsSchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"zbr": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Zone Boundary Router (ZBR) group for the PIM Interface. Listed Multicast Groups do not go through the interface.",
 		},
 	}

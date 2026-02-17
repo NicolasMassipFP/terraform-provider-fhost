@@ -40,7 +40,7 @@ func GetElasticsearchClusterSchemaAttributes(ctx context.Context) map[string]sch
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "addresses": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The list of hostnames or IP addresses used to connect to the Elasticsearch Cluster. At least one address is required.",
 			ElementType: types.StringType,
 		},
@@ -49,23 +49,23 @@ func GetElasticsearchClusterSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"es_enable_cluster_sniffer": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the cluster sniffer is enabled. When enabled, it allows automatic discovery of cluster nodes.",
 		},
 		"es_replica_number": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of replicas for all indices, a positive number (default: 0). When changed, it will immediately reflect in the index settings. In status monitoring, the Elasticsearch cluster status will temporarily change (to orange) to reflect that some shards are pending allocation.",
 		},
 		"es_retention_period": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The retention period for logs in the Elasticsearch Cluster, in days. Use -1 to retain all logs indefinitely.",
 		},
 		"es_shard_number": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of shards for the fwlogsandalerts indices, a strictly positive number, or auto (default value). In auto mode, we will keep the number of shards set to the number of data nodes in the cluster. Changing this setting (or adapting it following a change in the number of data nodes) will take effect the next time a daily index gets created (technically speaking, we will only update the index template right away), i.e. for future indices. We won't update existing indices, as this may require to reindex them (the shrink API can only be used if the new number of shards is a divider of the previous one) and we would have to monitor all existing indices, etc. : users could do that via Kibana. 0 stands for auto",
 		},
 		"etag": schema.StringAttribute{
@@ -73,7 +73,7 @@ func GetElasticsearchClusterSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"indexing_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether indexing is active in the Elasticsearch Cluster.",
 		},
 		"key": schema.Int64Attribute{
@@ -87,7 +87,7 @@ func GetElasticsearchClusterSchemaAttributes(ctx context.Context) map[string]sch
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -95,15 +95,15 @@ func GetElasticsearchClusterSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the Elasticsearch Cluster.",
 		},
 		"product": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The product type of the Elasticsearch Cluster, either 'elasticsearch' or 'opensearch'.",
 		},
 		"read_only": schema.BoolAttribute{

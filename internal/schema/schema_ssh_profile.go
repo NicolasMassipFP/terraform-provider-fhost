@@ -44,11 +44,11 @@ func GetSshProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"ciphers": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The comma-separated list of cipher algorithms used in SSH connections.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetSshProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"key_exchanges": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The comma-separated list of key exchange algorithms used in SSH connections.",
 		},
 		"link": schema.MapAttribute{
@@ -74,11 +74,11 @@ func GetSshProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"macs": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The comma-separated list of message authentication code algorithms used in SSH connections.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

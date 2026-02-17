@@ -48,7 +48,7 @@ func GetSshHostKeySchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,20 +60,20 @@ func GetSshHostKeySchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"key_fingerprint": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SHA256 fingerprint of the SSH host key. This is read-only and used for identification purposes.",
 		},
 		"key_length": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The length of the SSH host key. Valid values for RSA and DSA are 1024 and 2048. Valid values for ECDSA are 256, 384, and 521. Required when creating a new key, read-only otherwise.",
 		},
 		"key_service_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the TCP service.",
 			ElementType: types.StringType,
 		},
 		"key_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of SSH host key. Valid values are RSA, DSA, and ECDSA. Required when creating a new key, read-only otherwise.",
 		},
 		"link": schema.MapAttribute{
@@ -87,7 +87,7 @@ func GetSshHostKeySchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

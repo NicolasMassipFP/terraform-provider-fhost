@@ -44,7 +44,7 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The static IP address of the endpoint, required for static endpoints.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -52,19 +52,19 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connection_type_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a connection type used in endpoints, which defines the connectivity group, mode, and link type for VPN connections.",
 		},
 		"dynamic": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the endpoint is dynamic (true) or static (false).",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the endpoint is enabled (true) or disabled (false).",
 		},
 		"etag": schema.StringAttribute{
@@ -72,19 +72,19 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"force_nat_t": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the endpoint forces NAT Traversal (NAT_T) for VPN connections.",
 		},
 		"ike_phase1_id_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of Phase-1 ID used for the endpoint, represented as a single digit. '0' for DNS_NAME, '1' for EMAIL, '2' for DISTINGUISHED_NAME, and '3' for IP_ADDRESS.",
 		},
 		"ike_phase1_id_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The value of the Phase-1 ID for the endpoint, which must match the specified Phase-1 ID type.",
 		},
 		"ipsec_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 		"key": schema.Int64Attribute{
@@ -102,11 +102,11 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nat_t": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the endpoint supports NAT Traversal (NAT_T) for VPN connections.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -114,11 +114,11 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"ssl_vpn_portal": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 		"ssl_vpn_tunnel": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 		"system": schema.BoolAttribute{
@@ -134,7 +134,7 @@ func GetExternalEndpointSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"udp_encapsulation": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the endpoint supports UDP encapsulation for VPN tunnels.",
 		},
 	}

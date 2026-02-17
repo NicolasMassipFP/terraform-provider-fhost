@@ -44,19 +44,19 @@ func GetOspfv2AreaSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"area_default_cost": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default cost for this OSPF area. This is used to determine the cost of routes in this area. If the area type is 'normal', this value is not applicable and should be null.",
 		},
 		"area_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the OSPF area.",
 		},
 		"area_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the OSPF area.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,12 +64,12 @@ func GetOspfv2AreaSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"inbound_filters_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the inbound filter access list.",
 			ElementType: types.StringType,
 		},
 		"interface_settings_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the abstract OSPF Interface Settings used as Dynamic Routing element. It contains settings related to OSPF interface configuration.",
 		},
 		"key": schema.Int64Attribute{
@@ -87,11 +87,11 @@ func GetOspfv2AreaSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"outbound_filters_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the outbound filter access list.",
 			ElementType: types.StringType,
 		},
@@ -100,7 +100,7 @@ func GetOspfv2AreaSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"shortcut_capable_area": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this OSPF area is capable of shortcut routing.",
 		},
 		"system": schema.BoolAttribute{

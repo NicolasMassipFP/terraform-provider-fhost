@@ -35,71 +35,71 @@ func GetWebApplicationParametersSchemaAttributes(ctx context.Context) map[string
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"client_cert_auth_enabled": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether client authentication is enabled for the Web Application.",
 	},
 		"context_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The context path for the Web Application. If null, it uses the root context.",
 		},
 		"eca_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether ECA Rollout evaluation is enabled in SMC Download pages.",
 		},
 		"enable_saml_for_web_access": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether SAML authentication is enabled for Web Access.",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Web Application is enabled or not.",
 		},
 		"host_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The host name for the Web Application. If null, no specific host name is set.",
 		},
 		"listening_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The address on which the Web Application listens for incoming connections. If null, it listens on all addresses.",
 		},
 		"log_access": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether access to this Web Application is logged.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port on which the Web Application listens for incoming connections.",
 		},
 		"server_credentials_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
 		},
 		"session_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The session timeout in seconds for the Web Application, used to control user session duration.",
 		},
 		"ssl_session_id": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the SSL session ID is used for the Web Application.",
 		},
 		"standalone_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Standalone client bundles download are enabled in SMC Download pages.",
 		},
 		"tls_cipher_suites": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Cryptography Suite Set Element, which contains a set of cryptographic suites used in SSL VPN configurations.",
 		},
 		"web_app_identifier": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the Web Application, used to reference it in configurations.",
 		},
 		"webclient_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Web UI (React) is enabled in the API page.",
 		},
 		"xvfb_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The full path to the directory containing the xvfb-run application, used for Web Access web app.",
 		},
 	}

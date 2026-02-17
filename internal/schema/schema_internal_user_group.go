@@ -40,7 +40,7 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "activation_date": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The optional activation date in milliseconds since epoch.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,12 +48,12 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"authentication_method": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the authentication method.",
 			ElementType: types.StringType,
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -61,11 +61,11 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"expiration_after": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The optional expiration delay in days. If not set, the user will never expire.",
 		},
 		"expiration_date": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The optional expiration date in milliseconds since epoch. If not set, the user will never expire.",
 		},
 		"key": schema.Int64Attribute{
@@ -83,12 +83,12 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"member": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the user entry.",
 			ElementType: types.StringType,
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -96,7 +96,7 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"subject_alt_names": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The subject alternative names required in case of IPSec certificate authentication method. This is a comma-separated list of subject alternative names.",
 		},
 		"system": schema.BoolAttribute{
@@ -112,11 +112,11 @@ func GetInternalUserGroupSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"unique_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique id of the User/User Group element.",
 		},
 		"user_domain": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a User Domain, which is used to define the authentication domain for users. It can be either an authentication domain or the internal domain.",
 		},
 	}

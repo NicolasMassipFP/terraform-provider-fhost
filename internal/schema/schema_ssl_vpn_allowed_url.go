@@ -35,15 +35,15 @@ func GetSslVpnAllowedUrlSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"port": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The port number for the allowed URL, which is typically 80 for HTTP or 443 for HTTPS. 'any' can be used to allow all ports.",
 	},
 		"protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The protocol used for the allowed URL, such as 'HTTP', 'HTTPS', etc.",
 		},
 		"url_host": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The host of the allowed URL, which can be a domain name or an IP address.",
 		},
 	}

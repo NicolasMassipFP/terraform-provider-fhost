@@ -35,23 +35,23 @@ func GetCertificateSettingsSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"certificate_type": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The type of certificate to be used.",
 	},
 		"check_revocation": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to check the revocation status of the certificate.",
 		},
 		"ignore_revocation_on_failure": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to ignore revocation checks when an error occurs.",
 		},
 		"subject_alt_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The subject alternative name (SAN) for the certificate, typically a DNS name.",
 		},
 		"subject_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The distinguished name (DN) for the certificate.",
 		},
 	}

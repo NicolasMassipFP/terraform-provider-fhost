@@ -35,19 +35,19 @@ func GetCustomPropertySchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"data_type": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The data type of the custom property, which can be 'string' for regular strings or 'encrypted' for encrypted values.",
 	},
 		"encrypted_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The encrypted value of the custom property, used for sensitive information such as passwords.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the custom property, which serves as the key in the key-value pair.",
 		},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The value of the custom property, which can be a regular string or an encrypted value.",
 		},
 	}

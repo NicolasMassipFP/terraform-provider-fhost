@@ -44,19 +44,19 @@ func GetExternalLdapUserDomainSchemaAttributes(ctx context.Context) map[string]s
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"auth_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.",
 		},
 		"browse_ldap_automatically": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether SMC can connect to the directory server for browsing users and groups.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"engine_can_connect": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the engine can connect to the directory server to resolve users and groups.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,7 +64,7 @@ func GetExternalLdapUserDomainSchemaAttributes(ctx context.Context) map[string]s
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"isdefault": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this User Domain is the default one for authentication. Only one User Domain can be set as default.",
 		},
 		"key": schema.Int64Attribute{
@@ -72,7 +72,7 @@ func GetExternalLdapUserDomainSchemaAttributes(ctx context.Context) map[string]s
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"ldap_server": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Authentication Server (Active Directory Server or LDAP Server).",
 			ElementType: types.StringType,
 		},
@@ -87,7 +87,7 @@ func GetExternalLdapUserDomainSchemaAttributes(ctx context.Context) map[string]s
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

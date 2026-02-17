@@ -35,19 +35,19 @@ func GetPimSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"bsr_priority": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The BSR Priority for multicast routing settings, with a default value of 64.",
 	},
 		"mroute_preference": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The MRoute preference for multicast routing, which can be 'best_match_preferred' or 'mroute_preferred'.",
 		},
 		"pim_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the PIM IPv4 Profile for Dynamic Routing Firewall functionality. It is used to configure PIM (Protocol Independent Multicast) settings in the firewall's dynamic routing capabilities.",
 		},
 		"rp_priority": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The RP Priority for multicast routing settings, with a default value of 64.",
 		},
 	}
