@@ -44,11 +44,11 @@ func GetBackupTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"backup_comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Comment for the backup task, describing its purpose or details.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,15 +70,15 @@ func GetBackupTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"log_data_must_be_saved": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether log data must be saved during the backup process. This is used to ensure that log data is preserved in the backup.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Password for the backup task, used to secure the backup data. This should be set using the clear password method.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,16 +86,16 @@ func GetBackupTaskSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},
 		"script_to_execute": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The script to execute after the backup is completed. This can be used to perform additional actions or cleanup after the backup process.",
 		},
 		"server_target_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The server path where the backup will be stored. This is the destination path for the backup files on the server.",
 		},
 		"system": schema.BoolAttribute{

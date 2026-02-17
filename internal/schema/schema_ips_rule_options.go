@@ -35,67 +35,67 @@ func GetIpsRuleOptionsSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"application_logging": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Stores information about Application use, allowing for application-specific logging and monitoring.'off' to disable the option; 'default' to enable the option; 'enforced' to enforce the option.",
 	},
 		"eia_executable_logging": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Stores information about EIA Executable use, allowing for executable-specific logging and monitoring.'off' to disable the option; 'default' to enable the option; 'enforced' to enforce the option.",
 		},
 		"log_accounting_info_mode": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Specifies whether both connection opening and closing are logged, and information on the volume of traffic is collected. This option is not available for rules that issue Alerts.",
 		},
 		"log_alert": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
 		},
 		"log_closing_mode": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Specifies whether log entries are created when connections are closed. If true, both connection opening and closing are logged, but no traffic volume information is collected.",
 		},
 		"log_compression": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Specifies the log compression mode, which can be 'off' to not compress logs, 'only_access' to compress only Access Logs, or 'also_inspection' to compress Inspection Logs.",
 		},
 		"log_compression_max_burst_size": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum burst size for compressed logs, which limits the number of log entries that can be created in a burst.",
 		},
 		"log_compression_max_log_rate": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum log rate for compressed logs, which limits the number of log entries that can be created per second.",
 		},
 		"log_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Log Level for the rule, which determines how matching packets are logged or alerted.",
 		},
 		"log_payload_excerpt": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Stores an excerpt of the packet that matched, allowing quick viewing of the payload in the Logs view. The maximum recorded excerpt size is 4 KB.",
 		},
 		"log_payload_record": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Records the traffic up to the limit set in the Record Length field, allowing for detailed analysis of the traffic.",
 		},
 		"log_severity": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The severity level for the log entry when the Log Level is set to Alert, overriding the severity defined in the Alert element.",
 		},
 		"qos_class": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a QoS Class, which is an element that links a rule in a QoS Policy to one or more Firewall Actions. The traffic allowed in the access rule is assigned the QoS Class defined for the rule, and the QoS class is used as the matching criteria for applying QoS Policy rules.",
 		},
 		"record_time_limit": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Record Time Limit in seconds for payload recording.",
 		},
 		"url_category_logging": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Stores information about URL Category use, allowing for URL category-specific logging and monitoring.'off' to disable the option; 'default' to enable the option; 'enforced' to enforce the option.",
 		},
 		"user_logging": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Stores information about Users when they are used as the Source or Destination of an Access rule, allowing for user-specific logging and monitoring.'off' to disable the option; 'default' to enable the option; 'enforced' to enforce the option.",
 		},
 	}

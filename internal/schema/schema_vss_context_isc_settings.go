@@ -35,7 +35,7 @@ func GetVssContextIscSettingsSchemaAttributes(ctx context.Context) map[string]sc
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"isc_policy_id": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The policy ID associated with the VSS Context ISC Settings, which is required for the configuration.",
 	},
 	}

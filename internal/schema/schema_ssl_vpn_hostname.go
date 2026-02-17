@@ -35,7 +35,7 @@ func GetSslVpnHostnameSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"ssl_vpn_hostname": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The hostname for the SSL VPN, which can be an IP Address or a Fully Qualified Domain Name (FQDN).",
 	},
 	}

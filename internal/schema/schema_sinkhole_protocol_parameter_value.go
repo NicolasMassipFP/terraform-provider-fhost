@@ -35,11 +35,11 @@ func GetSinkholeProtocolParameterValueSchemaAttributes(ctx context.Context) map[
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"domain_name": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This is the base class for all storable elements.",
 	},
 		"response": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The response for the DNS query, which can be 'NXDOMAIN' (for error case), an IPv4 address, or an IPv6 address.",
 		},
 	}

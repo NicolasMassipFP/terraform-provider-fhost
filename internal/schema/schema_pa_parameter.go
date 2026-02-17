@@ -44,27 +44,27 @@ func GetPaParameterSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"default_integer": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default integer value for this parameter, used if no value is provided by the user.",
 		},
 		"default_string": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default string value for this parameter, used if no value is provided by the user.",
 		},
 		"description": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A brief description of the parameter, providing context and usage information.",
 		},
 		"explanation": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A detailed explanation of the parameter, including its purpose and how it should be used.",
 		},
 		"is_visible": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the parameter is visible in the user interface.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,35 +78,35 @@ func GetPaParameterSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"max_integer": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum integer value allowed for this parameter, if applicable.",
 		},
 		"max_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum version of the protocol or system that this parameter applies to.",
 		},
 		"min_integer": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum integer value allowed for this parameter, if applicable.",
 		},
 		"min_pa_version": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum Protocol Agent version required for this parameter to be applicable.",
 		},
 		"min_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum version of the protocol or system that this parameter applies to.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the parameter, used for ordering parameters in the user interface.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the parameter, which determines how it is processed and displayed.",
 		},
 	}

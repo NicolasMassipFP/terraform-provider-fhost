@@ -35,16 +35,16 @@ func GetUserAuthenticationMatchSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"methods": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the authentication method.",
 		ElementType: types.StringType,
 	},
 		"require_auth": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the users are required to authenticate themselves.",
 		},
 		"users": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the user or user group.",
 			ElementType: types.StringType,
 		},

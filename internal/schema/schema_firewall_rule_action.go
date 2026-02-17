@@ -35,77 +35,77 @@ func GetFirewallRuleActionSchemaAttributes(ctx context.Context) map[string]schem
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"action": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "",
 		ElementType: types.StringType,
 	},
 		"decrypting": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether decryption is enabled for the traffic matching this rule.",
 		},
 		"deep_inspection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable deep inspection of traffic that matches this rule. This will inspect the traffic against the Inspection Policy referenced by this policy.",
 		},
 		"dos_protection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable or disable DoS protection for matching traffic. This will apply the DoS protection settings defined in the policy.",
 		},
 		"explicit_proxy_sub_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a sub-policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"file_filtering": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable file filtering for matching traffic. This should also activate the Deep Inspection option. You can further adjust virus scanning in the Inspection Policy.",
 		},
 		"forced_next_hop_element": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"forced_next_hop_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "If 'forced_next_hop' action is selected, specify a valid IPv4 or IPv6 address for the forced next hop.",
 		},
 		"forward_to": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract node element in the network, which can be extended to represent specific types of nodes.",
 		},
 		"mobile_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "If 'apply_vpn', 'forward_vpn', or 'enforce_vpn' actions are selected, this indicates if it is an IPsec VPN client.",
 		},
 		"network_application_latency_monitoring": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable Network Application Latency Monitoring. This will enable the Application Health Monitoring.",
 		},
 		"reset_icmp": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "If 'terminate' action is selected, this indicates whether to send an ICMP notification for non-TCP traffic termination.",
 		},
 		"scan_detection": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Enable or disable Scan Detection for traffic that matches the rule. This overrides the option set in the NGFW properties.",
 		},
 		"snort": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether Snort intrusion detection is enabled for the traffic matching this rule.",
 		},
 		"sub_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a sub-policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"user_response": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a User Response, which defines additional notification actions for rule matches, such as redirecting access to a forbidden URL to a page on an internal web server instead.",
 		},
 		"valid_block_lister": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the network element used as blocklister.",
 			ElementType: types.StringType,
 		},
 		"vpn": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
 		},
 	}

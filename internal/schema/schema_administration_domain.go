@@ -44,27 +44,27 @@ func GetAdministrationDomainSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"announcement_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the announcement message is enabled. If true, the announcement message will be displayed before the login window.",
 		},
 		"announcement_message": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The announcement message to be displayed before the login window. This message can be used to communicate important information to users.",
 		},
 		"category_filter_system": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether system elements should be shown in the domain. If true, system elements will be included in the domain's configuration.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"contact_email": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The contact email address for the domain. This email can be used for communication related to the domain.",
 		},
 		"contact_number": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The contact phone number for the domain. This number can be used for communication related to the domain.",
 		},
 		"etag": schema.StringAttribute{
@@ -86,11 +86,11 @@ func GetAdministrationDomainSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"logo_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,7 +98,7 @@ func GetAdministrationDomainSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"show_not_categorized": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether uncategorized elements should be shown in the domain. If true, elements that are not categorized will be included in the domain's configuration.",
 		},
 		"system": schema.BoolAttribute{

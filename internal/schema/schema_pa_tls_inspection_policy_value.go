@@ -35,11 +35,11 @@ func GetPaTlsInspectionPolicyValueSchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"parameter_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
 	},
 		"tls_inspection_policy_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a TLS Inspection policy. It is used to configure how TLS traffic is inspected and managed within the system.",
 		},
 	}

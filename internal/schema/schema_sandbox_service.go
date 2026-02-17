@@ -44,7 +44,7 @@ func GetSandboxServiceSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,11 +66,11 @@ func GetSandboxServiceSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"portal_username": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The username of the portal account associated with the Sandbox service.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -78,15 +78,15 @@ func GetSandboxServiceSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"sandbox_data_center": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Sandbox Data Center element, which is referenced by the sandbox service. It contains information about the sandbox's hostname, server URL, portal URL, API URL, API key, type, and TLS profile.",
 		},
 		"sandbox_license_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The license key for the Sandbox service.",
 		},
 		"sandbox_license_token": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The license token for the Sandbox service.",
 		},
 		"system": schema.BoolAttribute{

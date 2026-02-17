@@ -35,15 +35,15 @@ func GetSituationMatchPartSchemaAttributes(ctx context.Context) map[string]schem
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if any situation matches the criteria. If true, no elements are specified.",
 	},
 		"none": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if no situation matches the criteria. If true, no elements are specified.",
 		},
 		"situation": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the situation or match expression.",
 			ElementType: types.StringType,
 		},

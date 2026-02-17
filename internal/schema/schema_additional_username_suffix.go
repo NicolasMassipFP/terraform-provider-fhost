@@ -35,7 +35,7 @@ func GetAdditionalUsernameSuffixSchemaAttributes(ctx context.Context) map[string
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"name": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The additional username suffix.",
 	},
 	}

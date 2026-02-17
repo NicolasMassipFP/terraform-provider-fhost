@@ -35,11 +35,11 @@ func GetIpv6AccessListEntrySchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"action": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The action to be taken for this access list entry.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A comment for the access or prefix list entry.",
 		},
 		"key": schema.Int64Attribute{
@@ -47,15 +47,15 @@ func GetIpv6AccessListEntrySchemaAttributes(ctx context.Context) map[string]sche
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"ne_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"subnet": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP network or subnet for the access or prefix list entry.",
 		},
 	}

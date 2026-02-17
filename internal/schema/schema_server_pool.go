@@ -44,11 +44,11 @@ func GetServerPoolSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"domain_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The DNS name of the Server Pool, which is used to route traffic to the pool.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,7 +66,7 @@ func GetServerPoolSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -74,35 +74,35 @@ func GetServerPoolSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"monitoring_frequency": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The frequency in seconds at which the Server Pool monitors the availability of its servers.",
 		},
 		"monitoring_host": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The host name of the web server used for monitoring. This is used in HTTP mode to check server availability.",
 		},
 		"monitoring_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The monitoring mode used to check the availability of servers in the Server Pool. 'ping' uses ICMP echo requests, 'agent' uses Monitoring Agents, 'tcp' checks TCP services, and 'http' checks HTTP services.",
 		},
 		"monitoring_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number used for monitoring the servers in the Server Pool.",
 		},
 		"monitoring_request": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The request string sent to the server for monitoring. This is used in HTTP mode to check server availability.",
 		},
 		"monitoring_response": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The expected response string from the server for monitoring. This is used in HTTP mode to verify server availability.",
 		},
 		"monitoring_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL path to the web page used for monitoring the server. This is used in HTTP mode to check server availability.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -110,7 +110,7 @@ func GetServerPoolSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"server_allocation": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The server allocation method used to distribute traffic among servers in the Server Pool. 'order' allocates by priority, 'network' by source network, 'host' by source host, 'connection' per connection, and 'notdefined' behaves like 'network'.",
 		},
 		"system": schema.BoolAttribute{

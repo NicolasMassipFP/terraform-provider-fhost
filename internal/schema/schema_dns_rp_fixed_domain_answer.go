@@ -35,15 +35,15 @@ func GetDnsRpFixedDomainAnswerSchemaAttributes(ctx context.Context) map[string]s
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"domain_name": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The domain name for the fixed domain answer.",
 	},
 		"ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The translated IP address for the fixed domain answer.",
 		},
 		"translated_domain_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The translated domain name for the fixed domain answer.",
 		},
 	}

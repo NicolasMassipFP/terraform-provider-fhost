@@ -5,62 +5,72 @@ description: Automate Forcepoint NGFW configuration deployment though SMC using 
 
 # Forcepoint NGFW SMC - Terraform Provider
 
-> SMC Provider is not available currently for version prior to 7.3.
+Automate Forcepoint NGFW configuration deployment though SMC using
+terraform. 
 
-> The current version of the SMC Terraform Provider does not officially support all SMC resources.
-Please refer to the provider documentation to verify which resources are currently supported.
+## Table of content
 
-**PREVIEW WARNING**
+- [Quick Start](guides/10-quick-start.md)
+- [Creating Resources](guides/20-creating-resources.md)
+- [Relationship Between Resources](guides/30-relationship-between-resources.md)
+- [Representation of Nested Attributes](guides/40-nested-attributes.md)
+- [Tips for Writing Terraform Configuration](guides/50-tips-writing-terraform-smc.md)
+- [Importing Resources](guides/60-importing-resources.md)
+- [Deleting Resources](guides/70-deleting-resources.md)
+- [Troubleshooting](guides/80-troubleshooting.md)
+- [Misc](guides/90-misc.md)
+
+
+## Provider Configuration
+
+### Example Usage
+
+```hcl
+terraform {
+  required_providers {
+    smc = {
+      source  = "forcepoint/fp-ngfw-smc"
+      version = "1.741.1"
+    }
+  }
+
+  provider "smc" {
+    url          = "https://mysmc:8082"
+    api_key      = "xxxxxxxxxxxxxxxxx"
+    api_version  = "7.4"
+    trusted_cert = "./mycert.pem"
+    verify_ssl   = true
+  }
+}
 ```
-/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
 
-This version is a pre release version for test purpose
-  --- DO NOT USE UNLESS YOU ARE AWARE OF THE RISK ---
+### Required Attributes
 
-/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\/!\
-```
+- `api_key` (String) The API key of the SMC API
+- `url` (String) The URL of the SMC API
 
-## Which provider version to use ?
+### Optional Attributes
 
-## for SMC 7.3.x 
-Same as for SMC 7.4.x
+- `api_version` (String) The SMC API version to use for request
+- `trusted_cert` (String) PEM-encoded certificate content to trust for HTTPS connections or path to a file containing the PEM-encoded certificate.
+- `verify_ssl` (Boolean) Whether to verify SSL certificates
+- `domain` (String) The SMC domain to use for operations
+
+
+## Provider version for SMC 7.3
+
+SMC 7.3 is not officially supported, but terraform provider for SMC
+7.4 works reasonbly well with it. 
+
 Use latest fp-ngfw-smc terraform version 1.74x.y **setup with SMC API 7.3**
+
 ```
-"api_version" = "7.3"
+api_version = "7.3"
 ```
 
-> **SMC 7.3.x does not officially support the SMC Terraform Provider**.
-The Terraform provider released for **SMC 7.4.x**, which uses SMC API version 7.3, is mostly compatible with SMC 
-7.3.x. However, there are breaking changes introduced in the SMC API between versions 7.3 and 7.4, which may lead to incompatibilities.
+## Provider version for SMC 7.4
 
-## for SMC 7.4.x 
 Use latest fp-ngfw-smc terraform version 1.74x.y
 
 > default SMC API version used by latest provider 1.74x.y is SMC API 7.4.
 
-## for SMC 7.5.x 
-Use latest fp-ngfw-smc terraform version 1.75x.y  
-
-> default SMC API version used by latest provider 1.75x.y is SMC API 7.5.
-
-> or latest version for 7.4.1
-**SMC API 7.4 running on SMC 7.5 is backward compatible**.
-As a result, the SMC Terraform provider for 7.4.x remains compatible.
-However, using the provider version that matches the target SMC version is recommended to avoid any additional adaptation or compatibility handling.
-
-## Recommended reading
-
-The **guides folder** provides documentation to help you use the SMC Terraform provider.
-
-# Schema
-
-## Required
-
-- `api_key` (String, Sensitive) The API key of the SMC API
-- `url` (String) The URL of the SMC API
-
-### Optional
-
-- `api_version` (String) The API version to use for request if not the default one
-- `trusted_cert` (String) PEM-encoded certificate content to trust for HTTPS connections.
-- `verify_ssl` (Boolean) Whether to verify SSL certificates

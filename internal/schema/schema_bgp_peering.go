@@ -44,43 +44,43 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"bfd_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Bidirectional Forwarding Detection (BFD) is enabled for the BGP Peering. If true, BFD will be used to monitor the BGP peering.",
 		},
 		"bfd_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Bidirectional Forwarding Detection (BFD) interval in milliseconds for the BGP Peering. This is used to set the interval for BFD control packets.",
 		},
 		"bfd_min_rx": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Bidirectional Forwarding Detection (BFD) minimum receive interval in milliseconds for the BGP Peering. This is used to set the minimum interval for receiving BFD control packets.",
 		},
 		"bfd_multiplier": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Bidirectional Forwarding Detection (BFD) multiplier for the BGP Peering. This is used to set the multiplier for BFD control packets.",
 		},
 		"bfd_passive_mode": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Bidirectional Forwarding Detection (BFD) is in passive mode for the BGP Peering. If true, BFD will operate in passive mode, meaning it will not initiate BFD sessions.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connected_check": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Connected Check mode for the BGP Peering. This determines how connected checks are performed in BGP operations.",
 		},
 		"connection_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the BGP Connection Profile for Dynamic Routing Firewall functionality. It contains settings for BGP connections, such as session timers and password.",
 		},
 		"default_originate": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the BGP Peering should originate default routes. If true, the peering will originate default routes in the BGP network.",
 		},
 		"dont_capability_negotiate": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether capabilities should not be sent in BGP updates. If true, capabilities will not be sent in the BGP updates.",
 		},
 		"etag": schema.StringAttribute{
@@ -88,27 +88,27 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"inbound_aspath_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"inbound_ip_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"inbound_ipprefix_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"inbound_ipv6_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"inbound_ipv6prefix_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"inbound_rm_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.",
 		},
 		"key": schema.Int64Attribute{
@@ -122,11 +122,11 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"local_as_option": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Local AS mode for the BGP Peering. This determines how the Local AS number is handled in BGP operations.",
 		},
 		"local_as_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Local AS value for the BGP Peering. This is used when the Local AS mode is set to prepend or replace_as.",
 		},
 		"locked": schema.BoolAttribute{
@@ -134,55 +134,55 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"max_prefix_option": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Max Prefix mode for the BGP Peering. This determines how the maximum number of prefixes is handled in BGP operations.",
 		},
 		"max_prefix_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Max Prefix value for the BGP Peering. This is used when the Max Prefix mode is set to enabled or warning_only.",
 		},
 		"md5_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The MD5 password for the BGP Peering. This is used for authentication of the BGP connection.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"next_hop_self": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Next Hop Self feature is enabled for the BGP Peering. If true, the peering will set itself as the next hop for routes.",
 		},
 		"orf_option": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Outbound Route Filtering (ORF) mode for the BGP Peering. This determines how outbound route filtering is handled in BGP operations.",
 		},
 		"outbound_aspath_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"outbound_ip_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"outbound_ipprefix_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"outbound_ipv6_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"outbound_ipv6prefix_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"outbound_rm_filter": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.",
 		},
 		"override_capability": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether received capabilities should be overridden. If true, received capabilities will be overridden in the BGP peering.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -190,19 +190,19 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"remove_private_as": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether private AS numbers should be removed from BGP updates. If true, private AS numbers will be removed from the BGP updates.",
 		},
 		"route_reflector_client": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the BGP Peering is a Route Reflector Client. If true, the peering will act as a Route Reflector Client in the BGP network.",
 		},
 		"send_community": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Send Community mode for the BGP Peering. This determines how community attributes are sent in BGP operations.",
 		},
 		"soft_reconfiguration": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether soft reconfiguration is enabled for inbound BGP updates. If true, soft reconfiguration will be used to handle inbound updates.",
 		},
 		"system": schema.BoolAttribute{
@@ -218,11 +218,11 @@ func GetBgpPeeringSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"ttl_option": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The TTL Check mode for the BGP Peering. This determines how TTL checks are performed in BGP operations.",
 		},
 		"ttl_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The TTL value for the BGP Peering. This is used when the TTL Check mode is set to ttl-security or ebgp-multihop.",
 		},
 	}

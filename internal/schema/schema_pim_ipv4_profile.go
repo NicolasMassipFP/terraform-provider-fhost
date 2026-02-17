@@ -44,7 +44,7 @@ func GetPimIpv4ProfileSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,11 +52,11 @@ func GetPimIpv4ProfileSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"hello_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Hello Interval in seconds. This is the interval at which PIM Hello messages are sent to maintain neighbor relationships.",
 		},
 		"joined_prune": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Joined-Prune interval in seconds. This value determines how long a PIM router will wait before sending a prune message after a join.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,7 +74,7 @@ func GetPimIpv4ProfileSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetPimIpv4ProfileSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"smart_multicast_antispoofing": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Smart Multicast Antispoofing is enabled. When enabled, it helps prevent multicast spoofing attacks.",
 		},
 		"system": schema.BoolAttribute{

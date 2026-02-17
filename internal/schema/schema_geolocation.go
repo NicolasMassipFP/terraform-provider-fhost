@@ -44,19 +44,19 @@ func GetGeolocationSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"city": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "City where the geolocation is situated.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"country_code": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Country code where the geolocation is situated. Default value is 'O1' which corresponds to 'Other'.",
 		},
 		"element": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Storable element.",
 			ElementType: types.StringType,
 		},
@@ -69,7 +69,7 @@ func GetGeolocationSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"latitude": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Latitude of the geolocation.",
 		},
 		"link": schema.MapAttribute{
@@ -83,19 +83,19 @@ func GetGeolocationSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"logo_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.",
 		},
 		"longitude": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Longitude of the geolocation.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"postal_code": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Postal code for the geolocation.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -103,15 +103,15 @@ func GetGeolocationSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"region": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Region where the geolocation is situated.",
 		},
 		"street_address1": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Street address (part 1).",
 		},
 		"street_address2": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Street address (part 2).",
 		},
 		"system": schema.BoolAttribute{

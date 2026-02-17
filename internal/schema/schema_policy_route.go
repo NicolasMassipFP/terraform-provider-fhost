@@ -35,19 +35,19 @@ func GetPolicyRouteSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the policy route, providing additional context or information.",
 	},
 		"destination": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The destination IP network for the policy route, specified in CIDR notation.",
 		},
 		"gateway_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The gateway IP address for the policy route, which is used to route traffic to the specified destination network.",
 		},
 		"source": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The source IP network for the policy route, specified in CIDR notation.",
 		},
 	}

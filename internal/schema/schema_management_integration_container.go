@@ -35,27 +35,27 @@ func GetManagementIntegrationContainerSchemaAttributes(ctx context.Context) map[
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"admin": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents the base structure for an administrator user in the system, including permissions, status, and superuser flags.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Management Integration is enabled or not.",
 		},
 		"integration_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address of the Management Integration, such as the NSX Manager IP.",
 		},
 		"integration_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port used by the Management Integration, default is 8090.",
 		},
 		"integration_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the Management Integration, such as 'nsx' for NSX integration.",
 		},
 		"key": schema.Int64Attribute{
@@ -63,7 +63,7 @@ func GetManagementIntegrationContainerSchemaAttributes(ctx context.Context) map[
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"listening_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address on which the Management Integration listens for requests.",
 		},
 		"link": schema.MapAttribute{
@@ -73,15 +73,15 @@ func GetManagementIntegrationContainerSchemaAttributes(ctx context.Context) map[
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password used for the Management Integration, such as the NSX Manager password.",
 		},
 		"username": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The username used for the Management Integration, such as the NSX Manager username.",
 		},
 	}

@@ -35,15 +35,15 @@ func GetDnsElementSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"ne_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 	},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank value to sort DNS entries, which must be a positive float. Only distinct values are accepted.",
 		},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address of the DNS server that the Firewall Cluster will use to resolve signature mirrors, domain names, and URL filtering categorization services (which are defined as URLs).",
 		},
 	}

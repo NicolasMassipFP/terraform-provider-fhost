@@ -35,15 +35,15 @@ func GetUsedOnEngineSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether any firewall matches the criteria. If true, no specific element is required.",
 	},
 		"firewall_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"none": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether no firewall matches the criteria. If true, no specific element is required.",
 		},
 	}

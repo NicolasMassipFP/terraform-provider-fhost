@@ -35,26 +35,26 @@ func GetEcaSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"eca_client_config": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a ECA Client Configuration, which is used to manage the client-side configuration for ECA (Endpoint Compliance Agent). It includes settings such as trusted certificate authorities and auto-discovery options.",
 	},
 		"eca_client_network_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Network representing the client network for this ECA settings.",
 			ElementType: types.StringType,
 		},
 		"eca_server_network_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Network representing the server network for this ECA settings.",
 			ElementType: types.StringType,
 		},
 		"listened_zone_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Interface Zone representing the listened zone for this ECA settings.",
 			ElementType: types.StringType,
 		},
 		"listening_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port on which the ECA settings will listen for incoming connections.",
 		},
 	}

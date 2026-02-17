@@ -48,31 +48,31 @@ func GetInternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"antivirus": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the AntiVirus is enabled for this Internal Gateway.",
 		},
 		"auto_certificate": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Internal Gateway automatically generates and manages RSA certificates.",
 		},
 		"auto_site_content": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the site content is automatically generated from the routing view. This is applicable only for Internal Gateways.",
 		},
 		"cluster_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a group of devices, or nodes, that share a given work load. You can cluster Firewalls to share the load and provide redundancy, allowing, for example, scheduled maintenance that takes one node out of service without interrupting services to the users.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dtls": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 		"end_point": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the internal end-point.",
 			ElementType: types.StringType,
 		},
@@ -81,11 +81,11 @@ func GetInternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"firewall": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Firewall is enabled for this Internal Gateway.",
 		},
 		"gateway_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Gateway Profiles describe the capabilities of a Gateway, i.e. supported cipher, hash, etc. Gateway Profiles of Internal Gateways are read-only and computed from Firewall version and FIPS mode. Gateway Profiles of External Gateways are user-defined.",
 		},
 		"key": schema.Int64Attribute{
@@ -103,7 +103,7 @@ func GetInternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -111,7 +111,7 @@ func GetInternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"site": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the site.",
 			ElementType: types.StringType,
 		},
@@ -128,20 +128,20 @@ func GetInternalGatewaySchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"trust_all_cas": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the EndPoint trusts all VPN Certificate Authorities. If true, it trusts all CAs; if false, it requires specific trusted CAs.",
 		},
 		"trusted_certificate_authorities": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted VPN Certificate Authority.",
 			ElementType: types.StringType,
 		},
 		"vpn_client_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The VPN Client Mode for this Internal Gateway, which can be 'no', 'ipsec', 'ssl', or 'both'.",
 		},
 		"windows_update": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Windows Update is enabled for this Internal Gateway.",
 		},
 	}

@@ -40,19 +40,19 @@ func GetRouteBasedVpnTunnelSideSchemaAttributes(ctx context.Context) map[string]
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "endpoint_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract endpoint element in the VPN Gateway, which can be extended to represent specific types of endpoints.",
 		},
 		"gateway_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is the base class for all storable elements.",
 		},
 		"ip_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The external IP address used in the Route-Based VPN Tunnel Side.",
 		},
 		"tunnel_interface_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tunnel Interface, which is used for defining endpoints for tunnels in the Route-Based VPN. It allows traffic to be routed into the tunnel based on Firewall Access rules.",
 		},
 	}

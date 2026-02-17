@@ -40,11 +40,11 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "add_x_forwarded_for": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Proxy Server adds the 'X-Forwarded-For' header in HTTP(S) requests. This is used to preserve the original client's IP address when requests are forwarded.",
 		},
 		"address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -52,11 +52,11 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"balancing_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The balancing mode for the Proxy Server. It can be one of the following: 'ha', 'src', 'dst', or 'srcdst'.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,32 +64,32 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"fp_proxy_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password of the Customer ID used in HTTP/HTTPS properties for the Proxy Server. This is required at creation in clear text, and if not set during a modification, it keeps the current password.",
 		},
 		"fp_proxy_key_hashed": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A SHA512 + salted hash of the current password of the Customer ID used in HTTP/HTTPS properties for the Proxy Server. This is a read-only property and is not required at creation.",
 		},
 		"fp_proxy_key_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Key ID used in HTTP/HTTPS properties for the Proxy Server.",
 		},
 		"fp_proxy_user_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Customer ID used in HTTP/HTTPS properties for the Proxy Server.",
 		},
 		"http_proxy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The service gateway used for HTTP/HTTPS traffic in the Proxy Server. It can be one of the following: 'forcepoint_ap-web_cloud', 'generic', or 'redirect'.",
 		},
 		"ip_address": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The list of additional IP addresses for the Proxy Server. These addresses allow using multiple IPs for the Proxy Server element.",
 			ElementType: types.StringType,
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"key": schema.Int64Attribute{
@@ -103,7 +103,7 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -111,7 +111,7 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -119,7 +119,7 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -132,7 +132,7 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -140,7 +140,7 @@ func GetProxyServerSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"trust_host_header": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Proxy Server trusts the host header in HTTP(S) requests. This is used to determine if the server should trust the host header provided by clients.",
 		},
 	}

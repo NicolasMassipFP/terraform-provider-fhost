@@ -35,11 +35,11 @@ func GetLogicalInterfaceMatchPartSchemaAttributes(ctx context.Context) map[strin
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether any logical interface matches the criteria. If true, no specific elements are required.",
 	},
 		"logical_interface": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the logical interface or match expression.",
 			ElementType: types.StringType,
 		},

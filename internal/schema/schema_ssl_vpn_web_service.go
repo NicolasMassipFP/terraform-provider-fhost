@@ -44,23 +44,23 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"client_trust": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Trusted Certificate Authority, which is used to manage trusted certificate authorities in the system.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"cookie_protection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether cookie protection is enabled for the Application Access Web Service. This helps to prevent session hijacking by securing cookies.",
 		},
 		"description": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Description of the Application Access Web Service.",
 		},
 		"disable_rewrite": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the rewrite feature is disabled for the Application Access Web Service. If true, it means that HTML content rewriting is not applied.",
 		},
 		"etag": schema.StringAttribute{
@@ -68,11 +68,11 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"external_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "External URL of the Application Access Web Service. This is the URL that users will access from outside the network.",
 		},
 		"internal_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Internal URL of the Application Access Web Service. This is the URL that users will access from inside the network.",
 		},
 		"key": schema.Int64Attribute{
@@ -90,7 +90,7 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,31 +98,31 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"rewrite_html": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether HTML content should be rewritten for the Application Access Web Service. This is useful for modifying web pages to work correctly over the VPN.",
 		},
 		"routing_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The routing method for the Application Access Web Service. It defines how the service routes traffic, such as DNS mapping or direct routing.",
 		},
 		"self_signed_certificate": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Application Access Web Service uses a self-signed certificate. If true, it means the service is using a self-signed certificate for secure communication.",
 		},
 		"server_credential": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
 		},
 		"ssl_vpn_service_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an Application Access Service Profile. It contains settings for exceptions, HTTP fields, authentication type, NTLM support, and user input formats.",
 		},
 		"ssl_vpn_sso_domain": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an SSL VPN Single Sign On Domain, which includes properties such as SSO mode and timeout settings.",
 		},
 		"start_page": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start page for the Application Access Web Service. This is the page that users will see when they first access the service.",
 		},
 		"system": schema.BoolAttribute{
@@ -134,7 +134,7 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"title": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Title of the Application Access Web Service.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -142,16 +142,16 @@ func GetSslVpnWebServiceSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"trusted_ca": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted CA.",
 			ElementType: types.StringType,
 		},
 		"url_prefix": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URL prefix for the Application Access Web Service. This is used to define a base path for the service URLs.",
 		},
 		"visible_in_portal": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Application Access Web Service is visible in the portal. If true, it will be displayed in the user portal for easy access.",
 		},
 	}

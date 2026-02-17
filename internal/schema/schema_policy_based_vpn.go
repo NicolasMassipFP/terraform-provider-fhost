@@ -44,11 +44,11 @@ func GetPolicyBasedVpnSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dscp_qos_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a QoS Policy, which is used for Bandwidth Management and Traffic Prioritization based on QoS Classes or DSCP Matches.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetPolicyBasedVpnSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"link_usage_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Link Usage Profile, which is used to manage link usage settings in a multi-link environment. It includes configurations for link balancing, packet duplication, and forward erasure correction.",
 		},
 		"link": schema.MapAttribute{
@@ -74,15 +74,15 @@ func GetPolicyBasedVpnSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mobile_vpn_topology_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates the mobile VPN topology mode, which defines the type of gateway communicating with the VPN client.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nat": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether NAT rules are applied for this VPN.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -102,7 +102,7 @@ func GetPolicyBasedVpnSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"vpn_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a VPN Profile. It contains settings for IKE and IPsec lifetimes, keep-alive options, certificate authorities, and authentication methods.",
 		},
 	}

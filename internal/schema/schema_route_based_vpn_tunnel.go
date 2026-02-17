@@ -44,11 +44,11 @@ func GetRouteBasedVpnTunnelSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A user-defined comment for the Route-Based VPN Tunnel. This field can be used to provide additional information or context about the tunnel.",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Route-Based VPN Tunnel is enabled or not.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,19 +56,19 @@ func GetRouteBasedVpnTunnelSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"gre_keepalive": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether GRE Keepalive is enabled for the Route-Based VPN Tunnel. This feature allows the tunnel to maintain its state by sending periodic keepalive messages.",
 		},
 		"gre_keepalive_period": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The GRE Keepalive period for the Route-Based VPN Tunnel, in seconds. This value determines how often keepalive messages are sent to maintain the tunnel's state.",
 		},
 		"gre_keepalive_retry": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The GRE Keepalive retry count for the Route-Based VPN Tunnel. This value determines how many times the tunnel will retry sending a keepalive message before considering the tunnel down.",
 		},
 		"hashed_preshared_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The hashed pre-shared key for the Route-Based VPN Tunnel. This is a one-way hash of the pre-shared key, used for secure storage and comparison.",
 		},
 		"key": schema.Int64Attribute{
@@ -86,23 +86,23 @@ func GetRouteBasedVpnTunnelSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mtu": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Maximum Transmission Unit (MTU) for the Route-Based VPN Tunnel. This value determines the largest packet size that can be transmitted over the tunnel.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"pmtu_discovery": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Path MTU Discovery is enabled for the Route-Based VPN Tunnel. This feature allows the tunnel to dynamically adjust its MTU based on the path characteristics.",
 		},
 		"ppk_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Base class for Post-Quantum Preshared Key (PPK) elements.",
 		},
 		"preshared_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The pre-shared key used for the Route-Based VPN Tunnel. This key is used for authentication and encryption.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -122,27 +122,27 @@ func GetRouteBasedVpnTunnelSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"ttl": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Time To Live (TTL) for the Route-Based VPN Tunnel. This value determines how long the tunnel's packets are allowed to live in the network before being discarded.",
 		},
 		"tunnel_encryption": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The encryption mode of the Route-Based VPN Tunnel, indicating how the tunnel's data is encrypted.",
 		},
 		"tunnel_group_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Route Based VPN Tunnel Group. It is used to group tunnels in the home/monitoring view. It contains a reference to the Link Usage Profile that defines the link usage for the tunnels in this group.",
 		},
 		"tunnel_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode of the Route-Based VPN Tunnel, indicating how the tunnel is configured and operates.",
 		},
 		"tunnel_mode_vpn_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
 		},
 		"vpn_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 	}

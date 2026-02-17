@@ -35,15 +35,15 @@ func GetLogModerationSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"burst": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The maximum number of matching log entries in a single burst. The default value for Antispoofing entries is 1000. By default, Discard log entries are not compressed.",
 	},
 		"log_event": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of log event for moderation.",
 		},
 		"rate": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum number of log entries per second.",
 		},
 	}

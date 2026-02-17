@@ -35,19 +35,19 @@ func GetPimIpv4MulticastGroupEntrySchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"mapping": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The Multicast group RP or Mapping, which can be an IPv4 Unicast address or a list of addresses. For 'pim_sm' mode, it represents the RP IPv4 Unicast address. For 'pim_ssm' mode, it can be a list of IPv4 Unicast addresses separated by commas or a DNS suffix.",
 	},
 		"mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode of the Multicast group, which can be pim_sm, pim_ssm, or pim_dm.",
 		},
 		"multicast_group_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"multicast_ip_network": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The manual Multicast IPv4 Network, if not using a Network element.",
 		},
 	}

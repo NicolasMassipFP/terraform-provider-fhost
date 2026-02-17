@@ -35,15 +35,15 @@ func GetServerDirectoriesSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"archive_mask": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The bit mask of selected archive directories, -1 for all.",
 	},
 		"only_archive": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether only archive directories are considered for log operations.",
 		},
 		"server": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a server in the network. It is an abstract class that can be extended to define specific types of servers.",
 		},
 	}

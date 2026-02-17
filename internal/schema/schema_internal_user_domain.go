@@ -44,7 +44,7 @@ func GetInternalUserDomainSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetInternalUserDomainSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"isdefault": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this User Domain is the default one for authentication. Only one User Domain can be set as default.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,7 +70,7 @@ func GetInternalUserDomainSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

@@ -35,11 +35,11 @@ func GetDomainSpecificDnsServerSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"dns_server_addresses": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The DNS server addresses associated with the domain, which can be a single IP address or a list of IP addresses separated by commas.",
 	},
 		"domain_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The domain name for which the DNS server addresses are defined.",
 		},
 	}

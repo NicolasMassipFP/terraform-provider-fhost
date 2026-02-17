@@ -40,7 +40,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the server. Must be a valid IPv4 address.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,11 +48,11 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"alert_server": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the server. Must be a valid IPv6 address.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,7 +74,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,7 +90,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -103,11 +103,11 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tls_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -115,7 +115,7 @@ func GetWebAccessServerSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"uiid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The UIID (Unique Installation ID) for the Web Access Server, which uniquely identifies the installation.",
 		},
 	}

@@ -40,7 +40,7 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "accept_wildcard": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Is server identity check accepts wildcards. Default is false, can be overridden by the chosen server identity method.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,11 +48,11 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"check_revocation": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Is certificate revocation checked. Default is true.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -74,7 +74,7 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,11 +90,11 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tls_cryptography_suites": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Cryptography Suite Set Element, which contains a set of cryptographic suites used in SSL VPN configurations.",
 		},
 		"tls_trusted_ca_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted CA.",
 			ElementType: types.StringType,
 		},
@@ -103,7 +103,7 @@ func GetTlsProfileSchemaAttributes(ctx context.Context) map[string]schema.Attrib
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"use_only_subject_alt_name": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Use Only Subject Alt Name When the TLS identity is a DNS name, uses only Subject Alternative Name (SAN) certificate matching.",
 		},
 	}

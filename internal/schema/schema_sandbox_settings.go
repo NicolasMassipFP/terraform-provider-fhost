@@ -35,20 +35,20 @@ func GetSandboxSettingsSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"http_proxy": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the HTTP Proxy.",
 		ElementType: types.StringType,
 	},
 		"sandbox_license_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The license key for the sandbox service, which is required for activation and usage of the sandbox features.",
 		},
 		"sandbox_license_token": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The license token for the sandbox service, which is used for authentication and authorization of sandbox features.",
 		},
 		"sandbox_service": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the Sandbox service element (referenced by sandbox settings). It contains information about the portal account, data center, license key and token.",
 		},
 	}

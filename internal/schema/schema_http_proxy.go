@@ -40,7 +40,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IP address of the HTTP Proxy. Must be a valid IPv4 or IPv6 address.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,7 +48,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,15 +56,15 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"http_proxy_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password for the user on the HTTP Proxy. This is stored in a ciphered format.",
 		},
 		"http_proxy_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the HTTP Proxy.",
 		},
 		"http_proxy_username": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The username for the HTTP Proxy. This is used for authentication.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -94,7 +94,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -107,7 +107,7 @@ func GetHttpProxySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{

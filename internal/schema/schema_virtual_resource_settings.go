@@ -35,15 +35,15 @@ func GetVirtualResourceSettingsSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"qos_limit": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The QoS interface throughput limit for the Virtual Resource, specified in kbps.",
 	},
 		"virtual_mapping": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The identifier for the Virtual Mapping associated with this Virtual Resource.",
 		},
 		"virtual_resource_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the Virtual Resource associated with these settings.",
 		},
 	}

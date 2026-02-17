@@ -35,20 +35,20 @@ func GetDhcpRelaySchemaAttributes(ctx context.Context) map[string]schema.Attribu
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"element": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the DHCP Server.",
 		ElementType: types.StringType,
 	},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the DHCP Relay is enabled on this interface.",
 		},
 		"max_packet_size": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum packet size for DHCP Relay, which is required if DHCP Relay is enabled.",
 		},
 		"trusted_circuit": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the DHCP Relay is configured for a trusted circuit.",
 		},
 	}

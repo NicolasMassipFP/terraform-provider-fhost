@@ -44,16 +44,16 @@ func GetGatewayNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "child_node": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the child Gateway Node.",
 			ElementType: types.StringType,
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"gateway": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is the base class for all storable elements.",
 		},
 		"key": schema.Int64Attribute{
@@ -67,19 +67,19 @@ func GetGatewayNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"node_usage": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The usage type of the gateway node, indicating its role in the VPN topology, such as 'central', 'satellite', or 'mobile'.",
 		},
 		"parent_node": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.",
 		},
 		"vpn_key": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the VPN node, used to reference this node in the VPN topology.",
 		},
 	}

@@ -35,11 +35,11 @@ func GetRankedUrlSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"rank": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The rank of the URL in the list, indicating its order or priority.",
 	},
 		"url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL associated with this ranked entry.",
 		},
 	}

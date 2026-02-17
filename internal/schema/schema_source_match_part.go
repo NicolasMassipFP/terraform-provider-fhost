@@ -35,20 +35,20 @@ func GetSourceMatchPartSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if any source matches the criteria. If true, no specific elements are required.",
 	},
 		"resolved_src": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.StringType,
 		},
 		"none": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if no source matches the criteria. If true, no specific elements are required.",
 		},
 		"src": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the source or match expression.",
 			ElementType: types.StringType,
 		},

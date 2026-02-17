@@ -35,11 +35,11 @@ func GetProxyNatSchemaAttributes(ctx context.Context) map[string]schema.Attribut
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"automatic_proxy": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether Automatic Proxy ARP is enabled. This allows the engine to answer address queries regarding the translated address(es).",
 	},
 		"proxy_server": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Proxy Server, which is a server that performs detailed examination of a connection's data and assists in the determination to allow or discard packets. Common examples include virus scanning or filtering of web URLs. Also known as content screening.",
 		},
 	}

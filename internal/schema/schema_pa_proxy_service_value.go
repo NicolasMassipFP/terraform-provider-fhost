@@ -35,23 +35,23 @@ func GetPaProxyServiceValueSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"address_range": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The NAT IP address range for the Proxy Service.",
 	},
 		"max_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum port number for the Proxy Service.",
 		},
 		"min_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum port number for the Proxy Service.",
 		},
 		"parameter_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
 		},
 		"proxy_server_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Proxy Server, which is a server that performs detailed examination of a connection's data and assists in the determination to allow or discard packets. Common examples include virus scanning or filtering of web URLs. Also known as content screening.",
 		},
 	}

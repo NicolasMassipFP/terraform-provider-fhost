@@ -35,21 +35,21 @@ func GetDestinationMatchingPartSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if any destination matches the criteria. If true, no specific elements are required.",
 	},
 		"dst": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the destination entry.",
 			ElementType: types.StringType,
 		},
 		"resolved_dst": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.StringType,
 		},
 		"none": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if no destination matches the criteria. If true, no specific elements are required.",
 		},
 	}

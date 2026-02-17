@@ -44,7 +44,7 @@ func GetLogicalOperatorSituationParameterValueSchemaAttributes(ctx context.Conte
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -58,23 +58,23 @@ func GetLogicalOperatorSituationParameterValueSchemaAttributes(ctx context.Conte
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"operator_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of logical operator used in this parameter value, such as 'or', 'not', 'and', or 'ordered_and'.",
 		},
 		"order": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The order of this parameter value within the situation, determining its sequence.",
 		},
 		"parameter_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.",
 		},
 		"references": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the storable.",
 			ElementType: types.StringType,
 		},

@@ -40,27 +40,27 @@ func GetSituationParameterSchemaAttributes(ctx context.Context) map[string]schem
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "bounds": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Hints about the minimum and maximum size for integers, floats, etc., and string lengths for string parameters. For example, '0|100' means the minimum is 0 and the maximum is 100, '|100' means the minimum is not set, and '0|' means that the maximum is not set.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"conn_info_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of connection information associated with this parameter, such as 'none', 'logserver', 'alertserver', 'block_list', or 'sendanalyzator'.",
 		},
 		"default_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default value for this parameter, which is used if no value is provided.",
 		},
 		"display_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The display name of the parameter in the GUI, providing a user-friendly label.",
 		},
 		"enumeration": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Hints for the GUI to show the enumeration for this parameter's value setting. For example, 'Pass:1-Drop:2-Reject:3' would mean a pull-down menu for three integer values showing Pass, Drop, and Reject to the user.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,27 +74,27 @@ func GetSituationParameterSchemaAttributes(ctx context.Context) map[string]schem
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"max_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum supported engine version for this parameter.",
 		},
 		"min_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum supported engine version for this parameter.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"optional": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this parameter is optional. If true, the parameter can be omitted.",
 		},
 		"order": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The order in which this parameter appears in the situation, allowing for custom ordering of parameters.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the parameter, such as 'string', 'integer', 'boolean', etc.",
 		},
 	}

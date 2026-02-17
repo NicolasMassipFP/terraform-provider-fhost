@@ -44,11 +44,11 @@ func GetLinkUsageProfileSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"default_link_balancing_preference": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Default SD-WAN Link balancing preference. This is a value comprised between 0 and 4. Default value is 0 and means Equal Balancing.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,30 +60,30 @@ func GetLinkUsageProfileSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"link_dont_duplicate_link_type_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Link Type.",
 			ElementType: types.StringType,
 		},
 		"link_duplicate_qos_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the QoS Class.",
 			ElementType: types.StringType,
 		},
 		"link_fec_percentage": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Forward Erasure Correction percentage indicating the ratio of correction packets to data packets.",
 		},
 		"link_fec_qos_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the QoS Class.",
 			ElementType: types.StringType,
 		},
 		"link_fec_threshold": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Packet drop threshold that will start Forward Erasure Correction. This is a value comprised between 0 and 100.",
 		},
 		"link_fec_type_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Link Type.",
 			ElementType: types.StringType,
 		},
@@ -98,7 +98,7 @@ func GetLinkUsageProfileSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

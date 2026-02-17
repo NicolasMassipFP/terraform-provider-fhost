@@ -44,43 +44,43 @@ func GetRoutingNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"communication_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of communication mode used for this interface in case of OSPF dynamic routing configuration, such as 'not_forced', 'point_to_point', 'passive', or 'unicast'.",
 		},
 		"custom_configuration": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Custom configuration for the routing node, which can be used to specify additional settings or parameters.",
 		},
 		"dynamic_classid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Dynamic Type of the associated element, such as 'interface', 'modem_interface', 'adsl_interface', 'network', 'gateway', or 'netlink'.",
 		},
 		"dynamic_ipv6": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the dynamic element is IPv6 or not. By default, it is not IPv6.",
 		},
 		"dynamic_nicid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Dynamic Interface ID of the associated Physical Interface, required for dynamic interface levels.",
 		},
 		"exclude_from_ip_counting": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Interface Routing element should be excluded from IP counting, which means it will not be considered in IP address usage calculations.",
 		},
 		"href": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a base class for objects that can be stored in the database. It includes properties such as key, comment, and links.",
 		},
 		"invalid": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Routing element is valid or not.",
 		},
 		"ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address of the Routing/Antispoofing, required in case of secondary IP Addresses.",
 		},
 		"key": schema.Int64Attribute{
@@ -88,7 +88,7 @@ func GetRoutingNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The level of the Routing/Antispoofing, such as 'engine_cluster', 'interface', 'network', 'gateway', or 'any'.",
 		},
 		"link": schema.MapAttribute{
@@ -98,39 +98,39 @@ func GetRoutingNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"mroute_only": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the PIM Any routing level is marked as MRoute only, which means it is used for multicast routing only.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"nic_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Interface ID of the associated Physical Interface, required in case of Interface level.",
 		},
 		"probe_ecmp": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The ECMP (Equal-Cost Multi-Path) value for the routing probe, which is used to determine the number of equal-cost paths for load balancing.",
 		},
 		"probe_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds between routing probe tests when the probe test type is 'ping'. This value determines how often the probe will check the reachability of the next hop.",
 		},
 		"probe_ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address used for the routing probe when the probe test type is 'ping'. This address is used to check the reachability of the next hop.",
 		},
 		"probe_metric": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The metric value for the routing probe, which is used to determine the cost of the route. A lower metric indicates a preferred route.",
 		},
 		"probe_retry_count": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of retries for the routing probe when the probe test type is 'ping'. This value determines how many times the probe will attempt to reach the next hop before considering it unreachable.",
 		},
 		"probe_test": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of probe test used for the routing node, such as 'ping', 'traceroute', or 'not_set'.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -138,7 +138,7 @@ func GetRoutingNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates whether the view node is read-only or not.",
 		},
 		"related_element_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of the related element.",
 		},
 		"system": schema.BoolAttribute{
@@ -146,7 +146,7 @@ func GetRoutingNodeSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates whether the view node is a system node or not.",
 		},
 		"to_delete": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Routing element should be deleted or not.",
 		},
 	}

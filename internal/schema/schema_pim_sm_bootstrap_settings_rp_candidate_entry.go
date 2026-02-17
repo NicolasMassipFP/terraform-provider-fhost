@@ -35,11 +35,11 @@ func GetPimSmBootstrapSettingsRpCandidateEntrySchemaAttributes(ctx context.Conte
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"multicast_ip_network": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The manual Multicast IPv4 Network associated with this RP Candidate entry, if available.",
 	},
 		"rp_multicast_group_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 	}

@@ -48,7 +48,7 @@ func GetUpdatePackageSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,7 +70,7 @@ func GetUpdatePackageSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"package_id": schema.Int64Attribute{

@@ -44,15 +44,15 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"delete_source_data": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if after the archive operation, logs need to be deleted. If true, logs will be deleted after archiving.",
 		},
 		"end_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end time in ms used when the time_limit_type is set to 'absolute_time_range'.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,60 +60,60 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"file_format": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The file format for the export/archive mode: 'csv' for CSV format, 'xml' for XML format, 'zip' for ZIP format, 'cef' for CEF format, 'leef' for LEEF format, 'esm' for ESM format, 'snoop' for IPS recordings as SNOOP, 'pcap' for IPS recordings as PCAP.",
 		},
 		"file_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The path where the archive/export will be stored.",
 		},
 		"filter_for_delete": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Filter Expression Container, which is a top-level re-usable filter that contains filter expression nodes.",
 		},
 		"filter_for_export": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Filter Expression Container, which is a top-level re-usable filter that contains filter expression nodes.",
 		},
 		"for_alert_event_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if Alert event logs need to be considered for the task.",
 		},
 		"for_alert_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if Alert logs need to be considered for the task.",
 		},
 		"for_audit_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if Audit logs need to be considered for the task.",
 		},
 		"for_fw_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if firewall logs need to be considered for the task.",
 		},
 		"for_ips_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if IPS logs need to be considered for the task.",
 		},
 		"for_ips_recording_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if IPS Recording logs need to be considered for the task.",
 		},
 		"for_l2fw_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if L2FW logs need to be considered for the task.",
 		},
 		"for_third_party_log": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if Third Party logs need to be considered for the task.",
 		},
 		"ips_recordings": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Optional IPS record IDs for PCAP/SNOOP IPS recording export logs.",
 			ElementType: types.Int64Type,
 		},
 		"is_local_location": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to know if the archive/export file will be stored on the log server (false) or locally (true).",
 		},
 		"key": schema.Int64Attribute{
@@ -131,11 +131,11 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"overwrite_file_flag": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The overwrite options: 'append' for append option, 'overwrite' for overwrite option, 'use_number_in_file_name' for creating a unique file with number as name, 'fail_task' for failing the task.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -143,24 +143,24 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"relative_time_begin": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The begin number of days when the time_limit_type is set to 'relative_time_range' or 'before'.",
 		},
 		"relative_time_end": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The end number of days when the time_limit_type is set to 'relative_time_range' or 'before'.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},
 		"script_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The script to execute after the task.",
 		},
 		"start_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The start time in ms used when the time_limit_type is set to 'absolute_time_range' or 'after'.",
 		},
 		"system": schema.BoolAttribute{
@@ -172,7 +172,7 @@ func GetExportLogTaskSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"time_limit_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Log task time limit type: Time range type. 'before' for 'relative_time_end' number of days, 'relative_time_range' for between 'relative_time_begin' number of days and 'relative_time_end' number of days, 'absolute_time_range' for between 'start_time' time in ms and 'end_time' time in ms. 'today' for today. 'yesterday' for yesterday. 'last_full_week_sun_sat' for last full week (sunday-saturday). 'last_full_week_mon_sun' for last full week (monday-sunday). 'last_full_month' for last full month. 'after' for after 'start_time' time in ms.",
 		},
 		"trashed": schema.BoolAttribute{

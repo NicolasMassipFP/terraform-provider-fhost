@@ -35,47 +35,47 @@ func GetAntivirusSettingsSchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"antivirus_enabled": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether the antivirus feature is enabled on the firewall element.",
 	},
 		"antivirus_http_proxy_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the HTTP Proxy is enabled for antivirus updates. By default, it is not enabled.",
 		},
 		"antivirus_proxy_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The HTTP Proxy password used for authentication when accessing the antivirus update server.",
 		},
 		"antivirus_proxy_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The HTTP Proxy port used for antivirus updates.",
 		},
 		"antivirus_proxy_user": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The HTTP Proxy username used for authentication when accessing the antivirus update server.",
 		},
 		"antivirus_update": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The frequency at which the antivirus updates are performed.",
 		},
 		"antivirus_update_day": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The day of the week when antivirus updates are performed, represented as a two-letter abbreviation.",
 		},
 		"antivirus_update_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time of the day the Antivirus updates are performed, given as a long value in a 24-hour format.",
 		},
 		"virus_alert": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract Alert, which is used to display messages when certain conditions are met.",
 		},
 		"virus_log_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The log level for antivirus events, which determines how antivirus-related logs are handled.",
 		},
 		"virus_mirror": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL of the antivirus signature mirrors used for updating malware signatures.",
 		},
 	}

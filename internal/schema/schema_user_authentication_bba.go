@@ -35,55 +35,55 @@ func GetUserAuthenticationBbaSchemaAttributes(ctx context.Context) map[string]sc
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"all_interfaces": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if the service listens on all interfaces. If true, it listens on all available network interfaces.",
 	},
 		"authentication_idle_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The authentication idle timeout in seconds. This defines how long a user session remains active without activity before requiring re-authentication.",
 		},
 		"authentication_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The authentication timeout in seconds. This defines how long a user session remains active before requiring re-authentication.",
 		},
 		"enforce_https": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if HTTPS must be enforced. If true, all HTTP requests are redirected to HTTPS.",
 		},
 		"http_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port on which HTTP listens. If null, HTTP is not enabled.",
 		},
 		"https_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port on which HTTPS listens. If null, HTTPS is not enabled.",
 		},
 		"keep_alive_rate": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rate at which the service refreshes status, in seconds. If null, keep-alive is disabled.",
 		},
 		"key_length": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The key length for the certificate, specified in bits. This is used for certificate-based authentication.",
 		},
 		"page_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Web Authentication HTML Page, which is used for browser-based user authentication. It contains the HTML content that is displayed to users when they are not authorized.",
 		},
 		"session_handling": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if session handling is enabled. If true, sessions are managed for user authentication.",
 		},
 		"subject_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The subject name for the certificate. This is used for certificate-based authentication.",
 		},
 		"tls_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"use_cert_bba": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if certificate-based authentication is used. If true, users authenticate using their certificates.",
 		},
 	}

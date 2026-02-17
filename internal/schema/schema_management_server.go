@@ -40,7 +40,7 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,27 +48,27 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"alert_server_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.",
 		},
 		"announcement_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether announcements are enabled for the Management Server. If enabled, announcements are shown to all users.",
 		},
 		"announcement_message": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The announcement message for the Management Server, limited to 160 characters. You can add formatting using standard HTML tags.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"db_replication": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether database replication is enabled for the Management Server. This value is deprecated when replication is based on PostgreSQL native replication.",
 		},
 		"elasticsearch_indexing_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Elasticsearch indexing is active on this Management Server. Note that indexing also needs to be active on both the server and the Elasticsearch cluster itself.",
 		},
 		"etag": schema.StringAttribute{
@@ -76,7 +76,7 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"key": schema.Int64Attribute{
@@ -84,7 +84,7 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"license_update_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Management Server automatically generates and installs new licenses for system components when upgrading to a major new release.",
 		},
 		"link": schema.MapAttribute{
@@ -94,7 +94,7 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -102,15 +102,15 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"log_disk_space_handling_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode chosen to handle extra logs when the disk runs out of space. Possible values are 'stop_receiving', 'delete_old_logs', and 'overwrite_old_logs'.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"radius_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The RADIUS authentication method used by the Management Server for authenticating administrators. Possible values are 'pap', 'chap', 'mschap', 'mschap2', and 'eap-md5'. Default is 'eap-md5'.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -118,28 +118,28 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"script_path": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The root path for custom alert scripts used by the Management Server.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
 		"sender_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The email address of the sender for notifications sent by the Management Server.",
 		},
 		"sender_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the sender for notifications sent by the Management Server.",
 		},
 		"smtp_server_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Simple Mail Transfer Protocol (SMTP) server, which is used to process notifications by e-mails. It includes attributes for port, default sender email, and default sender name.",
 		},
 		"snmp_gateways": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP gateway for the Management Server, which defines the SNMP settings for network management.",
 		},
 		"system": schema.BoolAttribute{
@@ -151,19 +151,19 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tacacs_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The TACACS authentication method used by the Management Server for authenticating administrators. Possible values are 'ascii', 'pap', 'chap', and 'mschap'. Default is 'mschap'.",
 		},
 		"tls_credentials": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
 		},
 		"tls_profile": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Profile. It contains common data for establishing a TLS connection, including TLS version, cryptography suites, and trusted certificate authorities.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -171,35 +171,35 @@ func GetManagementServerSchemaAttributes(ctx context.Context) map[string]schema.
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"uiid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier (UIID) for the Management Server installation, which is used to identify the server instance.",
 		},
 		"updates_check_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Management Server checks for updates automatically.",
 		},
 		"updates_proxy_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The address of the proxy server used by the Management Server for HTTPS connections to the Internet servers.",
 		},
 		"updates_proxy_authentication_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Management Server requires authentication for the proxy server used for HTTPS connections to the Internet servers.",
 		},
 		"updates_proxy_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Management Server uses a proxy server for HTTPS connections to the Internet servers.",
 		},
 		"updates_proxy_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password for authentication to the proxy server used by the Management Server for HTTPS connections to the Internet servers.",
 		},
 		"updates_proxy_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number of the proxy server used by the Management Server for HTTPS connections to the Internet servers.",
 		},
 		"updates_proxy_username": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The username for authentication to the proxy server used by the Management Server for HTTPS connections to the Internet servers.",
 		},
 	}

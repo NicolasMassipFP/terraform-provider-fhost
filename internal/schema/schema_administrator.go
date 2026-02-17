@@ -44,27 +44,27 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"allow_sudo": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator has sudo rights on the engine. If true, the administrator can execute commands with elevated privileges on the engine.",
 		},
 		"allowed_to_login_in_shared": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator is allowed to log in to the Shared Domain. If true, the administrator can access shared resources and settings.",
 		},
 		"auth_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.",
 		},
 		"can_use_api": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator can use the SMC API. If true, the administrator can access the API for automation and integration purposes.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"console_superuser": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator user is a console superuser. This applies only to an Appliance and grants additional privileges for console access.",
 		},
 		"enabled": schema.BoolAttribute{
@@ -72,7 +72,7 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The status of the administrator user. It indicates whether the user is enabled or disabled.",
 		},
 		"engine_target": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the target engine.",
 			ElementType: types.StringType,
 		},
@@ -89,11 +89,11 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"ldap_group": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a group of external LDAP Users defined on the external LDAP server. It allows browsing and invalidating user entries.",
 		},
 		"ldap_user": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an external LDAP User defined on the external LDAP server. It contains user details such as display name, email, phone number, job title, office location, frame IP, activation date, expiration date, and days left until expiration.",
 		},
 		"link": schema.MapAttribute{
@@ -103,7 +103,7 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"local_admin": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator is a local administrator on the engine. If true, the administrator can log in to the engine directly.",
 		},
 		"locked": schema.BoolAttribute{
@@ -111,11 +111,11 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The password of the administrator user. This is required for local administrators and optional for LDAP-based administrators.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -123,7 +123,7 @@ func GetAdministratorSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"superuser": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the administrator user is a superuser. A superuser has full access to all system functions and settings.",
 		},
 		"system": schema.BoolAttribute{

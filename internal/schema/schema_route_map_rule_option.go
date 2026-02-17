@@ -35,35 +35,35 @@ func GetRouteMapRuleOptionSchemaAttributes(ctx context.Context) map[string]schem
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"as_path_type": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The AS Path type, which determines how the AS Path is modified. It can be 'dont_modify' for nothing to modify, 'prepend' for prepending the AS number by this specified, or 'exclude' for excluding the AS number by this specified.",
 	},
 		"community_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Community type, which determines how the Community is modified. It can be 'dont_modify' for nothing to modify, 'set_to_none' for setting to none the Community number, 'set_to' for setting the new Community number by this specified, 'additive' for adding the community number by this specified, or 'delete' for deleting the Community Access List element.",
 		},
 		"delete_community_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Community Access List, which is used to define a list of communities for dynamic routing configurations.",
 		},
 		"extended_community_entry_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Extended Community entry type, which specifies the type of Extended Community number. It can be 'soo' for Site of Origin or 'rt' for Route Target.",
 		},
 		"extended_community_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Extended Community type, which determines how the Extended Community is modified. It can be 'dont_modify' for nothing to modify or 'set_to' for setting the new Extended Community number by this specified.",
 		},
 		"local_preference": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Local Preference value, which is an integer used to influence route selection.",
 		},
 		"metric": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Metric value, which is an integer used to influence route selection.",
 		},
 		"weight": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Weight value, which is an integer used to influence route selection.",
 		},
 	}

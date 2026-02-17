@@ -35,20 +35,20 @@ func GetTlsClientProtectionWrapperSchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"ca_for_signing_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a Signing Certificate Authority, which is used to manage signing certificate authorities in the system.",
 	},
 		"proxy_usage": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The purpose of the proxy usage, such as 'tls_inspection' or 'opcua_inspection'. This field indicates the intended use of the proxy in TLS Client protection settings.",
 		},
 		"tls_trusted_ca_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the TLS trusted CA.",
 			ElementType: types.StringType,
 		},
 		"tls_trusted_ca_tag_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the trusted CA tag.",
 			ElementType: types.StringType,
 		},

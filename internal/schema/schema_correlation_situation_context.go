@@ -44,11 +44,11 @@ func GetCorrelationSituationContextSchemaAttributes(ctx context.Context) map[str
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"description": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Long description of the parameter group.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,19 +70,19 @@ func GetCorrelationSituationContextSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"max_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum supported engine version.",
 		},
 		"min_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum supported engine version.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"parallel": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the parameter group is parallel.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -90,7 +90,7 @@ func GetCorrelationSituationContextSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"situation_parameters": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the associated Situation Parameter.",
 			ElementType: types.StringType,
 		},
@@ -107,7 +107,7 @@ func GetCorrelationSituationContextSchemaAttributes(ctx context.Context) map[str
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Type of the parameter group.",
 		},
 	}

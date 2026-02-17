@@ -35,11 +35,11 @@ func GetDnsRpDnsAnswerTranslationSchemaAttributes(ctx context.Context) map[strin
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"original_ipaddress": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The original IP address or network that is being translated in DNS answer translation.",
 	},
 		"translated_ipaddress": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The translated IP address or list of hostnames that corresponds to the original IP address in DNS answer translation.",
 		},
 	}

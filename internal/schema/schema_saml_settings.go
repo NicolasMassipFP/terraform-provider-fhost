@@ -35,35 +35,35 @@ func GetSamlSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"saml_acs_url": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The URL where the SAML assertions are sent and processed.",
 	},
 		"saml_metadata_file": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SAML Setting specific IdP Metadata, this overrides IdP Metadata defined in SAML Method.",
 		},
 		"saml_method_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.",
 		},
 		"saml_name_id_policy_format": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Name ID policy format used in SAML authentication. Options include 'persistent', 'transient', 'emailAddress', and 'unspecified'.",
 		},
 		"saml_service_provider_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the SAML service provider.",
 		},
 		"saml_setting_usage": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The intended usage of the SAML settings. Options include 'bba' for user authentication, 'app_access' for Application Access Portal, and 'web_access' for Web Access.",
 		},
 		"saml_tls_credentials_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Server Credentials element, which is used to store the private key and certificate of an internal server. The certificate and the associated private key must be compatible with OpenSSL and be in PEM format. It is used for TLS inspection, securing Web Access Servers, and authenticating Authentication Servers.",
 		},
 		"saml_user_attribute": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The attribute used to identify the user in SAML authentication.",
 		},
 	}

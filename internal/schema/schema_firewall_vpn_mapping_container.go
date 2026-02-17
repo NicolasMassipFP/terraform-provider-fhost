@@ -35,11 +35,11 @@ func GetFirewallVpnMappingContainerSchemaAttributes(ctx context.Context) map[str
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"gateway_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents the Internal Gateway, which is used for managing VPN connections and related settings.",
 	},
 		"vpn_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
 		},
 	}

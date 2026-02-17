@@ -35,7 +35,7 @@ func GetLiteralExpressionTimeMillisSchemaAttributes(ctx context.Context) map[str
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"key": schema.Int64Attribute{
@@ -49,11 +49,11 @@ func GetLiteralExpressionTimeMillisSchemaAttributes(ctx context.Context) map[str
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"long_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The time value in milliseconds used in the literal expression for filtering log fields.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

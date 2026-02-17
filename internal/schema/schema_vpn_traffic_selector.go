@@ -44,7 +44,7 @@ func GetVpnTrafficSelectorSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,15 +66,15 @@ func GetVpnTrafficSelectorSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port_number": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Port number if Protocol allows it - Set to '-1' if not allowed. If the port number is not specified, it defaults to 'NO_PORT_NUMBER'.",
 		},
 		"protocol_number": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The protocol. It can be any of the predefined protocol numbers or 'ANY'.",
 		},
 		"read_only": schema.BoolAttribute{

@@ -11,7 +11,7 @@ This represents a VLAN Interface for a Virtual Engine. VLANs divide a single phy
 
 ## Examples
 
-- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/tree/main//examples/engines/single_fw/single_fw_vlan_interfaces) for a full example
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/single_fw/single_fw_vlan_interfaces) for a full example
 
 ```hcl
 vlan_interfaces {

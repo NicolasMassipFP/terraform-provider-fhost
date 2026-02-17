@@ -35,31 +35,31 @@ func GetApplicationPortSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"from": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The minimum port number for this Application Port.",
 	},
 		"max_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum version of the engine that supports this Application Port. If not defined, it applies to the same versions as the parent element.",
 		},
 		"min_version": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The minimum version of the engine that supports this Application Port. If not defined, it applies to the same versions as the parent element.",
 		},
 		"mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode of the Application Port, which can be 'regular' or 'quic'. By default, it is set to 'regular'.",
 		},
 		"protocol_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an IP-proto service, which is used to define a service based on the IP protocol number. It includes a protocol number that specifies the protocol used by the traffic.",
 		},
 		"tls": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The TLS type for this Application Port, indicating how TLS is handled. By default, it is set to 'no'.",
 		},
 		"to": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum port number for this Application Port.",
 		},
 	}

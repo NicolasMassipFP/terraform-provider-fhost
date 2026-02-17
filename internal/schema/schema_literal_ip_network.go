@@ -35,11 +35,11 @@ func GetLiteralIpNetworkSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"ip_address_with_netmask": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IPv4 or IPv6 address with netmask in the format 'a.b.c.d/n', where 'n' is the netmask as an integer.",
 		},
 		"key": schema.Int64Attribute{
@@ -53,7 +53,7 @@ func GetLiteralIpNetworkSchemaAttributes(ctx context.Context) map[string]schema.
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

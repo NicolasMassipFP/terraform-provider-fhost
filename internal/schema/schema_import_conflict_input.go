@@ -35,20 +35,20 @@ func GetImportConflictInputSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"authorized_method_list": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The list of authorized methods to resolve conflict.",
 		ElementType: types.StringType,
 	},
 		"conflict_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of conflict.",
 		},
 		"default_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default import conflict method.",
 		},
 		"element": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a base class for objects that can be stored in the database. It includes properties such as key, comment, and links.",
 		},
 	}

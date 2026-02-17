@@ -35,11 +35,11 @@ func GetSecondaryLogServerContainerForStorageSchemaAttributes(ctx context.Contex
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"rank": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The rank of the secondary log server, which determines its order in the configuration.",
 	},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.",
 		},
 	}

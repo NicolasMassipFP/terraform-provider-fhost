@@ -44,7 +44,7 @@ func GetIntegratedUserIdServiceSchemaAttributes(ctx context.Context) map[string]
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,15 +52,15 @@ func GetIntegratedUserIdServiceSchemaAttributes(ctx context.Context) map[string]
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"iuis_domain": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the Authentication Domain. Each LDAP server has its own authentication domain in the SMC. One authentication domain can be selected as the default authentication domain, so that users can leave out this information when they authenticate (users can type username instead of username@domain). Users that are stored under non-default authentication domains must always include the domain in the username. If administrative Domains have been configured, you can create separate Authentication Domains for each administrative Domain and select one Authentication Domain in each administrative Domain as the Default. Alternatively, you can select one of the Authentication Domains in the Shared Domain as the Default Authentication Domain across all the administrative Domains.",
 		},
 		"iuis_initial_query_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The initial query time in seconds, which defines how long the system waits before performing the first user identification query.",
 		},
 		"iuis_polling_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The polling interval in seconds, which defines how often the system checks for user identification updates.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,7 +78,7 @@ func GetIntegratedUserIdServiceSchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

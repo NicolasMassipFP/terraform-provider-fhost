@@ -35,20 +35,20 @@ func GetServiceMatchPartSchemaAttributes(ctx context.Context) map[string]schema.
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"any": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if any service matches the criteria. If true, no specific elements are required.",
 	},
 		"resolved_service": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 			ElementType: types.StringType,
 		},
 		"none": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if no service matches the criteria. If true, no specific elements are required.",
 		},
 		"service": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the service or match expression.",
 			ElementType: types.StringType,
 		},

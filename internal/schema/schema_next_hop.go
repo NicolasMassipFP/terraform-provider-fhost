@@ -35,15 +35,15 @@ func GetNextHopSchemaAttributes(ctx context.Context) map[string]schema.Attribute
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"next_hop_ip": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The IP address (IPv4 or IPv6) for the next hop. Required if no next hop reference or peer address is specified.",
 	},
 		"next_hop_peer_address": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the next hop is a peer address. Required if no IP address or next hop reference is specified.",
 		},
 		"next_hop_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 	}

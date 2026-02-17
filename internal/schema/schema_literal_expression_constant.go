@@ -35,15 +35,15 @@ func GetLiteralExpressionConstantSchemaAttributes(ctx context.Context) map[strin
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"comment": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "An optional comment for the element. This field is not required.",
 	},
 		"constant_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the log field constant, which is read-only and used for identification in filtering logic.",
 		},
 		"constant_value": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The long value that represents the key of the log field constant used in filtering logic.",
 		},
 		"key": schema.Int64Attribute{
@@ -57,7 +57,7 @@ func GetLiteralExpressionConstantSchemaAttributes(ctx context.Context) map[strin
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

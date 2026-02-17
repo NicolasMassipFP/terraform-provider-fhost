@@ -48,32 +48,32 @@ func GetAlertChainRuleSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"admin_name": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the administrator in case of user notification channel.",
 			ElementType: types.StringType,
 		},
 		"alert_channel": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The alert channel.",
 		},
 		"amount": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum number of notifications to be sent before activating moderation. This is used to control the frequency of notifications.",
 		},
 		"background_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The background color for the comment (rule section) and insert point rules. It is represented by its hexadecimal representation ('#RRGGBB').",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The delay before the next notification in minutes. This is applicable for channels that support delays.",
 		},
 		"destination": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The destination address for the alert channel. This is required for channels like SMTP, SMS, and Custom Script.",
 		},
 		"etag": schema.StringAttribute{
@@ -81,7 +81,7 @@ func GetAlertChainRuleSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"is_disabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the rule is disabled.",
 		},
 		"key": schema.Int64Attribute{
@@ -99,11 +99,11 @@ func GetAlertChainRuleSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"notify_first_block": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to notify the first blocked notification upon moderation activation. This is used to alert the user about the first blocked notification.",
 		},
 		"parent_insert_point": schema.StringAttribute{
@@ -115,11 +115,11 @@ func GetAlertChainRuleSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"period": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The period during which notifications are tracked before activating moderation. This is used to determine the time frame for monitoring notifications.",
 		},
 		"rank": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of the Rule within the Policy. If not specified, the Rule will be the first one in the Policy.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -143,7 +143,7 @@ func GetAlertChainRuleSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of insert point for the rule. It can be 'normal' for a standard insert point or 'automatic' for an automatic rule insert point.",
 		},
 	}

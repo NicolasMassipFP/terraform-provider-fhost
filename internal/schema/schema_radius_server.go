@@ -40,7 +40,7 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the server. Must be a valid IPv4 address.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,7 +48,7 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,7 +56,7 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the server. Must be a valid IPv6 address.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,7 +70,7 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -78,15 +78,15 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The port number for the authentication server. If the server communicates on a port other than the default port. The predefined Firewall Template allows the engines to connect to the default port. If you change to a custom port, you must add a new IPv4 Access Rule to allow the traffic.",
 		},
 		"provided_method": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Authentication Method.",
 			ElementType: types.StringType,
 		},
@@ -95,16 +95,16 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"retries": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of retries for the authentication server connection. It defines how many times Firewalls try to connect to the RADIUS or TACACS+ authentication server if the connection fails.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
 		"shared_secret": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The shared secret for the authentication server. It is used for RADIUS clients on the Active Directory server.",
 		},
 		"system": schema.BoolAttribute{
@@ -116,11 +116,11 @@ func GetRadiusServerSchemaAttributes(ctx context.Context) map[string]schema.Attr
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout value in seconds for the authentication server. It defines how long Firewalls wait for the RADIUS or TACACS+ authentication server to reply.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{

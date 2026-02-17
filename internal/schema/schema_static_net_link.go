@@ -40,11 +40,11 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "active_mode_period": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The active period in milliseconds for the NetLink, which defines how often the link is probed when it is in Active or Standby mode. Leave the setting for Standby Mode as 0 if you prefer not to test this link when it is on standby.",
 		},
 		"active_mode_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The active timeout in milliseconds for the NetLink, which defines how long the firewall waits before it considers the probe failed. Change the setting for Standby Mode to 0 if you prefer not to test this link when it is on standby.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -52,11 +52,11 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connection_type_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a connection type used in endpoints, which defines the connectivity group, mode, and link type for VPN connections.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,19 +64,19 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"gateway_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a network element, which is a component that has an IP address and can be part of a network. It includes a location reference.",
 		},
 		"input_speed": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Input Speed in bits per second for the NetLink, which defines the real-life bandwidth this network connection provides. It is used to calculate how much traffic each link receives in relation to the other links.",
 		},
 		"ipv4_outbound": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address used to NAT the IPv4 outbound traffic. Defaults to the CVI address defined in the routing view.",
 		},
 		"ipv6_outbound": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address used to NAT the IPv6 outbound traffic. Defaults to the CVI address defined in the routing view.",
 		},
 		"key": schema.Int64Attribute{
@@ -90,7 +90,7 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -98,20 +98,20 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"network_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Network to define the address space.",
 			ElementType: types.StringType,
 		},
 		"output_speed": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Output Speed in bits per second for the NetLink, which defines the real-life bandwidth this network connection provides. It is used to calculate how much traffic each link receives in relation to the other links.",
 		},
 		"probe_address": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP address that is probed with ICMP echo requests (ping) to determine if the link is up. Repeat this for each IP address you want to add. We recommend entering more than one address to avoid excluding the link in case the host that is probed goes down.",
 			ElementType: types.StringType,
 		},
@@ -120,11 +120,11 @@ func GetStaticNetlinkSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"standby_mode_period": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The standby period in seconds for the NetLink, which defines how often the link is probed when it is in Standby mode. Leave the setting for Standby Mode as 0 if you prefer not to test this link when it is on standby.",
 		},
 		"standby_mode_timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The standby timeout in seconds for the NetLink, which defines how long the firewall waits before it considers the probe failed in Standby mode. Change the setting for Standby Mode to 0 if you prefer not to test this link when it is on standby.",
 		},
 		"system": schema.BoolAttribute{

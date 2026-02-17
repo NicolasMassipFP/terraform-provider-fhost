@@ -35,19 +35,19 @@ func GetLocalLogStorageSettingsSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"lls_guaranteed_free_percent": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Defines a minimum amount of spool space that must be left available for other uses in percentage. By default, this is set to -1, which means that the value is not defined.",
 	},
 		"lls_guaranteed_free_size_in_mb": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Defines a minimum amount of spool space that must be left available for other uses in MegaBytes. By default, this is set to -1, which means that the value is not defined.",
 		},
 		"lls_max_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Defines the maximum amount of hours before the stored logs are deleted. By default, this is set to -1, which means that the logs will not be deleted automatically.",
 		},
 		"local_log_storage_activated": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Activate the Local Log Storage feature. At least one of the Guaranteed free disk partition values must be set up.",
 		},
 	}

@@ -44,15 +44,15 @@ func GetUpgradeNodeTaskSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"command": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Upgrade node command: 'remote_upgrade_transfer' to transfer the image to the node, 'remote_upgrade_activate' to activate the already transferred image on the node, 'remote_upgrade' to transfer and activate the image on the node.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"engine_upgrade_filename": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The filename of the engine upgrade.",
 		},
 		"etag": schema.StringAttribute{
@@ -74,7 +74,7 @@ func GetUpgradeNodeTaskSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetUpgradeNodeTaskSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"resources": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the resource.",
 			ElementType: types.StringType,
 		},

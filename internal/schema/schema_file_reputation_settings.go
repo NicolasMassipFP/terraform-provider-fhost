@@ -35,11 +35,11 @@ func GetFileReputationSettingsSchemaAttributes(ctx context.Context) map[string]s
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"file_reputation_context": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The file reputation context, which is required for the File Reputation Settings.",
 	},
 		"http_proxy": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the HTTP Proxy.",
 			ElementType: types.StringType,
 		},

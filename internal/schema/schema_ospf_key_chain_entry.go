@@ -35,23 +35,23 @@ func GetOspfKeyChainEntrySchemaAttributes(ctx context.Context) map[string]schema
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"algorithm": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The cryptographic algorithm used for OSPFv2 authentication, which can be 'md5'",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the OSPF Key Chain Entry, providing additional context or information.",
 		},
 		"key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The cryptographic key used for OSPFv2 authentication, limited to 16 characters.",
 		},
 		"key_id": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique identifier for the key, which is used to reference the key in OSPFv2.",
 		},
 		"send_key": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the key should be sent to the engine.",
 		},
 	}

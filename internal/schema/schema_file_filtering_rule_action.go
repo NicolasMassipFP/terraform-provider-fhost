@@ -35,129 +35,129 @@ func GetFileFilteringRuleActionSchemaAttributes(ctx context.Context) map[string]
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"action": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "",
 		ElementType: types.StringType,
 	},
 		"antivirus": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether antivirus scanning is enabled.",
 		},
 		"decrypting": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether decryption is enabled for the traffic matching this rule.",
 		},
 		"deep_inspection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable deep inspection of traffic that matches this rule. This will inspect the traffic against the Inspection Policy referenced by this policy.",
 		},
 		"default_behavior": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default behavior for file filtering actions.",
 		},
 		"dirty_log_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The log level for dirty files, which determines how they are logged.",
 		},
 		"dos_protection": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable or disable DoS protection for matching traffic. This will apply the DoS protection settings defined in the policy.",
 		},
 		"file_filtering": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable file filtering for matching traffic. This should also activate the Deep Inspection option. You can further adjust virus scanning in the Inspection Policy.",
 		},
 		"file_reputation": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether file reputation checking is enabled.",
 		},
 		"file_reputation_allow_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The level of file reputation that is allowed.",
 		},
 		"file_reputation_discard_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The level of file reputation that results in discarding the file.",
 		},
 		"forward_to": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract node element in the network, which can be extended to represent specific types of nodes.",
 		},
 		"icap_dlp_file_size_exceeded_action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to take if the ICAP DLP file size exceeds the maximum limit.",
 		},
 		"icap_dlp_max_file_size": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum file size for ICAP DLP scanning in MB.",
 		},
 		"icap_dlp_scan_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether ICAP DLP scanning is enabled.",
 		},
 		"icap_dlp_service_fail_action": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The action to take if the ICAP DLP service fails.",
 		},
 		"mobile_vpn": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "If 'apply_vpn', 'forward_vpn', or 'enforce_vpn' actions are selected, this indicates if it is an IPsec VPN client.",
 		},
 		"network_application_latency_monitoring": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to enable Network Application Latency Monitoring. This will enable the Application Health Monitoring.",
 		},
 		"rematch_archive_content": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether rematching of archive content is enabled.",
 		},
 		"reset_icmp": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "If 'terminate' action is selected, this indicates whether to send an ICMP notification for non-TCP traffic termination.",
 		},
 		"sandbox": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether sandboxing is enabled for file analysis.",
 		},
 		"sandbox_allow_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The level of sandboxing that is allowed.",
 		},
 		"sandbox_delay_file_transfer": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether file transfer is delayed until sandbox analysis results are received.",
 		},
 		"scan_detection": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Enable or disable Scan Detection for traffic that matches the rule. This overrides the option set in the NGFW properties.",
 		},
 		"snort": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag to indicate whether Snort intrusion detection is enabled for the traffic matching this rule.",
 		},
 		"spooling_level": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The spooling level for file transfers, which determines how files are handled during processing.",
 		},
 		"sub_policy": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a sub-policy that can be applied to various elements in the system, such as network elements, inspection rules, etc.",
 		},
 		"unavailable_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The method to handle unavailable files.",
 		},
 		"user_response": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a User Response, which defines additional notification actions for rule matches, such as redirecting access to a forbidden URL to a page on an internal web server instead.",
 		},
 		"valid_block_lister": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the network element used as blocklister.",
 			ElementType: types.StringType,
 		},
 		"vpn": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.",
 		},
 	}

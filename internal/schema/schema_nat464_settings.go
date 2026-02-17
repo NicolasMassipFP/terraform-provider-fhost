@@ -35,44 +35,44 @@ func GetNat464SettingsSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"clat_local_ipv6_prefix_ip": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The local IPv6 prefix address for 464XLAT CLAT mode, which is not required.",
 	},
 		"clat_local_ipv6_prefix_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 		"clat_remote_ipv6_prefix_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The remote IPv6 prefix address for 464XLAT CLAT mode, which is not required.",
 		},
 		"clat_remote_ipv6_prefix_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 		"mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode for the IPv6 Transition Mechanism, which can be CLAT, NAT64, or SIIT EAM.",
 		},
 		"nat64_ipv6_prefix_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IPv6 prefix address for NAT64 mode, which is not required.",
 		},
 		"nat64_ipv6_prefix_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 		"nat64_local_pools_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the Network representing the local IPv4 pools in NAT64 mode.",
 			ElementType: types.StringType,
 		},
 		"siit_eam_ipv6_pool_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The default IPv6 pool address for SIIT EAM mode, which is not required.",
 		},
 		"siit_eam_ipv6_pool_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.",
 		},
 	}

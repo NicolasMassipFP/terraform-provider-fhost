@@ -44,7 +44,7 @@ func GetLldpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetLldpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"hold_time_multiplier": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The multiplier for the hold time in LLDP advertisements. This value is used to calculate the hold time based on the transmit delay. Default is 4.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,7 +70,7 @@ func GetLldpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetLldpProfileSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"transmit_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The delay in milliseconds before transmitting LLDP advertisement frames. Default is 30 ms.",
 		},
 		"trashed": schema.BoolAttribute{

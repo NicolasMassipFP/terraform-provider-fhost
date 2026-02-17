@@ -35,15 +35,15 @@ func GetOspfv2SettingsSchemaAttributes(ctx context.Context) map[string]schema.At
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"enabled": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether OSPFv2 Dynamic Routing is enabled.",
 	},
 		"ospfv2_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract OSPF Profile used as Dynamic Routing element. It contains settings for OSPF routing, including distances and redistribution entries.",
 		},
 		"router_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The OSPFv2 Router ID, which can be an IPv4 address or null for automatic mode.",
 		},
 	}

@@ -35,11 +35,11 @@ func GetCapabilitiesSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"sha2_ike_hash_length": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The SHA2 hash length used for IKE (Internet Key Exchange).",
 	},
 		"sha2_ipsec_hash_length": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SHA2 hash length used for IPsec (Internet Protocol Security).",
 		},
 	}

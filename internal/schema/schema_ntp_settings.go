@@ -35,15 +35,15 @@ func GetNtpSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"ntp_enable": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates if NTP is enabled.",
 	},
 		"ntp_preferred_server_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an NTP server, which is used to synchronize the time across network devices. It includes attributes for host name, authentication key type, and optional authentication key ID and key.",
 		},
 		"ntp_server_ref": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the NTP Server.",
 			ElementType: types.StringType,
 		},

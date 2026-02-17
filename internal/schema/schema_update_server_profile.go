@@ -44,7 +44,7 @@ func GetUpdateServerProfileSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -66,7 +66,7 @@ func GetUpdateServerProfileSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -74,7 +74,7 @@ func GetUpdateServerProfileSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"retry": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of retries for connection attempts.",
 		},
 		"system": schema.BoolAttribute{
@@ -86,7 +86,7 @@ func GetUpdateServerProfileSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The connection timeout in seconds.",
 		},
 		"trashed": schema.BoolAttribute{

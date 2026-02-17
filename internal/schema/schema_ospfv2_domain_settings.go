@@ -40,7 +40,7 @@ func GetOspfv2DomainSettingsSchemaAttributes(ctx context.Context) map[string]sch
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "abr_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Area Border Router type, which can be either 'cisco' or 'standard' or 'shortcut'.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,15 +48,15 @@ func GetOspfv2DomainSettingsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"auto_cost_bandwidth": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The auto-cost reference bandwidth in MBit/s.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"deprecated_algorithm": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the deprecated algorithm (RFC 1583) is used.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,11 +64,11 @@ func GetOspfv2DomainSettingsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"initial_delay": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The initial delay in milliseconds before OSPF starts processing.",
 		},
 		"initial_hold_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The initial hold time in milliseconds for OSPF.",
 		},
 		"key": schema.Int64Attribute{
@@ -86,11 +86,11 @@ func GetOspfv2DomainSettingsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"max_hold_time": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum hold time in milliseconds for OSPF.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,11 +98,11 @@ func GetOspfv2DomainSettingsSchemaAttributes(ctx context.Context) map[string]sch
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"shutdown_max_metric_lsa": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The shutdown max metric link-state advertisement in seconds.",
 		},
 		"startup_max_metric_lsa": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The startup max metric link-state advertisement in seconds.",
 		},
 		"system": schema.BoolAttribute{

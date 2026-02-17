@@ -44,11 +44,11 @@ func GetConnectionTypeSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"connectivity_group": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The connectivity group ID for the VPN connections, starting from 1.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetConnectionTypeSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"link_type_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the Link Type, which defines the characteristics and behavior of a link in the VPN configuration.",
 		},
 		"link": schema.MapAttribute{
@@ -74,11 +74,11 @@ func GetConnectionTypeSchemaAttributes(ctx context.Context) map[string]schema.At
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode of the connection type, indicating how the connection is balanced.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

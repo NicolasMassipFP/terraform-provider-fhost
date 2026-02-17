@@ -44,7 +44,7 @@ func GetEthernetServiceSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -52,7 +52,7 @@ func GetEthernetServiceSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"frame_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The frame type of the Ethernet service, which can be 'eth2', 'ipx', 'llc', or 'snap'. This is required to specify the type of Ethernet traffic being handled.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,11 +70,11 @@ func GetEthernetServiceSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"protocol_agent_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Protocol Agent. It is a process on the engines that assists the engine in handling a particular Protocol. Protocol Agents ensure that related connections for a service are properly grouped and evaluated by the engine, as well as assisting the engine with content filtering or network address translation tasks.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -94,11 +94,11 @@ func GetEthernetServiceSchemaAttributes(ctx context.Context) map[string]schema.A
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"value1": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The first MAC value associated with the Ethernet service, which varies based on the frame type. For 'eth2', it is the EtherType code; for 'llc', it is the SSAP address; for 'snap', it is the OUI.",
 		},
 		"value2": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The second MAC value associated with the Ethernet service, which varies based on the frame type. For 'llc', it is the DSAP address; for 'snap', it is the type.",
 		},
 	}

@@ -35,12 +35,12 @@ func GetEventSequenceSituationParameterValueSchemaAttributes(ctx context.Context
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"binding_sets": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "URI of the associated binding set.",
 		ElementType: types.StringType,
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -54,19 +54,19 @@ func GetEventSequenceSituationParameterValueSchemaAttributes(ctx context.Context
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"order": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The order of this parameter value within the situation, determining its sequence.",
 		},
 		"parameter_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.",
 		},
 		"primary_filters": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the associated primary filter.",
 			ElementType: types.StringType,
 		},

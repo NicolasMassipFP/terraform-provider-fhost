@@ -35,11 +35,11 @@ func GetSslVpnHttpFieldSchemaAttributes(ctx context.Context) map[string]schema.A
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"http_field_name": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The name of the HTTP field, which is used to identify the field in HTTP requests.",
 	},
 		"http_field_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The value of the HTTP field, which is used to set the field in HTTP requests.",
 		},
 	}

@@ -35,15 +35,15 @@ func GetAsPathAccessListEntrySchemaAttributes(ctx context.Context) map[string]sc
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"action": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The action to be taken for this access list entry.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"expression": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The expression that defines the AS path access list entry.",
 		},
 		"key": schema.Int64Attribute{
@@ -51,7 +51,7 @@ func GetAsPathAccessListEntrySchemaAttributes(ctx context.Context) map[string]sc
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

@@ -44,11 +44,11 @@ func GetSmcCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"certificate_state": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The state of the Certificate Authority, e.g., active, untrusted.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -56,7 +56,7 @@ func GetSmcCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"isdefault": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if this is the default Certificate Authority.",
 		},
 		"key": schema.Int64Attribute{
@@ -74,7 +74,7 @@ func GetSmcCertificateAuthoritySchemaAttributes(ctx context.Context) map[string]
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

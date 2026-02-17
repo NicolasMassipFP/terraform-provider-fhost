@@ -39,7 +39,7 @@ func GetSecurityGroupSchemaAttributes(ctx context.Context) map[string]schema.Att
 		Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 	},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -47,11 +47,11 @@ func GetSecurityGroupSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"isc_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "ISC VSS ID, which is required for the Security Group.",
 		},
 		"isc_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "ISC name, which is required for the Security Group.",
 		},
 		"key": schema.Int64Attribute{
@@ -65,7 +65,7 @@ func GetSecurityGroupSchemaAttributes(ctx context.Context) map[string]schema.Att
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -73,11 +73,11 @@ func GetSecurityGroupSchemaAttributes(ctx context.Context) map[string]schema.Att
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"obsolete": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Flag indicating if the object is obsolete. This is not required and defaults to false.",
 		},
 		"read_only": schema.BoolAttribute{

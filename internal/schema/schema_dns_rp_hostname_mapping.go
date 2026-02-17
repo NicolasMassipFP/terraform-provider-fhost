@@ -35,7 +35,7 @@ func GetDnsRpHostnameMappingSchemaAttributes(ctx context.Context) map[string]sch
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"hostnames": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The hostname or hostnames for the DNS Relay Profile Hostname Mapping, which can be a single hostname or a comma-separated list of hostnames.",
 	},
 	}

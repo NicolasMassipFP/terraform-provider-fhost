@@ -35,11 +35,11 @@ func GetUserAlertCheckAssociationSchemaAttributes(ctx context.Context) map[strin
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"enabled": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether the User Alert Check is enabled.",
 	},
 		"ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a User Alert Check. It contains settings for the type of check, threshold values, filter, and associated alert.",
 		},
 	}

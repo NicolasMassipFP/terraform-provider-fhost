@@ -35,31 +35,31 @@ func GetRouteMapMatchingConditionSchemaAttributes(ctx context.Context) map[strin
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"access_list_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 	},
 		"external_bgp_peer_address_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the External BGP Peer for Dynamic Routing Firewall functionality. It is used to configure external BGP peers in the firewall's dynamic routing capabilities.",
 		},
 		"fwcluster_peer_address_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a group of devices, or nodes, that share a given work load. You can cluster Firewalls to share the load and provide redundancy, allowing, for example, scheduled maintenance that takes one node out of service without interrupting services to the users.",
 		},
 		"metric": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Metric value used for matching routes in the Route Map Rule.",
 		},
 		"next_hop_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents an abstract access list used in dynamic routing. It contains a list of access list entries that define the rules for routing decisions.",
 		},
 		"rank": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The rank of this matching condition, which determines its priority in the Route Map Rule.",
 		},
 		"type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The type of matching condition, which can be 'element', 'next_hop', 'metric', or 'peer_address'.",
 		},
 	}

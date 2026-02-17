@@ -44,23 +44,23 @@ func GetEcaEndpointSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"client_av_disabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if client AV is disabled.",
 		},
 		"client_av_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if client AV is enabled.",
 		},
 		"client_av_unknown": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the client AV status is unknown.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"eca_os": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "URI of the ECA Operating System Situation.",
 			ElementType: types.StringType,
 		},
@@ -79,15 +79,15 @@ func GetEcaEndpointSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"local_firewall_disabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the local firewall is disabled.",
 		},
 		"local_firewall_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the local firewall is enabled.",
 		},
 		"local_firewall_unknown": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the local firewall status is unknown.",
 		},
 		"locked": schema.BoolAttribute{
@@ -95,23 +95,23 @@ func GetEcaEndpointSettingsSchemaAttributes(ctx context.Context) map[string]sche
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"os_update_time_days": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of days for OS update time, which should be a positive integer.",
 		},
 		"os_update_time_enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if OS update time is enabled.",
 		},
 		"os_update_time_operator": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The operator for OS update time, such as 'less_than' or 'more_than'.",
 		},
 		"os_update_unknown": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the OS update status is unknown.",
 		},
 		"read_only": schema.BoolAttribute{

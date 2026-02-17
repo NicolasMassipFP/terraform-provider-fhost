@@ -35,15 +35,15 @@ func GetL2fwSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attr
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"bypass_overload_traffic": schema.BoolAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "Indicates whether traffic is bypassed during overload conditions on Inline IPS and Capture interfaces.",
 	},
 		"l2_interface_policy_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Layer 2 Interface Policy, which is used to define the action and inspection rules for L2FW Interface Engines.",
 		},
 		"tracking_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The connection tracking mode for Layer 2 Interfaces, which can be 'normal', 'strict', or 'loose'. Default is 'normal'.",
 		},
 	}

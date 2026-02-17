@@ -40,7 +40,7 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv4 address of the device, which is used for network communication.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,15 +48,15 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"channel_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The TCP port number for the Log Server. We recommend using default port 3020 if possible. To use a non-standard port, manually add Access rules to allow communications using the new port from the NGFW Engines to the Log Server.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"elasticsearch_indexing_active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether Elasticsearch indexing is active on this server. Note: indexing also needs to be active on both the server and the Elasticsearch cluster itself.",
 		},
 		"etag": schema.StringAttribute{
@@ -64,11 +64,11 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"inactive": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether the Log Server is inactive. If true, it is excluded from Log Browsing, Reporting and Statistics.",
 		},
 		"ipv6_address": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The primary IPv6 address of the device, which is used for network communication.",
 		},
 		"key": schema.Int64Attribute{
@@ -82,7 +82,7 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -90,11 +90,11 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"log_disk_space_handling_mode": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The mode chosen to handle extra logs when disk runs out of space.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -102,7 +102,7 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"secondary": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "A list of secondary IP addresses for the device, which can be used in policies and routing. You can add several IPv4 and IPv6 addresses (one by one).",
 			ElementType: types.StringType,
 		},
@@ -115,7 +115,7 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"tools_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a Tools Profile. Tools Profiles add commands to the right-click menus of elements, allowing dynamic information inclusion from the element definition. Only one Tools Profile can be selected for each element, but each can include several commands. Commands are launched on the workstation running the Management Client and are operating-system-specific.",
 		},
 		"trashed": schema.BoolAttribute{
@@ -123,7 +123,7 @@ func GetLogServerSchemaAttributes(ctx context.Context) map[string]schema.Attribu
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"uiid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The unique installation ID (UIID) of the Log Server, used to identify the server in the system.",
 		},
 	}

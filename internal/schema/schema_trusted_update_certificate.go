@@ -40,7 +40,7 @@ func GetTrustedUpdateCertificateSchemaAttributes(ctx context.Context) map[string
 			Computed:    true,
 			Description: "this attribute is the identifier of terraform resource",
 		}, "active": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if the certificate is enabled.",
 		},
 		"admin_domain": schema.StringAttribute{
@@ -48,7 +48,7 @@ func GetTrustedUpdateCertificateSchemaAttributes(ctx context.Context) map[string
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,11 +70,11 @@ func GetTrustedUpdateCertificateSchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"pem": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The certificate in PEM format.",
 		},
 		"read_only": schema.BoolAttribute{

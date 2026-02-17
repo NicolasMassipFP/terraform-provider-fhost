@@ -35,12 +35,12 @@ func GetMultiContactAddressElementSchemaAttributes(ctx context.Context) map[stri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"addresses": schema.ListAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "A list of IP addresses associated with the multi contact address element. This field is required if the multi contact address element is enabled.",
 		ElementType: types.StringType,
 	},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 	}

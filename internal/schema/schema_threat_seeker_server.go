@@ -44,15 +44,15 @@ func GetThreatSeekerServerSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"dds_api_key": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The API key for accessing the ThreatSeeker DDS service.",
 		},
 		"dds_url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The URL to the ThreatSeeker DDS service.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,7 +70,7 @@ func GetThreatSeekerServerSchemaAttributes(ctx context.Context) map[string]schem
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -78,7 +78,7 @@ func GetThreatSeekerServerSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -98,15 +98,15 @@ func GetThreatSeekerServerSchemaAttributes(ctx context.Context) map[string]schem
 			Description: "Indicates if the element is trashed. This field is not required.",
 		},
 		"ts_certificate": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The CA certificate for the Threat Seeker Server, which is used to establish a secure connection.",
 		},
 		"tskey_exp": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The expiration date of the Threat Seeker License Key",
 		},
 		"url": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The complete URL to the Threat Seeker Server.",
 		},
 	}

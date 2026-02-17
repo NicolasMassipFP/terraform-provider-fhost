@@ -44,23 +44,23 @@ func GetPdfTemplateSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"back_font_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Font color of back page. It should be specified in hexadecimal format (e.g., #FFFFFF for white).",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"content_file": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is an Internal File. It represents a file used internally within the system, typically for configuration or other internal purposes.",
 		},
 		"content_page": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Index of content page. This is the page where the main content of the report starts.",
 		},
 		"cover_font_color": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Font color of cover page. It should be specified in hexadecimal format (e.g., #FFFFFF for white).",
 		},
 		"etag": schema.StringAttribute{
@@ -68,19 +68,19 @@ func GetPdfTemplateSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"first_end_page": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "First index of end pages.",
 		},
 		"first_start_page": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "First index of starting pages.",
 		},
 		"footer_height": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Footer height in mm. This is the height of the footer section on each page of the PDF report.",
 		},
 		"header_height": schema.Float64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Header height in mm. This is the height of the header section on each page of the PDF report.",
 		},
 		"key": schema.Int64Attribute{
@@ -88,11 +88,11 @@ func GetPdfTemplateSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "The unique identifier for the element. This field is required for updates but not for creation.",
 		},
 		"last_end_page": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Last index of end pages.",
 		},
 		"last_start_page": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Last index of starting pages.",
 		},
 		"link": schema.MapAttribute{
@@ -106,7 +106,7 @@ func GetPdfTemplateSchemaAttributes(ctx context.Context) map[string]schema.Attri
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{

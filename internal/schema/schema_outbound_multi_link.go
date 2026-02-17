@@ -44,7 +44,7 @@ func GetOutboundMultiLinkSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"etag": schema.StringAttribute{
@@ -62,7 +62,7 @@ func GetOutboundMultiLinkSchemaAttributes(ctx context.Context) map[string]schema
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"location_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.",
 		},
 		"locked": schema.BoolAttribute{
@@ -70,11 +70,11 @@ func GetOutboundMultiLinkSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"multilink_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The method for link selection in the Outbound Multi-Link. Options are 'rtt' for Round Trip Time or 'ratio' for Ratio-based distribution.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -82,7 +82,7 @@ func GetOutboundMultiLinkSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"retries": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The maximum number of retries for checking each NetLink in the Outbound Multi-Link.",
 		},
 		"system": schema.BoolAttribute{
@@ -94,7 +94,7 @@ func GetOutboundMultiLinkSchemaAttributes(ctx context.Context) map[string]schema
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout in seconds for measuring NetLink performance in the Outbound Multi-Link.",
 		},
 		"trashed": schema.BoolAttribute{

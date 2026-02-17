@@ -35,19 +35,19 @@ func GetReferenceExpressionAuditObjectSchemaAttributes(ctx context.Context) map[
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"audit_object_key": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The key of the audit object reference, which is read-only and used for identification in filtering logic.",
 	},
 		"audit_object_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The name of the audit object reference, which is read-only and used for identification in filtering logic.",
 		},
 		"audit_object_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This is a base class for objects that can be stored in the database. It includes properties such as key, comment, and links.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"key": schema.Int64Attribute{
@@ -61,7 +61,7 @@ func GetReferenceExpressionAuditObjectSchemaAttributes(ctx context.Context) map[
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 	}

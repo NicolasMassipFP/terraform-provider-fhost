@@ -44,15 +44,15 @@ func GetThirdPartyProbingProfileSchemaAttributes(ctx context.Context) map[string
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"cpu_usage_oid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The OID for monitoring CPU usage. It is used to specify the SNMP OID that provides CPU usage information.",
 		},
 		"disk_space_oid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The OID for monitoring disk space. It is used to specify the SNMP OID that provides disk space information.",
 		},
 		"etag": schema.StringAttribute{
@@ -60,7 +60,7 @@ func GetThirdPartyProbingProfileSchemaAttributes(ctx context.Context) map[string
 			Description: "The ETag of the element, used for versioning. This field is not required.",
 		},
 		"interface_monitored": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether interfaces should be monitored.",
 		},
 		"key": schema.Int64Attribute{
@@ -78,23 +78,23 @@ func GetThirdPartyProbingProfileSchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"mem_free_oid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The OID for monitoring free memory. It is used to specify the SNMP OID that provides free memory information.",
 		},
 		"mem_used_oid": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The OID for monitoring memory usage. It is used to specify the SNMP OID that provides memory usage information.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"probing_interval": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The interval in seconds at which the probing is performed.",
 		},
 		"probing_method": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The probing method used for monitoring.",
 		},
 		"read_only": schema.BoolAttribute{
@@ -102,39 +102,39 @@ func GetThirdPartyProbingProfileSchemaAttributes(ctx context.Context) map[string
 			Description: "Indicates if the element is read-only. This field is not required.",
 		},
 		"retry_count": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of retries to perform if the probing fails.",
 		},
 		"snmp_community": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP community string used for SNMP monitoring.",
 		},
 		"snmp_port": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP port used for monitoring.",
 		},
 		"snmpv3_auth_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 authentication password used for securing SNMP communications.",
 		},
 		"snmpv3_auth_protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 authentication protocol used for securing SNMP communications.",
 		},
 		"snmpv3_context_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 context name used for monitoring. It is used to specify the context in which the SNMP operations are performed.",
 		},
 		"snmpv3_priv_password": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 privacy password used for encrypting SNMP communications.",
 		},
 		"snmpv3_priv_protocol": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 privacy protocol used for encrypting SNMP communications.",
 		},
 		"snmpv3_sec_name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The SNMP V3 security name used for authentication.",
 		},
 		"system": schema.BoolAttribute{
@@ -146,7 +146,7 @@ func GetThirdPartyProbingProfileSchemaAttributes(ctx context.Context) map[string
 			Description: "The system key of the System element. This field is not required.",
 		},
 		"timeout": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The timeout in milliseconds for the probing operation.",
 		},
 		"trashed": schema.BoolAttribute{

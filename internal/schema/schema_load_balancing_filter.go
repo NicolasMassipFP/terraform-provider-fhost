@@ -35,35 +35,35 @@ func GetLoadBalancingFilterSchemaAttributes(ctx context.Context) map[string]sche
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"action": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The action type for the filter, which can be 'replace', 'node', or 'drop'.",
 	},
 		"ignore_other": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether other entries might not be concerned by this filter, allowing for more specific handling.",
 		},
 		"ip_descriptor": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The IP descriptor, which can be an IP network or an IP address range.",
 		},
 		"nat_enforce": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether NAT should enforce translated packet headers to the same hash value as the matching packet.",
 		},
 		"nodeid": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The ID of the node to which this filter applies, used when the action type is 'node'.",
 		},
 		"replace_ip": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The address to replace with when the action type is 'replace'. This is the new IP address that will be used.",
 		},
 		"use_ipsec": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether this entry should be handled with special care because it is part of a VPN.",
 		},
 		"use_ports": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether to use port numbers when calculating the hash value for the packet.",
 		},
 	}

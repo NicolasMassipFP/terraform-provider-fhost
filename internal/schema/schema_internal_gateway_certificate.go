@@ -44,19 +44,19 @@ func GetInternalGatewayCertificateSchemaAttributes(ctx context.Context) map[stri
 			Optional:    true,
 			Description: "parent href of this sub-resource",
 		}, "certificate_authority": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a VPN Certificate Authority, which is used to manage VPN certificate authorities in the system.",
 		},
 		"certificate_base64": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The PEM-encoded certificate for the internal gateway, which contains the public key and other metadata.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"expiration_date": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The date when the certificate expires, indicating when the certificate is no longer valid.",
 		},
 		"key": schema.Int64Attribute{
@@ -70,24 +70,24 @@ func GetInternalGatewayCertificateSchemaAttributes(ctx context.Context) map[stri
 			CustomType:  customfield.NewMapType[types.String](ctx),
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"public_key_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The public key algorithm used in the certificate, which defines the cryptographic method for the public key.",
 		},
 		"signature_algorithm": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The signature algorithm used in the certificate, which defines how the certificate is signed and verified.",
 		},
 		"subject_alt_name": schema.ListAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The subject alternative names (SAN) of the certificate, which provide additional identities for the certificate beyond the common name.",
 			ElementType: types.StringType,
 		},
 		"valid_from": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The date from which the certificate is valid, indicating when the certificate starts being effective.",
 		},
 	}

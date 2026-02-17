@@ -35,31 +35,31 @@ func GetSslVpnSettingSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"renegociation_timeout": schema.Int64Attribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "The timeout for renegotiation in seconds. This is the time after which a renegotiation will be attempted.",
 	},
 		"ssl_3_0": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether SSL 3.0 is accepted for the SSL VPN connection.",
 		},
 		"tls_1_3": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "",
 		},
 		"tls_1_0": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether TLS 1.0 is enabled for the SSL VPN connection.",
 		},
 		"tls_1_1": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether TLS 1.1 is enabled for the SSL VPN connection.",
 		},
 		"tls_1_2": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates whether TLS 1.2 is enabled for the SSL VPN connection.",
 		},
 		"tls_cryptography_suite_set": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents a TLS Cryptography Suite Set Element, which contains a set of cryptographic suites used in SSL VPN configurations.",
 		},
 	}

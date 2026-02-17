@@ -35,27 +35,27 @@ func GetBgpSettingsSchemaAttributes(ctx context.Context) map[string]schema.Attri
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"bgp_as_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents the Autonomous System for Dynamic Routing Firewall functionality. The BGP Version is 4/4+. It includes the AS Number in decimal notation, which is used to identify the autonomous system in BGP routing.",
 	},
 		"bgp_profile_ref": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "This represents the BGP Profile for Dynamic Routing Firewall functionality, including port settings, distances, and BGP entries.",
 		},
 		"bmp_router_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The BMP Router ID, which can be in the format [0-255]:[0-65535], V.X.Y.Z:[0-255], or [0-65535]:[0-255].",
 		},
 		"bmp_router_id_type": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The BMP Router ID Type, which indicates the format of the BMP Router ID. Allowed values are 0 for [0-255]:[0-65535], 1 for V.X.Y.Z:[0-255], and 2 for [0-65535]:[0-255].",
 		},
 		"enabled": schema.BoolAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Indicates if BGP settings are enabled. If true, BGP routing is active.",
 		},
 		"router_id": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The BGP Router ID, which can be an IPv4 address or null for automatic mode. Required for BGP configuration.",
 		},
 	}

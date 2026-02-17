@@ -44,11 +44,11 @@ func GetApplianceSwitchModuleSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.",
 		},
 		"comment": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "An optional comment for the element. This field is not required.",
 		},
 		"conf_value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The Configuration Value of this Appliance Switch Module. This is the value used in the engine configuration files.",
 		},
 		"etag": schema.StringAttribute{
@@ -70,11 +70,11 @@ func GetApplianceSwitchModuleSchemaAttributes(ctx context.Context) map[string]sc
 			Description: "Indicates if the element is locked. This field is not required.",
 		},
 		"name": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "Name of the object.",
 		},
 		"port_count": schema.Int64Attribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The number of ports on this Appliance Switch Module. Should be greater than zero.",
 		},
 		"read_only": schema.BoolAttribute{

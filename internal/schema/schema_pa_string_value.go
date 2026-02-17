@@ -35,11 +35,11 @@ func GetPaStringValueSchemaAttributes(ctx context.Context) map[string]schema.Att
 	useHcl2 := common.UseHCL2(ctx)
 
 	attrs := map[string]schema.Attribute{"parameter_ref": schema.StringAttribute{
-		Optional:    true, // todo optional parameters
+		Optional:    true,
 		Description: "This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.",
 	},
 		"value": schema.StringAttribute{
-			Optional:    true, // todo optional parameters
+			Optional:    true,
 			Description: "The string value used in the Protocol Agent Parameter.",
 		},
 	}
