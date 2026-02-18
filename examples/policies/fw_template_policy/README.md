@@ -1,3 +1,15 @@
-# Fw Template Policy
+# Template Policy Example
 
-This is an example demonstrating the usage of the Fw Template Policy configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Demonstrates creating a firewall policy template and associated rules/NATs (IPv4/IPv6).
+
+- Creates template policy with insert points for rules
+- Adds IPv4 and IPv6 access and NAT rules as examples
+
+## Usage
+
+Modify rules as required. Configure SMC provider, then:
+
+```
+terraform init
+terraform apply
+```

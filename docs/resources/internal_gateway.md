@@ -1,15 +1,58 @@
 ---
-page_title: "internal_gateway"
+page_title: "smc_internal_gateway"
 subcategory: "vpn"
 description: |-
   This represents the Internal Gateway, which is used for managing VPN connections and related settings.
 ---
 
-# internal_gateway (Sub-resource)
+# smc_internal_gateway (Sub-resource)
 
 This represents the Internal Gateway, which is used for managing VPN connections and related settings.
 
+## Examples
 
+- [two_gateway_in_one_engine_disabled/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/policy_based_vpn/two_gateway_in_one_engine_disabled/main.tf): Configures an internal gateway as part of a firewall cluster's SD-WAN setup.
+
+This example demonstrates how to configure an `smc_internal_gateway` resource for enabling internal gateway features in a firewall engine within an SD-WAN topology. It shows typical attributes including VPN client mode and SSL/TLS settings for remote access.
+
+```hcl
+resource "smc_internal_gateway" "tf_single_fw1_2" {
+  from_ref                 = smc_single_fw.tf_single_fw1.link.internal_gateway
+  antivirus                = false
+  auto_certificate         = true
+  auto_site_content        = true
+  cluster_ref              = smc_single_fw.tf_single_fw1.id
+  dhcp_relay {
+    dhcp_add_info              = 0
+    dhcp_client_mode           = 0
+    proxy_arp_address_list     = ""
+    restricted_address_enabled = false
+    use_arp_proxy_enabled      = false
+  }
+  dtls                    = false
+  firewall                = false
+  name                    = "tf_single_fw1-bis"
+  ssl_vpn_proxy {
+    renegociation_timeout = 7200
+    ssl_3_0              = false
+    tls_1_0              = false
+    tls_1_1              = false
+    tls_1_2              = true
+    tls_1_3              = false
+  }
+  ssl_vpn_tunneling {
+    renegociation_timeout = 7200
+    ssl_3_0              = false
+    tls_1_0              = false
+    tls_1_1              = false
+    tls_1_2              = true
+    tls_1_3              = false
+  }
+  trust_all_cas              = true
+  vpn_client_mode            = "ipsec"
+  windows_update             = false
+}
+```
 
 
 ## Simple Attributes

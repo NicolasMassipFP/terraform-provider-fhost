@@ -7,7 +7,8 @@ description: |-
 
 # smc_l2_interface_policy (Resource)
 
-This represents a Layer 2 Interface Policy, which is used to define the action and inspection rules for L2FW Interface Engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 Interface Policy, which is used to define the action and inspection rules for L2FW Interface Engines.
 
 
 

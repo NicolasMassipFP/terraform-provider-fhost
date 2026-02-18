@@ -9,7 +9,21 @@ description: |-
 
 This represents an External DNS (Domain Name Service) Server, which is used for DDNS updates, resolving virus signature mirrors, and URL filtering categorization services.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/external_dns_server) for a complete minimal example
+
+This example creates a DNS server object in SMC with TTL and update interval specified.
+
+```hcl
+resource "smc_dns_server" "tf_dns_server" {
+  address         = "10.10.10.1"
+  name            = "tf_dns_server"
+  comment         = var.resource_comment
+  time_to_live    = 10
+  update_interval = 5
+}
+```
 
 
 ## Simple Attributes

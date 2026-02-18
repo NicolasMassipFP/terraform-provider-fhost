@@ -7,7 +7,8 @@ description: |-
 
 # smc_delete_old_unused_smc_web_access_data_task (Resource)
 
-This represents a Webswing User File Cleaner Task, which is used to clean up old and unused SMC Web Access user files. It is a type of system task that can be scheduled and executed to ensure that user files are maintained properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Webswing User File Cleaner Task, which is used to clean up old and unused SMC Web Access user files. It is a type of system task that can be scheduled and executed to ensure that user files are maintained properly.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_alert_chain (Resource)
 
-This represents an Alert Chain, which is used to define a sequence of actions to be taken when an alert is triggered.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Alert Chain, which is used to define a sequence of actions to be taken when an alert is triggered.
 
 
 

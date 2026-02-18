@@ -9,7 +9,35 @@ description: |-
 
 This represents a Proxy Server, which is a server that performs detailed examination of a connection's data and assists in the determination to allow or discard packets. Common examples include virus scanning or filtering of web URLs. Also known as content screening.
 
+## Examples
 
+- [Proxy Server Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/proxy_server/main.tf)
+
+Creates an HTTP proxy server configuration, supporting a variety of modes and service inspection types.
+
+```hcl
+resource "smc_proxy_server" "generic_proxy" {
+  add_x_forwarded_for = true
+  address             = "10.1.1.1"
+  comment             = var.resource_comment
+  balancing_mode      = "ha"
+  fp_proxy_key_id     = 0
+  http_proxy          = "generic"
+  inspected_service {
+    name         = "FTP"
+    port         = 21
+    service_type = "FTP"
+  }
+  inspected_service {
+    name         = "HTTP"
+    port         = 8080
+    service_type = "HTTP"
+  }
+  name              = "tf_generic_proxy_server"
+  ip_address        = ["10.1.1.11"]
+  trust_host_header = false
+}
+```
 
 
 ## Simple Attributes

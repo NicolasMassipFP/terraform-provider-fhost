@@ -7,7 +7,8 @@ description: |-
 
 # smc_resolver (Resource)
 
-This represents a Logging Field Resolver, which is used to resolve fields in logging profiles for third-party integrations. It allows for the mapping and resolution of fields in logs to ensure accurate data representation.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Logging Field Resolver, which is used to resolve fields in logging profiles for third-party integrations. It allows for the mapping and resolution of fields in logs to ensure accurate data representation.
 
 
 

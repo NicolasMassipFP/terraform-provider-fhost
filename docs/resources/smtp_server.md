@@ -9,7 +9,22 @@ description: |-
 
 This represents a Simple Mail Transfer Protocol (SMTP) server, which is used to process notifications by e-mails. It includes attributes for port, default sender email, and default sender name.
 
+## Examples
 
+- [SMTP Server Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/radius_server/main.tf)
+
+Defines an SMTP server for alerting or notification policies.
+
+```hcl
+resource "smc_smtp_server" "smtp" {
+  address              = "10.1.1.123"
+  email_sender_address = "sender@example.com"
+  email_sender_name    = "example_sender"
+  name                 = "tf_smtp"
+  comment              = var.resource_comment
+  port                 = 25
+}
+```
 
 
 ## Simple Attributes

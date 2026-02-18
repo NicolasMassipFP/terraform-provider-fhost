@@ -7,7 +7,8 @@ description: |-
 
 # smc_scale_set (Resource)
 
-This represents a Cloud Auto-Scaled Group, which is used to manage a group of cloud firewalls that can scale automatically based on load. It includes configurations for monitoring, installed policies, and the elements within the group.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Cloud Auto-Scaled Group, which is used to manage a group of cloud firewalls that can scale automatically based on load. It includes configurations for monitoring, installed policies, and the elements within the group.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_disable_unused_admin_task (Resource)
 
-This represents an Administrator Management System Task, which is used to manage administrator accounts in the system. It is a type of system task that can be scheduled and executed to ensure that administrator accounts are properly managed.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Administrator Management System Task, which is used to manage administrator accounts in the system. It is a type of system task that can be scheduled and executed to ensure that administrator accounts are properly managed.
 
 
 

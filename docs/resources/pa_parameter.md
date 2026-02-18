@@ -1,13 +1,14 @@
 ---
-page_title: "pa_parameter"
+page_title: "smc_pa_parameter"
 subcategory: ""
 description: |-
   This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 ---
 
-# pa_parameter (Sub-resource)
+# smc_pa_parameter (Sub-resource)
 
-This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a parameter for the Protocol Agent, allowing for detailed configuration of agent settings.
 
 
 

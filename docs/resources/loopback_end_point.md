@@ -1,13 +1,14 @@
 ---
-page_title: "loopback_endpoint"
+page_title: "smc_loopback_endpoint"
 subcategory: "vpn"
 description: |-
   This represents a loopback endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as deducted name.
 ---
 
-# loopback_endpoint (Sub-resource)
+# smc_loopback_endpoint (Sub-resource)
 
-This represents a loopback endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as deducted name.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a loopback endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as deducted name.
 
 
 

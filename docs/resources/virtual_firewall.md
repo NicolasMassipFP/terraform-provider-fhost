@@ -7,7 +7,8 @@ description: |-
 
 # smc_virtual_fw (Resource)
 
-This represents a Virtual Firewall, a logically-separate firewall engine that runs as virtual firewall instance on a Master NGFW Engine. It includes attributes for the virtual resource, gateway settings, half open connections, layer 2 settings, NAT 464 settings, ZTNA connector settings, and certificate validation settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Virtual Firewall, a logically-separate firewall engine that runs as virtual firewall instance on a Master NGFW Engine. It includes attributes for the virtual resource, gateway settings, half open connections, layer 2 settings, NAT 464 settings, ZTNA connector settings, and certificate validation settings.
 
 
 

@@ -9,7 +9,20 @@ description: |-
 
 This represents an ICMP service for IPv6.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/icmp_service) for a minimal example
+
+This example creates an ICMPv6 service object in SMC.
+
+```hcl
+resource "smc_icmp_ipv6_service" "tf_icmpv6_service" {
+  comment   = var.resource_comment
+  icmp_code = 254
+  icmp_type = 41
+  name      = "tf_icmpv6_service"
+}
+```
 
 
 ## Simple Attributes

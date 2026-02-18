@@ -7,7 +7,8 @@ description: |-
 
 # smc_export_log_task (Resource)
 
-This represents an Export Log Task, which is used to export logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are exported properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Export Log Task, which is used to export logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are exported properly.
 
 
 

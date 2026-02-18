@@ -7,7 +7,8 @@ description: |-
 
 # smc_local_cluster_dyn_interface_alias (Resource)
 
-This represents the System alias for '$$ Local Cluster(DHCP Interface Addresses)', which is used to substitute the DHCP addresses of the local cluster object where the policy is uploaded.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Local Cluster(DHCP Interface Addresses)', which is used to substitute the DHCP addresses of the local cluster object where the policy is uploaded.
 
 
 

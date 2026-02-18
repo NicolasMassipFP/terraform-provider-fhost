@@ -7,7 +7,8 @@ description: |-
 
 # smc_role (Resource)
 
-This represents an Administration Role. Roles are administrative privileges that allow you to limit rights of administrators.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Administration Role. Roles are administrative privileges that allow you to limit rights of administrators.
 
 
 

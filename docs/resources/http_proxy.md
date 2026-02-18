@@ -7,7 +7,8 @@ description: |-
 
 # smc_http_proxy (Resource)
 
-This represents an HTTP Proxy, which is used to route HTTP traffic through a proxy server. It includes attributes for IP address, port, username, and password.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an HTTP Proxy, which is used to route HTTP traffic through a proxy server. It includes attributes for IP address, port, username, and password.
 
 
 

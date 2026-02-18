@@ -7,7 +7,8 @@ description: |-
 
 # smc_renew_internal_certificates_task (Resource)
 
-This represents a Certificate Info Store Checker Task, which is used to check the status of the certificate info store. It is a type of system task that can be scheduled and executed to ensure that the certificate info store is correctly maintained.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Certificate Info Store Checker Task, which is used to check the status of the certificate info store. It is a type of system task that can be scheduled and executed to ensure that the certificate info store is correctly maintained.
 
 
 

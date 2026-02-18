@@ -1,13 +1,14 @@
 ---
-page_title: "firewall_node"
+page_title: "smc_firewall_node"
 subcategory: "engines"
 description: |-
   This represents an individual Firewall Engine Node in the Security Management Client, representing a device that runs firewall software as part of a Firewall Cluster or a Single Firewall.
 ---
 
-# firewall_node (Sub-resource)
+# smc_firewall_node (Sub-resource)
 
-This represents an individual Firewall Engine Node in the Security Management Client, representing a device that runs firewall software as part of a Firewall Cluster or a Single Firewall.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an individual Firewall Engine Node in the Security Management Client, representing a device that runs firewall software as part of a Firewall Cluster or a Single Firewall.
 
 
 

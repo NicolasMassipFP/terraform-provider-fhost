@@ -7,7 +7,8 @@ description: |-
 
 # smc_virtual_firewall_layer2 (Resource)
 
-This represents a Virtual Layer 2 Firewall, a logically-separate engine that runs as virtual layer 2 firewall instance on a Master NGFW Engine.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Virtual Layer 2 Firewall, a logically-separate engine that runs as virtual layer 2 firewall instance on a Master NGFW Engine.
 
 
 

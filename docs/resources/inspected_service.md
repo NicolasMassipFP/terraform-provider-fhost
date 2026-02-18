@@ -1,13 +1,14 @@
 ---
-page_title: "inspected_service"
+page_title: "smc_inspected_service"
 subcategory: "services"
 description: |-
   This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
 ---
 
-# inspected_service (Sub-resource)
+# smc_inspected_service (Sub-resource)
 
-This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a sub part of a Proxy Server, defining the protocol to be inspected and the port number used for inspection.
 
 
 

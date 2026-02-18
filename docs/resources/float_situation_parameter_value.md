@@ -1,13 +1,14 @@
 ---
-page_title: "float_situation_parameter_value"
+page_title: "smc_float_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents a float parameter value within a situation, allowing for the application of specific float values to the situation's parameters.
 ---
 
-# float_situation_parameter_value (Sub-resource)
+# smc_float_situation_parameter_value (Sub-resource)
 
-This represents a float parameter value within a situation, allowing for the application of specific float values to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a float parameter value within a situation, allowing for the application of specific float values to the situation's parameters.
 
 
 

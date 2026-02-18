@@ -7,7 +7,8 @@ description: |-
 
 # smc_application_risk_tag (Resource)
 
-This represents an Application Risk Tag, which is used to categorize applications based on their risk level. It is a type of tag that can be applied to various elements in the system to indicate their association with specific application risks.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Risk Tag, which is used to categorize applications based on their risk level. It is a type of tag that can be applied to various elements in the system to indicate their association with specific application risks.
 
 
 

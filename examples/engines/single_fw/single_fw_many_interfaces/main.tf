@@ -35,3 +35,12 @@ resource "smc_single_fw" "tf_single_fw" {
   }
 }
 
+resource "smc_group" "tf_group_example" {
+  element = [
+    smc_single_fw.tf_single_fw.id,
+  ]
+  name    = "tf_group_example"
+  comment = var.resource_comment
+  is_monitored = true
+}
+

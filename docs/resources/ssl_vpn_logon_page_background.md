@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_logon_page_background (Resource)
 
-This is an Application Access Logon page background. It represents a background image used in the Application Access logon page, typically for visual customization.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is an Application Access Logon page background. It represents a background image used in the Application Access logon page, typically for visual customization.
 
 
 

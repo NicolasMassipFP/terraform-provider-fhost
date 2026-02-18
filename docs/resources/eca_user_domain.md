@@ -7,7 +7,8 @@ description: |-
 
 # smc_eia_user_domain (Resource)
 
-This represents an ECA User Domain, which is used to define user domains in the ECA system. It is limited to two system values: System Users and Local Users.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an ECA User Domain, which is used to define user domains in the ECA system. It is limited to two system values: System Users and Local Users.
 
 
 

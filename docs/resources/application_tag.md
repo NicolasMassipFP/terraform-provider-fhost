@@ -7,7 +7,8 @@ description: |-
 
 # smc_application_tag (Resource)
 
-This represents an Application Tag, which is used to categorize elements based on their application. It is a type of tag that can be applied to various elements in the system to indicate their application classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Tag, which is used to categorize elements based on their application. It is a type of tag that can be applied to various elements in the system to indicate their application classification.
 
 
 

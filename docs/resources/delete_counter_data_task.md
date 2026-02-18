@@ -7,7 +7,8 @@ description: |-
 
 # smc_delete_counter_data_task (Resource)
 
-This represents a Delete Counter Data Task, which is used to delete counter data in the system. It is a type of log task that can be scheduled and executed to ensure that counter data is deleted properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Delete Counter Data Task, which is used to delete counter data in the system. It is a type of log task that can be scheduled and executed to ensure that counter data is deleted properly.
 
 
 

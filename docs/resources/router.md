@@ -9,7 +9,19 @@ description: |-
 
 This represents a Router, which is a Network Element representing a physical router in your network. Most often used to indicate next-hop routers in the Routing view and in Network Diagrams.
 
+## Examples
 
+- [getting_started/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/getting_started/main.tf): Basic router creation for a test network and single firewall setup.
+
+This snippet demonstrates fundamental usage of the `smc_router` resource, defining a router with a static IP address and a name. It is used to route traffic within a test lab topology.
+
+```hcl
+resource "smc_router" "tf_sample_router" {
+  address = local.tf_router
+  name    = "tf_sample_router"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

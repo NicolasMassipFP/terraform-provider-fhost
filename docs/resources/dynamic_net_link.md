@@ -7,7 +7,8 @@ description: |-
 
 # smc_dynamic_netlink (Resource)
 
-This represents a Dynamic NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for automatically learning DNS servers.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Dynamic NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for automatically learning DNS servers.
 
 
 

@@ -9,7 +9,19 @@ description: |-
 
 This is a configuration file for the VPN Broker Domain. It contains settings and configurations specific to the broker domain, used for managing VPN connections and policies.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/fw_cluster/fw_cluster_with_vpn_broker_interface) for an example
+
+This example defines a VPN Broker configuration file for use in VPN Broker domains.
+
+```hcl
+resource "smc_broker_config_file" "vpn_broker_config" {
+  name           = "tf_vpn_broker_config"
+  binary_content = "aGVsbG8K"
+  comment        = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

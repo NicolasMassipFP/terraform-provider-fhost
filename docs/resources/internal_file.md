@@ -7,7 +7,8 @@ description: |-
 
 # smc_internal_file (Resource)
 
-This is an Internal File. It represents a file used internally within the system, typically for configuration or other internal purposes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is an Internal File. It represents a file used internally within the system, typically for configuration or other internal purposes.
 
 
 

@@ -9,7 +9,22 @@ description: |-
 
 This represents an ICMP Service Group, which is used to group a list of ICMP Services. It can contain both individual ICMP Services and other Service Groups.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/icmp_service) for a minimal example
+
+This example creates a group of ICMP and ICMPv6 service objects in SMC.
+
+```hcl
+resource "smc_icmp_service_group" "tf_icmp_service_group" {
+  name    = "tf_icmp_service_group"
+  comment = var.resource_comment
+  element = [
+    smc_icmp_service.tf_icmp_service.id,
+    smc_icmp_ipv6_service.tf_icmpv6_service.id,
+  ]
+}
+```
 
 
 ## Simple Attributes

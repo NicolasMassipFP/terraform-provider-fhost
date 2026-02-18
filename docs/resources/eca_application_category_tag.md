@@ -7,7 +7,8 @@ description: |-
 
 # smc_eia_application_category_tag (Resource)
 
-This represents an ECA Application Category Tag, which is used to categorize elements based on their application category. It is a type of tag that can be applied to various elements in the system to indicate their application category classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an ECA Application Category Tag, which is used to categorize elements based on their application category. It is a type of tag that can be applied to various elements in the system to indicate their application category classification.
 
 
 

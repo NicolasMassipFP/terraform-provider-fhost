@@ -7,7 +7,8 @@ description: |-
 
 # smc_renew_internal_ca_task (Resource)
 
-This represents a CA Checker Task, which is used to check and renew internal certificate authorities in the system. It is a type of system task that can be scheduled and executed to ensure that the internal CA certificates are up-to-date.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a CA Checker Task, which is used to check and renew internal certificate authorities in the system. It is a type of system task that can be scheduled and executed to ensure that the internal CA certificates are up-to-date.
 
 
 

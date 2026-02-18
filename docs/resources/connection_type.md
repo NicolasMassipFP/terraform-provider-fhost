@@ -7,7 +7,8 @@ description: |-
 
 # smc_connection_type (Resource)
 
-This represents a connection type used in endpoints, which defines the connectivity group, mode, and link type for VPN connections.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a connection type used in endpoints, which defines the connectivity group, mode, and link type for VPN connections.
 
 
 

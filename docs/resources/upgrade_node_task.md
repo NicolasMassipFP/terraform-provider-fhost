@@ -7,7 +7,8 @@ description: |-
 
 # smc_remote_upgrade_task (Resource)
 
-This represents an Upgrade Node Task, which is used to upgrade the engine on a node. It is a type of task that can be scheduled and executed to ensure that the node is running the latest engine version.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Upgrade Node Task, which is used to upgrade the engine on a node. It is a type of task that can be scheduled and executed to ensure that the node is running the latest engine version.
 
 
 

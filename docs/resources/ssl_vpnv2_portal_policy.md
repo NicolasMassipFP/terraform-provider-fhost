@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_policy (Resource)
 
-This represents an Application Access Portal Policy, which is used to define portal access rules for the connections. It includes properties such as portal rules and access control.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Access Portal Policy, which is used to define portal access rules for the connections. It includes properties such as portal rules and access control.
 
 
 

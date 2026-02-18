@@ -7,7 +7,8 @@ description: |-
 
 # smc_external_ldap_user (Resource)
 
-This represents an external LDAP User defined on the external LDAP server. It contains user details such as display name, email, phone number, job title, office location, frame IP, activation date, expiration date, and days left until expiration.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an external LDAP User defined on the external LDAP server. It contains user details such as display name, email, phone number, job title, office location, frame IP, activation date, expiration date, and days left until expiration.
 
 
 

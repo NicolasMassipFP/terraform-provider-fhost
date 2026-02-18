@@ -9,7 +9,26 @@ description: |-
 
 This represents an IPv6 Prefix List, which is used to define a list of IPv6 prefixes for dynamic routing configurations.
 
+## Examples
 
+- [ipv6_prefix_list/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/ipv6_prefix_list/main.tf): Example of an IPv6 prefix list for BGP or route filtering.
+
+This snippet demonstrates using `smc_ipv6_prefix_list` with multiple entry constraints for BGP prefix-lists.
+
+```hcl
+resource "smc_ipv6_prefix_list" "ipv6_prefix_list" {
+  comment = var.resource_comment
+  entries {
+    ipv6_prefix_list_entry {
+      action            = "deny"
+      max_prefix_length = 78
+      min_prefix_length = 65
+      subnet            = "2001:4860:4860::/64"
+    }
+  }
+  name = "tf_ipv6_prefix_list"
+}
+```
 
 
 ## Simple Attributes

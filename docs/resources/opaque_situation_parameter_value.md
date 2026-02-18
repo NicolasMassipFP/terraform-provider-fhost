@@ -1,13 +1,14 @@
 ---
-page_title: "opaque_situation_parameter_value"
+page_title: "smc_opaque_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents an opaque parameter value within a situation, allowing for the application of specific opaque values to the situation's parameters.
 ---
 
-# opaque_situation_parameter_value (Sub-resource)
+# smc_opaque_situation_parameter_value (Sub-resource)
 
-This represents an opaque parameter value within a situation, allowing for the application of specific opaque values to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an opaque parameter value within a situation, allowing for the application of specific opaque values to the situation's parameters.
 
 
 

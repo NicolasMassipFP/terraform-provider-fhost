@@ -9,7 +9,22 @@ description: |-
 
 This represents a Group, which is a Network Element that includes other elements and represents them all at once in policies and other parts of the configuration. It includes attributes for monitoring and a list of elements that are part of the group.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/expression) for a complete minimal example
+
+This example creates a group object in SMC containing hosts or other elements.
+
+```hcl
+resource "smc_group" "tf_group1" {
+  element = [
+    smc_host.tf_host1.id,
+    smc_host.tf_host2.id
+  ]
+  name    = "tf_group1"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

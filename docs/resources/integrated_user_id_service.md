@@ -7,7 +7,8 @@ description: |-
 
 # smc_integrated_uis (Resource)
 
-This represents an Integrated User Identification Service, which is used to identify users based on their network activity. It allows for integration with authentication domains and provides configuration options for initial query time, polling interval, and ignore values.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Integrated User Identification Service, which is used to identify users based on their network activity. It allows for integration with authentication domains and provides configuration options for initial query time, polling interval, and ignore values.
 
 
 

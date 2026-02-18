@@ -7,7 +7,8 @@ description: |-
 
 # smc_interface_nic_x_ip_alias (Resource)
 
-This represents the System alias for '$$ Interface ID X.ip', which is used to substitute the first IP (CVI) of Physical Interface ID X.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Interface ID X.ip', which is used to substitute the first IP (CVI) of Physical Interface ID X.
 
 
 

@@ -9,7 +9,23 @@ description: |-
 
 This represents a Logical Interface. It is an IPS Element used in the IPS policies to represent one or more physical network interfaces as defined in the IPS engine properties.
 
+## Examples
 
+- [Logical Interface Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/single_fw/single_fw_layer2_interfaces/main.tf)
+
+Defines a logical interface (e.g., capture or inline) on a firewall engine.
+
+```hcl
+resource "smc_logical_interface" "capture_logical_interface" {
+  name    = "tf_capture_logical_interface"
+  comment = var.resource_comment
+}
+
+resource "smc_logical_interface" "inline_logical_interface" {
+  name    = "tf_inline_logical_interface"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

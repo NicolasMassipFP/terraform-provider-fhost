@@ -9,7 +9,18 @@ description: |-
 
 This represents an external authentication method, which can be used for user authentication in the system. It supports various types of authentication methods such as User Password, IAS, IPSec, Pre-Shared Key, RADIUS, TACACS+, and LDAP.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/tacacs_server) for a complete minimal example
+
+This example creates an Authentication Service of type TACACS for use with authentication servers.
+
+```hcl
+resource "smc_authentication_service" "tf_tacacs_auth" {
+  name = "tf_tacacs_auth"
+  type = "tacacs"
+}
+```
 
 
 ## Simple Attributes

@@ -1,13 +1,14 @@
 ---
-page_title: "fwlayer2_node"
+page_title: "smc_fwlayer2_node"
 subcategory: "engines"
 description: |-
   This represents a Layer 2 Firewall Engine node in the Security Management Client, which is a device that runs layer 2 firewall software as part of a Layer 2 Firewall Cluster or a Single Layer 2 Firewall.
 ---
 
-# fwlayer2_node (Sub-resource)
+# smc_fwlayer2_node (Sub-resource)
 
-This represents a Layer 2 Firewall Engine node in the Security Management Client, which is a device that runs layer 2 firewall software as part of a Layer 2 Firewall Cluster or a Single Layer 2 Firewall.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 Firewall Engine node in the Security Management Client, which is a device that runs layer 2 firewall software as part of a Layer 2 Firewall Cluster or a Single Layer 2 Firewall.
 
 
 

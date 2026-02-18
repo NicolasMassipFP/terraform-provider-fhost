@@ -1,13 +1,14 @@
 ---
-page_title: "master_node"
+page_title: "smc_master_node"
 subcategory: "engines"
 description: |-
   This represents an individual Master NGFW Engine node in the Security Management Client, representing a device that runs firewall software as part of a Master NGFW Engine.
 ---
 
-# master_node (Sub-resource)
+# smc_master_node (Sub-resource)
 
-This represents an individual Master NGFW Engine node in the Security Management Client, representing a device that runs firewall software as part of a Master NGFW Engine.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an individual Master NGFW Engine node in the Security Management Client, representing a device that runs firewall software as part of a Master NGFW Engine.
 
 
 

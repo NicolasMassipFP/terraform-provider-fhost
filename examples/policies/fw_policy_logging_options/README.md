@@ -1,3 +1,16 @@
-# Fw Policy Logging Options
+# Policy Logging Options Example
 
-This is an example demonstrating the usage of the Fw Policy Logging Options configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Demonstrates advanced rule-level logging options in firewall policies, including alert/level, log compression, and more.
+
+- Creates policy and two rules:
+  - One with custom log/alert settings
+  - One with action-specific logging flags
+
+## Usage
+
+Change alert/log options as needed. Set credentials then:
+
+```
+terraform init
+terraform apply
+```

@@ -1,3 +1,15 @@
-# Fw Ipv4 Access Rule Section
+# IPv4 Access Rule Section Example
 
-This is an example demonstrating the usage of the Fw Ipv4 Access Rule Section configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Shows how to create access rule “sections” within a firewall policy. Useful for grouping or visually segmenting rules.
+
+- Creates policy and two rule sections with comments/colors.
+- Adds HTTPS allow and AOL discard rules in sections for clarity.
+
+## Usage
+
+Update colors and comments as desired. Set credentials and run:
+
+```
+terraform init
+terraform apply
+```

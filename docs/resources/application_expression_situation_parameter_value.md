@@ -1,13 +1,14 @@
 ---
-page_title: "application_expression_situation_parameter_value"
+page_title: "smc_application_expression_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents an application expression parameter value within a situation, allowing for the application of specific expressions to the situation's parameters.
 ---
 
-# application_expression_situation_parameter_value (Sub-resource)
+# smc_application_expression_situation_parameter_value (Sub-resource)
 
-This represents an application expression parameter value within a situation, allowing for the application of specific expressions to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an application expression parameter value within a situation, allowing for the application of specific expressions to the situation's parameters.
 
 
 

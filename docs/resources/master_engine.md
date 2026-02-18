@@ -7,7 +7,8 @@ description: |-
 
 # smc_master_engine (Resource)
 
-This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a physical engine device that provides resources for Virtual Security Engines. One physical Master NGFW Engine can support multiple Virtual NGFW Engines.
 
 
 

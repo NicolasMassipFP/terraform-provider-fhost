@@ -9,7 +9,31 @@ description: |-
 
 This represents a Community Access List, which is used to define a list of communities for dynamic routing configurations.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/community_access_list) for an example
+
+This example creates a Community Access List to specify accepted or denied BGP communities.
+
+```hcl
+resource "smc_community_access_list" "community_access_list" {
+  comment = var.resource_comment
+  entries {
+    community_access_list_entry {
+      action    = "deny"
+      community = "178"
+    }
+  }
+  entries {
+    community_access_list_entry {
+      action    = "permit"
+      community = "1022"
+    }
+  }
+  name = "tf_community_access_list"
+  type = "standard"
+}
+```
 
 
 ## Simple Attributes

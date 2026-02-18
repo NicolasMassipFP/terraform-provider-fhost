@@ -9,7 +9,18 @@ description: |-
 
 This represents a Route Map Policy for the Dynamic Routing Firewall settings, which is used to control the routing behavior based on specific rules.
 
+## Examples
 
+- [Route Map Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/routing_node_bgp/main.tf)
+
+A `smc_route_map` provides route filtering or modification capabilities for imported and exported routes.
+
+```hcl
+resource "smc_route_map" "route_map" {
+  name    = "tf_route_map"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

@@ -9,7 +9,22 @@ description: |-
 
 This represents a Group of services, which can contain both individual services and other service groups.
 
+## Examples
 
+- [Service Group Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/service_group/main.tf)
+
+Groups multiple services for easier rule or policy management.
+
+```hcl
+resource "smc_service_group" "tf_service_group" {
+  name    = "tf_service_group"
+  comment = var.resource_comment
+  element = [
+    data.smc_href.tcp_service_bgp.id,
+    data.smc_href.udp_service_biff.id
+  ]
+}
+```
 
 
 ## Simple Attributes

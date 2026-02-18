@@ -9,7 +9,21 @@ description: |-
 
 This represents an Internal User. It contains user details such as display name, days left until expiration, user groups, password, and pre-shared key.
 
+## Examples
 
+- [fw_policy_with_match_expression/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_policy_with_match_expression/main.tf): Adds a test internal SMC user account for authentication testing in policies.
+
+This snippet defines an `smc_internal_user` resource representing a local user with a password for test login/auth policy scenarios.
+
+```hcl
+resource "smc_internal_user" "todd" {
+  authentication_method = [data.smc_href.user_password_auth_method.id]
+  days_left             = -1
+  name                  = "tf_user"
+  password              = "SuperSecretPassword"
+  unique_id             = "cn=tf_user,dc=stonegate,domain=InternalDomain"
+}
+```
 
 
 ## Simple Attributes

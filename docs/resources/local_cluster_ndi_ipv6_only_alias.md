@@ -7,7 +7,8 @@ description: |-
 
 # smc_local_cluster_ndi_for_ipv6_only_alias (Resource)
 
-This represents the System alias for '$$ Local Cluster(NDI IPv6 addresses only)', which is used to substitute all NDI IPv6 addresses of the local cluster object where the policy is uploaded. If the firewall is a single node, all defined addresses are used.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Local Cluster(NDI IPv6 addresses only)', which is used to substitute all NDI IPv6 addresses of the local cluster object where the policy is uploaded. If the firewall is a single node, all defined addresses are used.
 
 
 

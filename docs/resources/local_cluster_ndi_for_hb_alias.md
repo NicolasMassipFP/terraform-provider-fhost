@@ -7,7 +7,8 @@ description: |-
 
 # smc_local_cluster_ndi_for_hb_alias (Resource)
 
-This represents the System alias for '$$ Local Cluster(NDI for heartbeat addresses only)', which is used to substitute all NDI addresses that are used for Heartbeat on the local cluster object where the policy is uploaded. If the firewall is a single node, the alias remains empty.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Local Cluster(NDI for heartbeat addresses only)', which is used to substitute all NDI addresses that are used for Heartbeat on the local cluster object where the policy is uploaded. If the firewall is a single node, the alias remains empty.
 
 
 

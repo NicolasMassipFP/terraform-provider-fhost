@@ -7,7 +7,8 @@ description: |-
 
 # smc_known_host (Resource)
 
-This represents a Known Host object used with the Sidewinder SSH Proxy. A Known Host is identified by an IP address, port number and an SSH Key. Only certain SSH Key types are supported.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Known Host object used with the Sidewinder SSH Proxy. A Known Host is identified by an IP address, port number and an SSH Key. Only certain SSH Key types are supported.
 
 
 

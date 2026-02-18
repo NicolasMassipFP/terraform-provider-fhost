@@ -7,7 +7,8 @@ description: |-
 
 # smc_url_category_risk_tag (Resource)
 
-This represents a URL Category Risk Tag, which is used to categorize URL Categories situations by risks. The tags are updated through dynamic update packages and can be applied to various elements in the system to indicate their risk classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a URL Category Risk Tag, which is used to categorize URL Categories situations by risks. The tags are updated through dynamic update packages and can be applied to various elements in the system to indicate their risk classification.
 
 
 

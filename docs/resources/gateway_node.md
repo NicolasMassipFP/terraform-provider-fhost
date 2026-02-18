@@ -1,15 +1,35 @@
 ---
-page_title: "gateway_node"
+page_title: "smc_gateway_node"
 subcategory: "vpn"
 description: |-
   This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
 ---
 
-# gateway_node (Sub-resource)
+# smc_gateway_node (Sub-resource)
 
 This represents a gateway node, which is used to manage the VPN topology and its nodes, including their usage and relationships.
 
+## Examples
 
+- [two_gateway_in_one_engine_disabled/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/policy_based_vpn/two_gateway_in_one_engine_disabled/main.tf): Adds gateway nodes (central) in a policy-based VPN SD-WAN scenario.
+
+This example illustrates the configuration of `smc_gateway_node` resources for central gateways in a VPN configuration. Each gateway node is linked to a VPN resource and references an internal gateway for SD-WAN.
+
+```hcl
+resource "smc_gateway_node" "tf_sample_gateway_1_node" {
+  from_ref   = smc_vpn.tf_sample_vpn.link.central_gateway_node
+  name       = "tf_sample_gateway_node_1"
+  node_usage = "central"
+  gateway    = data.smc_sub_href.internal_gateway_1_ref.id
+}
+
+resource "smc_gateway_node" "tf_sample_gateway_2_node" {
+  from_ref   = smc_vpn.tf_sample_vpn.link.central_gateway_node
+  name       = "tf_sample_gateway_node_2"
+  node_usage = "central"
+  gateway    = data.smc_sub_href.internal_gateway_2_ref.id
+}
+```
 
 
 ## Simple Attributes

@@ -1,15 +1,42 @@
 ---
-page_title: "fw_ipv6_access_rule"
+page_title: "smc_fw_ipv6_access_rule"
 subcategory: "policy"
 description: |-
   This represents an IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 ---
 
-# fw_ipv6_access_rule (Sub-resource)
+# smc_fw_ipv6_access_rule (Sub-resource)
 
 This represents an IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 
+## Examples
 
+- [fw_template_policy/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_template_policy/main.tf): Multiple IPv6 access rules in a policy template.
+
+This snippet demonstrates several `smc_fw_ipv6_access_rule` usages for allow/deny/automatic access rules in an IPv6-enabled policy.
+
+```hcl
+resource "smc_fw_ipv6_access_rule" "ipv6_automatic_insert_point" {
+  from_ref = "${smc_fw_template_policy.example.id}/fw_ipv6_access_rule"
+  type     = "automatic"
+  name     = "IPv6 Access Rule Automatic Insert Point"
+  rank     = 1.0
+}
+
+resource "smc_fw_ipv6_access_rule" "ipv6_insert_point" {
+  from_ref = "${smc_fw_template_policy.example.id}/fw_ipv6_access_rule"
+  type     = "normal"
+  name     = "IPv6 Access Rule Insert Point"
+  rank     = 2.0
+}
+
+resource "smc_fw_ipv6_access_rule" "ipv6_insert_point_nat" {
+  from_ref = "${smc_fw_template_policy.example.id}/fw_ipv6_nat_rule"
+  type     = "normal"
+  name     = "IPv6 Access Rule Insert Point - NAT"
+  rank     = 1.0
+}
+```
 
 
 ## Simple Attributes

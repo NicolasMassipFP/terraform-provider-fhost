@@ -1,13 +1,14 @@
 ---
-page_title: "inspection_exception_rule"
+page_title: "smc_inspection_exception_rule"
 subcategory: "policy"
 description: |-
   This represents an Inspection Exception Rule. It defines exceptions in the inspection policy for deeper inspection and reactions to traffic accepted in Actions.
 ---
 
-# inspection_exception_rule (Sub-resource)
+# smc_inspection_exception_rule (Sub-resource)
 
-This represents an Inspection Exception Rule. It defines exceptions in the inspection policy for deeper inspection and reactions to traffic accepted in Actions.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Inspection Exception Rule. It defines exceptions in the inspection policy for deeper inspection and reactions to traffic accepted in Actions.
 
 
 

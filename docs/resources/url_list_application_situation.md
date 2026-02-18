@@ -7,7 +7,8 @@ description: |-
 
 # smc_url_list_application (Resource)
 
-This represents a URL List Application Situation, which is used for URL list filtering in URL filtering.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a URL List Application Situation, which is used for URL list filtering in URL filtering.
 
 
 

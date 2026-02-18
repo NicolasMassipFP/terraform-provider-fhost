@@ -1,13 +1,14 @@
 ---
-page_title: "gateway_certificate_request"
+page_title: "smc_gateway_certificate_request"
 subcategory: "vpn"
 description: |-
   This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
 ---
 
-# gateway_certificate_request (Sub-resource)
+# smc_gateway_certificate_request (Sub-resource)
 
-This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a certificate request for an internal gateway, allowing for the generation of unsigned certificates.
 
 
 

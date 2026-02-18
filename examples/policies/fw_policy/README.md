@@ -1,3 +1,15 @@
-# Fw Policy
+# Policy Example
 
-This is an example demonstrating the usage of the Fw Policy configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Basic demo of a firewall policy and single access rule in SMC using Terraform.
+
+- Creates policy and template
+- Adds single SSH allow rule
+
+## Usage
+
+Adjust rule/sources as needed. Set provider authentication, then:
+
+```
+terraform init
+terraform apply
+```

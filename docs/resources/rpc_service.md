@@ -9,7 +9,21 @@ description: |-
 
 This represents a SUN-RPC service, which is used to define a service based on the Remote Procedure Call (RPC) protocol. It includes a program number, transport type, and optional RPC version for traffic identification.
 
+## Examples
 
+- [RPC Service Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/sun-rpc_service/main.tf)
+
+Defines an RPC service by program number and protocol for firewall rules.
+
+```hcl
+resource "smc_rpc_service" "tf_rpc_service" {
+  name           = "tf_rpc_service"
+  comment        = var.resource_comment
+  program_number = "14"
+  rpc_version    = "2"
+  transport      = "both"
+}
+```
 
 
 ## Simple Attributes

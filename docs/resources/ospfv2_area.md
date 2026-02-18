@@ -9,7 +9,33 @@ description: |-
 
 This represents the OSPFv2 Area. It is a logical grouping of OSPFv2 routers that share the same area ID and routing information.
 
+## Examples
 
+- [OSPFv2 Area Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/OSPFv2/ospfv2_areas/main.tf)
+
+Defines an OSPFv2 area and its attributes for advanced routing configurations.
+
+```hcl
+resource "smc_ospfv2_area" "ospfv2_areas" {
+  area_id                = 147
+  area_type              = "normal"
+  inbound_filters_ref    = [smc_ip_access_list.ip_access_list.id]
+  interface_settings_ref = data.smc_href.ospfv2_interface_settings.id
+  name                   = "tf_ospfv2_area"
+  comment                = var.resource_comment
+  ospf_abr_substitute_container {
+    subnet_ref      = smc_network.tf_sample_network.id
+    substitute_type = "aggregate"
+  }
+  ospfv2_virtual_links_endpoints_container {
+    interface_settings_ref = data.smc_href.ospfv2_interface_settings.id
+    router_id_endpoint_a   = "192.168.10.14"
+    router_id_endpoint_b   = "198.168.10.254"
+  }
+  outbound_filters_ref  = [smc_ip_access_list.ip_access_list.id]
+  shortcut_capable_area = true
+}
+```
 
 
 ## Simple Attributes

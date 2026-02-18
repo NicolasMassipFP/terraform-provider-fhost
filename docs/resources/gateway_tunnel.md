@@ -1,11 +1,11 @@
 ---
-page_title: "gateway_tunnel"
+page_title: "smc_gateway_tunnel"
 subcategory: "vpn"
 description: |-
   This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.
 ---
 
-# gateway_tunnel (Sub-resource)
+# smc_gateway_tunnel (Sub-resource)
 
 This represents a gateway tunnel, which is used to manage the logical tunnels between gateway nodes in the VPN topology.
 

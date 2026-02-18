@@ -1,13 +1,14 @@
 ---
-page_title: "logical_operator_situation_parameter_value"
+page_title: "smc_logical_operator_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents a logical operator parameter value within a situation, allowing for the application of logical operations to the situation's parameters.
 ---
 
-# logical_operator_situation_parameter_value (Sub-resource)
+# smc_logical_operator_situation_parameter_value (Sub-resource)
 
-This represents a logical operator parameter value within a situation, allowing for the application of logical operations to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a logical operator parameter value within a situation, allowing for the application of logical operations to the situation's parameters.
 
 
 

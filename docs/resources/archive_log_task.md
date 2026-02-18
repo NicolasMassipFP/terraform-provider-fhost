@@ -7,7 +7,8 @@ description: |-
 
 # smc_archive_log_task (Resource)
 
-This represents an Archive Log Task, which is used to archive logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are archived properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Archive Log Task, which is used to archive logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are archived properly.
 
 
 

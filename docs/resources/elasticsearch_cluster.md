@@ -9,7 +9,32 @@ description: |-
 
 This represents an Elasticsearch Cluster, which can be either Elasticsearch or OpenSearch. It includes attributes for product type, port, TLS profile, addresses, retention period, shard number, replica number, cluster sniffer, and authentication settings.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/elasticsearch_cluster) for an example
+
+This example creates an Elasticsearch cluster definition for SMC integration.
+
+```hcl
+resource "smc_elasticsearch_cluster" "elasticsearch_cluster" {
+  addresses = ["10.3.3.3", "10.3.3.33"]
+  name = "tf_elasticsearch_cluster"
+  comment = var.resource_comment
+  authentication_settings {
+    login = "es_login"
+    method = "basic"
+    password = "superPassword00!!"
+  }
+  es_enable_cluster_sniffer = true
+  es_replica_number = 1
+  es_retention_period = 30
+  es_shard_number = 0
+  indexing_active = true
+  port = 9200
+  product = "elasticsearch"
+  # tls_profile = data.smc_href.tls_profile.id
+}
+```
 
 
 ## Simple Attributes

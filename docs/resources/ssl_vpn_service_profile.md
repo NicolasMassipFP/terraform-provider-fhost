@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_service_profile (Resource)
 
-This represents an Application Access Service Profile. It contains settings for exceptions, HTTP fields, authentication type, NTLM support, and user input formats.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Access Service Profile. It contains settings for exceptions, HTTP fields, authentication type, NTLM support, and user input formats.
 
 
 

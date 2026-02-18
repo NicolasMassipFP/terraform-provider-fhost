@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_sso_domain (Resource)
 
-This represents an SSL VPN Single Sign On Domain, which includes properties such as SSO mode and timeout settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an SSL VPN Single Sign On Domain, which includes properties such as SSO mode and timeout settings.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_virtual_ips (Resource)
 
-This represents a Virtual IPS, which is a logically-separate IPS engine that runs as a virtual IPS instance on a Master NGFW Engine. It includes attributes for DNS elements, log buffer size, and various protection modes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Virtual IPS, which is a logically-separate IPS engine that runs as a virtual IPS instance on a Master NGFW Engine. It includes attributes for DNS elements, log buffer size, and various protection modes.
 
 
 

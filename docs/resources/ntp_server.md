@@ -9,7 +9,19 @@ description: |-
 
 This represents an NTP server, which is used to synchronize the time across network devices. It includes attributes for host name, authentication key type, and optional authentication key ID and key.
 
+## Examples
 
+No usage found in the current example set.
+
+A stub configuration:
+
+```hcl
+# resource "smc_ntp" "example" {
+#   # Example attributes here
+# }
+```
+
+> This resource type does not appear in any official example yet.
 
 
 ## Simple Attributes

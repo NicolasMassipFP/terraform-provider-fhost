@@ -1,15 +1,45 @@
 ---
-page_title: "fw_ipv4_access_rule"
+page_title: "smc_fw_ipv4_access_rule"
 subcategory: "policy"
 description: |-
   This represents an IPv4 Access Rule. It defines how one type of IPv4 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 ---
 
-# fw_ipv4_access_rule (Sub-resource)
+# smc_fw_ipv4_access_rule (Sub-resource)
 
 This represents an IPv4 Access Rule. It defines how one type of IPv4 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_ipv4_access_rule)
+  for a working example of ipv4 access rule creation
+
+Example:
+
+```hcl
+resource "smc_fw_policy" "example" {
+  name     = "tf_example_access_rules_policy2"
+  template = data.smc_href.default_policy_template.id
+  comment  = var.resource_comment
+}
+
+resource "smc_fw_ipv4_access_rule" "allow_https" {
+  from_ref = smc_fw_policy.example.link.fw_ipv4_access_rules
+  name     = "allow-https-from-any-to-any"
+  sources { any = true }
+  destinations { any = true }
+  services {
+    service = [data.smc_href.https_service.id]
+  }
+  action { action = ["allow"] }
+}
+```
+
+the `from_ref` parameter must either point to:
+- the link of the policy representing the list of access rules (eg
+`smc_fw_policy.example.link.fw_ipv4_access_rules`)
+
+- the add_after (or add_before) link of the previous rule (eg
+  `smc_fw_ipv4_access_rule.allow_https.link.add_after`)
 
 
 ## Simple Attributes

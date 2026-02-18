@@ -7,7 +7,8 @@ description: |-
 
 # smc_tls_match_situation_context (Resource)
 
-This represents a TLS Match Situation context. It can contain other groups or individual situation contexts.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a TLS Match Situation context. It can contain other groups or individual situation contexts.
 
 
 

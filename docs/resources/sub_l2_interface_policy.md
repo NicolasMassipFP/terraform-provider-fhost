@@ -7,7 +7,8 @@ description: |-
 
 # smc_sub_l2_interface_policy (Resource)
 
-This represents a Layer 2 Interface Sub-Policy, which is used to group related L2FW Interface IPv4 Access rules for better organization and processing efficiency.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 Interface Sub-Policy, which is used to group related L2FW Interface IPv4 Access rules for better organization and processing efficiency.
 
 
 

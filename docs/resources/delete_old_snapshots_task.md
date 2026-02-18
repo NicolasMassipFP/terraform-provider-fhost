@@ -7,7 +7,8 @@ description: |-
 
 # smc_delete_old_snapshots_task (Resource)
 
-This represents a Delete Old Snapshots Task, which is used to clean up old snapshots in the system. It is a type of system task that can be scheduled and executed to ensure that old snapshots are removed properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Delete Old Snapshots Task, which is used to clean up old snapshots in the system. It is a type of system task that can be scheduled and executed to ensure that old snapshots are removed properly.
 
 
 

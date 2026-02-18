@@ -7,7 +7,8 @@ description: |-
 
 # smc_server_pool (Resource)
 
-This represents a Server Pool, which is a group of servers used for inbound traffic management. It includes attributes for DNS name, monitoring frequency, monitoring mode, and server allocation.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Server Pool, which is a group of servers used for inbound traffic management. It includes attributes for DNS name, monitoring frequency, monitoring mode, and server allocation.
 
 
 

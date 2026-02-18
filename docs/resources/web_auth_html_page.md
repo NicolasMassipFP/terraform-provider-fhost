@@ -7,7 +7,8 @@ description: |-
 
 # smc_web_authentication_page (Resource)
 
-This represents a Web Authentication HTML Page, which is used for browser-based user authentication. It contains the HTML content that is displayed to users when they are not authorized.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Web Authentication HTML Page, which is used for browser-based user authentication. It contains the HTML content that is displayed to users when they are not authorized.
 
 
 

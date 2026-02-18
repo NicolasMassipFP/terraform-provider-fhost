@@ -1,15 +1,28 @@
 ---
-page_title: "external_endpoint"
+page_title: "smc_external_endpoint"
 subcategory: "vpn"
 description: |-
   This represents an external endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as physical interface and deducted name.
 ---
 
-# external_endpoint (Sub-resource)
+# smc_external_endpoint (Sub-resource)
 
 This represents an external endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as physical interface and deducted name.
 
+## Examples
 
+- [SD-WAN External Endpoint Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/external_gateway/main.tf)
+
+Defines an SMC External Endpoint for SD-WAN scenarios, typically to represent the far end of a VPN or GRE/IPsec connection managed by an external gateway.
+
+```hcl
+resource "smc_external_endpoint" "ep_external" {
+  from_ref  = smc_external_gateway.external_gateway.link.external_endpoint
+  enabled   = true
+  address   = "10.25.25.15"
+  ipsec_vpn = true
+}
+```
 
 
 ## Simple Attributes

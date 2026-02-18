@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_icon_file (Resource)
 
-This is an SSL VPN Icon File. It represents an icon file used in the SSL VPN interface, typically for visual representation of features or functions.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is an SSL VPN Icon File. It represents an icon file used in the SSL VPN interface, typically for visual representation of features or functions.
 
 
 

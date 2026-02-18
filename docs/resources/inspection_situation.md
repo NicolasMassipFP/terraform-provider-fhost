@@ -7,7 +7,8 @@ description: |-
 
 # smc_inspection_situation (Resource)
 
-This represents an Inspection Situation, which is used to identify and describe detected events in the traffic or in the operation of the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Inspection Situation, which is used to identify and describe detected events in the traffic or in the operation of the system.
 
 
 

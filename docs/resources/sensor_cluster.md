@@ -7,7 +7,8 @@ description: |-
 
 # smc_ips_cluster (Resource)
 
-This represents a group of two or more layer 2 IPS devices in the Stonesoft Management Center. It includes attributes for virtual defragmentation, connection limits, filter modes, and cluster modes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a group of two or more layer 2 IPS devices in the Stonesoft Management Center. It includes attributes for virtual defragmentation, connection limits, filter modes, and cluster modes.
 
 
 

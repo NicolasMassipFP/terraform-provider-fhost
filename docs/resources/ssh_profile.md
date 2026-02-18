@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssh_profile (Resource)
 
-This represents an Ssh Profile, which contains lists of key exchange algorithms, cipher algorithms, and message authentication code algorithms used in SSH connections.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Ssh Profile, which contains lists of key exchange algorithms, cipher algorithms, and message authentication code algorithms used in SSH connections.
 
 
 

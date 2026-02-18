@@ -7,7 +7,8 @@ description: |-
 
 # smc_file_filtering_policy (Resource)
 
-This represents a File Filtering Policy, which is used to define the action and inspection rules for File Filtering Engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a File Filtering Policy, which is used to define the action and inspection rules for File Filtering Engines.
 
 
 

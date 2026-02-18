@@ -7,7 +7,8 @@ description: |-
 
 # smc_snmp_agent (Resource)
 
-This represents an SNMP Agent. It contains the configuration details for SNMP (Simple Network Management Protocol) on an engine, including SNMP version, users, monitoring settings, and trap destinations.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an SNMP Agent. It contains the configuration details for SNMP (Simple Network Management Protocol) on an engine, including SNMP version, users, monitoring settings, and trap destinations.
 
 
 

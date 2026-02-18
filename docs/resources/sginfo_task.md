@@ -7,7 +7,8 @@ description: |-
 
 # smc_sginfo_task (Resource)
 
-This represents an SGInfo Task, which is used to collect system information from the engine. It is a type of task that can be scheduled and executed to gather system diagnostics and configuration details.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an SGInfo Task, which is used to collect system information from the engine. It is a type of task that can be scheduled and executed to gather system diagnostics and configuration details.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_user_response_entry (Resource)
 
-This represents an entry in a User Response, which includes the reason for the response, type of response, and additional details such as redirect URL, text, title, and message.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an entry in a User Response, which includes the reason for the response, type of response, and additional details such as redirect URL, text, title, and message.
 
 
 

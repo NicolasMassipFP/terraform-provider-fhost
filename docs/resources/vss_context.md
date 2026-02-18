@@ -7,7 +7,8 @@ description: |-
 
 # smc_vss_context (Resource)
 
-This represents a VSS Context, which is a virtual layer 2 firewall running within a VSS container node. It includes attributes for DNS settings, DoS protection, and ISC settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a VSS Context, which is a virtual layer 2 firewall running within a VSS container node. It includes attributes for DNS settings, DoS protection, and ISC settings.
 
 
 

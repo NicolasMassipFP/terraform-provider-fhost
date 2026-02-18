@@ -7,7 +7,8 @@ description: |-
 
 # smc_sidewinder_logging_profile_setting (Resource)
 
-This represents the Sidewinder Logging Profile Settings, which includes configuration for logging elements, activation status, threshold, and interval settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Sidewinder Logging Profile Settings, which includes configuration for logging elements, activation status, threshold, and interval settings.
 
 
 

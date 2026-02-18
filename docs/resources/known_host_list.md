@@ -7,7 +7,8 @@ description: |-
 
 # smc_known_host_list (Resource)
 
-This represents a Known Host List, which is used to manage a list of known hosts for SSH Proxy functionality in Sidewinder. It includes elements that define the known hosts and their associated SSH server keys.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Known Host List, which is used to manage a list of known hosts for SSH Proxy functionality in Sidewinder. It includes elements that define the known hosts and their associated SSH server keys.
 
 
 

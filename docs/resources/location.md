@@ -9,7 +9,18 @@ description: |-
 
 This represents the definition of a Location, which keeps a list of Network Elements belonging to the same location.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/location) for a minimal example
+
+This example creates a location object for use in policies or element assignments.
+
+```hcl
+resource "smc_location" "tf_location_example" {
+  name    = "tf_location_example"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

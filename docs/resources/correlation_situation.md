@@ -7,7 +7,8 @@ description: |-
 
 # smc_correlation_situation (Resource)
 
-This represents a Correlation Situation, which is used to group together event data to find patterns in that data.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Correlation Situation, which is used to group together event data to find patterns in that data.
 
 
 

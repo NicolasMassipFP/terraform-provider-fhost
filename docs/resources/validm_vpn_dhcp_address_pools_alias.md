@@ -7,7 +7,8 @@ description: |-
 
 # smc_valid_vpn_dhcp_address_pools_alias (Resource)
 
-This represents the System alias for '$$ Valid DHCP Address Pools for IPsec VPN clients', which is used to substitute address pools defined in the Internal Security Gateway properties for assigning virtual IP addresses to IPsec VPN clients.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Valid DHCP Address Pools for IPsec VPN clients', which is used to substitute address pools defined in the Internal Security Gateway properties for assigning virtual IP addresses to IPsec VPN clients.
 
 
 

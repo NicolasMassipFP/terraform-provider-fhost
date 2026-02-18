@@ -7,7 +7,8 @@ description: |-
 
 # smc_country (Resource)
 
-This represents a list of IP addresses grouped by country.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a list of IP addresses grouped by country.
 
 
 

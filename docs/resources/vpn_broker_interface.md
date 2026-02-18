@@ -1,11 +1,11 @@
 ---
-page_title: "vpn_broker_interface"
+page_title: "smc_vpn_broker_interface"
 subcategory: "vpn"
 description: |-
   This represents a VPN broker interface, which is used by the engine to establish communication with the Broker Domain and fetch VPN information.
 ---
 
-# vpn_broker_interface (Sub-resource)
+# smc_vpn_broker_interface (Sub-resource)
 
 This represents a VPN broker interface, which is used by the engine to establish communication with the Broker Domain and fetch VPN information.
 

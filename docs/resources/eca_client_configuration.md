@@ -7,7 +7,8 @@ description: |-
 
 # smc_eca_client_config (Resource)
 
-This represents a ECA Client Configuration, which is used to manage the client-side configuration for ECA (Endpoint Compliance Agent). It includes settings such as trusted certificate authorities and auto-discovery options.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a ECA Client Configuration, which is used to manage the client-side configuration for ECA (Endpoint Compliance Agent). It includes settings such as trusted certificate authorities and auto-discovery options.
 
 
 

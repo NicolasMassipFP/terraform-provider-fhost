@@ -7,7 +7,8 @@ description: |-
 
 # smc_bookmark_group (Resource)
 
-This represents a Bookmark Group, which is used to categorize bookmarks in the system. It allows for organizing bookmarks into groups for better management and retrieval.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Bookmark Group, which is used to categorize bookmarks in the system. It allows for organizing bookmarks into groups for better management and retrieval.
 
 
 

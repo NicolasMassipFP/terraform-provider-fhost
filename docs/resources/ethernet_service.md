@@ -7,7 +7,8 @@ description: |-
 
 # smc_service_ethernet (Resource)
 
-This represents an Ethernet service, which is used to define a service based on Ethernet protocols. It includes a frame type and optional MAC values for traffic identification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Ethernet service, which is used to define a service based on Ethernet protocols. It includes a frame type and optional MAC values for traffic identification.
 
 
 

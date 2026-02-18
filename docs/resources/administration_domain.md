@@ -9,7 +9,18 @@ description: |-
 
 This represents a Domain. Domains are administrative boundaries that allow you to separate the configuration details and other information in the system for the purpose of limiting administrator access.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/single_fw/custom_domain) for a complete minimal example
+
+This example creates an admin domain in SMC for resource isolation and multi-tenancy.
+
+```hcl
+resource "smc_admin_domain" "tf_domain" {
+  name    = "tf_domain"
+  comment = "test domain created by terraform"
+}
+```
 
 
 ## Simple Attributes

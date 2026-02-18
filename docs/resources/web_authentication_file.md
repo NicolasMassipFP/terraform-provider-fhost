@@ -7,7 +7,8 @@ description: |-
 
 # smc_web_authentication_file (Resource)
 
-This is a Web authentication File. It represents a file used for web-based authentication, typically containing configuration or related files.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is a Web authentication File. It represents a file used for web-based authentication, typically containing configuration or related files.
 
 
 

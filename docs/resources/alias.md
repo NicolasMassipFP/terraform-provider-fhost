@@ -9,7 +9,18 @@ description: |-
 
 This represents an Alias, which is used to represent other network elements in configurations. It allows for flexible configuration by defining default values and alias values that can be used in policies.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/alias) for a complete minimal example
+
+This example creates an Alias object in SMC to reference other network elements by a different name.
+
+```hcl
+resource "smc_alias" "tf_alias_test" {
+  name    = "$ tf test alias"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

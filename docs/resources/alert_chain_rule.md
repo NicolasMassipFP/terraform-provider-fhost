@@ -1,13 +1,14 @@
 ---
-page_title: "alert_chain_rule"
+page_title: "smc_alert_chain_rule"
 subcategory: "policy"
 description: |-
   This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.
 ---
 
-# alert_chain_rule (Sub-resource)
+# smc_alert_chain_rule (Sub-resource)
 
-This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Alert Chain Rule for Alert Chain Policy. It contains information about the alert channel, destination, delay, and admin users.
 
 
 

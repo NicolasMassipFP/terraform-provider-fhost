@@ -9,7 +9,19 @@ description: |-
 
 This represents a Firewall Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_ipv4_access_rule_section) for a minimal example
+
+This example creates a firewall policy used to define IPv4 access rules in SMC.
+
+```hcl
+resource "smc_fw_policy" "example" {
+  name     = "tf_example_access_rules_policy_with_rule_section"
+  template = data.smc_href.default_policy_template.href
+  comment  = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

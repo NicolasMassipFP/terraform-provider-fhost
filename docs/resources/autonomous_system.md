@@ -9,7 +9,18 @@ description: |-
 
 This represents the Autonomous System for Dynamic Routing Firewall functionality. The BGP Version is 4/4+. It includes the AS Number in decimal notation, which is used to identify the autonomous system in BGP routing.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/external_bgp_peers) for a minimal example
+
+This example creates an Autonomous System (AS) object to be used in BGP configuration.
+
+```hcl
+resource "smc_autonomous_system" "autonomous_system" {
+  as_number = "578"
+  name = "tf_autonomous_system"
+}
+```
 
 
 ## Simple Attributes

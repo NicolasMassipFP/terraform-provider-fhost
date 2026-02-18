@@ -7,7 +7,8 @@ description: |-
 
 # smc_geolocation (Resource)
 
-This represents the definition of a geolocation. A Geolocation object keeps a list of Network Elements belonging to the same geolocation.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the definition of a geolocation. A Geolocation object keeps a list of Network Elements belonging to the same geolocation.
 
 
 

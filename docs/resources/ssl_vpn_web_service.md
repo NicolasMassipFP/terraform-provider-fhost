@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_web_service (Resource)
 
-This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Access Web Service. It contains settings for alternative hostnames, allowed URLs, trusted certificate authorities, and various service configurations.
 
 
 

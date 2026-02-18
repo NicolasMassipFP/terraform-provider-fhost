@@ -9,7 +9,22 @@ description: |-
 
 This represents a SUN-RPC Service Group, which is used to group a list of SUN-RPC Services. It can contain both individual SUN-RPC Services and other Service Groups.
 
+## Examples
 
+- [RPC Service Group Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/sun-rpc_service/main.tf)
+
+Groups multiple RPC services for application in access rules or policies.
+
+```hcl
+resource "smc_rpc_service_group" "tf_rpc_service_group" {
+  name    = "tf_rpc_service_group"
+  comment = var.resource_comment
+  element = [
+    smc_rpc_service.tf_rpc_service.id,
+    data.smc_href.rpc_service_sample.id
+  ]
+}
+```
 
 
 ## Simple Attributes

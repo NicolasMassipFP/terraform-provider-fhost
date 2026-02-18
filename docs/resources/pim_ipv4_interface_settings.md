@@ -9,7 +9,22 @@ description: |-
 
 This represents the PIM IPv4 Interface Settings for Dynamic Routing Firewall functionality.
 
+## Examples
 
+- [PIM IPv4 Interface Settings Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/PIM/pim_ipv4_interface_settings/main.tf)
+
+Defines PIM-specific multicast settings for a given interface.
+
+```hcl
+resource "smc_pim_ipv4_interface_settings" "pim_interface_settings" {
+  dr_priority               = 14
+  igmp_querier_settings_ref = data.smc_href.igmp_querier_settings.id
+  name                      = "tf_pim_interface_settings"
+  random_delay              = 10
+  zbr                       = "224.0.1.1,239.255.255.250"
+  comment                   = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

@@ -7,7 +7,8 @@ description: |-
 
 # smc_tls_match_situation (Resource)
 
-This represents a TLS Match Situation, which defines matching criteria for the use of the TLS protocol in traffic, allowing you to prevent specified traffic from being decrypted.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a TLS Match Situation, which defines matching criteria for the use of the TLS protocol in traffic, allowing you to prevent specified traffic from being decrypted.
 
 
 

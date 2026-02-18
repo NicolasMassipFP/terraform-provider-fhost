@@ -7,7 +7,8 @@ description: |-
 
 # smc_renew_gw_certificates_task (Resource)
 
-This represents a Certificate Renewal System Task, which is used to renew gateway certificates in the system. It is a type of system task that can be scheduled and executed to ensure that the gateway certificates are up-to-date.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Certificate Renewal System Task, which is used to renew gateway certificates in the system. It is a type of system task that can be scheduled and executed to ensure that the gateway certificates are up-to-date.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_dns_relay_profile (Resource)
 
-This represents a DNS Relay profile element, which contains settings for hostname mappings, domain-specific DNS servers, fixed domain answers, and DNS answer translations.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a DNS Relay profile element, which contains settings for hostname mappings, domain-specific DNS servers, fixed domain answers, and DNS answer translations.
 
 
 

@@ -1,13 +1,14 @@
 ---
-page_title: "web_site_access_situation_parameter_value"
+page_title: "smc_web_site_access_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents a web site access parameter value within a situation, allowing for the application of specific web site access rules to the situation's parameters.
 ---
 
-# web_site_access_situation_parameter_value (Sub-resource)
+# smc_web_site_access_situation_parameter_value (Sub-resource)
 
-This represents a web site access parameter value within a situation, allowing for the application of specific web site access rules to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a web site access parameter value within a situation, allowing for the application of specific web site access rules to the situation's parameters.
 
 
 

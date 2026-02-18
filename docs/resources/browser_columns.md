@@ -7,7 +7,8 @@ description: |-
 
 # smc_browser_columns (Resource)
 
-This represents the browser columns used in bookmarks, which defines the columns displayed in the bookmark browser.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the browser columns used in bookmarks, which defines the columns displayed in the bookmark browser.
 
 
 

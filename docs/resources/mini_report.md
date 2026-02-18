@@ -7,7 +7,8 @@ description: |-
 
 # smc_mini_report (Resource)
 
-This represents a Mini Report. It is a lightweight report that provides a summary of statistics and data without the full detail of a standard report.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Mini Report. It is a lightweight report that provides a summary of statistics and data without the full detail of a standard report.
 
 
 

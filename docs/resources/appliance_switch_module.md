@@ -7,7 +7,8 @@ description: |-
 
 # smc_appliance_switch_module (Resource)
 
-This represents an Appliance Switch Module, which is used to manage the switch modules in the appliance. It includes information such as the number of ports and configuration value.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Appliance Switch Module, which is used to manage the switch modules in the appliance. It includes information such as the number of ports and configuration value.
 
 
 

@@ -9,7 +9,19 @@ description: |-
 
 This represents a Network, which is a Network Element that represents a (sub)network of computers. It includes attributes for IPv4 and IPv6 networks, broadcast address, and validation patterns.
 
+## Examples
 
+- [getting_started/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/getting_started/main.tf): Defines a basic network element for a test/lab environment.
+
+This snippet shows the use of `smc_network` to define a simple IPv4 network. This network can later be associated with firewall interfaces or VPN sites.
+
+```hcl
+resource "smc_network" "tf_sample_network" {
+  name         = "tf_sample_network"
+  comment      = var.resource_comment
+  ipv4_network = local.tf_network
+}
+```
 
 
 ## Simple Attributes

@@ -7,7 +7,8 @@ description: |-
 
 # smc_dynamic_interface_alias (Resource)
 
-This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ DHCP Interface X.[dns|ip|net|gateways]', which is used to substitute all defined IP Address of the DNS|the default router|the directly connected network for interface number X of defined clusters.
 
 
 

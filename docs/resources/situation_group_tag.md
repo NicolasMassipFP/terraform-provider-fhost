@@ -7,7 +7,8 @@ description: |-
 
 # smc_situation_group_tag (Resource)
 
-This represents a Situation Group Tag, which is used to categorize elements based on their situation group classification. It is a type of tag that can be applied to various elements in the system to indicate their association with specific situation groups.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Situation Group Tag, which is used to categorize elements based on their situation group classification. It is a type of tag that can be applied to various elements in the system to indicate their association with specific situation groups.
 
 
 

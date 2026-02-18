@@ -9,7 +9,20 @@ description: |-
 
 This represents a Log Server, which is a component of the Management Center responsible for storing and managing log (and alert) data, and analyzing and correlating events detected by multiple NGFW Engines.
 
+## Examples
 
+- [Log Server Example](../../test/perf_disabled/csv_deployment/main.tf)
+
+Defines an SMC Log Server resource for receiving logs from engines.
+
+```hcl
+resource "smc_log_server" "new_log_server" {
+  address = "127.0.0.10"
+  channel_port = 3020
+  log_disk_space_handling_mode = "overwrite_oldest"
+  name = "Log Server - New"
+}
+```
 
 
 ## Simple Attributes

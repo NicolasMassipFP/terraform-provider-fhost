@@ -7,7 +7,8 @@ description: |-
 
 # smc_os_specific_tag (Resource)
 
-This represents a Specific Platform Tag, which is used to categorize elements that are specific to a particular platform. It is a type of tag that can be applied to various elements in the system to indicate their specific platform classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Specific Platform Tag, which is used to categorize elements that are specific to a particular platform. It is a type of tag that can be applied to various elements in the system to indicate their specific platform classification.
 
 
 
