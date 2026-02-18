@@ -7,7 +7,8 @@ description: |-
 
 # smc_eca_operating_system_situation (Resource)
 
-This represents an ECA Operating System Situation, which is used to define the conditions and parameters for operating system situations in ECA (Endpoint Compliance Assessment).
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an ECA Operating System Situation, which is used to define the conditions and parameters for operating system situations in ECA (Endpoint Compliance Assessment).
 
 
 

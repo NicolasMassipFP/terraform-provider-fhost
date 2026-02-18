@@ -9,7 +9,30 @@ description: |-
 
 This represents a Static NetLink, which is a type of NetLink used for routing in Multi-Link features. It includes attributes for gateway, networks, DNS elements, and outbound IP addresses.
 
+## Examples
 
+- [Netlink Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/netlink/main.tf)
+
+Defines a Netlink, which controls WAN redundancy and failover.
+
+```hcl
+resource "smc_netlink" "tf_sample_netlink" {
+  name                = "tf_sample_netlink"
+  comment             = var.resource_comment
+  active_mode_period  = 5
+  active_mode_timeout = 1
+  connection_type_ref = data.smc_href.active_connection_type.id
+  # domain_server_address = []
+  gateway_ref = smc_router.tf_example_router.id
+  input_speed = 200000
+  network_ref = [smc_network.tf_sample_network.id]
+  # nsp_name = ""
+  output_speed         = 200000
+  probe_address        = ["10.20.30.29", "10.20.30.34", "8.8.8.8", "8.8.4.4"]
+  standby_mode_period  = 3600
+  standby_mode_timeout = 30
+}
+```
 
 
 ## Simple Attributes

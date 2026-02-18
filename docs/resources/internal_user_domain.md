@@ -7,7 +7,8 @@ description: |-
 
 # smc_internal_user_domain (Resource)
 
-This represents the Internal User Domain. It is used for managing internal user domains in the SMC.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Internal User Domain. It is used for managing internal user domains in the SMC.
 
 
 

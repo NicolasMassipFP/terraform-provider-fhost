@@ -9,7 +9,65 @@ description: |-
 
 This represents the BGP Profile for Dynamic Routing Firewall functionality, including port settings, distances, and BGP entries.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/bgp_profile) for an example
+
+This example creates a BGP profile with aggregation, redistribution, and monitoring.
+
+```hcl
+resource "smc_bgp_profile" "bgp_profile" {
+  comment = var.resource_comment
+  aggregation_entry {
+    mode   = "as_set_and_summary"
+    subnet = smc_network.network1.id
+  }
+  bmp_entry {
+    bmp_address                = "192.168.10.1"
+    bmp_connect_through_master = true
+    bmp_port                   = 179
+  }
+  bmp_entry {
+    bmp_address                = "10.100.100.14"
+    bmp_connect_through_master = false
+    bmp_port                   = 1179
+  }
+  distance_entry {
+    distance = 220
+    subnet   = smc_network.network1.id
+  }
+  distance_entry {
+    distance = 255
+    subnet   = smc_network.network2.id
+  }
+  external = 40
+  internal = 220
+  local    = 250
+  name     = "tf_bgp_profile"
+  port     = 179
+  redistribution_entry {
+    enabled     = false
+    filter_type = "none"
+    type        = "kernel"
+  }
+  redistribution_entry {
+    enabled     = true
+    filter_type = "none"
+    metric      = 120
+    type        = "static"
+  }
+  redistribution_entry {
+    enabled     = false
+    filter_type = "none"
+    type        = "connected"
+  }
+  redistribution_entry {
+    enabled     = false
+    filter_type = "none"
+    type        = "ospfv2"
+  }
+}
+```
 
 
 ## Simple Attributes

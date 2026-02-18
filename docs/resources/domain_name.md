@@ -9,7 +9,19 @@ description: |-
 
 This represents a Domain Name, which is used to manage domain names and their associated IP addresses. It includes additional domain names that can be resolved to IP addresses through DNS queries.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/domain_name) for a complete minimal example
+
+This example creates a Domain Name object recognized within SMC.
+
+```hcl
+resource "smc_domain_name" "tfdomain_name" {
+  domain_name_entry = ["test.example.com", "prod.example.com", "example.com"]
+  name              = "tfdomain_name"
+  comment           = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

@@ -7,7 +7,8 @@ description: |-
 
 # smc_api_user (Resource)
 
-This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a API Client. It is an element that defines the details of a single person that is allowed to log on to Management Server through REST services.
 
 
 

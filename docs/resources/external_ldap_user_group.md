@@ -7,7 +7,8 @@ description: |-
 
 # smc_external_ldap_user_group (Resource)
 
-This represents a group of external LDAP Users defined on the external LDAP server. It allows browsing and invalidating user entries.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a group of external LDAP Users defined on the external LDAP server. It allows browsing and invalidating user entries.
 
 
 

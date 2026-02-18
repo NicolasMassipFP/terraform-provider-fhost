@@ -7,7 +7,8 @@ description: |-
 
 # smc_update_package (Resource)
 
-This represents an Update Package. It contains information about the package ID, release date, state, activation date, and the SMC version where the activation has been done.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Update Package. It contains information about the package ID, release date, state, activation date, and the SMC version where the activation has been done.
 
 
 

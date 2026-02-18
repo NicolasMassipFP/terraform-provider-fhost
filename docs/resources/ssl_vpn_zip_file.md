@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_zip_file (Resource)
 
-This is a SSL VPN Zip File. It represents a zip file used in the SSL VPN context, typically containing configuration or other related files.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is a SSL VPN Zip File. It represents a zip file used in the SSL VPN context, typically containing configuration or other related files.
 
 
 

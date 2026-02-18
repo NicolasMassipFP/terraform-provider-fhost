@@ -7,7 +7,8 @@ description: |-
 
 # smc_hardware_tag (Resource)
 
-This represents a Hardware Tag, which is used to categorize elements based on their hardware type. It is a type of tag that can be applied to various elements in the system to indicate their hardware classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Hardware Tag, which is used to categorize elements based on their hardware type. It is a type of tag that can be applied to various elements in the system to indicate their hardware classification.
 
 
 

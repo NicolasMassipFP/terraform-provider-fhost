@@ -7,7 +7,8 @@ description: |-
 
 # smc_layer2_policy (Resource)
 
-This represents a Layer 2 Policy, which is used to define the action and inspection rules for Layer 2 Engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 Policy, which is used to define the action and inspection rules for Layer 2 Engines.
 
 
 

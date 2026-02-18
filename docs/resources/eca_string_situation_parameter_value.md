@@ -1,13 +1,14 @@
 ---
-page_title: "eca_string_situation_parameter_value"
+page_title: "smc_eca_string_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents an ECA (Event-Condition-Action) string parameter value within a situation, allowing for the application of specific ECA strings to the situation's parameters.
 ---
 
-# eca_string_situation_parameter_value (Sub-resource)
+# smc_eca_string_situation_parameter_value (Sub-resource)
 
-This represents an ECA (Event-Condition-Action) string parameter value within a situation, allowing for the application of specific ECA strings to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an ECA (Event-Condition-Action) string parameter value within a situation, allowing for the application of specific ECA strings to the situation's parameters.
 
 
 

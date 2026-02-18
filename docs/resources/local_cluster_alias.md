@@ -7,7 +7,8 @@ description: |-
 
 # smc_local_cluster_alias (Resource)
 
-This represents the System alias for '$$ Local Cluster', which is used to substitute the local firewall object (possibly a cluster object) where the policy is uploaded.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Local Cluster', which is used to substitute the local firewall object (possibly a cluster object) where the policy is uploaded.
 
 
 

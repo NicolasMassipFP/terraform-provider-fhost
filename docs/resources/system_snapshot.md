@@ -7,7 +7,8 @@ description: |-
 
 # smc_system_snapshot (Resource)
 
-This represents a System Snapshot, which is a record of system elements defined within a specific update package. It helps in tracking changes after the activation of an update package.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a System Snapshot, which is a record of system elements defined within a specific update package. It helps in tracking changes after the activation of an update package.
 
 
 

@@ -1,13 +1,14 @@
 ---
-page_title: "ips_ethernet_rule"
+page_title: "smc_ips_ethernet_rule"
 subcategory: "policy"
 description: |-
   This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.
 ---
 
-# ips_ethernet_rule (Sub-resource)
+# smc_ips_ethernet_rule (Sub-resource)
 
-This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Sensor in Transparent Access Control Mode.
 
 
 

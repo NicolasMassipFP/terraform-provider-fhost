@@ -16,8 +16,8 @@ Some resources are considered top-level (such as firewalls or policies), while o
 
 To correctly reference and link resources, you often need to know the unique identifier (URL) of a parent or related resource. The provider offers data sources to help with this:
 
-- [smc_href](../../data-sources/href): Use this data source to discover the ID (URL) of top-level or system resources. For example, to reference a default policy template or a specific engine.
-- [smc_sub_href](../../data-sources/sub_href): Use this data source to discover the ID (URL) of sub-resources that are children of another resource. For example, to find the id of an internal gateway
+- [smc_href](../data-sources/href): Use this data source to discover the ID (URL) of top-level or system resources. For example, to reference a default policy template or a specific engine.
+- [smc_sub_href](../data-sources/sub_href): Use this data source to discover the ID (URL) of sub-resources that are children of another resource. For example, to find the id of an internal gateway
 
 These data sources allow you to dynamically look up resource references, making your Terraform configuration more robust and less dependent on hardcoded URLs.
 

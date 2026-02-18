@@ -1,15 +1,45 @@
 ---
-page_title: "fw_ipv4_nat_rule"
+page_title: "smc_fw_ipv4_nat_rule"
 subcategory: "policy"
 description: |-
   This represents an IPv4 NAT (Network Address Translation) Rule. It defines how one type of IPv4 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
 ---
 
-# fw_ipv4_nat_rule (Sub-resource)
+# smc_fw_ipv4_nat_rule (Sub-resource)
 
 This represents an IPv4 NAT (Network Address Translation) Rule. It defines how one type of IPv4 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_ipv4_nat_rules) for a complete minimal example
+
+This example creates an IPv4 NAT rule in an SMC firewall policy.
+
+```hcl
+resource "smc_fw_ipv4_nat_rule" "nat_rule1" {
+  from_ref = smc_fw_policy.example.link.fw_ipv4_nat_rules
+  name     = "nat_rule1"
+  services {
+    any = true
+  }
+  sources {
+    src = [data.smc_href.interface_nic_0_net.href]
+  }
+  destinations {
+    any = true
+  }
+  options {
+    dynamic_src_nat {
+      automatic_proxy = true
+      translation_values {
+        element  = data.smc_href.default_nat_address_alias.href
+        max_port = 2048
+        min_port = 1024
+      }
+    }
+  }
+}
+```
 
 
 ## Simple Attributes

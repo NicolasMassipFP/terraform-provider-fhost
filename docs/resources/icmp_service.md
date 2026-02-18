@@ -9,7 +9,20 @@ description: |-
 
 This represents an ICMP service, which is used to define a service based on the Internet Control Message Protocol (ICMP). It includes an ICMP type and optional code for traffic identification.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/icmp_service) for a complete minimal example
+
+This example creates an ICMP service object in SMC.
+
+```hcl
+resource "smc_icmp_service" "tf_icmp_service" {
+  icmp_code = 144
+  icmp_type = 14
+  name      = "tf_icmp_service"
+  comment   = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

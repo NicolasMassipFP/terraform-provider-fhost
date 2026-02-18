@@ -7,7 +7,8 @@ description: |-
 
 # smc_logging_profile (Resource)
 
-This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Logging Profile used for Third Party Monitoring, defining how the Log Server converts Syslog data received from a particular type of third-party component into Stonesoft Management Center log entries.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_alert_policy (Resource)
 
-This represents an Alert Policy, which is used to define alert rules and configurations for the alerting system. It includes properties such as alert rules and configuration settings.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Alert Policy, which is used to define alert rules and configurations for the alerting system. It includes properties such as alert rules and configuration settings.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_vpn_traffic_selector (Resource)
 
-This represents a Virtual Private Network Traffic Selector. It is used to define the traffic that is allowed through a VPN tunnel.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Virtual Private Network Traffic Selector. It is used to define the traffic that is allowed through a VPN tunnel.
 
 
 

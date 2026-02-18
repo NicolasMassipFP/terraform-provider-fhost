@@ -1,13 +1,14 @@
 ---
-page_title: "task_schedule"
+page_title: "smc_task_schedule"
 subcategory: "admin"
 description: |-
   This represents a schedule entry for a task element, defining when and how often the task should be executed.
 ---
 
-# task_schedule (Sub-resource)
+# smc_task_schedule (Sub-resource)
 
-This represents a schedule entry for a task element, defining when and how often the task should be executed.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a schedule entry for a task element, defining when and how often the task should be executed.
 
 
 

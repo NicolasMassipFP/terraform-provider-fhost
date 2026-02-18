@@ -7,7 +7,8 @@ description: |-
 
 # smc_report_template (Resource)
 
-This represents a Report Template, which defines the structure and content of reports generated within the system. It is used to create and manage templates for report generation.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Report Template, which defines the structure and content of reports generated within the system. It is used to create and manage templates for report generation.
 
 
 

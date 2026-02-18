@@ -7,7 +7,8 @@ description: |-
 
 # smc_tls_inspection_policy (Resource)
 
-This represents the definition of a TLS Inspection policy. It is used to configure how TLS traffic is inspected and managed within the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the definition of a TLS Inspection policy. It is used to configure how TLS traffic is inspected and managed within the system.
 
 
 

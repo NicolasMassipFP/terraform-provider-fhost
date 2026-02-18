@@ -7,7 +7,8 @@ description: |-
 
 # smc_bookmark (Resource)
 
-This represents the Bookmark, which is used to store and manage bookmarks in the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Bookmark, which is used to store and manage bookmarks in the system.
 
 
 

@@ -9,7 +9,20 @@ description: |-
 
 This represents an External Gateway, which is used for establishing VPN connections with external networks. It includes gateway profile, trust settings for VPN certificate authorities, and lists of end-points and sites.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/external_gateway) for a minimal example
+
+This example creates an external gateway object.
+
+```hcl
+resource "smc_external_gateway" "external_gateway" {
+  gateway_profile                 = data.smc_href.gateway_profile.id
+  name                            = "tf_external_gateway"
+  trust_all_cas                   = true
+  trusted_certificate_authorities = []
+}
+```
 
 
 ## Simple Attributes

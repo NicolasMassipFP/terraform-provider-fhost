@@ -7,7 +7,8 @@ description: |-
 
 # smc_ethernet_service_group (Resource)
 
-This represents an Ethernet Service Group, which is used to group a list of Ethernet Services. It can contain both individual Ethernet Services and other Service Groups.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Ethernet Service Group, which is used to group a list of Ethernet Services. It can contain both individual Ethernet Services and other Service Groups.
 
 
 

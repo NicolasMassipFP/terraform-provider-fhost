@@ -1,13 +1,14 @@
 ---
-page_title: "virtual_ips_node"
+page_title: "smc_virtual_ips_node"
 subcategory: "engines"
 description: |-
   This represents a Virtual IPS Engine node in the Security Management Client, which is a virtual device that runs IPS software as part of a Virtual IPS.
 ---
 
-# virtual_ips_node (Sub-resource)
+# smc_virtual_ips_node (Sub-resource)
 
-This represents a Virtual IPS Engine node in the Security Management Client, which is a virtual device that runs IPS software as part of a Virtual IPS.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Virtual IPS Engine node in the Security Management Client, which is a virtual device that runs IPS software as part of a Virtual IPS.
 
 
 

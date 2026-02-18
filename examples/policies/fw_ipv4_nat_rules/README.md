@@ -1,3 +1,15 @@
-# Fw Ipv4 Nat Rules
+# IPv4 NAT Rules Example
 
-This is an example demonstrating the usage of the Fw Ipv4 Nat Rules configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Demonstrates IPv4 NAT rule definition and automatic source NAT options for a firewall policy.
+
+- Creates policy with template
+- Adds a NAT rule for dynamic source NAT with ports/proxy setup
+
+## Usage
+
+Edit addresses or NAT values as needed. Set provider credentials and run:
+
+```
+terraform init
+terraform apply
+```

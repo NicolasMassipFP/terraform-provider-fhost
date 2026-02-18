@@ -9,7 +9,20 @@ description: |-
 
 This represents the External BGP Peer for Dynamic Routing Firewall functionality. It is used to configure external BGP peers in the firewall's dynamic routing capabilities.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/external_bgp_peers) for a complete minimal example
+
+This example creates an external BGP peer object which references an Autonomous System.
+
+```hcl
+resource "smc_external_bgp_peer" "external_bgp_peer" {
+  name = "tf_external_bgp_peer"
+  neighbor_as = smc_autonomous_system.autonomous_system.id
+  neighbor_ip = "10.10.14.10"
+  neighbor_port = 179
+}
+```
 
 
 ## Simple Attributes

@@ -7,7 +7,8 @@ description: |-
 
 # smc_mgt_server (Resource)
 
-This represents a Management Server, which is the central component that stores all configurations and monitors the state of all NGFW Engines and other components in the Stonesoft Management Center. It provides access for Management Clients to change configurations or command the engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Management Server, which is the central component that stores all configurations and monitors the state of all NGFW Engines and other components in the Stonesoft Management Center. It provides access for Management Clients to change configurations or command the engines.
 
 
 

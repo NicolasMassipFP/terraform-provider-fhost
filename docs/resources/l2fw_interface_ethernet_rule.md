@@ -1,13 +1,14 @@
 ---
-page_title: "l2_interface_ethernet_rule"
+page_title: "smc_l2_interface_ethernet_rule"
 subcategory: "policy"
 description: |-
   This represents a L2FW Interface Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a NGFW in Transparent Access Control Mode.
 ---
 
-# l2_interface_ethernet_rule (Sub-resource)
+# smc_l2_interface_ethernet_rule (Sub-resource)
 
-This represents a L2FW Interface Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a NGFW in Transparent Access Control Mode.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a L2FW Interface Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a NGFW in Transparent Access Control Mode.
 
 
 

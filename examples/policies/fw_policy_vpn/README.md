@@ -1,3 +1,15 @@
-# Fw Policy Vpn
+# Policy VPN Example
 
-This is an example demonstrating the usage of the Fw Policy Vpn configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Demonstrates configuring a firewall policy with VPN rules using the SMC provider.
+
+- Creates a custom VPN profile and VPN entity
+- Defines a policy with "apply_vpn" and VPN-matching access rules
+
+## Usage
+
+Adjust VPN/profile/rule parameters as needed. Configure provider, then:
+
+```
+terraform init
+terraform apply
+```

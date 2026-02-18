@@ -9,7 +9,18 @@ description: |-
 
 This represents a list of IP addresses.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/ip_list) for a complete minimal example
+
+This example creates an IP list and assigns addresses.
+
+```hcl
+resource "smc_ip_list" "tf_example_ip_list" {
+  name    = "tf_example_ip_list"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

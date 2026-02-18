@@ -7,7 +7,8 @@ description: |-
 
 # smc_ip_list_group (Resource)
 
-This represents an IP List Group Tag, which is used to categorize elements based on IP lists. It is a type of tag that can be applied to various elements in the system to indicate their association with specific IP lists.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an IP List Group Tag, which is used to categorize elements based on IP lists. It is a type of tag that can be applied to various elements in the system to indicate their association with specific IP lists.
 
 
 

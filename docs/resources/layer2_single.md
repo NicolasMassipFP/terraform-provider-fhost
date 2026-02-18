@@ -7,7 +7,8 @@ description: |-
 
 # smc_firewall_layer2_single (Resource)
 
-This represents a Layer 2 firewall device in the Stonesoft Management Center, which is a basic component that provides access control and deep inspection of traffic.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 firewall device in the Stonesoft Management Center, which is a basic component that provides access control and deep inspection of traffic.
 
 
 

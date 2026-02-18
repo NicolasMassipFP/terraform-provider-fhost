@@ -7,7 +7,8 @@ description: |-
 
 # smc_access_control_list (Resource)
 
-This represents an Access Control List (ACL), which is used to manage administrative access to various SMC resources. ACLs allow you to define permissions and restrict access to specific elements within the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Access Control List (ACL), which is used to manage administrative access to various SMC resources. ACLs allow you to define permissions and restrict access to specific elements within the system.
 
 
 

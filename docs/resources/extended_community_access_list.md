@@ -9,7 +9,25 @@ description: |-
 
 This represents an Extended Community Access List, which is used to define a list of extended communities for dynamic routing configurations.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/extended_community_access_list_disabled) for a minimal example
+
+This example defines an extended BGP community access list.
+
+```hcl
+resource "smc_extended_community_access_list" "extended_community_access_list" {
+  entries {
+    extended_community_access_list_entry {
+      action = "permit"
+      community = ".*1545"
+    }
+  }
+  name = "tf_extended_community_access_list"
+  type = "expanded"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

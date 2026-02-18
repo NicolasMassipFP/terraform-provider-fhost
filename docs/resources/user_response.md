@@ -7,7 +7,8 @@ description: |-
 
 # smc_user_response (Resource)
 
-This represents a User Response, which defines additional notification actions for rule matches, such as redirecting access to a forbidden URL to a page on an internal web server instead.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a User Response, which defines additional notification actions for rule matches, such as redirecting access to a forbidden URL to a page on an internal web server instead.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_ids_alert (Resource)
 
-This represents a predefined IDS Alert, which is used to define and manage IDS alert events in the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a predefined IDS Alert, which is used to define and manage IDS alert events in the system.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_file_filtering_compatibility_tag (Resource)
 
-This represents a File Filtering Compatibility Tag, which is used to categorize elements based on their compatibility with file filtering. It is a type of tag that can be applied to various elements in the system to indicate their file filtering compatibility classification.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a File Filtering Compatibility Tag, which is used to categorize elements based on their compatibility with file filtering. It is a type of tag that can be applied to various elements in the system to indicate their file filtering compatibility classification.
 
 
 

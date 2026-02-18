@@ -9,7 +9,19 @@ description: |-
 
 This represents an IP-proto service, which is used to define a service based on the IP protocol number. It includes a protocol number that specifies the protocol used by the traffic.
 
+## Examples
 
+- [IP Service Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/ip-proto_service/main.tf)
+
+Creates a custom IP protocol service by its protocol number for firewall or policy use.
+
+```hcl
+resource "smc_ip_service" "tf_ip_proto_service" {
+  comment         = var.resource_comment
+  name            = "tf_ip-proto_service"
+  protocol_number = 125
+}
+```
 
 
 ## Simple Attributes

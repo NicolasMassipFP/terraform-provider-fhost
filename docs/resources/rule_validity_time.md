@@ -7,7 +7,8 @@ description: |-
 
 # smc_rule_validity_time (Resource)
 
-This represents the validity time of a rule, which defines when the rule is active. It includes settings for time zones, start and end times, and repeat modes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the validity time of a rule, which defines when the rule is active. It includes settings for time zones, start and end times, and repeat modes.
 
 
 

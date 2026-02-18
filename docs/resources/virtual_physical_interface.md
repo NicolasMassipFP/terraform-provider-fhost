@@ -1,13 +1,14 @@
 ---
-page_title: "virtual_physical_interface"
+page_title: "smc_virtual_physical_interface"
 subcategory: "vpn"
 description: |-
   This represents a virtual physical interface for the Virtual Firewall, Virtual Firewall Layer 2, and Virtual IPS.
 ---
 
-# virtual_physical_interface (Sub-resource)
+# smc_virtual_physical_interface (Sub-resource)
 
-This represents a virtual physical interface for the Virtual Firewall, Virtual Firewall Layer 2, and Virtual IPS.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a virtual physical interface for the Virtual Firewall, Virtual Firewall Layer 2, and Virtual IPS.
 
 
 

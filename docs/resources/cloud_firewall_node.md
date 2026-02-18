@@ -1,13 +1,14 @@
 ---
-page_title: "cloud_fw_node"
+page_title: "smc_cloud_fw_node"
 subcategory: "engines"
 description: |-
   This represents an individual Cloud Firewall Engine in the Security Management Client, representing a device that runs firewall software as part of a Cloud Firewall.
 ---
 
-# cloud_fw_node (Sub-resource)
+# smc_cloud_fw_node (Sub-resource)
 
-This represents an individual Cloud Firewall Engine in the Security Management Client, representing a device that runs firewall software as part of a Cloud Firewall.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an individual Cloud Firewall Engine in the Security Management Client, representing a device that runs firewall software as part of a Cloud Firewall.
 
 
 

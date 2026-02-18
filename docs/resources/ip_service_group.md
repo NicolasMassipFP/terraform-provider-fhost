@@ -9,7 +9,22 @@ description: |-
 
 This represents an IP-proto Service Group, which is used to group a list of IP-proto Services. It can contain both individual IP-proto Services and other Service Groups.
 
+## Examples
 
+- [IP Service Group Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/services/ip-proto_service/main.tf)
+
+Groups multiple IP services for easier policy and rules management.
+
+```hcl
+resource "smc_ip_service_group" "tf_ip_proto_service_group" {
+  name    = "tf_ip-proto_service_group"
+  comment = var.resource_comment
+  element = [
+    smc_ip_service.tf_ip_proto_service.id,
+    data.smc_href.smc_ip_service_TCP.id
+  ]
+}
+```
 
 
 ## Simple Attributes

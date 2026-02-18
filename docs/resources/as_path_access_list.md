@@ -9,7 +9,30 @@ description: |-
 
 This represents an AS Path Access List, which is used to define a list of AS paths for dynamic routing configurations.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/as_path_access_list) for a complete minimal example
+
+This example creates an AS Path Access List to control allowed or denied AS paths for BGP routing.
+
+```hcl
+resource "smc_as_path_access_list" "as_path_access_list" {
+  comment = var.resource_comment
+  entries {
+    as_path_access_list_entry {
+      action     = "permit"
+      expression = "^65001_"
+    }
+  }
+  entries {
+    as_path_access_list_entry {
+      action     = "deny"
+      expression = "_65002$"
+    }
+  }
+  name = "tf_as_path_access_list"
+}
+```
 
 
 ## Simple Attributes

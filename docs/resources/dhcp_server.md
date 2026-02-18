@@ -9,7 +9,19 @@ description: |-
 
 This represents a DHCP (Dynamic Host Configuration Protocol) Server. A protocol for dynamically assigning IP addresses and other network information to an interface, based on BOOTP. A device on a network with no network information can broadcast a request for an IP address, subnet mask, default gateway and other information from a DHCP server on that same network. DHCP is defined in RFC 2131.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/servers/dhcp_server) for a complete minimal example
+
+This example creates a DHCP server object in SMC.
+
+```hcl
+resource "smc_dhcp_server" "tf_example_dhcp_server" {
+  address = "172.31.70.69"
+  name    = "tf_example_dhcp_server"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

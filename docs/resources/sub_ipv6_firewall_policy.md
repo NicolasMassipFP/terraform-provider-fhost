@@ -7,7 +7,8 @@ description: |-
 
 # smc_sub_ipv6_fw_policy (Resource)
 
-This represents a Firewall IPv6 Sub-Policy, which is used to group related Firewall IPv6 Access rules for better organization and processing efficiency.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Firewall IPv6 Sub-Policy, which is used to group related Firewall IPv6 Access rules for better organization and processing efficiency.
 
 
 

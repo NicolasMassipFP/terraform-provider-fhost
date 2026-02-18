@@ -9,7 +9,18 @@ description: |-
 
 This represents a Route Based VPN Tunnel Group. It is used to group tunnels in the home/monitoring view. It contains a reference to the Link Usage Profile that defines the link usage for the tunnels in this group.
 
+## Examples
 
+- [RBVPN Tunnel Group Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/route_based_vpn/vpn_mode/main.tf)
+
+Defines a group of RBVPN tunnels for flexible policy control.
+
+```hcl
+resource "smc_rbvpn_tunnel_group" "tf_tunnels" {
+  comment = var.resource_comment
+  name    = "tf_rbvpn_tunnels"
+}
+```
 
 
 ## Simple Attributes

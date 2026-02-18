@@ -7,7 +7,8 @@ description: |-
 
 # smc_sub_tls_match_situation (Resource)
 
-This represents a Sub TLS Match, which is used to match sub TLS protocols in the traffic.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Sub TLS Match, which is used to match sub TLS protocols in the traffic.
 
 
 

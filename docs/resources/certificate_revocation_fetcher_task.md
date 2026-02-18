@@ -7,7 +7,8 @@ description: |-
 
 # smc_fetch_certificate_revocation_task (Resource)
 
-This represents a Certificate Revocation Fetcher Task, which is used to fetch and update certificate revocation lists in the system. It is a type of system task that can be scheduled and executed to ensure that the certificate revocation information is current.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Certificate Revocation Fetcher Task, which is used to fetch and update certificate revocation lists in the system. It is a type of system task that can be scheduled and executed to ensure that the certificate revocation information is current.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_sandbox_service (Resource)
 
-This represents the Sandbox service element (referenced by sandbox settings). It contains information about the portal account, data center, license key and token.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Sandbox service element (referenced by sandbox settings). It contains information about the portal account, data center, license key and token.
 
 
 

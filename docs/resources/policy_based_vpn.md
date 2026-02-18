@@ -9,7 +9,21 @@ description: |-
 
 This represents a Policy Based Virtual Private Network (VPN), which is used to establish secure connections over unsecured networks. It includes various configurations such as NAT rules, mobile VPN topology modes, and associated profiles.
 
+## Examples
 
+- [two_gateway_in_one_engine_disabled/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/policy_based_vpn/two_gateway_in_one_engine_disabled/main.tf): Defines a VPN using a custom VPN profile without NAT or mobile VPN topology.
+
+This snippet shows basic usage of the `smc_vpn` resource in a policy-based VPN context, including essential attributes such as profile reference, topology mode, and NAT configuration. The VPN resource is used as a parent for gateway nodes in SD-WAN deployments.
+
+```hcl
+resource "smc_vpn" "tf_sample_vpn" {
+  mobile_vpn_topology_mode = "None"
+  name                     = "tf_sample_vpn"
+  nat                      = false
+  vpn_profile              = data.smc_href.suite_b_gcm_128.href
+  comment                  = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

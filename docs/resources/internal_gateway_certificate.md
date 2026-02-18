@@ -1,13 +1,14 @@
 ---
-page_title: "gateway_certificate"
+page_title: "smc_gateway_certificate"
 subcategory: "vpn"
 description: |-
   This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
 ---
 
-# gateway_certificate (Sub-resource)
+# smc_gateway_certificate (Sub-resource)
 
-This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a certificate for an internal gateway, which includes details about the certificate authority, validity dates, and algorithms used.
 
 
 

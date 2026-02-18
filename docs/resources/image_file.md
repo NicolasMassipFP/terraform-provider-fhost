@@ -7,7 +7,8 @@ description: |-
 
 # smc_image_file (Resource)
 
-This is a Image File. It represents an image file used in the system, typically for graphical content.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is a Image File. It represents an image file used in the system, typically for graphical content.
 
 
 

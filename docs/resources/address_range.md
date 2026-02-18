@@ -9,7 +9,19 @@ description: |-
 
 This represents an Address Range, which is a Network Element that defines a range of IP addresses. It includes attributes for the range of IP addresses, which must be valid IPv4 or IPv6 addresses.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/address_range) for a complete minimal example
+
+This example creates an Address Range object for defining an IP range in SMC.
+
+```hcl
+resource "smc_address_range" "tf_address_range_example" {
+  ip_range = "10.20.30.40-10.20.30.50"
+  name     = "tf_address_range_example"
+  comment  = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

@@ -7,7 +7,8 @@ description: |-
 
 # smc_ei_application_situation (Resource)
 
-This represents an ECA Application Situation, which is used for managing ECA applications and their associated executable files.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an ECA Application Situation, which is used for managing ECA applications and their associated executable files.
 
 
 

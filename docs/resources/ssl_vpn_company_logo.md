@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_company_logo (Resource)
 
-This is an SSL VPN Company Logo. It represents a company logo used in the SSL VPN interface, typically for branding purposes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is an SSL VPN Company Logo. It represents a company logo used in the SSL VPN interface, typically for branding purposes.
 
 
 

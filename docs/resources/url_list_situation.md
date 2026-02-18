@@ -7,7 +7,8 @@ description: |-
 
 # smc_url_list_situation (Resource)
 
-This represents an URL List Situation, which is used for filtering URLs based on a predefined list of URLs.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an URL List Situation, which is used for filtering URLs based on a predefined list of URLs.
 
 
 

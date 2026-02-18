@@ -1,13 +1,14 @@
 ---
-page_title: "url_list_situation_parameter_value"
+page_title: "smc_url_list_situation_parameter_value"
 subcategory: "situations"
 description: |-
   This represents a URL list parameter value within a situation, allowing for the application of specific URL lists to the situation's parameters.
 ---
 
-# url_list_situation_parameter_value (Sub-resource)
+# smc_url_list_situation_parameter_value (Sub-resource)
 
-This represents a URL list parameter value within a situation, allowing for the application of specific URL lists to the situation's parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a URL list parameter value within a situation, allowing for the application of specific URL lists to the situation's parameters.
 
 
 

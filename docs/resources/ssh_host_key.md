@@ -1,13 +1,14 @@
 ---
-page_title: "ssh_host_key"
+page_title: "smc_ssh_host_key"
 subcategory: "engines"
 description: |-
   This represents an SSH Host Key for the Sidewinder SSH Proxy. It stores a key pair for use in the SSH Proxy. The key data is not directly accessible through this interface. During creation of a new key, the type and length fields are required.
 ---
 
-# ssh_host_key (Sub-resource)
+# smc_ssh_host_key (Sub-resource)
 
-This represents an SSH Host Key for the Sidewinder SSH Proxy. It stores a key pair for use in the SSH Proxy. The key data is not directly accessible through this interface. During creation of a new key, the type and length fields are required.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an SSH Host Key for the Sidewinder SSH Proxy. It stores a key pair for use in the SSH Proxy. The key data is not directly accessible through this interface. During creation of a new key, the type and length fields are required.
 
 
 

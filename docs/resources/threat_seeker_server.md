@@ -7,7 +7,8 @@ description: |-
 
 # smc_threatseeker_server (Resource)
 
-This represents a Threat Seeker Server, which is a System object holding configuration needed to use Threat Seeker URL Categories. It includes attributes for the complete URL, license key, expiration date, and CA certificate.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Threat Seeker Server, which is a System object holding configuration needed to use Threat Seeker URL Categories. It includes attributes for the complete URL, license key, expiration date, and CA certificate.
 
 
 

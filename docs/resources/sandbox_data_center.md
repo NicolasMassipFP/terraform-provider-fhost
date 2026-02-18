@@ -7,7 +7,8 @@ description: |-
 
 # smc_sandbox_data_center (Resource)
 
-This represents a Sandbox Data Center element, which is referenced by the sandbox service. It contains information about the sandbox's hostname, server URL, portal URL, API URL, API key, type, and TLS profile.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Sandbox Data Center element, which is referenced by the sandbox service. It contains information about the sandbox's hostname, server URL, portal URL, API URL, API key, type, and TLS profile.
 
 
 

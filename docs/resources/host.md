@@ -9,7 +9,19 @@ description: |-
 
 This represents a Host, which is a Network Element that represents any single device that has an IP address. Any device connected to a TCP/IP network, including the Internet, with one or more IP addresses. Hosts are distinguishable from gateways or routers, in that they do not forward, or route, packets to other networks.
 
+## Examples
 
+- [fw_policy_with_match_expression/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_policy_with_match_expression/main.tf): Defines a single host object for use in firewall policy.
+
+This snippet demonstrates the creation of an `smc_host` resource and its use in a policy with networks and match expressions.
+
+```hcl
+resource "smc_host" "host_1" {
+  comment = var.resource_comment
+  address = "192.168.20.1"
+  name    = "tf_host_1"
+}
+```
 
 
 ## Simple Attributes

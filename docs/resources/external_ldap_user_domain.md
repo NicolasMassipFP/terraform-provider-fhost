@@ -7,7 +7,8 @@ description: |-
 
 # smc_external_ldap_user_domain (Resource)
 
-This represents the Authentication Domain. Each LDAP server has its own authentication domain in the SMC. One authentication domain can be selected as the default authentication domain, so that users can leave out this information when they authenticate (users can type username instead of username@domain). Users that are stored under non-default authentication domains must always include the domain in the username. If administrative Domains have been configured, you can create separate Authentication Domains for each administrative Domain and select one Authentication Domain in each administrative Domain as the Default. Alternatively, you can select one of the Authentication Domains in the Shared Domain as the Default Authentication Domain across all the administrative Domains.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Authentication Domain. Each LDAP server has its own authentication domain in the SMC. One authentication domain can be selected as the default authentication domain, so that users can leave out this information when they authenticate (users can type username instead of username@domain). Users that are stored under non-default authentication domains must always include the domain in the username. If administrative Domains have been configured, you can create separate Authentication Domains for each administrative Domain and select one Authentication Domain in each administrative Domain as the Default. Alternatively, you can select one of the Authentication Domains in the Shared Domain as the Default Authentication Domain across all the administrative Domains.
 
 
 

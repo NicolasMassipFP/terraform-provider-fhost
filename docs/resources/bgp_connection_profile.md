@@ -9,7 +9,22 @@ description: |-
 
 This represents the BGP Connection Profile for Dynamic Routing Firewall functionality. It contains settings for BGP connections, such as session timers and password.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/bgp_peering) for an example
+
+This example creates a BGP connection profile with session and authentication settings.
+
+```hcl
+resource "smc_bgp_connection_profile" "bgp_connection_profile" {
+  connect            = 150
+  md5_password       = "TheSuperPassword00!!"
+  name               = "tf_bgp_connection_profile"
+  session_hold_timer = 190
+  session_keep_alive = 70
+  comment            = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

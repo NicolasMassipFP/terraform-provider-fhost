@@ -1,13 +1,14 @@
 ---
-page_title: "file_filtering_rule"
+page_title: "smc_file_filtering_rule"
 subcategory: "policy"
 description: |-
   This represents a File Filtering Rule. It can be used to match and filter files based on various criteria.
 ---
 
-# file_filtering_rule (Sub-resource)
+# smc_file_filtering_rule (Sub-resource)
 
-This represents a File Filtering Rule. It can be used to match and filter files based on various criteria.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a File Filtering Rule. It can be used to match and filter files based on various criteria.
 
 
 

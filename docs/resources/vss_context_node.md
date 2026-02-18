@@ -1,13 +1,14 @@
 ---
-page_title: "vss_context_node"
+page_title: "smc_vss_context_node"
 subcategory: "engines"
 description: |-
   This represents a VSS Context Engine node in the Security Management Client, which is a virtual device that runs firewall software as part of a VSS Container.
 ---
 
-# vss_context_node (Sub-resource)
+# smc_vss_context_node (Sub-resource)
 
-This represents a VSS Context Engine node in the Security Management Client, which is a virtual device that runs firewall software as part of a VSS Container.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a VSS Context Engine node in the Security Management Client, which is a virtual device that runs firewall software as part of a VSS Container.
 
 
 

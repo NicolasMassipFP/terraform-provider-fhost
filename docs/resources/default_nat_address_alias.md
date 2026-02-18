@@ -7,7 +7,8 @@ description: |-
 
 # smc_default_nat_address_alias (Resource)
 
-This represents the System alias for '$$ Default NAT Address', which depends on Routing View. It is either external (CVI) IP, or multilink using all interfaces connected to internet.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Default NAT Address', which depends on Routing View. It is either external (CVI) IP, or multilink using all interfaces connected to internet.
 
 
 

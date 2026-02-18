@@ -7,7 +7,8 @@ description: |-
 
 # smc_category_group_tag (Resource)
 
-This represents a Category Group Tag, which is used to categorize elements based on groups of categories. It is a type of tag that can be applied to various elements in the system to indicate their association with specific category groups.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Category Group Tag, which is used to categorize elements based on groups of categories. It is a type of tag that can be applied to various elements in the system to indicate their association with specific category groups.
 
 
 

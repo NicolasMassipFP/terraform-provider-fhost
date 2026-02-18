@@ -7,7 +7,8 @@ description: |-
 
 # smc_gateway_settings (Resource)
 
-This represents various gateway and VPN parameters to be set at Firewall level. These settings are used for the negotiation of VPN connections.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents various gateway and VPN parameters to be set at Firewall level. These settings are used for the negotiation of VPN connections.
 
 
 

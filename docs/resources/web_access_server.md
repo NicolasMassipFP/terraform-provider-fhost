@@ -7,7 +7,8 @@ description: |-
 
 # smc_web_access_server (Resource)
 
-This represents a Web Access Server, which is used to provide web-based access to the management interface. It includes attributes for log target server, web application parameters, certificate settings, TLS profile, and UIID.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Web Access Server, which is used to provide web-based access to the management interface. It includes attributes for log target server, web application parameters, certificate settings, TLS profile, and UIID.
 
 
 

@@ -1,15 +1,45 @@
 ---
-page_title: "route_map_rule"
+page_title: "smc_route_map_rule"
 subcategory: "routing"
 description: |-
   This represents a Route Map Rule for Route Map Policy. It can be used to define routing policies based on various conditions.
 ---
 
-# route_map_rule (Sub-resource)
+# smc_route_map_rule (Sub-resource)
 
 This represents a Route Map Rule for Route Map Policy. It can be used to define routing policies based on various conditions.
 
+## Examples
 
+- [Route Map Rule Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/route_map/main.tf)
+
+Defines a rule used within a routing map for policy-based routing adjustments.
+
+```hcl
+resource "smc_route_map_rule" "rule_1" {
+  from_ref    = smc_route_map.route_map.link.route_map_rules
+  action      = "permit"
+  finish      = false
+  is_disabled = false
+  match_condition {
+    metric = 10
+    rank   = 1
+    type   = "metric"
+  }
+  name = "route_map_rule_1"
+  rank = 1.0
+  route_entry_settings {
+    as_path_type                  = "dont_modify"
+    community_type                = "dont_modify"
+    extended_community_entry_type = "rt"
+    extended_community_type       = "dont_modify"
+    ipv4_next_hop {
+      next_hop_peer_address = false
+      next_hop_ref          = smc_router.tf_example_router.id
+    }
+  }
+}
+```
 
 
 ## Simple Attributes

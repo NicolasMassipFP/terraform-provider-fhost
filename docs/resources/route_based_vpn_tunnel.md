@@ -9,7 +9,35 @@ description: |-
 
 This represents a Route-Based VPN Tunnel. It defines the properties and configuration of a route-based VPN tunnel, including its sides, encryption mode, and other settings.
 
+## Examples
 
+- [RBVPN Tunnel Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/route_based_vpn/ip_ip_mode_internal_gateway/main.tf)
+
+Defines a Route-Based VPN tunnel between two endpoints in an SD-WAN design.
+
+```hcl
+resource "smc_rbvpn_tunnel" "gre_single_fw1_single_fw2" {
+  depends_on     = [smc_internal_endpoint.ep_192_168_100_14, smc_internal_endpoint.ep_10_0_50_14]
+  comment        = var.resource_comment
+  enabled        = true
+  mtu            = 0
+  name           = "GRE-tf_single_fw1 to_tf_single_fw2"
+  pmtu_discovery = true
+  rbvpn_tunnel_side_a {
+    endpoint_ref         = data.smc_sub_href.single_fw1_ep.id
+    gateway_ref          = data.smc_sub_href.single_fw1_internal_gateway_ref.id
+    tunnel_interface_ref = data.smc_sub_href.single_fw1_tunnel_interface_1000_ref.id
+  }
+  rbvpn_tunnel_side_b {
+    endpoint_ref         = data.smc_sub_href.single_fw2_ep.id
+    gateway_ref          = data.smc_sub_href.single_fw2_internal_gateway_ref.id
+    tunnel_interface_ref = data.smc_sub_href.single_fw2_tunnel_interface_1234_ref.id
+  }
+  ttl               = 0
+  tunnel_encryption = "no_encryption"
+  tunnel_mode       = "ipip"
+}
+```
 
 
 ## Simple Attributes

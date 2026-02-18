@@ -9,7 +9,20 @@ description: |-
 
 This represents the IGMP Querier Settings for Multicast Routing and especially the PIM dynamic routing feature.
 
+## Examples
 
+- [IGMP Querier Settings Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/PIM/igmp_querier_settings/main.tf)
+
+Defines IGMP (Internet Group Management Protocol) querier settings for use in dynamic multicast routing environments.
+
+```hcl
+resource "smc_igmp_querier_settings" "ipgm_profile" {
+  igmp_version   = "igmpv3"
+  name           = "tf_igmp_querier_settings"
+  query_interval = 180
+  comment        = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

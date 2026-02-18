@@ -7,7 +7,8 @@ description: |-
 
 # smc_cloud_single_fw (Resource)
 
-This represents a Cloud Single Firewall, which is a type of firewall device designed for cloud environments. It includes various configurations and settings specific to cloud deployments.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Cloud Single Firewall, which is a type of firewall device designed for cloud environments. It includes various configurations and settings specific to cloud deployments.
 
 
 

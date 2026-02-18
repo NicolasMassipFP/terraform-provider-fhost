@@ -1,13 +1,14 @@
 ---
-page_title: "snapshot"
+page_title: "smc_snapshot"
 subcategory: "policy"
 description: |-
   This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.
 ---
 
-# snapshot (Sub-resource)
+# smc_snapshot (Sub-resource)
 
-This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Policy Snapshot, which is a record of policy configuration that shows the configuration in the form it was installed or refreshed. It includes rules, elements, properties, upload time, and the administrator who performed the upload. It helps in tracking configuration changes.
 
 
 

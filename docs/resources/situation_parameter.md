@@ -7,7 +7,8 @@ description: |-
 
 # smc_situation_parameter (Resource)
 
-This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a parameter within a situation, allowing for the configuration of specific parameters that can be used in the context of the situation.
 
 
 

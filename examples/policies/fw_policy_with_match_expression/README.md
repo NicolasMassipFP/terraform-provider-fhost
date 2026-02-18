@@ -1,3 +1,15 @@
-# Fw Policy With Match Expression
+# Policy With Match Expression Example
 
-This is an example demonstrating the usage of the Fw Policy With Match Expression configuration. This example provides a practical reference implementation to help you understand how to properly configure and deploy this component in your infrastructure.
+Shows use of match expressions (combining objects/users/networks) in firewall policy rules.
+
+- Creates network, host, user, and match expression
+- Adds rule with expression and user in the source
+
+## Usage
+
+Edit network/host/users as needed. Configure credentials, then:
+
+```
+terraform init
+terraform apply
+```

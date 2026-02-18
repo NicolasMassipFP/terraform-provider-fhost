@@ -1,13 +1,14 @@
 ---
-page_title: "inspection_global_rule"
+page_title: "smc_inspection_global_rule"
 subcategory: "policy"
 description: |-
   This represents an Inspection Global Rule. It defines for each Situation elements/Situation categories an inspection reaction.
 ---
 
-# inspection_global_rule (Sub-resource)
+# smc_inspection_global_rule (Sub-resource)
 
-This represents an Inspection Global Rule. It defines for each Situation elements/Situation categories an inspection reaction.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Inspection Global Rule. It defines for each Situation elements/Situation categories an inspection reaction.
 
 
 

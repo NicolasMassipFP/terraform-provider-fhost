@@ -7,7 +7,8 @@ description: |-
 
 # smc_firewall_layer2_cluster (Resource)
 
-This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a group of two or more layer 2 firewall devices in the Stonesoft Management Center. A Layer 2 Firewall is a basic Stonesoft Management Center component that provides access control and deep inspection of traffic.
 
 
 

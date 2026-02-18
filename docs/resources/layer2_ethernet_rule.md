@@ -1,13 +1,14 @@
 ---
-page_title: "layer2_ethernet_rule"
+page_title: "smc_layer2_ethernet_rule"
 subcategory: "policy"
 description: |-
   This represents a Firewall Layer 2 Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Firewall Layer 2 in Transparent Access Control Mode.
 ---
 
-# layer2_ethernet_rule (Sub-resource)
+# smc_layer2_ethernet_rule (Sub-resource)
 
-This represents a Firewall Layer 2 Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Firewall Layer 2 in Transparent Access Control Mode.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Firewall Layer 2 Ethernet Rule. It defines which Ethernet traffic is allowed or discarded by a Firewall Layer 2 in Transparent Access Control Mode.
 
 
 

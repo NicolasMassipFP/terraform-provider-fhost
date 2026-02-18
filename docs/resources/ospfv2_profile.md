@@ -9,7 +9,56 @@ description: |-
 
 This represents the OSPFv2 Profile for Dynamic Routing Firewall functionality. It is used to configure OSPFv2 settings in the firewall's dynamic routing capabilities.
 
+## Examples
 
+- [Dynamic Routing OSPFv2 Profile Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/OSPFv2/ospfv2_profile_disabled/main.tf)
+
+An `smc_ospfv2_profile` defines OSPFv2 protocol settings and redistribution rules for routing within the SMC platform.
+
+```hcl
+resource "smc_ospfv2_profile" "ospfv2_profile" {
+  domain_settings_ref = "http://localhost:18082/7.4/elements/ospfv2_domain_settings/2"
+  external_distance   = 120
+  inter_distance      = 120
+  intra_distance      = 120
+  name                = "tf_ospfv2_profile"
+  redistribution_entry = {
+    enabled                   = true
+    filter_type               = "access_list"
+    metric                    = 120
+    metric_type               = "external_1"
+    redistribution_filter_ref = "http://localhost:18082/7.4/elements/ip_access_list/29"
+    type                      = "kernel"
+  }
+  redistribution_entry = {
+    enabled     = false
+    filter_type = "none"
+    metric_type = "external_1"
+    type        = "static"
+  }
+  redistribution_entry = {
+    enabled     = true
+    filter_type = "none"
+    metric_type = "external_1"
+    type        = "connected"
+  }
+  redistribution_entry = {
+    enabled                   = true
+    filter_type               = "access_list"
+    metric                    = 170
+    metric_type               = "external_1"
+    redistribution_filter_ref = "http://localhost:18082/7.4/elements/ip_access_list/29"
+    type                      = "bgp"
+  }
+  redistribution_entry = {
+    enabled     = false
+    filter_type = "none"
+    metric_type = "external_1"
+    type        = "default_originate"
+  }
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

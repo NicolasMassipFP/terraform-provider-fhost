@@ -1,13 +1,14 @@
 ---
-page_title: "virtual_resource"
+page_title: "smc_virtual_resource"
 subcategory: "engines"
 description: |-
   This represents a set of resources on the Master NGFW Engine that are allocated to each Virtual NGFW Engine. It includes properties such as ID, domain allocation, and resource limits.
 ---
 
-# virtual_resource (Sub-resource)
+# smc_virtual_resource (Sub-resource)
 
-This represents a set of resources on the Master NGFW Engine that are allocated to each Virtual NGFW Engine. It includes properties such as ID, domain allocation, and resource limits.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a set of resources on the Master NGFW Engine that are allocated to each Virtual NGFW Engine. It includes properties such as ID, domain allocation, and resource limits.
 
 
 

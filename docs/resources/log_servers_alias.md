@@ -7,7 +7,8 @@ description: |-
 
 # smc_log_servers_alias (Resource)
 
-This represents the System alias for '$$ Log Servers', which is used to substitute the log server object defined in the firewall where the policy is uploaded.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Log Servers', which is used to substitute the log server object defined in the firewall where the policy is uploaded.
 
 
 

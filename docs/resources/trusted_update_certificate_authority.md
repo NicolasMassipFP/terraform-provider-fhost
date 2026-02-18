@@ -7,7 +7,8 @@ description: |-
 
 # smc_trusted_update_certificate_authority (Resource)
 
-This represents a Trusted Update Certificate Authority, which is used to manage trusted update certificate authorities in the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Trusted Update Certificate Authority, which is used to manage trusted update certificate authorities in the system.
 
 
 

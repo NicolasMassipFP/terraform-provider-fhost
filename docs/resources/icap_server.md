@@ -9,7 +9,19 @@ description: |-
 
 This represents an ICAP server, which is a Network Element that represents an ICAP instance of server. It includes attributes for port, path, secure ICAP, TLS profile, and X-Headers.
 
+## Examples
 
+No usage found in the current example set.
+
+A stub configuration:
+
+```hcl
+# resource "smc_icap" "example" {
+#   # Example attributes here
+# }
+```
+
+> This resource type does not appear in the repository examples at this time.
 
 
 ## Simple Attributes

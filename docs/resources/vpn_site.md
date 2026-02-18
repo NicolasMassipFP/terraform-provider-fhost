@@ -1,15 +1,28 @@
 ---
-page_title: "vpn_site"
+page_title: "smc_vpn_site"
 subcategory: "vpn"
 description: |-
   This represents a VPN Site, which is a collection of network elements that are part of a VPN. It can be associated with a gateway and has references to VPNs.
 ---
 
-# vpn_site (Sub-resource)
+# smc_vpn_site (Sub-resource)
 
 This represents a VPN Site, which is a collection of network elements that are part of a VPN. It can be associated with a gateway and has references to VPNs.
 
+## Examples
 
+- [satellite_gateway_node/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/policy_based_vpn/satellite_gateway_node/main.tf): Creates a VPN site for a firewall's internal gateway in SD-WAN.
+
+This example demonstrates how to define an `smc_vpn_site` for associating a network element (such as a LAN or subnet) to a firewall's internal gateway in an SD-WAN VPN design.
+
+```hcl
+resource "smc_vpn_site" "site_fw1" {
+  from_ref     = format("%s#%s", smc_single_fw.tf_single_fw["fw1"].link.internal_gateway, "*/vpn_site")
+  name         = "site_fw1"
+  site_element = [smc_network.nw1.id]
+  # gateway    = data.smc_sub_href.internal_gateway["fw1"].id
+}
+```
 
 
 ## Simple Attributes

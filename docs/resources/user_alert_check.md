@@ -7,7 +7,8 @@ description: |-
 
 # smc_user_alert_check (Resource)
 
-This represents a User Alert Check. It contains settings for the type of check, threshold values, filter, and associated alert.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a User Alert Check. It contains settings for the type of check, threshold values, filter, and associated alert.
 
 
 

@@ -9,7 +9,30 @@ description: |-
 
 This represents an IP Access List, which is used to define a list of IP addresses and prefixes for dynamic routing configurations.
 
+## Examples
 
+- [IP Access List Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/routing_node_bgp/main.tf)
+
+An `smc_ip_access_list` allows you to define rules for matching and filtering IP subnets for dynamic routing filtering purposes.
+
+```hcl
+resource "smc_ip_access_list" "ip_access_list" {
+  comment = var.resource_comment
+  entries {
+    ip_access_list_entry {
+      action = "deny"
+      subnet = "172.16.16.0/21"
+    }
+  }
+  entries {
+    ip_access_list_entry {
+      action = "permit"
+      subnet = "192.168.100.0/24"
+    }
+  }
+  name = "tf_ip_access_list"
+}
+```
 
 
 ## Simple Attributes

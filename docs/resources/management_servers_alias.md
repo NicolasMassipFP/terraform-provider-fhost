@@ -7,7 +7,8 @@ description: |-
 
 # smc_mgt_servers_alias (Resource)
 
-This represents the System alias for '$$ Management Servers', which is used to substitute the management server object that controls the firewall where the policy is uploaded.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Management Servers', which is used to substitute the management server object that controls the firewall where the policy is uploaded.
 
 
 

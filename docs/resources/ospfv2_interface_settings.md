@@ -9,7 +9,28 @@ description: |-
 
 This represents the OSPFv2 Interface Settings, which are used to configure OSPFv2 interfaces in the Dynamic Routing Firewall functionality.
 
+## Examples
 
+- [OSPFv2 Interface Settings Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/OSPFv2/ospfv2_interface_settings/main.tf)
+
+Defines per-interface OSPFv2 protocol settings.
+
+```hcl
+resource "smc_ospfv2_interface_settings" "ospfv2_interface_settings" {
+  authentication_type    = "none"
+  dead_interval          = 1
+  dead_multiplier        = 4
+  hello_interval_type    = "fast_hello"
+  interface_cost         = 14
+  mtu_mismatch_detection = true
+  name                   = "tf_ospfv2_interface_settings"
+  password               = ""
+  retransmit_interval    = 10
+  router_priority        = 5
+  transmit_delay         = 2
+  comment                = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

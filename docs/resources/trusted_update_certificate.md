@@ -7,7 +7,8 @@ description: |-
 
 # smc_trusted_update_certificate (Resource)
 
-This represents a certificate used to authenticate Update Package or Engine Upgrade. It is a type of certificate that can be used to verify the authenticity of updates and upgrades in the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a certificate used to authenticate Update Package or Engine Upgrade. It is a type of certificate that can be used to verify the authenticity of updates and upgrades in the system.
 
 
 

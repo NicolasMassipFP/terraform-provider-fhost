@@ -1,13 +1,14 @@
 ---
-page_title: "layer2_ipv6_access_rule"
+page_title: "smc_layer2_ipv6_access_rule"
 subcategory: "policy"
 description: |-
   This represents a Firewall Layer 2 IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 ---
 
-# layer2_ipv6_access_rule (Sub-resource)
+# smc_layer2_ipv6_access_rule (Sub-resource)
 
-This represents a Firewall Layer 2 IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Firewall Layer 2 IPv6 Access Rule. It defines how one type of IPv6 connection is handled by providing matching criteria based on the source, destination, and protocol information.
 
 
 

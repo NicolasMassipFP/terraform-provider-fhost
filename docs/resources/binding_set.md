@@ -7,7 +7,8 @@ description: |-
 
 # smc_binding_set (Resource)
 
-This represents a binding set, which is used to manage bindings in the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a binding set, which is used to manage bindings in the system.
 
 
 

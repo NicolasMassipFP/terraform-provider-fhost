@@ -7,7 +7,8 @@ description: |-
 
 # smc_ssl_vpn_portal (Resource)
 
-This represents an Application Access Portal. It contains settings for hostnames, policies, server credentials, and various portal configurations.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an Application Access Portal. It contains settings for hostnames, policies, server credentials, and various portal configurations.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_snort_configuration_file (Resource)
 
-This is a Snort Configuration File. It contains the configuration settings for the Snort intrusion detection system, used to define rules and behaviors for network traffic analysis.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is a Snort Configuration File. It contains the configuration settings for the Snort intrusion detection system, used to define rules and behaviors for network traffic analysis.
 
 
 

@@ -1,13 +1,14 @@
 ---
-page_title: "fw_ipv6_nat_rule"
+page_title: "smc_fw_ipv6_nat_rule"
 subcategory: "policy"
 description: |-
   This represents an IPv6 NAT (Network Address Translation) Rule. It defines how one type of IPv6 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
 ---
 
-# fw_ipv6_nat_rule (Sub-resource)
+# smc_fw_ipv6_nat_rule (Sub-resource)
 
-This represents an IPv6 NAT (Network Address Translation) Rule. It defines how one type of IPv6 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an IPv6 NAT (Network Address Translation) Rule. It defines how one type of IPv6 connection is natted, enhancing security and enabling communication for hosts with non-routable addresses.
 
 
 

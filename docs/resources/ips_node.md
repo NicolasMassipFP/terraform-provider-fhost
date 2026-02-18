@@ -1,13 +1,14 @@
 ---
-page_title: "ips_node"
+page_title: "smc_ips_node"
 subcategory: "engines"
 description: |-
   This represents an individual IPS Engine Node in the Security Management Client, which is a device that runs IPS software as part of a IPS Cluster or a Single IPS.
 ---
 
-# ips_node (Sub-resource)
+# smc_ips_node (Sub-resource)
 
-This represents an individual IPS Engine Node in the Security Management Client, which is a device that runs IPS software as part of a IPS Cluster or a Single IPS.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an individual IPS Engine Node in the Security Management Client, which is a device that runs IPS software as part of a IPS Cluster or a Single IPS.
 
 
 

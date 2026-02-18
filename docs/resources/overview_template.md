@@ -7,7 +7,8 @@ description: |-
 
 # smc_overview_template (Resource)
 
-This represents the Overview Template, which is used to define the structure and content of overview reports generated within the system.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Overview Template, which is used to define the structure and content of overview reports generated within the system.
 
 
 

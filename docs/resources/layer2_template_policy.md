@@ -7,7 +7,8 @@ description: |-
 
 # smc_layer2_template_policy (Resource)
 
-This represents a Layer 2 Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Layer 2 Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
 
 
 

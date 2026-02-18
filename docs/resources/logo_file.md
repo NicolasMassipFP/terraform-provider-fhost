@@ -7,7 +7,8 @@ description: |-
 
 # smc_logo_file (Resource)
 
-This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This is a Logo File. It represents a logo file used in the system, typically for branding or identification purposes.
 
 
 

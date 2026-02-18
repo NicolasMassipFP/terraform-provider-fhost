@@ -7,7 +7,8 @@ description: |-
 
 # smc_ips_policy (Resource)
 
-This represents an IPS Policy, which is used to define the action and inspection rules for IPS Engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an IPS Policy, which is used to define the action and inspection rules for IPS Engines.
 
 
 

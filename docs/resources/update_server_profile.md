@@ -7,7 +7,8 @@ description: |-
 
 # smc_update_service (Resource)
 
-This represents Update Server Profile (aka Update Service). It contains the URLs to connect to the update server, the TLS profile used for secure connections, and connection parameters such as timeout and retry count.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents Update Server Profile (aka Update Service). It contains the URLs to connect to the update server, the TLS profile used for secure connections, and connection parameters such as timeout and retry count.
 
 
 

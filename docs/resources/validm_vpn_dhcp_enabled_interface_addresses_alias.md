@@ -7,7 +7,8 @@ description: |-
 
 # smc_valid_vpn_dhcp_enabled_interface_addresses_alias (Resource)
 
-This represents the System alias for '$$ DHCP Enabled interface addresses for IPsec VPN clients', which is used to substitute enabled interface addresses defined in the Internal Security Gateway properties for assigning DHCP relay to IPsec VPN clients.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ DHCP Enabled interface addresses for IPsec VPN clients', which is used to substitute enabled interface addresses defined in the Internal Security Gateway properties for assigning DHCP relay to IPsec VPN clients.
 
 
 

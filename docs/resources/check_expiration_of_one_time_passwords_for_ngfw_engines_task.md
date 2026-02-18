@@ -7,7 +7,8 @@ description: |-
 
 # smc_check_expiration_of_engine_one_time_passwords_task (Resource)
 
-This represents a Check Expiration of One-Time Passwords for NGFW Engines Task, which is used to check the expiration status of one-time passwords for NGFW engines. It is a type of system task that can be scheduled and executed to ensure that one-time passwords are managed correctly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Check Expiration of One-Time Passwords for NGFW Engines Task, which is used to check the expiration status of one-time passwords for NGFW engines. It is a type of system task that can be scheduled and executed to ensure that one-time passwords are managed correctly.
 
 
 

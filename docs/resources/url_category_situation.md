@@ -7,7 +7,8 @@ description: |-
 
 # smc_url_category_situation (Resource)
 
-This represents a URL Category Situation, which is used for category-based filtering in URL filtering. The categories are updated through dynamic update packages.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a URL Category Situation, which is used for category-based filtering in URL filtering. The categories are updated through dynamic update packages.
 
 
 

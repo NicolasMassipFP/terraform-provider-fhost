@@ -7,7 +7,8 @@ description: |-
 
 # smc_pdf_template (Resource)
 
-This represents the PDF Template used as Style template for PDF reports. It contains settings for page indices, header and footer heights, font colors, and a reference to the content file.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the PDF Template used as Style template for PDF reports. It contains settings for page indices, header and footer heights, font colors, and a reference to the content file.
 
 
 

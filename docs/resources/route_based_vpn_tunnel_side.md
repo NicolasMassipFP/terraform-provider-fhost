@@ -7,7 +7,8 @@ description: |-
 
 # smc_rbvpn_tunnel_side (Resource)
 
-This defines one part of a Route-Based Tunnel, which can be a gateway, a gateway with its EndPoint, or just an external IP Address. None of the elements are mandatory, as the configuration of the Route-Based Tunnel determines which elements are required.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This defines one part of a Route-Based Tunnel, which can be a gateway, a gateway with its EndPoint, or just an external IP Address. None of the elements are mandatory, as the configuration of the Route-Based Tunnel determines which elements are required.
 
 
 

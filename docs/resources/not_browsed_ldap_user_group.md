@@ -7,7 +7,8 @@ description: |-
 
 # smc_ldap_user_group (Resource)
 
-This represents a User Group of a Domain where SMC does not connect to the directory server for browsing users and groups. It contains the ETag for versioning.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a User Group of a Domain where SMC does not connect to the directory server for browsing users and groups. It contains the ETag for versioning.
 
 
 

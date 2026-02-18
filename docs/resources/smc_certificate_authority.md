@@ -7,7 +7,8 @@ description: |-
 
 # smc_certificate_authority (Resource)
 
-This represents the SMC Certificate Authority. It contains information about the state of the certificate authority and whether it is the default CA.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the SMC Certificate Authority. It contains information about the state of the certificate authority and whether it is the default CA.
 
 
 

@@ -9,7 +9,22 @@ description: |-
 
 This represents a Backup Task, which is used to create backups of the system. It is a type of task that can be scheduled and executed to ensure that system data is backed up properly.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/single_fw/single_fw_actions) for a minimal example
+
+This example creates a backup task in SMC for specified resources (such as management servers).
+
+```hcl
+resource "smc_backup_task" "tf_backup_task" {
+  name = "tf_backup_task_test"
+  resources = [
+    data.smc_href.mgt_server.id
+  ]
+  backup_comment = "backup_created_by_terraform"
+  depends_on = [smc_single_fw.tf_single_fw]
+}
+```
 
 
 ## Simple Attributes

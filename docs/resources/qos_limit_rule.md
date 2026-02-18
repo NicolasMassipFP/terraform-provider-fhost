@@ -1,13 +1,14 @@
 ---
-page_title: "limit_rule"
+page_title: "smc_limit_rule"
 subcategory: "policy"
 description: |-
   This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.
 ---
 
-# limit_rule (Sub-resource)
+# smc_limit_rule (Sub-resource)
 
-This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a QoS Limit Rule. It can be used to set limits on network traffic based on various parameters.
 
 
 

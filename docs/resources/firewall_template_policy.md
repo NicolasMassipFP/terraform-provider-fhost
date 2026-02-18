@@ -9,7 +9,18 @@ description: |-
 
 This represents a Firewall Template Policy, which is used to define a set of rules and insert points that can be inherited by other policies or template policies.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_template_policy) for a minimal example
+
+This example creates a firewall template policy for organizing and reusing rule sections.
+
+```hcl
+resource "smc_fw_template_policy" "example" {
+  name    = "tf_example_template_policy"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

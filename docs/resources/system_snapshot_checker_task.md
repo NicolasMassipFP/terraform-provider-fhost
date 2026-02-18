@@ -7,7 +7,8 @@ description: |-
 
 # smc_create_system_snapshot_task (Resource)
 
-This represents a System Snapshot Checker Task, which is used to check the system snapshot status. It is a type of system task that can be scheduled and executed to ensure that the system snapshot is correctly maintained.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a System Snapshot Checker Task, which is used to check the system snapshot status. It is a type of system task that can be scheduled and executed to ensure that the system snapshot is correctly maintained.
 
 
 

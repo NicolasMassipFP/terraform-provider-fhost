@@ -7,7 +7,8 @@ description: |-
 
 # smc_sub_ipv4_ips_policy (Resource)
 
-This represents an IPS Sub-Policy, which is used to group related IPS IPv4 Access rules for better organization and processing efficiency.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an IPS Sub-Policy, which is used to group related IPS IPv4 Access rules for better organization and processing efficiency.
 
 
 

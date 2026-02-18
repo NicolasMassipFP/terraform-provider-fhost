@@ -7,7 +7,8 @@ description: |-
 
 # smc_link_selection (Resource)
 
-This represents the link selection value used in QoS settings, defining various network parameters such as bandwidth, jitter, latency, packet loss, and stability.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the link selection value used in QoS settings, defining various network parameters such as bandwidth, jitter, latency, packet loss, and stability.
 
 
 

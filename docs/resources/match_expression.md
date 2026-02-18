@@ -9,7 +9,18 @@ description: |-
 
 This element represents the Rule Source/Destination/Service Match expression, which defines how traffic is matched against rules in a policy.
 
+## Examples
 
+- [fw_policy_with_match_expression/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/policies/fw_policy_with_match_expression/main.tf): Builds a match expression referencing multiple resources in a firewall policy.
+
+This snippet shows an `smc_match_expression` referencing a host and a network, for use in access rules for refined traffic matching.
+
+```hcl
+resource "smc_match_expression" "match_expression_host1_net1" {
+  name = "tf_match_expression_host1_net1"
+  ref  = [smc_network.network_1.id, smc_host.host_1.id]
+}
+```
 
 
 ## Simple Attributes

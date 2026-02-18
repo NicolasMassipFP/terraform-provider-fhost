@@ -9,7 +9,25 @@ description: |-
 
 This represents an Expression, which is used to define complex sets of network elements by including and excluding elements using logical expressions. It supports operators such as union, intersection, and exclusion.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/expression) for an example
+
+This example shows how to define a logical expression of network elements in SMC.
+
+```hcl
+resource "smc_expression" "tf_expression_example" {
+  name     = "tf_expression_example"
+  comment  = var.resource_comment
+  ne_ref   = [smc_group.tf_group1.id]
+  operator = "intersection"
+  sub_expression {
+    name     = "tf_sub_expression"
+    ne_ref   = [smc_group.tf_group2.id]
+    operator = "exclusion"
+  }
+}
+```
 
 
 ## Simple Attributes

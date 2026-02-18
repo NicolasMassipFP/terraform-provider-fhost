@@ -1,15 +1,27 @@
 ---
-page_title: "routing_node"
+page_title: "smc_routing_node"
 subcategory: "routing"
 description: |-
   This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
 ---
 
-# routing_node (Sub-resource)
+# smc_routing_node (Sub-resource)
 
 This represents a Routing Node in the Security Management Client, which is used to configure routing for network traffic on firewalls.
 
+## Examples
 
+- [getting_started/main.tf](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/getting_started/main.tf): Declares a routing node for a firewall engine.
+
+This snippet shows use of the `smc_routing_node` resource to define the routing structure for a firewall cluster, referencing interfaces and routes.
+
+```hcl
+resource "smc_routing_node" "tf_single_fw" {
+  id           = smc_single_fw.tf_sample_fw.link.routing
+  level        = "engine_cluster"
+  routing_node = [module.route_intf0.value]
+}
+```
 
 
 ## Simple Attributes

@@ -9,7 +9,37 @@ description: |-
 
 This represents the BGP Peering for Dynamic Routing Firewall functionality.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/BGP/bgp_peering) for an example
+
+This example configures a BGP peering with filters and connection profile.
+
+```hcl
+resource "smc_bgp_peering" "bgp_peering" {
+  bfd_enabled               = false
+  connected_check           = "disabled"
+  connection_profile        = smc_bgp_connection_profile.bgp_connection_profile.id
+  default_originate         = false
+  dont_capability_negotiate = false
+  inbound_aspath_filter     = smc_as_path_access_list.as_path_access_list.id
+  inbound_ip_filter         = smc_ip_access_list.ip_access_list.id
+  local_as_option           = "not_set"
+  max_prefix_option         = "not_enabled"
+  name                      = "tf_bgp_peering"
+  next_hop_self             = true
+  orf_option                = "disabled"
+  outbound_aspath_filter    = smc_as_path_access_list.as_path_access_list.id
+  outbound_ip_filter        = smc_ip_access_list.ip_access_list.id
+  override_capability       = false
+  remove_private_as         = false
+  route_reflector_client    = true
+  send_community            = "no"
+  soft_reconfiguration      = true
+  ttl_option                = "disabled"
+  comment                   = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

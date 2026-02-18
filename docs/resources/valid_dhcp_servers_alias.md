@@ -7,7 +7,8 @@ description: |-
 
 # smc_valid_dhcp_servers_alias (Resource)
 
-This represents the System alias for '$$ Valid DHCP Servers', which is used to substitute all DHCP servers defined in the firewall.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the System alias for '$$ Valid DHCP Servers', which is used to substitute all DHCP servers defined in the firewall.
 
 
 

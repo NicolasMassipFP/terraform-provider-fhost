@@ -7,7 +7,8 @@ description: |-
 
 # smc_single_ips (Resource)
 
-This represents a Single IPS device in the Stonesoft Management Center, which is a single IPS engine. It includes attributes for virtual defragmentation and connection limits.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Single IPS device in the Stonesoft Management Center, which is a single IPS engine. It includes attributes for virtual defragmentation and connection limits.
 
 
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_administrator (Resource)
 
-This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an administrator user. It contains the user's credentials, authentication method, and permissions for managing the system. Administrators can be local or LDAP-based, and they can have sudo rights on engines.
 
 
 

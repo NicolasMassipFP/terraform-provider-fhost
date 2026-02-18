@@ -9,7 +9,18 @@ description: |-
 
 This represents a Zone, which is used to group together network interfaces of Firewall, IPS, and Layer 2 Firewall engines. Zones can be used to specify receiving or sending interfaces in policies and automatically apply to new interfaces associated with the same Zone.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/network_elements/interface_zone) for a minimal example
+
+This example creates an interface zone in SMC.
+
+```hcl
+resource "smc_interface_zone" "tf_zone_example" {
+  name    = "Northbound"
+  comment = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

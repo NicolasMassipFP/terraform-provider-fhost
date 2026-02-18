@@ -7,7 +7,8 @@ description: |-
 
 # smc_report_operation (Resource)
 
-This represents a report operation, which is a task that runs a report. It can be one-time or recurrent. It includes options for report design, launch time, overriding duration, filters, email notifications, and export formats.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a report operation, which is a task that runs a report. It can be one-time or recurrent. It includes options for report design, launch time, overriding duration, filters, email notifications, and export formats.
 
 
 

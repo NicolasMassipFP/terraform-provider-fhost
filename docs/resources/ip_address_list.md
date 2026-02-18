@@ -1,11 +1,11 @@
 ---
-page_title: "list"
+page_title: "smc_list"
 subcategory: "network_elements"
 description: |-
   This represents a list of IP addresses, networks, or ranges, which can be used in network elements to define allowed or blocked IPs.
 ---
 
-# list (Sub-resource)
+# smc_list (Sub-resource)
 
 This represents a list of IP addresses, networks, or ranges, which can be used in network elements to define allowed or blocked IPs.
 

@@ -7,7 +7,8 @@ description: |-
 
 # smc_traffic_capture_task (Resource)
 
-This represents a Traffic Capture Task, which is used to capture network traffic data. It is a type of task that can be scheduled and executed to monitor and log network traffic for analysis.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Traffic Capture Task, which is used to capture network traffic data. It is a type of task that can be scheduled and executed to monitor and log network traffic for analysis.
 
 
 

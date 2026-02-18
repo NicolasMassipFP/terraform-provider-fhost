@@ -7,7 +7,8 @@ description: |-
 
 # smc_radius_server (Resource)
 
-This represents a RADIUS Server, which is an external authentication server that supports the RADIUS protocol. It can be used as an authentication method for administrators and includes attributes for default authentication port.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a RADIUS Server, which is an external authentication server that supports the RADIUS protocol. It can be used as an authentication method for administrators and includes attributes for default authentication port.
 
 
 

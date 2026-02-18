@@ -7,7 +7,8 @@ description: |-
 
 # smc_data_context (Resource)
 
-This represents the Data Context. It contains a tag that is used to identify the data context in event filtering operations.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents the Data Context. It contains a tag that is used to identify the data context in event filtering operations.
 
 
 

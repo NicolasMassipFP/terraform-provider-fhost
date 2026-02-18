@@ -1,15 +1,28 @@
 ---
-page_title: "internal_endpoint"
+page_title: "smc_internal_endpoint"
 subcategory: "vpn"
 description: |-
   This represents an internal endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as physical interface and deducted name.
 ---
 
-# internal_endpoint (Sub-resource)
+# smc_internal_endpoint (Sub-resource)
 
 This represents an internal endpoint for VPN connections, supporting both tunnel and portal types. It includes properties such as physical interface and deducted name.
 
+## Examples
 
+- see [here](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/sdwan/second_vpn_disabled) for a minimal example
+
+This example creates an internal endpoint (used for VPN or routing) tied to a single firewall.
+
+```hcl
+resource "smc_internal_endpoint" "ep_212_20_1_1" {
+  id = format("%s#%s", smc_single_fw.tf_single_fw1.link.internal_gateway,
+    "*/internal_endpoint/212.20.1.1")
+  enabled = true
+  ipsec_vpn = true
+}
+```
 
 
 ## Simple Attributes

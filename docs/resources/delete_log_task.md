@@ -7,7 +7,8 @@ description: |-
 
 # smc_delete_log_task (Resource)
 
-This represents a Delete Log Task, which is used to delete logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are deleted properly.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents a Delete Log Task, which is used to delete logs in the system. It is a type of log task that can be scheduled and executed to ensure that logs are deleted properly.
 
 
 

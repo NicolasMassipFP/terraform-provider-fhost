@@ -9,7 +9,26 @@ description: |-
 
 This represents the OSPFv2 Domain Settings for Dynamic Routing Firewall functionality, including properties such as area ID and authentication settings.
 
+## Examples
 
+- [OSPFv2 Domain Settings Example](https://github.com/Forcepoint/terraform-provider-fp-ngfw-smc/blob/release/0.0.1/examples/engines/dynamic_routing/OSPFv2/ospfv2_domain_settings/main.tf)
+
+Defines domain-wide settings for OSPFv2 routing.
+
+```hcl
+resource "smc_ospfv2_domain_settings" "ospfv2_domain_settings" {
+  abr_type                = "cisco"
+  auto_cost_bandwidth     = 100
+  deprecated_algorithm    = false
+  initial_delay           = 200
+  initial_hold_time       = 1000
+  max_hold_time           = 10000
+  name                    = "tf_ospfv2_domain_settings"
+  shutdown_max_metric_lsa = 0
+  startup_max_metric_lsa  = 0
+  comment                 = var.resource_comment
+}
+```
 
 
 ## Simple Attributes

@@ -1,13 +1,14 @@
 ---
-page_title: "vss_container_node"
+page_title: "smc_vss_container_node"
 subcategory: "engines"
 description: |-
   This represents an individual VSS Container Engine node in the Security Management Client, which is a device that runs firewall software as part of a VSS Container.
 ---
 
-# vss_container_node (Sub-resource)
+# smc_vss_container_node (Sub-resource)
 
-This represents an individual VSS Container Engine node in the Security Management Client, which is a device that runs firewall software as part of a VSS Container.
+
+⚠️ __Experimental feature, use with caution__. This feature is not yet fully supported and may change without deprecation in future releases.This represents an individual VSS Container Engine node in the Security Management Client, which is a device that runs firewall software as part of a VSS Container.
 
 
 
